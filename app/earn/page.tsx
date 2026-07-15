@@ -42,7 +42,7 @@ export default function EarnPage() {
         </div>
       </div>
 
-      <div style={{ padding: "96px 32px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "56px 32px", maxWidth: 1280, margin: "0 auto" }}>
         <div
           className="rv"
           style={{

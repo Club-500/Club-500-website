@@ -1,10 +1,16 @@
 import Link from "next/link";
 
+const STEPS: [string, string, string][] = [
+  ["01", "Join a club", "Become a fan — it takes a minute."],
+  ["02", "Share your link", "Your referral link, generated instantly."],
+  ["03", "Get paid", "Earn every time someone joins through it."],
+];
+
 export default function EarnBanner() {
   return (
     <section
       style={{
-        padding: "110px 32px",
+        padding: "72px 32px",
         background: "#f0b429",
         color: "#0a0a0a",
         borderRadius: "36px 36px 0 0",
@@ -17,19 +23,11 @@ export default function EarnBanner() {
           margin: "0 auto",
           display: "flex",
           flexDirection: "column",
-          gap: 28,
+          gap: 32,
         }}
       >
-        <span className="rv mono-label" style={{ color: "rgba(10,10,10,0.6)" }}>
-          How it works
-        </span>
-        <h2 className="rv mega" style={{ margin: 0, fontSize: "clamp(2.6rem, 6.5vw, 6rem)" }}>
-          Join. Share your link.
-          <br />
-          <em className="serif-accent">Get paid.</em>
-        </h2>
         <div
-          className="rv rv-d1"
+          className="rv"
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -38,18 +36,16 @@ export default function EarnBanner() {
             gap: 24,
           }}
         >
-          <p
-            style={{
-              margin: 0,
-              maxWidth: 460,
-              font: '400 17px/1.6 var(--font-inter-tight), sans-serif',
-              color: "rgba(10,10,10,0.75)",
-            }}
-          >
-            Become a fan of your club, get your personal referral link
-            instantly, and earn every single time someone joins through it.
-            Withdraw anytime — no limits, sent instantly.
-          </p>
+          <div>
+            <span className="mono-label" style={{ color: "rgba(10,10,10,0.6)" }}>
+              How it works
+            </span>
+            <h2 className="mega" style={{ margin: "10px 0 0", fontSize: "clamp(2.4rem, 5.5vw, 4.6rem)" }}>
+              Join. Share your link.
+              <br />
+              <em className="serif-accent">Get paid.</em>
+            </h2>
+          </div>
           <Link href="/earn">
             <button
               className="pill-btn"
@@ -70,6 +66,37 @@ export default function EarnBanner() {
               </span>
             </button>
           </Link>
+        </div>
+
+        <div
+          className="rv rv-d1"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: 14,
+          }}
+        >
+          {STEPS.map(([num, title, desc]) => (
+            <div
+              key={num}
+              style={{
+                border: "1.5px solid rgba(10,10,10,0.18)",
+                borderRadius: 18,
+                padding: "20px 22px",
+                background: "rgba(10,10,10,0.05)",
+              }}
+            >
+              <span style={{ font: '600 13px/1 var(--font-inter-tight), sans-serif', letterSpacing: "0.08em", color: "rgba(10,10,10,0.5)" }}>
+                {num}
+              </span>
+              <div style={{ font: '600 17px/1.3 var(--font-inter-tight), sans-serif', margin: "8px 0 4px" }}>
+                {title}
+              </div>
+              <p style={{ margin: 0, font: '400 13.5px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(10,10,10,0.65)" }}>
+                {desc}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

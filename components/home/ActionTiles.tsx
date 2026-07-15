@@ -9,7 +9,7 @@ const TILES: [string, string, string][] = [
 
 export default function ActionTiles() {
   return (
-    <section style={{ padding: "96px 32px 0", maxWidth: 1280, margin: "0 auto" }}>
+    <section style={{ padding: "72px 32px 0", maxWidth: 1280, margin: "0 auto" }}>
       <div
         style={{
           display: "grid",
