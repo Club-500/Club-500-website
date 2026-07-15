@@ -49,36 +49,15 @@ export default function SiteHeader() {
         borderBottom: "1px solid rgba(255,255,255,0.08)",
       }}
     >
-      <Link
-        href="/"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-          zIndex: 60,
-          padding: "6px 12px 6px 6px",
-          borderRadius: 14,
-          background: "rgba(255,255,255,0.07)",
-          border: "1px solid rgba(255,255,255,0.14)",
-        }}
-      >
+      <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, zIndex: 60 }}>
         <Image
-          src="/assets/club500-logo.png"
+          src="/assets/club500-logo.jpg"
           alt="Club 500"
-          width={44}
-          height={46}
-          style={{ height: 44, width: "auto" }}
+          width={52}
+          height={52}
+          style={{ height: 52, width: "auto" }}
           priority
         />
-        <span
-          className="gold"
-          style={{
-            font: '700 15px/1 var(--font-bebas-neue), sans-serif',
-            letterSpacing: "0.04em",
-          }}
-        >
-          CLUB500
-        </span>
       </Link>
 
       <nav

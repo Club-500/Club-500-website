@@ -49,23 +49,13 @@ export default function SiteFooter() {
               maxWidth: 340,
             }}
           >
-            <div
-              style={{
-                alignSelf: "flex-start",
-                padding: "12px 16px",
-                borderRadius: 18,
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
-              }}
-            >
-              <Image
-                src="/assets/club500-logo.png"
-                alt="Club 500"
-                width={60}
-                height={63}
-                style={{ height: 60, width: "auto", display: "block" }}
-              />
-            </div>
+            <Image
+              src="/assets/club500-logo.jpg"
+              alt="Club 500"
+              width={64}
+              height={64}
+              style={{ height: 64, width: "auto", alignSelf: "flex-start" }}
+            />
             <p
               style={{
                 margin: 0,
