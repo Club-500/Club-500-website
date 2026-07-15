@@ -50,11 +50,11 @@ export default function SiteFooter() {
             }}
           >
             <Image
-              src="/assets/club500-logo.jpg"
+              src="/assets/club500-logo.png"
               alt="Club 500"
-              width={64}
-              height={64}
-              style={{ height: 64, width: "auto", alignSelf: "flex-start", borderRadius: 10 }}
+              width={76}
+              height={80}
+              style={{ height: 76, width: "auto", alignSelf: "flex-start" }}
             />
             <p
               style={{

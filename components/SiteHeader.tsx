@@ -47,15 +47,14 @@ export default function SiteHeader() {
     >
       <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, zIndex: 60 }}>
         <Image
-          src="/assets/club500-logo.jpg"
+          src="/assets/club500-logo.png"
           alt="Club 500"
-          width={46}
-          height={46}
+          width={58}
+          height={60}
           style={{
-            height: 46,
+            height: 58,
             width: "auto",
-            borderRadius: 8,
-            filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.6))",
+            filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.7))",
           }}
           priority
         />

@@ -17,11 +17,11 @@ export default function LoginPage() {
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "140px 32px 96px" }}>
       <div className="glass rv in" style={{ width: "100%", maxWidth: 440, padding: "clamp(28px, 4vw, 48px)", borderRadius: 28 }}>
         <Image
-          src="/assets/club500-logo.jpg"
+          src="/assets/club500-logo.png"
           alt="Club 500"
-          width={56}
-          height={56}
-          style={{ height: 56, width: "auto", marginBottom: 24, borderRadius: 10 }}
+          width={66}
+          height={69}
+          style={{ height: 66, width: "auto", marginBottom: 24 }}
         />
         <h1 className="display" style={{ margin: "0 0 8px", fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)" }}>
           Welcome <em className="serif-accent gold">back</em>
