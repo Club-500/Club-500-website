@@ -42,22 +42,43 @@ export default function SiteHeader() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "18px 32px",
+        padding: "14px 32px",
+        background: "rgba(10,10,10,0.72)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
       }}
     >
-      <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, zIndex: 60 }}>
+      <Link
+        href="/"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          zIndex: 60,
+          padding: "6px 12px 6px 6px",
+          borderRadius: 14,
+          background: "rgba(255,255,255,0.07)",
+          border: "1px solid rgba(255,255,255,0.14)",
+        }}
+      >
         <Image
           src="/assets/club500-logo.png"
           alt="Club 500"
-          width={58}
-          height={60}
-          style={{
-            height: 58,
-            width: "auto",
-            filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.7))",
-          }}
+          width={44}
+          height={46}
+          style={{ height: 44, width: "auto" }}
           priority
         />
+        <span
+          className="gold"
+          style={{
+            font: '700 15px/1 var(--font-bebas-neue), sans-serif',
+            letterSpacing: "0.04em",
+          }}
+        >
+          CLUB500
+        </span>
       </Link>
 
       <nav
