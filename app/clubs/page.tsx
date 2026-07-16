@@ -18,14 +18,14 @@ const RAIL: [string, number][] = [
 ];
 
 const CLUB_STEPS: [string, string][] = [
-  ["Apply", "Register your club's details — county, grounds, squad and current officials."],
+  ["Apply", "Register your club's details: county, grounds, squad and current officials."],
   ["Onboard", "Adopt the Club500 constitution and community-ownership governance framework."],
-  ["Go live", "Your club gets its own microsite, referral engine and sponsor rail — and joins the national platform."],
+  ["Go live", "Your club gets its own microsite, referral engine and sponsor rail, and joins the national platform."],
 ];
 
 const FAN_STEPS: [string, string][] = [
   ["Pick your club", "Find your local club below and open its official site."],
-  ["Become a fan", "Sign up on the club's site — free, takes a minute."],
+  ["Become a fan", "Sign up on the club's site. It's free and takes a minute."],
   ["Get your link", "Your personal referral link is generated instantly. Share it and earn every time someone joins."],
 ];
 
@@ -147,7 +147,7 @@ export default function ClubsPage() {
               How <span className="gold">clubs</span> join
             </h2>
             <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)" }}>
-              Any community club in Kenya can apply — about 10 clubs are
+              Any community club in Kenya can apply. About 10 clubs are
               onboarded per county.
             </p>
             {CLUB_STEPS.map(([t, d], i) => (
@@ -170,7 +170,7 @@ export default function ClubsPage() {
               How <span className="gold">fans</span> join
             </h2>
             <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)" }}>
-              Free for every fan — and your referral link earns you money from
+              Free for every fan, and your referral link earns you money from
               day one.
             </p>
             {FAN_STEPS.map(([t, d], i) => (

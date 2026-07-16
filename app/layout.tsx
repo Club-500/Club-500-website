@@ -14,7 +14,7 @@ const interTight = Inter_Tight({
 export const metadata: Metadata = {
   title: "Club500 | An Ubuntu Initiative",
   description:
-    "500 community football clubs across Kenya's 47 counties, organized into 8 regions — a sustainable, investment-ready grassroots football ecosystem.",
+    "500 community football clubs across Kenya's 47 counties, organized into 8 regions. A sustainable, investment-ready grassroots football ecosystem.",
 };
 
 export default function RootLayout({

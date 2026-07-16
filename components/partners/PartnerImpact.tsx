@@ -1,7 +1,7 @@
 const IMPACTS: [string, string, string, string, string][] = [
   ["Platinum · National", "Banking rails for 33 clubs", "Every onboarded club now has a club bank account and instant M-Pesa withdrawals for fan referral earnings.", "KES 4.2M", "paid out to fans"],
   ["Gold · Rift Valley", "12 full kit sets delivered", "Home and away kits, boots and training equipment for every onboarded club in the region.", "380", "players kitted"],
-  ["Silver · Kajiado county", "Pitch renovation — Kajiado Youth", "Regraded pitch, new goalposts and perimeter fencing at the county's flagship community ground.", "1", "ground renovated"],
+  ["Silver · Kajiado county", "Pitch renovation: Kajiado Youth", "Regraded pitch, new goalposts and perimeter fencing at the county's flagship community ground.", "1", "ground renovated"],
   ["Pillar · Health & Performance", "Sports medicine clinics", "Monthly physiotherapy and injury-screening clinics rotating through 8 regions.", "900+", "athlete check-ups"],
 ];
 

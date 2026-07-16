@@ -11,7 +11,7 @@ const FIXTURES: [string, string, string, string][] = [
   ["Sun 26 Jul · 14:00", "Webuye Sportiff", "Uhola FC", "Webuye Stadium"],
 ];
 
-const MVPS = ["Kiprop Kirui — Kapkatet Youth", "Salim Juma — Shimanzi FC", "Mary Achieng — Uhola FC"];
+const MVPS = ["Kiprop Kirui (Kapkatet Youth)", "Salim Juma (Shimanzi FC)", "Mary Achieng (Uhola FC)"];
 
 const LEADERS: [string, string, number][] = [
   ["Nakuru Massive", "Nakuru", 4210],
@@ -127,7 +127,7 @@ export default function FanZonePage() {
             </div>
             {pickCount === FIXTURES.length && (
               <div className="mono-label gold" style={{ color: "#f0b429", marginTop: 16 }}>
-                All picks in — good luck this weekend. Results settle Sunday 18:00.
+                All picks in. Good luck this weekend, results settle Sunday 18:00.
               </div>
             )}
           </div>
@@ -252,7 +252,7 @@ export default function FanZonePage() {
             Earn with your <span className="gold">referral link</span>
           </h2>
           <p style={{ margin: "0 0 24px", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)", maxWidth: 560 }}>
-            Every fan gets a personal referral link. Share it — you earn KES 250
+            Every fan gets a personal referral link. Share it and you earn KES 250
             each time someone joins a club through it, paid straight to your
             phone. Withdraw anytime.
           </p>

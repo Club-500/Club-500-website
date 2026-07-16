@@ -34,7 +34,7 @@ export default function Mission() {
             }}
           >
             Club500 organizes community football clubs across every county in
-            Kenya under one national platform — structured governance,
+            Kenya under one national platform: structured governance,
             community ownership, commercial revenue streams and a shared digital
             home for every club, fan and partner.
           </p>

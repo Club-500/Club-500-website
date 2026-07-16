@@ -117,8 +117,8 @@ export default function Hero() {
             color: "rgba(255,255,255,0.75)",
           }}
         >
-          500 community clubs across 47 counties, organized into 8 regions —
-          one national platform for fans, players and partners.
+          500 community clubs across 47 counties, organized into 8 regions.
+          One national platform for fans, players and partners.
         </p>
         <div
           className="hero-up hd-3"

@@ -100,7 +100,7 @@ export default function SiteFooter() {
             gap: 12,
           }}
         >
-          <span className="mono-label">Club500 © 2026 — All rights reserved</span>
+          <span className="mono-label">All rights Reserved CLUB500 2026</span>
           <span className="mono-label">47 Counties · 8 Regions · 500 Clubs</span>
         </div>
       </div>

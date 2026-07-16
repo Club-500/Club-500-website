@@ -3,8 +3,8 @@ import RevealInit from "@/components/RevealInit";
 import PartnerImpact from "@/components/partners/PartnerImpact";
 
 const TIERS: [string, string, string, string][] = [
-  ["Platinum", "National", "Platform-wide presence — every page, every microsite, every broadcast.", "#cfd8e3"],
-  ["Gold", "Regional", "Own one of 8 regions — every club, story and event inside it.", "#f0b429"],
+  ["Platinum", "National", "Platform-wide presence: every page, every microsite, every broadcast.", "#cfd8e3"],
+  ["Gold", "Regional", "Own one of 8 regions: every club, story and event inside it.", "#f0b429"],
   ["Silver", "County", "Back a county and its cluster of community clubs.", "#a7a7a7"],
   ["Pillar", "Continental", "Attach your brand to one of the 8 strategic pillars of the movement.", "#8d99a6"],
 ];
@@ -18,7 +18,7 @@ export default function PartnersPage() {
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column", gap: 56 }}>
         <p className="rv" style={{ margin: 0, maxWidth: 700, font: '400 clamp(1.2rem, 2vw, 1.6rem)/1.5 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.8)" }}>
-          Four tiers, one inheritance system: sponsor a county and your brand automatically appears on every club microsite inside it — no per-club negotiation, ever.
+          Four tiers, one inheritance system: sponsor a county and your brand automatically appears on every club microsite inside it. No per-club negotiation, ever.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
           {TIERS.map(([badge, scope, desc, color], i) => (

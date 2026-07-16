@@ -12,10 +12,10 @@ const REGIONS = ["All", "Nairobi", "Central", "Rift Valley", "Eastern", "Coast",
 const STORIES: [string, string, string, string][] = [
   ["Coast", "Video", "Mombasa derby ends in stoppage-time drama", "Jane Wanjiku · Mombasa Bureau"],
   ["Nyanza", "Articles", "Kisumu county launches its first two Club500 academies", "Otieno Ouma · Kisumu Bureau"],
-  ["Rift Valley", "Photo", "Matchday in Kericho — gallery from Kapkatet Youth FC", "Dennis Koech · Kericho"],
+  ["Rift Valley", "Photo", "Matchday in Kericho: gallery from Kapkatet Youth FC", "Dennis Koech · Kericho"],
   ["Western", "Articles", "Webuye Sportiff onboard 400 new fans in one weekend", "Faith Naliaka · Bungoma"],
-  ["National", "Podcast", "EP 05 — What community ownership really means", "Club500 Podcast"],
-  ["Nairobi", "Video", "Goodhope FC training day — inside the setup", "Peter Mwangi · Nairobi Bureau"],
+  ["National", "Podcast", "EP 05: What community ownership really means", "Club500 Podcast"],
+  ["Nairobi", "Video", "Goodhope FC training day: inside the setup", "Peter Mwangi · Nairobi Bureau"],
 ];
 
 export default function NewsroomPage() {
@@ -46,14 +46,14 @@ export default function NewsroomPage() {
   return (
     <>
       <RevealInit />
-      <PageHead eyebrow="A national wire service — 8 regions, 500 clubs">
+      <PageHead eyebrow="A national wire service. 8 regions, 500 clubs">
         The <span className="gold">newsroom</span>
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
         <div className="rv" style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20, padding: "12px 18px", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 999, overflow: "hidden" }}>
           <span className="live-dot" style={{ flexShrink: 0 }}></span>
           <span className="mono-label" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-            Live ticker — breaking headlines from every region, tagged Region → County → Club
+            Live ticker: breaking headlines from every region, tagged by region, county and club
           </span>
         </div>
         <div className="rv" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
@@ -91,7 +91,7 @@ export default function NewsroomPage() {
             </div>
           ))}
           <div className="rv" style={{ border: "1.5px dashed rgba(240,180,41,0.6)", borderRadius: 20, background: "rgba(240,180,41,0.05)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 180, padding: 26 }}>
-            <span className="mono-label gold" style={{ color: "#f0b429" }}>Ad — In-feed sponsor slot</span>
+            <span className="mono-label gold" style={{ color: "#f0b429" }}>In-feed sponsor slot</span>
           </div>
         </div>
 

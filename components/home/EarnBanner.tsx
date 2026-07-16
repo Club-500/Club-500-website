@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const STEPS: [string, string, string][] = [
-  ["01", "Join a club", "Become a fan — it takes a minute."],
+  ["01", "Join a club", "Become a fan. It takes a minute."],
   ["02", "Share your link", "Your referral link, generated instantly."],
   ["03", "Get paid", "Earn every time someone joins through it."],
 ];

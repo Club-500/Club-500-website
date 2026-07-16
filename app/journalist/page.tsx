@@ -203,7 +203,7 @@ export default function JournalistPage() {
               </p>
               {justSubmitted && (
                 <div style={{ border: "1px solid rgba(240,180,41,0.5)", background: "rgba(240,180,41,0.08)", borderRadius: 12, padding: "14px 16px", marginBottom: 16, font: '500 14px/1.4 var(--font-inter-tight), sans-serif', color: "#f0b429" }}>
-                  Report submitted — now in editor review.
+                  Report submitted. It is now in editor review.
                 </div>
               )}
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -280,7 +280,7 @@ export default function JournalistPage() {
               ["1", "Apply", "One-time accreditation review by the editorial team"],
               ["2", "Draft & submit", "File your report with region, county and club tags"],
               ["3", "Editor review", "Your regional editor fact-checks and signs off"],
-              ["4", "Published", "Live on the Newsroom, region feed and club microsite — you're paid per published story"],
+              ["4", "Published", "Live on the Newsroom, region feed and club microsite. You're paid per published story"],
             ].map(([n, t, d], i) => (
               <div key={n} style={{ display: "flex", gap: 16, padding: "12px 0", borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
                 <span style={{ font: '700 14px/1.4 var(--font-inter-tight), sans-serif', color: i === 3 ? "#f0b429" : "rgba(255,255,255,0.35)", width: 20, flexShrink: 0 }}>{n}</span>

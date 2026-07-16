@@ -322,8 +322,18 @@ textarea {
   }
   .site-nav-toggle {
     display: flex !important;
+    border-color: rgba(240, 180, 41, 0.6) !important;
+    background: rgba(240, 180, 41, 0.1) !important;
   }
   .site-nav-mobile-panel {
     display: flex;
+  }
+  /* On phones, skip scroll-reveal entirely so content is never stuck invisible */
+  .rv,
+  .hero-up {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
   }
 }
