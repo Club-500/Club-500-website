@@ -31,6 +31,7 @@ export default function SiteHeader() {
   }, [open]);
 
   return (
+    <>
     <header
       style={{
         position: "fixed",
@@ -121,46 +122,53 @@ export default function SiteHeader() {
         </button>
       </div>
 
-      <div className={"site-nav-mobile-panel" + (open ? " open" : "")}>
-        <nav
+    </header>
+
+    <div
+      className={"site-nav-backdrop" + (open ? " open" : "")}
+      onClick={() => setOpen(false)}
+    />
+    <aside className={"site-nav-drawer" + (open ? " open" : "")} aria-hidden={!open}>
+      <nav style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        <Link
+          href="/"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 6,
-            width: "100%",
-            maxWidth: 360,
+            font: '600 16px/1 var(--font-inter-tight), sans-serif',
+            color: pathname === "/" ? "#f0b429" : "#fff",
+            padding: "14px 16px",
+            borderRadius: 12,
+            background: pathname === "/" ? "rgba(240,180,41,0.12)" : "transparent",
           }}
         >
-          {LINKS.map(([href, label]) => {
-            const active = pathname === href;
-            return (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  font: '500 15px/1 var(--font-inter-tight), sans-serif',
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: active ? "#0a0a0a" : "rgba(255,255,255,0.9)",
-                  background: active ? "#f0b429" : "rgba(255,255,255,0.04)",
-                  padding: "16px 20px",
-                  borderRadius: 14,
-                  textAlign: "center",
-                }}
-              >
-                {label}
-              </Link>
-            );
-          })}
-          <Link
-            href="/login"
-            className="pill-ghost"
-            style={{ justifyContent: "center", marginTop: 10, padding: "16px 0" }}
-          >
-            Sign in
-          </Link>
-        </nav>
-      </div>
-    </header>
+          Home
+        </Link>
+        {LINKS.map(([href, label]) => {
+          const active = pathname === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              style={{
+                font: '600 16px/1 var(--font-inter-tight), sans-serif',
+                color: active ? "#f0b429" : "#fff",
+                padding: "14px 16px",
+                borderRadius: 12,
+                background: active ? "rgba(240,180,41,0.12)" : "transparent",
+              }}
+            >
+              {label}
+            </Link>
+          );
+        })}
+        <Link
+          href="/login"
+          className="pill-ghost"
+          style={{ justifyContent: "center", marginTop: 14, padding: "15px 0" }}
+        >
+          Sign in
+        </Link>
+      </nav>
+    </aside>
+    </>
   );
 }
