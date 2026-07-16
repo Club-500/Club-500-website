@@ -8,9 +8,9 @@ const ITEMS: [string, string, string, string][] = [
 
 export default function MediaStrip() {
   return (
-    <section style={{ padding: "64px 32px", maxWidth: 1280, margin: "0 auto" }}>
+    <section style={{ padding: "56px clamp(20px, 4vw, 32px)", maxWidth: 1280, margin: "0 auto" }}>
       <h2 className="display rv" style={{ margin: "0 0 32px" }}>
-        Events &amp; <em className="serif-accent gold">podcast</em>
+        Events &amp; <span className="gold">podcast</span>
       </h2>
       <div
         style={{

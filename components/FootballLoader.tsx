@@ -61,8 +61,8 @@ export default function FootballLoader({ label = "Loading" }: { label?: string }
         </svg>
         <div className="fb-loader-shadow" />
       </div>
-      <span className="mono-label" style={{ color: "rgba(255,255,255,0.6)" }}>
-        <span className="gold">CLUB500</span> · {label}
+      <span style={{ font: '600 15px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.85)" }}>
+        Club500
       </span>
 
       <style>{`

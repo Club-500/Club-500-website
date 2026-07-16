@@ -47,9 +47,9 @@ export default function NewsroomPage() {
     <>
       <RevealInit />
       <PageHead eyebrow="A national wire service — 8 regions, 500 clubs">
-        The <em className="serif-accent gold">newsroom</em>
+        The <span className="gold">newsroom</span>
       </PageHead>
-      <div style={{ padding: "0 32px 96px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
         <div className="rv" style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20, padding: "12px 18px", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 999, overflow: "hidden" }}>
           <span className="live-dot" style={{ flexShrink: 0 }}></span>
           <span className="mono-label" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>

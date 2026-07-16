@@ -6,7 +6,7 @@ const TIERS: [string, string, string, string][] = [
   ["Platinum", "National", "Platform-wide presence — every page, every microsite, every broadcast.", "#cfd8e3"],
   ["Gold", "Regional", "Own one of 8 regions — every club, story and event inside it.", "#f0b429"],
   ["Silver", "County", "Back a county and its cluster of community clubs.", "#a7a7a7"],
-  ["Pillar", "Continental", "Attach your brand to one of the 8 strategic pillars of the movement.", "#3ecf6e"],
+  ["Pillar", "Continental", "Attach your brand to one of the 8 strategic pillars of the movement.", "#8d99a6"],
 ];
 
 export default function PartnersPage() {
@@ -14,9 +14,9 @@ export default function PartnersPage() {
     <>
       <RevealInit />
       <PageHead eyebrow="National · Regional · County · Pillar">
-        Partner with the <em className="serif-accent gold">movement</em>
+        Partner with the <span className="gold">movement</span>
       </PageHead>
-      <div style={{ padding: "0 32px 96px", maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column", gap: 56 }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column", gap: 56 }}>
         <p className="rv" style={{ margin: 0, maxWidth: 700, font: '400 clamp(1.2rem, 2vw, 1.6rem)/1.5 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.8)" }}>
           Four tiers, one inheritance system: sponsor a county and your brand automatically appears on every club microsite inside it — no per-club negotiation, ever.
         </p>
@@ -38,7 +38,7 @@ export default function PartnersPage() {
         </div>
         <PartnerImpact />
         <div className="rv" style={{ background: "#f0b429", color: "#0a0a0a", borderRadius: 28, padding: "clamp(28px, 4vw, 48px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24 }}>
-          <div className="display" style={{ fontSize: "clamp(1.8rem, 4vw, 3.2rem)" }}>Become a <em className="serif-accent">partner</em></div>
+          <div className="display" style={{ fontSize: "clamp(1.8rem, 4vw, 3.2rem)" }}>Become a partner</div>
           <button className="pill-btn" type="button" style={{ background: "#0a0a0a", color: "#fff" }}>
             <span className="txt">Get the sponsorship pack</span>
             <span className="circ" style={{ background: "#fff" }}>

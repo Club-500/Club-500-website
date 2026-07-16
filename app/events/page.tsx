@@ -4,10 +4,10 @@ import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import { EVENT_IMG } from "@/lib/data";
 
-const EVENTS: [string, string, string, string][] = [
-  ["12 Jan", "Nairobi", "Club500 National Launch Tour — Nairobi Edition", "Official programme launch for clubs, communities, sponsors and media."],
-  ["02 Feb", "Mombasa", "Coaching & Performance Workshop", "Coach training on new performance methodologies and sports science."],
-  ["15 Feb", "Kisumu", "Community Ownership Forum", "Governance, the community share ownership model and investment opportunities."],
+const EVENTS: [string, string, string, string, string][] = [
+  ["12 Jan", "Nairobi", "Club500 National Launch Tour — Nairobi Edition", "Official programme launch for clubs, communities, sponsors and media.", "Launch"],
+  ["02 Feb", "Mombasa", "Coaching & Performance Workshop", "Coach training on new performance methodologies and sports science.", "Workshop"],
+  ["15 Feb", "Kisumu", "Community Ownership Forum", "Governance, the community share ownership model and investment opportunities.", "Forum"],
 ];
 
 export default function EventsPage() {
@@ -15,38 +15,52 @@ export default function EventsPage() {
     <>
       <RevealInit />
       <PageHead eyebrow="Workshops · Festivals · Trials">
-        Club500 <em className="serif-accent gold">events</em>
+        Club500 <span className="gold">events</span>
       </PageHead>
-      <div style={{ padding: "0 32px 40px", maxWidth: 1280, margin: "0 auto" }}>
-        <div className="rv" style={{ borderRadius: 28, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", aspectRatio: "21/8", position: "relative" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+        <div
+          className="rv"
+          style={{
+            borderRadius: 24,
+            overflow: "hidden",
+            border: "1px solid rgba(255,255,255,0.1)",
+            position: "relative",
+            aspectRatio: "21/7",
+            minHeight: 200,
+            marginBottom: 14,
+          }}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={EVENT_IMG} alt="Club500 events" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.8), transparent 60%)" }} />
-          <div style={{ position: "absolute", left: 28, bottom: 24 }} className="mono-label gold">
-            Next up — National Launch Tour
+          <img src={EVENT_IMG} alt="Club500 events" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.85), transparent 60%)" }} />
+          <div style={{ position: "absolute", left: "clamp(18px, 3vw, 28px)", bottom: "clamp(14px, 2.5vw, 22px)", right: "clamp(18px, 3vw, 28px)" }}>
+            <span className="tag-pill gold-pill">Next up</span>
+            <div className="display" style={{ marginTop: 10 }}>National Launch Tour</div>
           </div>
         </div>
-      </div>
-      <div style={{ padding: "40px 32px 96px", maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column" }}>
-        {EVENTS.map(([date, city, title, desc], i) => (
-          <div key={title} className={"rv rv-d" + i} style={{ display: "flex", gap: 32, alignItems: "baseline", padding: "32px 0", borderBottom: "1px solid rgba(255,255,255,0.1)", flexWrap: "wrap" }}>
-            <div style={{ width: 120, flexShrink: 0 }}>
-              <div style={{ font: '600 26px/1 var(--font-inter-tight), sans-serif', letterSpacing: "-0.02em" }} className="gold">
-                {date}
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))", gap: 14 }}>
+          {EVENTS.map(([date, city, title, desc, kind], i) => (
+            <div
+              key={title}
+              className={"glass club-card rv rv-d" + i}
+              style={{ padding: 24, display: "flex", flexDirection: "column", gap: 14 }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span className="tag-pill">{kind}</span>
+                <div style={{ textAlign: "right" }}>
+                  <div className="gold" style={{ font: '700 18px/1 var(--font-inter-tight), sans-serif' }}>{date}</div>
+                  <div className="mono-label" style={{ marginTop: 4 }}>{city}</div>
+                </div>
               </div>
-              <div className="mono-label" style={{ marginTop: 8 }}>{city}</div>
+              <div style={{ font: '600 18px/1.3 var(--font-inter-tight), sans-serif', flex: 1 }}>{title}</div>
+              <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>{desc}</p>
+              <button className="pill-ghost" type="button" style={{ alignSelf: "flex-start", padding: "10px 20px" }}>
+                RSVP
+              </button>
             </div>
-            <div style={{ flex: "1 1 300px" }}>
-              <div style={{ font: '600 clamp(1.3rem, 2.6vw, 2rem)/1.15 var(--font-inter-tight), sans-serif', letterSpacing: "-0.02em" }}>
-                {title}
-              </div>
-              <p style={{ margin: "10px 0 0", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)", maxWidth: 560 }}>
-                {desc}
-              </p>
-            </div>
-            <span className="tag-pill">RSVP →</span>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );

@@ -7,9 +7,8 @@ import { usePathname } from "next/navigation";
 
 const LINKS: [string, string][] = [
   ["/clubs", "Clubs"],
-  ["/newsroom", "Newsroom"],
   ["/fanzone", "Fan Zone"],
-  ["/earn", "Earn"],
+  ["/newsroom", "Newsroom"],
   ["/events", "Events"],
   ["/podcast", "Podcast"],
   ["/partners", "Partners"],
@@ -42,7 +41,7 @@ export default function SiteHeader() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "14px 32px",
+        padding: "10px clamp(16px, 4vw, 32px)",
         background: "rgba(10,10,10,0.72)",
         backdropFilter: "blur(14px)",
         WebkitBackdropFilter: "blur(14px)",
@@ -53,9 +52,9 @@ export default function SiteHeader() {
         <Image
           src="/assets/club500-logo.jpg"
           alt="Club 500"
-          width={52}
-          height={52}
-          style={{ height: 52, width: "auto" }}
+          width={72}
+          height={72}
+          style={{ height: 72, width: "auto" }}
           priority
         />
       </Link>

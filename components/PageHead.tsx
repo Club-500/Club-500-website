@@ -8,14 +8,11 @@ export default function PageHead({
   children: ReactNode;
 }) {
   return (
-    <div style={{ padding: "160px 32px 56px", maxWidth: 1280, margin: "0 auto" }}>
+    <div style={{ padding: "clamp(110px, 18vw, 150px) clamp(20px, 4vw, 32px) 40px", maxWidth: 1280, margin: "0 auto" }}>
       <div className="mono-label rv" style={{ marginBottom: 18 }}>
         {eyebrow}
       </div>
-      <h1
-        className="mega rv rv-d1"
-        style={{ margin: 0, fontSize: "clamp(2.8rem, 7vw, 6.5rem)" }}
-      >
+      <h1 className="mega rv rv-d1" style={{ margin: 0 }}>
         {children}
       </h1>
     </div>

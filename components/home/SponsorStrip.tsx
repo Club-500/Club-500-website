@@ -10,7 +10,7 @@ const PARTNERS = [
 
 export default function SponsorStrip() {
   return (
-    <section style={{ padding: "0 32px 96px", maxWidth: 1280, margin: "0 auto" }}>
+    <section style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
       <div className="rv mono-label" style={{ marginBottom: 20 }}>
         Official partners
       </div>

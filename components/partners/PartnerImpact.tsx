@@ -9,7 +9,7 @@ export default function PartnerImpact() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
       <div className="rv" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 16 }}>
-        <h2 className="display" style={{ margin: 0 }}>What partners have <em className="serif-accent gold">delivered</em></h2>
+        <h2 className="display" style={{ margin: 0 }}>What partners have <span className="gold">delivered</span></h2>
         <span className="mono-label">Real impact · updated monthly</span>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>

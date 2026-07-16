@@ -99,93 +99,52 @@ export default function Hero() {
         style={{
           position: "relative",
           zIndex: 2,
-          padding: "0 32px 56px",
+          padding: "0 clamp(20px, 4vw, 32px) clamp(40px, 6vw, 64px)",
           display: "flex",
           flexDirection: "column",
           gap: 28,
         }}
       >
-        <div
-          className="hero-up hd-1"
-          style={{ display: "flex", alignItems: "center", gap: 10 }}
-        >
-          <span className="live-dot"></span>
-          <span className="mono-label" style={{ color: "rgba(255,255,255,0.8)" }}>
-            Live — Clubs onboarded 33 / 500
-          </span>
-        </div>
-        <h1 className="mega hero-up hd-2" style={{ margin: 0 }}>
-          Earn as you
-          <br />
-          grow <em className="serif-accent gold">your</em> club
+        <h1 className="mega hero-up hd-1" style={{ margin: 0, maxWidth: 760 }}>
+          The home of community football in Kenya
         </h1>
-        <div
-          className="hero-up hd-3"
+        <p
+          className="hero-up hd-2"
           style={{
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 24,
+            margin: 0,
+            maxWidth: 520,
+            font: '400 17px/1.6 var(--font-inter-tight), sans-serif',
+            color: "rgba(255,255,255,0.75)",
           }}
         >
-          <p
-            style={{
-              margin: 0,
-              maxWidth: 420,
-              font: '400 16px/1.6 var(--font-inter-tight), sans-serif',
-              color: "rgba(255,255,255,0.7)",
-            }}
-          >
-            500 community football clubs. 47 counties. One national movement —
-            and your referral link is your earning power.
-          </p>
-          <div
-            style={{
-              display: "flex",
-              gap: 14,
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <div
-              className="glass"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 6,
-                borderRadius: 16,
-                padding: "6px 6px 6px 22px",
-                background: "rgba(10,10,10,0.35)",
-              }}
-            >
-              <span
-                style={{
-                  font: '500 13px/1.3 var(--font-inter-tight), sans-serif',
-                  color: "rgba(255,255,255,0.85)",
-                  paddingRight: 14,
-                }}
-              >
-                One movement. 500 clubs. Yours is waiting.
+          500 community clubs across 47 counties, organized into 8 regions —
+          one national platform for fans, players and partners.
+        </p>
+        <div
+          className="hero-up hd-3"
+          style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}
+        >
+          <Link href="/clubs">
+            <button className="pill-btn" type="button">
+              <span className="txt">Find your club</span>
+              <span className="circ">
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+                  <path
+                    d="M5 13L13 5M13 5H6M13 5V12"
+                    stroke="#0a0a0a"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </span>
-              <Link href="/clubs">
-                <button
-                  className="pill-btn"
-                  type="button"
-                  style={{ borderRadius: 12, padding: "12px 20px" }}
-                >
-                  <span style={{ font: '600 13px/1 var(--font-inter-tight), sans-serif' }}>
-                    Find your club
-                  </span>
-                </button>
-              </Link>
-            </div>
-            <Link href="/earn">
-              <button className="pill-ghost" type="button">
-                Start earning
-              </button>
-            </Link>
-          </div>
+            </button>
+          </Link>
+          <Link href="/fanzone">
+            <button className="pill-ghost" type="button">
+              Join the Fan Zone
+            </button>
+          </Link>
         </div>
       </div>
     </section>

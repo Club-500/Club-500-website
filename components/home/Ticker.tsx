@@ -1,9 +1,9 @@
 const ITEMS = [
-  "Clubs onboarded 33 / 500",
-  "Your link is your earning power",
-  "KES 5,000 weekly top-referrer bonus",
+  "33 of 500 clubs onboarded",
   "47 counties · 8 regions",
-  "Earn as you grow your club",
+  "An Ubuntu Initiative",
+  "Community-owned football",
+  "5,000+ jobs targeted by 2028",
 ];
 
 export default function Ticker() {
@@ -27,9 +27,7 @@ export default function Ticker() {
               alignItems: "center",
               gap: 20,
               paddingRight: 20,
-              font: '500 13px/1 var(--font-inter-tight), sans-serif',
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
+              font: '500 14px/1 var(--font-inter-tight), sans-serif',
               color: "rgba(255,255,255,0.6)",
               whiteSpace: "nowrap",
             }}

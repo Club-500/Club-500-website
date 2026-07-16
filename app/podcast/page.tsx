@@ -15,9 +15,9 @@ export default function PodcastPage() {
     <>
       <RevealInit />
       <PageHead eyebrow="Stories · Strategy · Transformation">
-        The Club500 <em className="serif-accent gold">podcast</em>
+        The Club500 <span className="gold">podcast</span>
       </PageHead>
-      <div style={{ padding: "0 32px 56px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 48px", maxWidth: 1280, margin: "0 auto" }}>
         <div className="rv" style={{ borderRadius: 28, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", aspectRatio: "16/9", maxWidth: 860 }}>
           <iframe
             width="100%"
@@ -30,7 +30,7 @@ export default function PodcastPage() {
           />
         </div>
       </div>
-      <div style={{ padding: "0 32px 96px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
         {EPS.map(([num, title, guest], i) => (
           <div key={num} className={"rv rv-d" + (i % 3)} style={{ display: "flex", gap: 28, alignItems: "baseline", padding: "28px 0", borderBottom: "1px solid rgba(255,255,255,0.1)", flexWrap: "wrap" }}>
             <span style={{ font: '600 15px/1 var(--font-inter-tight), sans-serif', color: "#f0b429", letterSpacing: "0.12em", width: 60 }}>

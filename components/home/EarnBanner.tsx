@@ -10,7 +10,7 @@ export default function EarnBanner() {
   return (
     <section
       style={{
-        padding: "72px 32px",
+        padding: "64px clamp(20px, 4vw, 32px)",
         background: "#f0b429",
         color: "#0a0a0a",
         borderRadius: "36px 36px 0 0",
@@ -43,16 +43,16 @@ export default function EarnBanner() {
             <h2 className="mega" style={{ margin: "10px 0 0", fontSize: "clamp(2.4rem, 5.5vw, 4.6rem)" }}>
               Join. Share your link.
               <br />
-              <em className="serif-accent">Get paid.</em>
+              Get paid.
             </h2>
           </div>
-          <Link href="/earn">
+          <Link href="/fanzone">
             <button
               className="pill-btn"
               type="button"
               style={{ background: "#0a0a0a", color: "#fff" }}
             >
-              <span className="txt">See earning potential</span>
+              <span className="txt">Open the Fan Zone</span>
               <span className="circ" style={{ background: "#fff" }}>
                 <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
                   <path

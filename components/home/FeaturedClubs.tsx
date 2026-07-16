@@ -3,7 +3,7 @@ import { CLUBS } from "@/lib/data";
 
 export default function FeaturedClubs() {
   return (
-    <section style={{ padding: "40px 32px 96px", maxWidth: 1280, margin: "0 auto" }}>
+    <section style={{ padding: "32px clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
       <div
         className="rv"
         style={{
@@ -16,7 +16,7 @@ export default function FeaturedClubs() {
         }}
       >
         <h2 className="display" style={{ margin: 0 }}>
-          Featured <em className="serif-accent gold">clubs</em>
+          Featured <span className="gold">clubs</span>
         </h2>
         <Link href="/clubs" className="tag-pill">
           All 33 clubs →
@@ -29,9 +29,11 @@ export default function FeaturedClubs() {
           gap: 14,
         }}
       >
-        {CLUBS.slice(0, 5).map(([name, county, img], i) => (
-          <Link
-            href="/clubs"
+        {CLUBS.slice(0, 5).map(([name, county, img, site], i) => (
+          <a
+            href={site}
+            target="_blank"
+            rel="noopener noreferrer"
             key={name}
             className={"club-card rv rv-d" + Math.min(i, 4)}
             style={{ display: "block" }}
@@ -64,7 +66,7 @@ export default function FeaturedClubs() {
                 {county} county
               </div>
             </div>
-          </Link>
+          </a>
         ))}
       </div>
     </section>

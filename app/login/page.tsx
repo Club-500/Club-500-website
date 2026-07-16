@@ -14,7 +14,7 @@ const inputStyle: React.CSSProperties = {
 
 export default function LoginPage() {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "140px 32px 96px" }}>
+    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "clamp(110px, 18vw, 140px) clamp(20px, 4vw, 32px) 72px" }}>
       <div className="glass rv in" style={{ width: "100%", maxWidth: 440, padding: "clamp(28px, 4vw, 48px)", borderRadius: 28 }}>
         <Image
           src="/assets/club500-logo.jpg"
@@ -24,7 +24,7 @@ export default function LoginPage() {
           style={{ height: 56, width: "auto", marginBottom: 24 }}
         />
         <h1 className="display" style={{ margin: "0 0 8px", fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)" }}>
-          Welcome <em className="serif-accent gold">back</em>
+          Welcome <span className="gold">back</span>
         </h1>
         <p style={{ margin: "0 0 32px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)" }}>
           Sign in to view your referral dashboard and earnings.

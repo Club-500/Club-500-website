@@ -6,18 +6,18 @@ const COLUMNS: [string, [string, string][]][] = [
     "Explore",
     [
       ["Clubs", "/clubs"],
-      ["Newsroom", "/newsroom"],
       ["Fan Zone", "/fanzone"],
+      ["Newsroom", "/newsroom"],
       ["About", "/about"],
     ],
   ],
   [
     "Grow",
     [
-      ["Earn", "/earn"],
       ["Partners", "/partners"],
       ["Events", "/events"],
       ["Podcast", "/podcast"],
+      ["Journalists", "/journalist"],
     ],
   ],
   ["Account", [["Sign in", "/login"]]],
@@ -28,7 +28,7 @@ export default function SiteFooter() {
     <footer
       style={{
         borderTop: "1px solid rgba(255,255,255,0.1)",
-        padding: "72px 32px 40px",
+        padding: "56px clamp(20px, 4vw, 32px) 36px",
       }}
     >
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>

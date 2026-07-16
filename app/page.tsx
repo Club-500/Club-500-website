@@ -1,6 +1,6 @@
 import Hero from "@/components/home/Hero";
 import Ticker from "@/components/home/Ticker";
-import TopReferrers from "@/components/home/TopReferrers";
+import Mission from "@/components/home/Mission";
 import FeaturedClubs from "@/components/home/FeaturedClubs";
 import EarnBanner from "@/components/home/EarnBanner";
 import MediaStrip from "@/components/home/MediaStrip";
@@ -13,7 +13,7 @@ export default function Home() {
       <RevealInit />
       <Hero />
       <Ticker />
-      <TopReferrers />
+      <Mission />
       <FeaturedClubs />
       <EarnBanner />
       <MediaStrip />

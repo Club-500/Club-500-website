@@ -8,7 +8,7 @@ const REFS: [string, string, number][] = [
 
 export default function TopReferrers() {
   return (
-    <section style={{ padding: "72px 32px", maxWidth: 1280, margin: "0 auto" }}>
+    <section style={{ padding: "64px clamp(20px, 4vw, 32px)", maxWidth: 1280, margin: "0 auto" }}>
       <div
         className="rv"
         style={{
@@ -21,7 +21,7 @@ export default function TopReferrers() {
         }}
       >
         <h2 className="display" style={{ margin: 0, fontSize: "clamp(2rem, 4vw, 3.2rem)" }}>
-          Top referrers <em className="serif-accent gold">this week</em>
+          Top referrers <span className="gold">this week</span>
         </h2>
         <span className="mono-label">Weekly bonus · KES 5,000</span>
       </div>
@@ -73,7 +73,7 @@ export default function TopReferrers() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  font: '400 1.05rem/1 var(--font-bebas-neue), sans-serif',
+                  font: '700 0.95rem/1 var(--font-inter-tight), sans-serif',
                   color: i === 0 ? "#f0b429" : "rgba(255,255,255,0.85)",
                 }}
               >
