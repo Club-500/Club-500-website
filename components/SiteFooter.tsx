@@ -38,7 +38,6 @@ export default function SiteFooter() {
             justifyContent: "space-between",
             flexWrap: "wrap",
             gap: 32,
-            marginBottom: 56,
           }}
         >
           <div
@@ -89,19 +88,6 @@ export default function SiteFooter() {
               </div>
             ))}
           </div>
-        </div>
-        <div
-          style={{
-            borderTop: "1px solid rgba(255,255,255,0.08)",
-            paddingTop: 24,
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 12,
-          }}
-        >
-          <span className="mono-label">All rights Reserved CLUB500 2026</span>
-          <span className="mono-label">47 Counties · 8 Regions · 500 Clubs</span>
         </div>
       </div>
     </footer>
