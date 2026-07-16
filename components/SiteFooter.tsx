@@ -34,35 +34,52 @@ export default function SiteFooter() {
         overflow: "hidden",
       }}
     >
-      {/* football rolling along the top line of the footer */}
-      <div className="footer-ball" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
-          <defs>
-            <clipPath id="footBallClip">
-              <circle cx="32" cy="32" r="30" />
-            </clipPath>
-          </defs>
-          <circle cx="32" cy="32" r="30" fill="#f5f5f0" stroke="#161616" strokeWidth="2" />
-          <g clipPath="url(#footBallClip)">
-            <g stroke="#161616" strokeWidth="2.4" strokeLinecap="round">
-              <line x1="32" y1="22" x2="32" y2="6" />
-              <line x1="41.5" y1="28.9" x2="56.8" y2="24.2" />
-              <line x1="37.9" y1="40.1" x2="47.3" y2="53.1" />
-              <line x1="26.1" y1="40.1" x2="16.7" y2="53.1" />
-              <line x1="22.5" y1="28.9" x2="7.2" y2="24.2" />
-            </g>
-            <path d="M32,22 L41.5,28.9 L37.9,40.1 L26.1,40.1 L22.5,28.9 Z" fill="#161616" />
-            <g fill="#161616">
-              <circle cx="32" cy="0.5" r="8.4" />
-              <circle cx="60.4" cy="23.2" r="8.4" />
-              <circle cx="49.6" cy="57" r="8.4" />
-              <circle cx="14.4" cy="57" r="8.4" />
-              <circle cx="3.6" cy="23.2" r="8.4" />
-            </g>
-          </g>
-        </svg>
-      </div>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+        {/* kicked ball arcing into the goal */}
+        <div className="goal-strip" aria-hidden="true">
+          <div className="gs-ground" />
+          <div className="gs-goal">
+            <span className="gs-goal-text">Goal!</span>
+            <svg width="74" height="60" viewBox="0 0 74 60" fill="none">
+              {/* net */}
+              <g className="gs-net" stroke="rgba(255,255,255,0.28)" strokeWidth="1">
+                <path d="M8 8 V56 M16 8 V56 M24 8 V56 M32 8 V56 M40 8 V56 M48 8 V56 M56 8 V56 M64 8 V56" />
+                <path d="M6 16 H68 M6 24 H68 M6 32 H68 M6 40 H68 M6 48 H68" />
+              </g>
+              {/* frame */}
+              <path d="M5 58 V6 H69 V58" stroke="#f0b429" strokeWidth="3" strokeLinecap="round" fill="none" />
+            </svg>
+          </div>
+          <div className="gs-ball-x">
+            <div className="gs-ball-y">
+              <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
+                <defs>
+                  <clipPath id="gsBallClip">
+                    <circle cx="32" cy="32" r="30" />
+                  </clipPath>
+                </defs>
+                <circle cx="32" cy="32" r="30" fill="#f5f5f0" stroke="#161616" strokeWidth="2" />
+                <g clipPath="url(#gsBallClip)">
+                  <g stroke="#161616" strokeWidth="2.4" strokeLinecap="round">
+                    <line x1="32" y1="22" x2="32" y2="6" />
+                    <line x1="41.5" y1="28.9" x2="56.8" y2="24.2" />
+                    <line x1="37.9" y1="40.1" x2="47.3" y2="53.1" />
+                    <line x1="26.1" y1="40.1" x2="16.7" y2="53.1" />
+                    <line x1="22.5" y1="28.9" x2="7.2" y2="24.2" />
+                  </g>
+                  <path d="M32,22 L41.5,28.9 L37.9,40.1 L26.1,40.1 L22.5,28.9 Z" fill="#161616" />
+                  <g fill="#161616">
+                    <circle cx="32" cy="0.5" r="8.4" />
+                    <circle cx="60.4" cy="23.2" r="8.4" />
+                    <circle cx="49.6" cy="57" r="8.4" />
+                    <circle cx="14.4" cy="57" r="8.4" />
+                    <circle cx="3.6" cy="23.2" r="8.4" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
         <div
           style={{
             display: "flex",
@@ -94,8 +111,7 @@ export default function SiteFooter() {
                 color: "rgba(255,255,255,0.55)",
               }}
             >
-              Building the future of community football in Kenya. An Ubuntu
-              Initiative.
+              Building the future of community football in Kenya.
             </p>
             <div>
               <div style={{ font: '600 15px/1.3 var(--font-inter-tight), sans-serif', marginBottom: 10 }}>

@@ -274,29 +274,107 @@ textarea {
   font-family: var(--font-inter-tight), sans-serif;
 }
 
-/* ---- footer football ---- */
-.footer-ball {
-  position: absolute;
-  top: 8px;
-  left: 0;
-  width: 22px;
-  height: 22px;
+/* ---- footer: kicked ball into the goal ---- */
+.goal-strip {
+  position: relative;
+  height: 84px;
+  margin-bottom: 28px;
   pointer-events: none;
-  animation: footerTravel 16s linear infinite;
 }
-.footer-ball svg {
+.gs-ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.18) 12%, rgba(255, 255, 255, 0.18) 88%, transparent);
+}
+.gs-goal {
+  position: absolute;
+  right: 4px;
+  bottom: 10px;
+  line-height: 0;
+}
+.gs-net {
+  transform-origin: 100% 50%;
+  animation: gsNet 7s ease-out infinite;
+}
+.gs-goal-text {
+  position: absolute;
+  top: -22px;
+  right: 8px;
+  font: 800 15px/1 var(--font-inter-tight), sans-serif;
+  color: #f0b429;
+  opacity: 0;
+  animation: gsGoalText 7s ease-out infinite;
+}
+.gs-ball-x {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  animation: gsFlightX 7s infinite;
+}
+.gs-ball-y {
+  animation: gsFlightY 7s infinite;
+}
+.gs-ball-y svg {
   display: block;
-  animation: footerSpin 1.6s linear infinite;
+  animation: gsBallSpin 0.7s linear infinite;
 }
-@keyframes footerTravel {
-  from {
-    transform: translateX(-30px);
+/* horizontal run: quick kick travel, disappear in the net, reset while invisible */
+@keyframes gsFlightX {
+  0% {
+    left: -26px;
+    opacity: 1;
+    animation-timing-function: linear;
   }
-  to {
-    transform: translateX(calc(100vw + 30px));
+  26% {
+    left: calc(100% - 46px);
+    opacity: 1;
+  }
+  29% {
+    left: calc(100% - 30px);
+    opacity: 1;
+  }
+  33% {
+    left: calc(100% - 26px);
+    opacity: 0;
+  }
+  92% {
+    left: -26px;
+    opacity: 0;
+  }
+  97%,
+  100% {
+    left: -26px;
+    opacity: 1;
   }
 }
-@keyframes footerSpin {
+/* vertical arc: launch up fast, hang, dip into the goal mouth */
+@keyframes gsFlightY {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.17, 0.67, 0.35, 1);
+  }
+  13% {
+    transform: translateY(-52px);
+    animation-timing-function: cubic-bezier(0.55, 0, 0.83, 0.44);
+  }
+  26% {
+    transform: translateY(-24px);
+    animation-timing-function: linear;
+  }
+  29% {
+    transform: translateY(-16px);
+  }
+  33%,
+  100% {
+    transform: translateY(-14px);
+  }
+}
+@keyframes gsBallSpin {
   from {
     transform: rotate(0deg);
   }
@@ -304,13 +382,58 @@ textarea {
     transform: rotate(360deg);
   }
 }
+/* net bulges when the ball arrives (26-33% of the loop) */
+@keyframes gsNet {
+  0%,
+  26% {
+    transform: none;
+  }
+  30% {
+    transform: scaleX(1.08) skewX(-5deg);
+  }
+  34% {
+    transform: scaleX(0.98) skewX(2deg);
+  }
+  38%,
+  100% {
+    transform: none;
+  }
+}
+/* Goal! pops as the net ripples */
+@keyframes gsGoalText {
+  0%,
+  27% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.8);
+  }
+  32% {
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  55%,
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.9);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .footer-ball,
-  .footer-ball svg {
+  .gs-ball-x,
+  .gs-ball-y,
+  .gs-ball-y svg,
+  .gs-net,
+  .gs-goal-text {
     animation: none;
   }
-  .footer-ball {
-    display: none;
+  .gs-ball-x {
+    left: calc(100% - 120px);
+    opacity: 1;
+  }
+  .gs-goal-text {
+    opacity: 0;
   }
 }
 
