@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import NewsletterForm from "./NewsletterForm";
 
 const COLUMNS: [string, [string, string][]][] = [
   [
@@ -75,7 +76,8 @@ export default function SiteFooter() {
               display: "flex",
               flexDirection: "column",
               gap: 18,
-              maxWidth: 340,
+              maxWidth: 400,
+              flex: "1 1 300px",
             }}
           >
             <Image
@@ -95,6 +97,12 @@ export default function SiteFooter() {
               Building the future of community football in Kenya. An Ubuntu
               Initiative.
             </p>
+            <div>
+              <div style={{ font: '600 15px/1.3 var(--font-inter-tight), sans-serif', marginBottom: 10 }}>
+                Subscribe for updates
+              </div>
+              <NewsletterForm />
+            </div>
           </div>
           <div style={{ display: "flex", gap: 64, flexWrap: "wrap" }}>
             {COLUMNS.map(([head, links]) => (
@@ -122,7 +130,7 @@ export default function SiteFooter() {
         <div
           style={{
             borderTop: "1px solid rgba(255,255,255,0.08)",
-            marginTop: 48,
+            marginTop: 44,
             paddingTop: 22,
             textAlign: "center",
           }}
