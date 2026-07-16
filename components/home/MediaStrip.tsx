@@ -35,7 +35,7 @@ export default function MediaStrip() {
           >
             <div className="img-wrap" style={{ position: "absolute", inset: 0 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy" decoding="async"
                 src={img}
                 alt={title}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}

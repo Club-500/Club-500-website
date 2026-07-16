@@ -10,11 +10,11 @@ export default function AppSplash() {
   useEffect(() => {
     if (sessionStorage.getItem("c500-splash-shown")) return;
     setVisible(true);
-    const fadeTimer = setTimeout(() => setFading(true), 900);
+    const fadeTimer = setTimeout(() => setFading(true), 550);
     const hideTimer = setTimeout(() => {
       setVisible(false);
       sessionStorage.setItem("c500-splash-shown", "1");
-    }, 1250);
+    }, 800);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(hideTimer);

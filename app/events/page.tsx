@@ -31,7 +31,7 @@ export default function EventsPage() {
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={EVENT_IMG} alt="Club500 events" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+          <img loading="lazy" decoding="async" src={EVENT_IMG} alt="Club500 events" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.85), transparent 60%)" }} />
           <div style={{ position: "absolute", left: "clamp(18px, 3vw, 28px)", bottom: "clamp(14px, 2.5vw, 22px)", right: "clamp(18px, 3vw, 28px)" }}>
             <span className="tag-pill gold-pill">Next up</span>

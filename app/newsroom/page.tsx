@@ -66,7 +66,7 @@ export default function NewsroomPage() {
         {list.length > 0 && (
           <div className="rv" style={{ marginBottom: 14, position: "relative", borderRadius: 28, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", aspectRatio: "21/9", minHeight: 300, background: "#141414" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={EVENT_IMG} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.6 }} />
+            <img loading="lazy" decoding="async" src={EVENT_IMG} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.6 }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.9), transparent 65%)" }} />
             <div style={{ position: "absolute", left: "clamp(20px, 4vw, 40px)", right: "clamp(20px, 4vw, 40px)", bottom: "clamp(20px, 3vw, 36px)" }}>
               <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>

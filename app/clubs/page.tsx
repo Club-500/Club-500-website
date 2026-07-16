@@ -125,7 +125,7 @@ export default function ClubsPage() {
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <img loading="lazy" decoding="async"
                   src={img}
                   alt={name}
                   style={{ width: "72%", height: "72%", objectFit: "contain" }}

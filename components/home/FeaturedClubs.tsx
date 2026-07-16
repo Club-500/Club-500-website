@@ -52,7 +52,7 @@ export default function FeaturedClubs() {
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy" decoding="async"
                 src={img}
                 alt={name}
                 style={{ width: "78%", height: "78%", objectFit: "contain" }}

@@ -10,11 +10,17 @@ export default function Hero() {
     useRef<HTMLVideoElement>(null),
   ];
   const [active, setActive] = useState(0);
+  const [restReady, setRestReady] = useState(false);
 
   useEffect(() => {
-    const vids = refs.map((r) => r.current).filter(Boolean) as HTMLVideoElement[];
-    const tryPlay = () => vids.forEach((v) => v.play().catch(() => {}));
+    const vids = () => refs.map((r) => r.current).filter(Boolean) as HTMLVideoElement[];
+    const tryPlay = () => vids().forEach((v) => v.play().catch(() => {}));
     tryPlay();
+    // Only the first video loads up front; fetch the other two once the page is idle
+    const idle = setTimeout(() => {
+      setRestReady(true);
+      setTimeout(tryPlay, 100);
+    }, 2500);
     const onInteract = () => {
       tryPlay();
       document.removeEventListener("pointerdown", onInteract);
@@ -27,6 +33,7 @@ export default function Hero() {
     const iv = setInterval(() => setActive((p) => (p + 1) % 3), 9000);
     return () => {
       clearInterval(iv);
+      clearTimeout(idle);
       document.removeEventListener("pointerdown", onInteract);
       document.removeEventListener("visibilitychange", onVis);
     };
@@ -67,22 +74,22 @@ export default function Hero() {
         />
         <video
           ref={refs[1]}
-          src="/assets/hero-kick.mp4"
+          src={restReady ? "/assets/hero-kick.mp4" : undefined}
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           style={vidStyle(active === 1)}
         />
         <video
           ref={refs[2]}
-          src="/assets/hero-play.mp4"
+          src={restReady ? "/assets/hero-play.mp4" : undefined}
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           style={vidStyle(active === 2)}
         />
         <div
