@@ -274,6 +274,46 @@ textarea {
   font-family: var(--font-inter-tight), sans-serif;
 }
 
+/* ---- footer football ---- */
+.footer-ball {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  animation: footerTravel 16s linear infinite;
+}
+.footer-ball svg {
+  display: block;
+  animation: footerSpin 1.6s linear infinite;
+}
+@keyframes footerTravel {
+  from {
+    transform: translateX(-30px);
+  }
+  to {
+    transform: translateX(calc(100vw + 30px));
+  }
+}
+@keyframes footerSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-ball,
+  .footer-ball svg {
+    animation: none;
+  }
+  .footer-ball {
+    display: none;
+  }
+}
+
 /* ---- responsive nav ---- */
 .site-nav-backdrop {
   position: fixed;
