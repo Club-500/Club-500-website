@@ -41,14 +41,6 @@ function GoogleIcon() {
   );
 }
 
-function AppleIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-      <path d="M16.36 12.79c.03 3.26 2.86 4.34 2.89 4.36-.02.08-.45 1.55-1.49 3.07-.9 1.31-1.83 2.62-3.3 2.65-1.44.03-1.91-.86-3.56-.86-1.65 0-2.17.83-3.53.88-1.42.05-2.5-1.42-3.41-2.72C2.1 17.5.68 12.6 2.6 9.33c.95-1.62 2.66-2.65 4.51-2.68 1.39-.03 2.71.94 3.56.94.85 0 2.45-1.16 4.13-.99.7.03 2.68.28 3.94 2.14-.1.06-2.35 1.38-2.38 4.05zM13.69 4.85c.75-.91 1.26-2.17 1.12-3.43-1.08.04-2.39.72-3.17 1.63-.7.8-1.31 2.09-1.14 3.32 1.2.09 2.44-.61 3.19-1.52z" />
-    </svg>
-  );
-}
-
 function FacebookIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2">
@@ -107,14 +99,9 @@ export default function LoginPage() {
           <button type="button" style={socialBtn}>
             <GoogleIcon /> Continue with Google
           </button>
-          <div style={{ display: "flex", gap: 10 }}>
-            <button type="button" style={socialBtn}>
-              <FacebookIcon /> Facebook
-            </button>
-            <button type="button" style={socialBtn}>
-              <AppleIcon /> Apple
-            </button>
-          </div>
+          <button type="button" style={socialBtn}>
+            <FacebookIcon /> Continue with Facebook
+          </button>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 14, margin: "0 0 20px" }}>

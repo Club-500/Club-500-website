@@ -274,10 +274,10 @@ textarea {
   font-family: var(--font-inter-tight), sans-serif;
 }
 
-/* ---- footer: kicked ball into the goal ---- */
+/* ---- footer: striker dribbles past defenders, shoots, scores ---- */
 .goal-strip {
   position: relative;
-  height: 84px;
+  height: 96px;
   margin-bottom: 28px;
   pointer-events: none;
 }
@@ -297,7 +297,7 @@ textarea {
 }
 .gs-net {
   transform-origin: 100% 50%;
-  animation: gsNet 7s ease-out infinite;
+  animation: gsNet 10s ease-out infinite;
 }
 .gs-goal-text {
   position: absolute;
@@ -306,135 +306,153 @@ textarea {
   font: 800 15px/1 var(--font-inter-tight), sans-serif;
   color: #f0b429;
   opacity: 0;
-  animation: gsGoalText 7s ease-out infinite;
+  animation: gsGoalText 10s ease-out infinite;
 }
+
+/* defenders */
+.gs-def {
+  position: absolute;
+  bottom: 11px;
+  line-height: 0;
+}
+.gs-def-1 { left: 32%; }
+.gs-def-2 { left: 52%; }
+.gs-def svg {
+  animation: gsDefSway 2.4s ease-in-out infinite alternate;
+  transform-origin: 50% 100%;
+}
+.gs-def-react-1 { animation: gsDefBeaten1 10s ease-out infinite; transform-origin: 50% 100%; }
+.gs-def-react-2 { animation: gsDefBeaten2 10s ease-out infinite; transform-origin: 50% 100%; }
+
+/* striker */
+.gs-player {
+  position: absolute;
+  bottom: 11px;
+  left: 0;
+  width: 34px;
+  height: 56px;
+  animation: gsPlayerX 10s linear infinite;
+}
+.gs-player-inner {
+  animation: gsPlayerMoves 10s infinite;
+  transform-origin: 50% 100%;
+}
+.p-limb {
+  transform-box: fill-box;
+  transform-origin: 50% 8%;
+}
+.p-leg-f { animation: gsLimb 0.46s ease-in-out infinite alternate; }
+.p-leg-b { animation: gsLimb 0.46s ease-in-out infinite alternate-reverse; }
+.p-arm-f { animation: gsLimb 0.46s ease-in-out infinite alternate-reverse; }
+.p-arm-b { animation: gsLimb 0.46s ease-in-out infinite alternate; }
+@keyframes gsLimb {
+  from { transform: rotate(-30deg); }
+  to { transform: rotate(30deg); }
+}
+
+/* ball */
 .gs-ball-x {
   position: absolute;
   bottom: 12px;
   left: 0;
-  width: 20px;
-  height: 20px;
-  animation: gsFlightX 7s infinite;
+  width: 16px;
+  height: 16px;
+  animation: gsFlightX 10s infinite;
 }
-.gs-ball-y {
-  animation: gsFlightY 7s infinite;
-}
+.gs-ball-hop { animation: gsBallHop 0.46s ease-in-out infinite alternate; }
+.gs-ball-y { animation: gsFlightY 10s infinite; }
 .gs-ball-y svg {
   display: block;
-  animation: gsBallSpin 0.7s linear infinite;
+  animation: gsBallSpin 0.6s linear infinite;
 }
-/* horizontal run: quick kick travel, disappear in the net, reset while invisible */
+
+/* run in from the left, strike at ~53%, ball beats the keeper by 64% */
+@keyframes gsPlayerX {
+  0% { left: -70px; opacity: 1; }
+  53% { left: calc(100% - 216px); opacity: 1; }
+  57% { left: calc(100% - 206px); }
+  86% { left: calc(100% - 206px); opacity: 1; }
+  90% { opacity: 0; }
+  96% { left: -70px; opacity: 0; }
+  100% { left: -70px; opacity: 1; }
+}
+/* skill moves past each defender, strike lean, then celebration hops */
+@keyframes gsPlayerMoves {
+  0%, 16% { transform: none; }
+  20% { transform: translateY(-8px) rotate(-9deg); }
+  24% { transform: none; }
+  36% { transform: none; }
+  40% { transform: translateY(-8px) rotate(9deg); }
+  44% { transform: none; }
+  52% { transform: none; }
+  54% { transform: translateX(5px) rotate(-18deg); }
+  58% { transform: rotate(5deg); }
+  62% { transform: none; }
+  70% { transform: none; }
+  73% { transform: translateY(-9px); }
+  76% { transform: none; }
+  79% { transform: translateY(-7px); }
+  82%, 100% { transform: none; }
+}
 @keyframes gsFlightX {
-  0% {
-    left: -26px;
-    opacity: 1;
-    animation-timing-function: linear;
-  }
-  26% {
-    left: calc(100% - 46px);
-    opacity: 1;
-  }
-  29% {
-    left: calc(100% - 30px);
-    opacity: 1;
-  }
-  33% {
-    left: calc(100% - 26px);
-    opacity: 0;
-  }
-  92% {
-    left: -26px;
-    opacity: 0;
-  }
-  97%,
-  100% {
-    left: -26px;
-    opacity: 1;
-  }
+  0% { left: -48px; opacity: 1; animation-timing-function: linear; }
+  53% { left: calc(100% - 196px); opacity: 1; animation-timing-function: linear; }
+  64% { left: calc(100% - 42px); opacity: 1; }
+  67% { left: calc(100% - 32px); opacity: 1; }
+  70% { opacity: 0; }
+  95% { left: -48px; opacity: 0; }
+  98%, 100% { left: -48px; opacity: 1; }
 }
-/* vertical arc: launch up fast, hang, dip into the goal mouth */
 @keyframes gsFlightY {
-  0% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0.17, 0.67, 0.35, 1);
-  }
-  13% {
-    transform: translateY(-52px);
-    animation-timing-function: cubic-bezier(0.55, 0, 0.83, 0.44);
-  }
-  26% {
-    transform: translateY(-24px);
-    animation-timing-function: linear;
-  }
-  29% {
-    transform: translateY(-16px);
-  }
-  33%,
-  100% {
-    transform: translateY(-14px);
-  }
+  0%, 53% { transform: translateY(0); animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  58% { transform: translateY(-54px); animation-timing-function: cubic-bezier(0.6, 0, 0.85, 0.5); }
+  64% { transform: translateY(-18px); }
+  67%, 100% { transform: translateY(-13px); }
+}
+@keyframes gsBallHop {
+  from { transform: translateY(0); }
+  to { transform: translateY(-4px); }
 }
 @keyframes gsBallSpin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
-/* net bulges when the ball arrives (26-33% of the loop) */
+@keyframes gsDefSway {
+  from { transform: rotate(-3deg); }
+  to { transform: rotate(3deg); }
+}
+@keyframes gsDefBeaten1 {
+  0%, 18% { transform: none; }
+  22% { transform: rotate(17deg) translateX(4px); }
+  30%, 100% { transform: none; }
+}
+@keyframes gsDefBeaten2 {
+  0%, 38% { transform: none; }
+  42% { transform: rotate(17deg) translateX(4px); }
+  50%, 100% { transform: none; }
+}
 @keyframes gsNet {
-  0%,
-  26% {
-    transform: none;
-  }
-  30% {
-    transform: scaleX(1.08) skewX(-5deg);
-  }
-  34% {
-    transform: scaleX(0.98) skewX(2deg);
-  }
-  38%,
-  100% {
-    transform: none;
-  }
+  0%, 64% { transform: none; }
+  67% { transform: scaleX(1.09) skewX(-5deg); }
+  70% { transform: scaleX(0.98) skewX(2deg); }
+  74%, 100% { transform: none; }
 }
-/* Goal! pops as the net ripples */
 @keyframes gsGoalText {
-  0%,
-  27% {
-    opacity: 0;
-    transform: translateY(6px) scale(0.8);
-  }
-  32% {
-    opacity: 1;
-    transform: translateY(0) scale(1.05);
-  }
-  40% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  55%,
-  100% {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.9);
-  }
+  0%, 65% { opacity: 0; transform: translateY(6px) scale(0.8); }
+  69% { opacity: 1; transform: translateY(0) scale(1.08); }
+  78% { opacity: 1; transform: translateY(0) scale(1); }
+  86%, 100% { opacity: 0; transform: translateY(-8px) scale(0.9); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .gs-ball-x,
-  .gs-ball-y,
-  .gs-ball-y svg,
-  .gs-net,
-  .gs-goal-text {
+  .gs-ball-x, .gs-ball-hop, .gs-ball-y, .gs-ball-y svg,
+  .gs-net, .gs-goal-text, .gs-player, .gs-player-inner,
+  .p-leg-f, .p-leg-b, .p-arm-f, .p-arm-b,
+  .gs-def svg, .gs-def-react-1, .gs-def-react-2 {
     animation: none;
   }
-  .gs-ball-x {
-    left: calc(100% - 120px);
-    opacity: 1;
-  }
-  .gs-goal-text {
-    opacity: 0;
-  }
+  .gs-ball-x { left: calc(100% - 130px); opacity: 1; }
+  .gs-player { left: calc(100% - 170px); opacity: 1; }
+  .gs-goal-text { opacity: 0; }
 }
 
 /* ---- responsive nav ---- */
