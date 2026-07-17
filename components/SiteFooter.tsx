@@ -50,39 +50,189 @@ export default function SiteFooter() {
             </svg>
           </div>
 
+
+          {/* goalkeeper: set stance, dives, beaten, picks himself up */}
+          <div className="gs-gk">
+            <div className="gs-gk-move">
+              {/* set position frame A: crouched, gloves wide */}
+              <svg className="gkpose pose-gk-ra" width="46" height="42" viewBox="0 0 64 56" fill="none">
+                <path d="M26 19 L18 25 L13 30" stroke="#cfd3d7" strokeWidth="4.4" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="13" cy="30" r="3" fill="#e9e9e4" />
+                <path d="M25 36 L19 43 L18 50" stroke="#aeb4ba" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M18 50 L13.5 50.6" stroke="#e9e9e4" strokeWidth="3.8" strokeLinecap="round" />
+                <path d="M28 15 C22.5 16 20 22 20.8 31 L33 31 C34 22 31.5 16 28 15 Z" fill="#767f88" />
+                <path d="M20.8 31 L33 31 L33.5 37 L20.3 37 Z" fill="#4a5157" />
+                <path d="M29 36 L35 43 L36 50" stroke="#cfd3d7" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M36 50 L40.5 50.6" stroke="#e9e9e4" strokeWidth="3.8" strokeLinecap="round" />
+                <path d="M30 19 L38 25 L43 30" stroke="#cfd3d7" strokeWidth="4.4" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="43" cy="30" r="3" fill="#e9e9e4" />
+                <circle cx="28" cy="9" r="5.8" fill="#cfd3d7" />
+              </svg>
+              {/* set position frame B: bounce, gloves up a touch */}
+              <svg className="gkpose pose-gk-rb" width="46" height="42" viewBox="0 0 64 56" fill="none">
+                <path d="M26 19 L17 23 L12 27" stroke="#cfd3d7" strokeWidth="4.4" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="12" cy="27" r="3" fill="#e9e9e4" />
+                <path d="M25 36 L20 44 L19 50" stroke="#aeb4ba" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M19 50 L14.5 50.6" stroke="#e9e9e4" strokeWidth="3.8" strokeLinecap="round" />
+                <path d="M28 15 C22.5 16 20 22 20.8 31 L33 31 C34 22 31.5 16 28 15 Z" fill="#767f88" />
+                <path d="M20.8 31 L33 31 L33.5 37 L20.3 37 Z" fill="#4a5157" />
+                <path d="M29 36 L34 44 L35 50" stroke="#cfd3d7" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M35 50 L39.5 50.6" stroke="#e9e9e4" strokeWidth="3.8" strokeLinecap="round" />
+                <path d="M30 19 L39 23 L44 27" stroke="#cfd3d7" strokeWidth="4.4" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="44" cy="27" r="3" fill="#e9e9e4" />
+                <circle cx="28" cy="9" r="5.8" fill="#cfd3d7" />
+              </svg>
+              {/* full stretch dive toward the shot */}
+              <svg className="gkpose pose-gk-dv" width="46" height="42" viewBox="0 0 64 56" fill="none">
+                <path d="M20 24 L12 16 L6 10" stroke="#cfd3d7" strokeWidth="4.4" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="6" cy="10" r="3" fill="#e9e9e4" />
+                <path d="M22 27 L14 22 L8 19" stroke="#aeb4ba" strokeWidth="4.4" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="8" cy="19" r="3" fill="#e9e9e4" />
+                <path d="M20 23 C16 27 18 34 26 36 L33 28 C31 21 24 19 20 23 Z" fill="#767f88" />
+                <path d="M26 36 L33 28 L38 33 L31 40 Z" fill="#4a5157" />
+                <path d="M33 34 L43 40 L51 45" stroke="#cfd3d7" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M51 45 L56 46" stroke="#e9e9e4" strokeWidth="3.8" strokeLinecap="round" />
+                <path d="M35 30 L45 33 L53 34" stroke="#aeb4ba" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M53 34 L58 34.4" stroke="#e9e9e4" strokeWidth="3.8" strokeLinecap="round" />
+                <circle cx="15" cy="17" r="5.8" fill="#cfd3d7" />
+              </svg>
+              {/* beaten: flat on the turf, propped on a glove */}
+              <svg className="gkpose pose-gk-dn" width="46" height="42" viewBox="0 0 64 56" fill="none">
+                <path d="M22 49 L36 49 L47 48" stroke="#cfd3d7" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M47 48 L52 47.4" stroke="#e9e9e4" strokeWidth="3.8" strokeLinecap="round" />
+                <path d="M23 46 L35 44 L45 45" stroke="#aeb4ba" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M45 45 L50 44.6" stroke="#e9e9e4" strokeWidth="3.6" strokeLinecap="round" />
+                <path d="M10 42 C7 46 10 51 18 50 L25 44 C23 38 13 38 10 42 Z" fill="#767f88" />
+                <path d="M14 45 L10 52" stroke="#cfd3d7" strokeWidth="4.4" strokeLinecap="round" />
+                <circle cx="10" cy="52" r="3" fill="#e9e9e4" />
+                <circle cx="8" cy="38" r="5.4" fill="#cfd3d7" />
+              </svg>
+            </div>
+          </div>
+
           {/* defenders that get skipped past */}
           <div className="gs-def gs-def-1">
             <div className="gs-def-react-1">
-              <svg width="32" height="54" viewBox="0 0 52 64" fill="none">
-                <circle cx="26" cy="8" r="6" fill="#9aa4ad" />
-                <path d="M26 14 C20.5 15 18 21 18.8 31 L31 31 C32 21 29.5 15 26 14 Z" fill="#5c666f" />
-                <path d="M18.8 31 L31 31 L31.5 37 L18.3 37 Z" fill="#434b53" />
-                <path d="M24 17 L16 21 L10 26" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="10" cy="26" r="2.2" fill="#9aa4ad" />
-                <path d="M28 17 L36 21 L42 26" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="42" cy="26" r="2.2" fill="#9aa4ad" />
-                <path d="M23 36 L17 45 L13 53" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M13 53 L8.5 53.6" stroke="#767f88" strokeWidth="4" strokeLinecap="round" />
-                <path d="M27.5 36 L34 45 L38 53" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M38 53 L42.5 53.6" stroke="#767f88" strokeWidth="4" strokeLinecap="round" />
+              <div className="gs-def-body">
+              {/* defensive shuffle frame A: crouched, arms wide, weight left */}
+              <svg className="dpose pose-d1-sa" width="32" height="54" viewBox="0 0 52 64" fill="none">
+                <path d="M24 19 L15 22 L9 18" stroke="#79828b" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="9" cy="18" r="2.2" fill="#79828b" />
+                <path d="M23 38 L15 44 L13 53" stroke="#79828b" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M13 53 L8.5 53.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M26 16 C20.5 17 18 23 18.8 33 L31 33 C32 23 29.5 17 26 16 Z" fill="#5c666f" />
+                <path d="M18.8 33 L31 33 L31.5 40 L18.3 40 Z" fill="#434b53" />
+                <path d="M27.5 38 L34 44 L37 53" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M37 53 L41.5 53.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M28 19 L37 22 L43 18" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="43" cy="18" r="2.2" fill="#9aa4ad" />
+                <circle cx="26" cy="10" r="6" fill="#9aa4ad" />
               </svg>
+              {/* defensive shuffle frame B: weight shifted right */}
+              <svg className="dpose pose-d1-sb" width="32" height="54" viewBox="0 0 52 64" fill="none">
+                <path d="M24 19 L15 23 L9 21" stroke="#79828b" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="9" cy="21" r="2.2" fill="#79828b" />
+                <path d="M23 38 L17 45 L16 53" stroke="#79828b" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M16 53 L11.5 53.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M26 16 C20.5 17 18 23 18.8 33 L31 33 C32 23 29.5 17 26 16 Z" fill="#5c666f" />
+                <path d="M18.8 33 L31 33 L31.5 40 L18.3 40 Z" fill="#434b53" />
+                <path d="M27.5 38 L36 43 L38 52" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M38 52 L42.5 52.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M28 19 L37 21 L43 15" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="43" cy="15" r="2.2" fill="#9aa4ad" />
+                <circle cx="26" cy="10" r="6" fill="#9aa4ad" />
+              </svg>
+              {/* sliding tackle toward the striker (coming from the left) */}
+              <svg className="dpose pose-d1-lg" width="32" height="54" viewBox="0 0 52 64" fill="none">
+                <path d="M28 19 L35 13 L40 8" stroke="#79828b" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="40" cy="8" r="2.2" fill="#79828b" />
+                <path d="M26 36 L30 44 L26 51" stroke="#79828b" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M26 51 L30.5 51.8" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M26 16 C20.5 17 18 23 18.8 33 L31 33 C32 23 29.5 17 26 16 Z" fill="#5c666f" />
+                <path d="M18.8 33 L31 33 L31.5 40 L18.3 40 Z" fill="#434b53" />
+                <path d="M22 36 L12 42 L4 46" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M4 46 L-0.5 46.8" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M24 19 L16 26 L10 30" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="10" cy="30" r="2.2" fill="#9aa4ad" />
+                <circle cx="24" cy="9" r="6" fill="#9aa4ad" />
+              </svg>
+              {/* beaten: twisted, legs crossed, arms flailing */}
+              <svg className="dpose pose-d1-bt" width="32" height="54" viewBox="0 0 52 64" fill="none">
+                <path d="M25 17 L18 11 L14 6" stroke="#79828b" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="14" cy="6" r="2.2" fill="#79828b" />
+                <path d="M27 36 L20 44 L22 52" stroke="#79828b" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M22 52 L17.5 52.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M26 14 C20.5 15 18 21 18.8 31 L31 31 C32 21 29.5 15 26 14 Z" fill="#5c666f" />
+                <path d="M18.8 31 L31 31 L31.5 38 L18.3 38 Z" fill="#434b53" />
+                <path d="M24 36 L28 45 L24 53" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M24 53 L28.6 53.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M29 17 L37 15 L42 10" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="42" cy="10" r="2.2" fill="#9aa4ad" />
+                <circle cx="29" cy="8" r="6" fill="#9aa4ad" />
+              </svg>
+            </div>
             </div>
           </div>
           <div className="gs-def gs-def-2">
             <div className="gs-def-react-2">
-              <svg width="32" height="54" viewBox="0 0 52 64" fill="none">
-                <circle cx="26" cy="8" r="6" fill="#9aa4ad" />
-                <path d="M26 14 C20.5 15 18 21 18.8 31 L31 31 C32 21 29.5 15 26 14 Z" fill="#5c666f" />
-                <path d="M18.8 31 L31 31 L31.5 37 L18.3 37 Z" fill="#434b53" />
-                <path d="M24 17 L16 21 L10 26" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="10" cy="26" r="2.2" fill="#9aa4ad" />
-                <path d="M28 17 L36 21 L42 26" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="42" cy="26" r="2.2" fill="#9aa4ad" />
-                <path d="M23 36 L17 45 L13 53" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M13 53 L8.5 53.6" stroke="#767f88" strokeWidth="4" strokeLinecap="round" />
-                <path d="M27.5 36 L34 45 L38 53" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M38 53 L42.5 53.6" stroke="#767f88" strokeWidth="4" strokeLinecap="round" />
+              <div className="gs-def-body">
+              {/* defensive shuffle frame A: crouched, arms wide, weight left */}
+              <svg className="dpose pose-d2-sa" width="32" height="54" viewBox="0 0 52 64" fill="none">
+                <path d="M24 19 L15 22 L9 18" stroke="#79828b" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="9" cy="18" r="2.2" fill="#79828b" />
+                <path d="M23 38 L15 44 L13 53" stroke="#79828b" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M13 53 L8.5 53.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M26 16 C20.5 17 18 23 18.8 33 L31 33 C32 23 29.5 17 26 16 Z" fill="#5c666f" />
+                <path d="M18.8 33 L31 33 L31.5 40 L18.3 40 Z" fill="#434b53" />
+                <path d="M27.5 38 L34 44 L37 53" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M37 53 L41.5 53.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M28 19 L37 22 L43 18" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="43" cy="18" r="2.2" fill="#9aa4ad" />
+                <circle cx="26" cy="10" r="6" fill="#9aa4ad" />
               </svg>
+              {/* defensive shuffle frame B: weight shifted right */}
+              <svg className="dpose pose-d2-sb" width="32" height="54" viewBox="0 0 52 64" fill="none">
+                <path d="M24 19 L15 23 L9 21" stroke="#79828b" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="9" cy="21" r="2.2" fill="#79828b" />
+                <path d="M23 38 L17 45 L16 53" stroke="#79828b" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M16 53 L11.5 53.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M26 16 C20.5 17 18 23 18.8 33 L31 33 C32 23 29.5 17 26 16 Z" fill="#5c666f" />
+                <path d="M18.8 33 L31 33 L31.5 40 L18.3 40 Z" fill="#434b53" />
+                <path d="M27.5 38 L36 43 L38 52" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M38 52 L42.5 52.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M28 19 L37 21 L43 15" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="43" cy="15" r="2.2" fill="#9aa4ad" />
+                <circle cx="26" cy="10" r="6" fill="#9aa4ad" />
+              </svg>
+              {/* sliding tackle toward the striker (coming from the left) */}
+              <svg className="dpose pose-d2-lg" width="32" height="54" viewBox="0 0 52 64" fill="none">
+                <path d="M28 19 L35 13 L40 8" stroke="#79828b" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="40" cy="8" r="2.2" fill="#79828b" />
+                <path d="M26 36 L30 44 L26 51" stroke="#79828b" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M26 51 L30.5 51.8" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M26 16 C20.5 17 18 23 18.8 33 L31 33 C32 23 29.5 17 26 16 Z" fill="#5c666f" />
+                <path d="M18.8 33 L31 33 L31.5 40 L18.3 40 Z" fill="#434b53" />
+                <path d="M22 36 L12 42 L4 46" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M4 46 L-0.5 46.8" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M24 19 L16 26 L10 30" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="10" cy="30" r="2.2" fill="#9aa4ad" />
+                <circle cx="24" cy="9" r="6" fill="#9aa4ad" />
+              </svg>
+              {/* beaten: twisted, legs crossed, arms flailing */}
+              <svg className="dpose pose-d2-bt" width="32" height="54" viewBox="0 0 52 64" fill="none">
+                <path d="M25 17 L18 11 L14 6" stroke="#79828b" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="14" cy="6" r="2.2" fill="#79828b" />
+                <path d="M27 36 L20 44 L22 52" stroke="#79828b" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M22 52 L17.5 52.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M26 14 C20.5 15 18 21 18.8 31 L31 31 C32 21 29.5 15 26 14 Z" fill="#5c666f" />
+                <path d="M18.8 31 L31 31 L31.5 38 L18.3 38 Z" fill="#434b53" />
+                <path d="M24 36 L28 45 L24 53" stroke="#9aa4ad" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M24 53 L28.6 53.6" stroke="#d9dde1" strokeWidth="4" strokeLinecap="round" />
+                <path d="M29 17 L37 15 L42 10" stroke="#9aa4ad" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="42" cy="10" r="2.2" fill="#9aa4ad" />
+                <circle cx="29" cy="8" r="6" fill="#9aa4ad" />
+              </svg>
+            </div>
             </div>
           </div>
 
