@@ -334,20 +334,46 @@ textarea {
   animation: gsPlayerX 10s linear infinite;
 }
 .gs-player-inner {
+  position: relative;
+  width: 38px;
+  height: 58px;
   animation: gsPlayerMoves 10s infinite;
   transform-origin: 50% 100%;
 }
-.p-limb {
-  transform-box: fill-box;
-  transform-origin: 50% 8%;
+.pose {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
 }
-.p-leg-f { animation: gsLimb 0.46s ease-in-out infinite alternate; }
-.p-leg-b { animation: gsLimb 0.46s ease-in-out infinite alternate-reverse; }
-.p-arm-f { animation: gsLimb 0.46s ease-in-out infinite alternate-reverse; }
-.p-arm-b { animation: gsLimb 0.46s ease-in-out infinite alternate; }
-@keyframes gsLimb {
-  from { transform: rotate(-30deg); }
-  to { transform: rotate(30deg); }
+/* two-frame sprint cycle while running */
+.pose-run-a { animation: poseWinRun 10s steps(1) infinite, runFlickA 0.32s steps(1) infinite; }
+.pose-run-b { animation: poseWinRun 10s steps(1) infinite, runFlickB 0.32s steps(1) infinite; }
+.pose-kick { animation: poseWinKick 10s steps(1) infinite; }
+.pose-cele { animation: poseWinCele 10s steps(1) infinite; }
+/* visibility windows over the 10s move (multiplied with flicker via nested vars is overkill;
+   run frames use visibility for the window and opacity for the flicker) */
+@keyframes poseWinRun {
+  0%, 53% { visibility: visible; }
+  53.01%, 99% { visibility: hidden; }
+  99.01%, 100% { visibility: visible; }
+}
+@keyframes runFlickA {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes runFlickB {
+  0%, 49% { opacity: 0; }
+  50%, 100% { opacity: 1; }
+}
+@keyframes poseWinKick {
+  0%, 52.99% { opacity: 0; }
+  53%, 61% { opacity: 1; }
+  61.01%, 100% { opacity: 0; }
+}
+@keyframes poseWinCele {
+  0%, 61% { opacity: 0; }
+  61.01%, 92% { opacity: 1; }
+  92.01%, 100% { opacity: 0; }
 }
 
 /* ball */
@@ -385,8 +411,8 @@ textarea {
   40% { transform: translateY(-8px) rotate(9deg); }
   44% { transform: none; }
   52% { transform: none; }
-  54% { transform: translateX(5px) rotate(-18deg); }
-  58% { transform: rotate(5deg); }
+  54% { transform: translateX(5px) rotate(-8deg); }
+  58% { transform: rotate(2deg); }
   62% { transform: none; }
   70% { transform: none; }
   73% { transform: translateY(-9px); }
@@ -446,10 +472,11 @@ textarea {
 @media (prefers-reduced-motion: reduce) {
   .gs-ball-x, .gs-ball-hop, .gs-ball-y, .gs-ball-y svg,
   .gs-net, .gs-goal-text, .gs-player, .gs-player-inner,
-  .p-leg-f, .p-leg-b, .p-arm-f, .p-arm-b,
+  .pose-run-a, .pose-run-b, .pose-kick, .pose-cele,
   .gs-def svg, .gs-def-react-1, .gs-def-react-2 {
     animation: none;
   }
+  .pose-run-a { opacity: 1; visibility: visible; }
   .gs-ball-x { left: calc(100% - 130px); opacity: 1; }
   .gs-player { left: calc(100% - 170px); opacity: 1; }
   .gs-goal-text { opacity: 0; }
