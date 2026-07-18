@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useLang } from "@/lib/i18n";
 
 export default function NewsletterForm() {
+  const { t } = useLang();
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "error" | "done">("idle");
 
@@ -23,7 +25,7 @@ export default function NewsletterForm() {
   if (state === "done") {
     return (
       <p style={{ margin: 0, font: '500 14px/1.5 var(--font-inter-tight), sans-serif', color: "#C98A00" }}>
-        You&apos;re subscribed. Karibu to the movement!
+        {t("nl.done")}
       </p>
     );
   }
@@ -39,7 +41,7 @@ export default function NewsletterForm() {
             if (state === "error") setState("idle");
           }}
           onKeyDown={(e) => e.key === "Enter" && submit()}
-          placeholder="Your email address"
+          placeholder={t("nl.placeholder")}
           style={{
             flex: "1 1 200px",
             background: "rgba(255,255,255,0.05)",
@@ -64,12 +66,12 @@ export default function NewsletterForm() {
             cursor: "pointer",
           }}
         >
-          Subscribe
+          {t("nl.button")}
         </button>
       </div>
       {state === "error" && (
         <p style={{ margin: "8px 0 0", font: '500 12.5px/1.4 var(--font-inter-tight), sans-serif', color: "rgb(240,120,100)" }}>
-          Enter a valid email address
+          {t("nl.error")}
         </p>
       )}
     </div>

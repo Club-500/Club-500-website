@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useLang } from "@/lib/i18n";
 
 export default function AboutSnapshot() {
+  const { t } = useLang();
   return (
     <section style={{ padding: "24px clamp(20px, 4vw, 32px) 56px", maxWidth: 1280, margin: "0 auto" }}>
       <div
@@ -15,12 +19,10 @@ export default function AboutSnapshot() {
             letterSpacing: "-0.01em",
           }}
         >
-          Club500 connects grassroots football clubs across Kenya&apos;s 47
-          counties with the governance, funding, media and fan support they
-          need to grow. Local passion, turned into lasting community impact.
+          {t("snapshot.body")}
         </p>
         <Link href="/about" className="gold" style={{ font: '600 15px/1 var(--font-inter-tight), sans-serif' }}>
-          Read our full story →
+          {t("snapshot.read")}
         </Link>
       </div>
     </section>

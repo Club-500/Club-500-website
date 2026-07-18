@@ -1,12 +1,15 @@
-import Link from "next/link";
+"use client";
 
-const STEPS: [string, string, string][] = [
-  ["01", "Join your club", "It takes a minute."],
-  ["02", "Follow along", "Match updates, stories, behind the scenes."],
-  ["03", "Share your link", "Earn when friends join too."],
-];
+import Link from "next/link";
+import { useLang } from "@/lib/i18n";
 
 export default function FanZoneSteps() {
+  const { t } = useLang();
+  const STEPS: [string, string, string][] = [
+    ["01", t("fz.s1t"), t("fz.s1d")],
+    ["02", t("fz.s2t"), t("fz.s2d")],
+    ["03", t("fz.s3t"), t("fz.s3d")],
+  ];
   return (
     <section
       style={{
@@ -37,13 +40,13 @@ export default function FanZoneSteps() {
         >
           <div>
             <span className="mono-label" style={{ color: "rgba(255,255,255,0.65)" }}>
-              The Fan Zone
+              {t("fz.eyebrow")}
             </span>
             <h2
               className="mega"
               style={{ margin: "10px 0 0", fontSize: "clamp(2rem, 4.6vw, 3.6rem)", color: "#fff" }}
             >
-              Belong first. <span className="gold">Earn</span> along the way.
+              {t("fz.title1")} <span className="gold">{t("fz.title2")}</span> {t("fz.title3")}
             </h2>
           </div>
           <Link href="/fanzone">
@@ -52,7 +55,7 @@ export default function FanZoneSteps() {
               type="button"
               style={{ background: "#C98A00", color: "#141310" }}
             >
-              <span className="txt">Open the Fan Zone</span>
+              <span className="txt">{t("fz.open")}</span>
               <span className="circ" style={{ background: "#fff" }}>
                 <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
                   <path

@@ -1,16 +1,19 @@
-import Link from "next/link";
+"use client";
 
-const ITEMS: [string, string, string, string][] = [
-  ["Newsroom", "Club and movement news from every county.", "/newsroom", "Read the latest"],
-  ["Events", "The National Launch Tour and local club events.", "/events", "See what's on"],
-  ["Podcast", "Stories, strategy and transformation.", "/podcast", "Listen in"],
-];
+import Link from "next/link";
+import { useLang } from "@/lib/i18n";
 
 export default function StoriesTeaser() {
+  const { t } = useLang();
+  const ITEMS: [string, string, string, string][] = [
+    [t("nav.newsroom"), t("st.news.desc"), "/newsroom", t("st.news.cta")],
+    [t("nav.events"), t("st.events.desc"), "/events", t("st.events.cta")],
+    [t("nav.podcast"), t("st.pod.desc"), "/podcast", t("st.pod.cta")],
+  ];
   return (
     <section style={{ padding: "32px clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
       <h2 className="display rv" style={{ margin: "0 0 24px" }}>
-        Stories from the <span className="gold">grassroots</span>
+        {t("st.title1")} <span className="gold">{t("st.title2")}</span>
       </h2>
       <div
         style={{

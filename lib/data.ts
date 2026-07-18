@@ -29,3 +29,24 @@ export const REGION_OF_COUNTY: Record<string, string> = {
   Bomet: "Rift Valley",
   Kisumu: "Nyanza",
 };
+
+export const FIXTURES: [when: string, home: string, away: string, venue: string][] = [
+  ["Sat 25 Jul · 15:00", "Kivumbini United", "Kapkatet Youth", "Nakuru ASK Grounds"],
+  ["Sat 25 Jul · 15:00", "Shimanzi FC", "Goodhope FC", "Tononoka Grounds, Mombasa"],
+  ["Sun 26 Jul · 14:00", "Webuye Sportiff", "Uhola FC", "Webuye Stadium"],
+];
+
+export const ALL_COUNTIES = [
+  "Baringo", "Bomet", "Bungoma", "Busia", "Elgeyo-Marakwet", "Embu", "Garissa",
+  "Homa Bay", "Isiolo", "Kajiado", "Kakamega", "Kericho", "Kiambu", "Kilifi",
+  "Kirinyaga", "Kisii", "Kisumu", "Kitui", "Kwale", "Laikipia", "Lamu",
+  "Machakos", "Makueni", "Mandera", "Marsabit", "Meru", "Migori", "Mombasa",
+  "Murang'a", "Nairobi", "Nakuru", "Nandi", "Narok", "Nyamira", "Nyandarua",
+  "Nyeri", "Samburu", "Siaya", "Taita-Taveta", "Tana River", "Tharaka-Nithi",
+  "Trans Nzoia", "Turkana", "Uasin Gishu", "Vihiga", "Wajir", "West Pokot",
+];
+
+export const LIVE_COUNTIES = new Set([
+  "Nakuru", "Bungoma", "Kajiado", "Kiambu", "Kericho", "Mombasa", "Kakamega",
+  "Nairobi", "Bomet", "Kisumu",
+]);

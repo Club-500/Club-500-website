@@ -5,19 +5,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
+import { useLang } from "@/lib/i18n";
 
 const LINKS: [string, string][] = [
-  ["/clubs", "Clubs"],
-  ["/fanzone", "Fan Zone"],
-  ["/volunteer", "Volunteer"],
-  ["/partners", "Partners"],
-  ["/events", "Events"],
-  ["/about", "About"],
+  ["/clubs", "nav.clubs"],
+  ["/fanzone", "nav.fanzone"],
+  ["/volunteer", "nav.volunteer"],
+  ["/partners", "nav.partners"],
+  ["/events", "nav.events"],
+  ["/about", "nav.about"],
 ];
 
 const STORIES: [string, string][] = [
-  ["/newsroom", "Newsroom"],
-  ["/podcast", "Podcast"],
+  ["/newsroom", "nav.newsroom"],
+  ["/podcast", "nav.podcast"],
 ];
 
 const navLinkStyle = (active: boolean): React.CSSProperties => ({
@@ -33,6 +34,7 @@ const navLinkStyle = (active: boolean): React.CSSProperties => ({
 
 export default function SiteHeader() {
   const pathname = usePathname();
+  const { t } = useLang();
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const storiesActive = STORIES.some(([href]) => pathname === href);
@@ -103,9 +105,9 @@ export default function SiteHeader() {
         className="glass site-nav-desktop"
         style={{ display: "flex", gap: 2, padding: "6px 8px", borderRadius: 999, alignItems: "center" }}
       >
-        {LINKS.map(([href, label]) => (
+        {LINKS.map(([href, key]) => (
           <Link key={href} href={href} style={navLinkStyle(pathname === href)}>
-            {label}
+            {t(key)}
           </Link>
         ))}
         <div className="stories-wrap" style={{ position: "relative" }}>
@@ -121,13 +123,13 @@ export default function SiteHeader() {
               gap: 6,
             }}
           >
-            Stories
+            {t("nav.stories")}
             <svg width="9" height="6" viewBox="0 0 10 6" fill="none">
               <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
           <div className="stories-menu">
-            {STORIES.map(([href, label]) => (
+            {STORIES.map(([href, key]) => (
               <Link
                 key={href}
                 href={href}
@@ -139,7 +141,7 @@ export default function SiteHeader() {
                   borderRadius: 10,
                 }}
               >
-                {label}
+                {t(key)}
               </Link>
             ))}
           </div>
@@ -153,7 +155,7 @@ export default function SiteHeader() {
           className="pill-ghost site-nav-desktop"
           style={{ padding: "11px 22px" }}
         >
-          Sign in
+          {t("nav.signin")}
         </Link>
         <button
           type="button"
@@ -198,9 +200,9 @@ export default function SiteHeader() {
             background: pathname === "/" ? "rgba(201,138,0,0.12)" : "transparent",
           }}
         >
-          Home
+          {t("nav.home")}
         </Link>
-        {LINKS.map(([href, label]) => {
+        {LINKS.map(([href, key]) => {
           const active = pathname === href;
           return (
             <Link
@@ -214,12 +216,12 @@ export default function SiteHeader() {
                 background: active ? "rgba(201,138,0,0.12)" : "transparent",
               }}
             >
-              {label}
+              {t(key)}
             </Link>
           );
         })}
-        <div className="mono-label" style={{ padding: "14px 16px 4px" }}>Stories</div>
-        {STORIES.map(([href, label]) => {
+        <div className="mono-label" style={{ padding: "14px 16px 4px" }}>{t("nav.stories")}</div>
+        {STORIES.map(([href, key]) => {
           const active = pathname === href;
           return (
             <Link
@@ -233,7 +235,7 @@ export default function SiteHeader() {
                 background: active ? "rgba(201,138,0,0.12)" : "transparent",
               }}
             >
-              {label}
+              {t(key)}
             </Link>
           );
         })}
@@ -245,7 +247,7 @@ export default function SiteHeader() {
           className="pill-ghost"
           style={{ justifyContent: "center", marginTop: 10, padding: "15px 0" }}
         >
-          Sign in
+          {t("nav.signin")}
         </Link>
       </nav>
     </aside>

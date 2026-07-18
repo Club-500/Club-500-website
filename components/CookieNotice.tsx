@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLang } from "@/lib/i18n";
 
 export default function CookieNotice() {
+  const { t } = useLang();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ export default function CookieNotice() {
       }}
     >
       <div style={{ font: '600 15px/1.3 var(--font-inter-tight), sans-serif', marginBottom: 6 }}>
-        We use cookies
+        {t("cookie.title")}
       </div>
       <p
         style={{
@@ -51,8 +53,7 @@ export default function CookieNotice() {
           color: "rgba(var(--tx),0.65)",
         }}
       >
-        Club500 uses cookies to keep you signed in, remember your club and
-        understand how fans use the platform, so we can make it better.
+        {t("cookie.body")}
       </p>
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
         <button
@@ -68,7 +69,7 @@ export default function CookieNotice() {
             cursor: "pointer",
           }}
         >
-          Accept cookies
+          {t("cookie.accept")}
         </button>
         <button
           type="button"
@@ -83,7 +84,7 @@ export default function CookieNotice() {
             cursor: "pointer",
           }}
         >
-          Decline
+          {t("cookie.decline")}
         </button>
       </div>
     </div>

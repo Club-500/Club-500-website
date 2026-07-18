@@ -4,12 +4,8 @@ import { useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import TopReferrers from "@/components/home/TopReferrers";
-
-const FIXTURES: [string, string, string, string][] = [
-  ["Sat 25 Jul · 15:00", "Kivumbini United", "Kapkatet Youth", "Nakuru ASK Grounds"],
-  ["Sat 25 Jul · 15:00", "Shimanzi FC", "Goodhope FC", "Tononoka Grounds, Mombasa"],
-  ["Sun 26 Jul · 14:00", "Webuye Sportiff", "Uhola FC", "Webuye Stadium"],
-];
+import { FIXTURES } from "@/lib/data";
+import ReferralShare from "@/components/ReferralShare";
 
 const MVPS = ["Kiprop Kirui (Kapkatet Youth)", "Salim Juma (Shimanzi FC)", "Mary Achieng (Uhola FC)"];
 
@@ -273,6 +269,7 @@ export default function FanZonePage() {
             your club through your link. No recruiting required beyond that,
             no tiers, no catch.
           </p>
+          <ReferralShare />
           <div
             style={{
               background: "#C98A00",

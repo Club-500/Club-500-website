@@ -5,6 +5,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AppSplash from "@/components/AppSplash";
 import CookieNotice from "@/components/CookieNotice";
+import { LanguageProvider } from "@/lib/i18n";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -31,11 +32,13 @@ export default function RootLayout({
             __html: `try{var t=localStorage.getItem("c500-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}`,
           }}
         />
-        <AppSplash />
-        <SiteHeader />
-        {children}
-        <SiteFooter />
-        <CookieNotice />
+        <LanguageProvider>
+          <AppSplash />
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+          <CookieNotice />
+        </LanguageProvider>
       </body>
     </html>
   );

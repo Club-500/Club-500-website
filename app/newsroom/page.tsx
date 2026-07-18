@@ -95,15 +95,17 @@ export default function NewsroomPage() {
           </div>
         </div>
 
-        <div className="glass rv" style={{ marginTop: 56, padding: "clamp(24px, 4vw, 40px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24 }}>
+        <div className="glass rv" style={{ marginTop: 56, padding: "clamp(24px, 4vw, 40px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24, borderLeft: "3px solid #C98A00" }}>
           <div>
-            <div className="display" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>Accredited journalist?</div>
+            <div className="display" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>Report from your county</div>
             <p style={{ margin: "10px 0 0", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 480 }}>
               Draft → submit for review → editor approval → published and tagged to your region, county and club. One story, many surfaces.
             </p>
           </div>
           <Link href="/journalist">
-            <button className="pill-ghost" type="button">Journalist portal →</button>
+            <button className="pill-btn" type="button" style={{ padding: "14px 26px", borderRadius: 999 }}>
+              Get accredited →
+            </button>
           </Link>
         </div>
       </div>

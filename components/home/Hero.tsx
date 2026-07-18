@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useLang } from "@/lib/i18n";
 
 export default function Hero() {
+  const { t } = useLang();
   const refs = [
     useRef<HTMLVideoElement>(null),
     useRef<HTMLVideoElement>(null),
@@ -124,24 +126,23 @@ export default function Hero() {
             color: "rgba(255,255,255,0.78)",
           }}
         >
-          500 community football clubs. 47 counties. One national platform
-          giving Kenyan football the structure it deserves.
+{t("hero.sub")}
         </p>
         <div
           className="hero-up hd-3 hero-roles"
           style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}
         >
           <Link href="/clubs/apply">
-            <button className="hero-role" type="button">I run a club</button>
+            <button className="hero-role" type="button">{t("hero.runclub")}</button>
           </Link>
           <Link href="/fanzone">
-            <button className="hero-role" type="button">I&apos;m a fan</button>
+            <button className="hero-role" type="button">{t("hero.fan")}</button>
           </Link>
           <Link href="/partners">
-            <button className="hero-role" type="button">I want to partner</button>
+            <button className="hero-role" type="button">{t("hero.partner")}</button>
           </Link>
           <Link href="/volunteer">
-            <button className="hero-role" type="button">I want to volunteer</button>
+            <button className="hero-role" type="button">{t("hero.volunteer")}</button>
           </Link>
         </div>
       </div>

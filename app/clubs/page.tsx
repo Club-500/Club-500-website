@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import { CLUBS, REGION_OF_COUNTY } from "@/lib/data";
+import ClubCrest from "@/components/ClubCrest";
+import CountyGrid from "@/components/CountyGrid";
 
 const RAIL: [string, number][] = [
   ["All", 33],
@@ -135,25 +137,8 @@ export default function ClubsPage() {
               className={"club-card glass rv rv-d" + (i % 4)}
               style={{ padding: 20, borderRadius: 20, display: "block", color: "var(--fg)" }}
             >
-              <div
-                className="img-wrap"
-                style={{
-                  aspectRatio: "1/1",
-                  borderRadius: 14,
-                  overflow: "hidden",
-                  background: "var(--imgbg)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 14,
-                }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img loading="lazy" decoding="async"
-                  src={img}
-                  alt={name}
-                  style={{ width: "72%", height: "72%", objectFit: "contain" }}
-                />
+              <div style={{ marginBottom: 14 }}>
+                <ClubCrest name={name} img={img} />
               </div>
               <div style={{ font: '600 16px/1.25 var(--font-inter-tight), sans-serif' }}>{name}</div>
               <div className="mono-label" style={{ margin: "6px 0 12px" }}>
@@ -163,6 +148,8 @@ export default function ClubsPage() {
             </a>
           ))}
         </div>
+
+        <CountyGrid />
 
         {/* How joining works */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>

@@ -1,37 +1,42 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import NewsletterForm from "./NewsletterForm";
+import LanguageSwitch from "./LanguageSwitch";
+import { useLang } from "@/lib/i18n";
 
 const COLUMNS: [string, [string, string][]][] = [
   [
-    "Explore",
+    "footer.explore",
     [
-      ["Clubs", "/clubs"],
-      ["Fan Zone", "/fanzone"],
-      ["Events", "/events"],
-      ["About", "/about"],
+      ["nav.clubs", "/clubs"],
+      ["nav.fanzone", "/fanzone"],
+      ["nav.events", "/events"],
+      ["nav.about", "/about"],
     ],
   ],
   [
-    "Stories",
+    "footer.stories",
     [
-      ["Newsroom", "/newsroom"],
-      ["Podcast", "/podcast"],
-      ["Journalists", "/journalist"],
+      ["nav.newsroom", "/newsroom"],
+      ["nav.podcast", "/podcast"],
+      ["footer.journalists", "/journalist"],
     ],
   ],
   [
-    "Get involved",
+    "footer.getinvolved",
     [
-      ["Register your club", "/clubs/apply"],
-      ["Volunteer", "/volunteer"],
-      ["Partners", "/partners"],
-      ["Sign in", "/login"],
+      ["footer.register", "/clubs/apply"],
+      ["nav.volunteer", "/volunteer"],
+      ["nav.partners", "/partners"],
+      ["nav.signin", "/login"],
     ],
   ],
 ];
 
 export default function SiteFooter() {
+  const { t } = useLang();
   return (
     <footer
       style={{
@@ -390,11 +395,11 @@ export default function SiteFooter() {
                 color: "rgba(255,255,255,0.55)",
               }}
             >
-              Building the future of community football in Kenya.
+              {t("footer.blurb")}
             </p>
             <div>
               <div style={{ font: '600 15px/1.3 var(--font-inter-tight), sans-serif', marginBottom: 10 }}>
-                Subscribe for updates
+                {t("footer.subscribe")}
               </div>
               <NewsletterForm />
             </div>
@@ -405,7 +410,7 @@ export default function SiteFooter() {
                 key={head}
                 style={{ display: "flex", flexDirection: "column", gap: 14 }}
               >
-                <span className="mono-label">{head}</span>
+                <span className="mono-label" style={{ color: "rgba(255,255,255,0.55)" }}>{t(head)}</span>
                 {links.map(([l, href]) => (
                   <Link
                     key={l}
@@ -415,7 +420,7 @@ export default function SiteFooter() {
                       color: "rgba(255,255,255,0.8)",
                     }}
                   >
-                    {l}
+                    {t(l)}
                   </Link>
                 ))}
               </div>
@@ -427,10 +432,14 @@ export default function SiteFooter() {
             borderTop: "1px solid rgba(255,255,255,0.08)",
             marginTop: 44,
             paddingTop: 22,
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 18,
           }}
         >
-          <span className="mono-label">Grassroots to Greatness · All rights Reserved CLUB500 2026</span>
+          <LanguageSwitch />
+          <span className="mono-label" style={{ color: "rgba(255,255,255,0.55)", textAlign: "center" }}>{t("footer.rights")}</span>
         </div>
       </div>
     </footer>
