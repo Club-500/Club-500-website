@@ -7,14 +7,19 @@ import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 import { useLang } from "@/lib/i18n";
 
-const LINKS: [string, string][] = [
+const LINKS_PRE: [string, string][] = [
   ["/clubs", "nav.clubs"],
   ["/fanzone", "nav.fanzone"],
   ["/volunteer", "nav.volunteer"],
-  ["/partners", "nav.partners"],
   ["/events", "nav.events"],
+];
+
+const LINKS_POST: [string, string][] = [
+  ["/partners", "nav.partners"],
   ["/about", "nav.about"],
 ];
+
+const LINKS = [...LINKS_PRE, ...LINKS_POST];
 
 const STORIES: [string, string][] = [
   ["/newsroom", "nav.newsroom"],
@@ -105,7 +110,7 @@ export default function SiteHeader() {
         className="glass site-nav-desktop"
         style={{ display: "flex", gap: 2, padding: "6px 8px", borderRadius: 999, alignItems: "center" }}
       >
-        {LINKS.map(([href, key]) => (
+        {LINKS_PRE.map(([href, key]) => (
           <Link key={href} href={href} style={navLinkStyle(pathname === href)}>
             {t(key)}
           </Link>
@@ -146,6 +151,11 @@ export default function SiteHeader() {
             ))}
           </div>
         </div>
+        {LINKS_POST.map(([href, key]) => (
+          <Link key={href} href={href} style={navLinkStyle(pathname === href)}>
+            {t(key)}
+          </Link>
+        ))}
       </nav>
 
       <div style={{ display: "flex", gap: 10, alignItems: "center", zIndex: 60 }}>
@@ -202,7 +212,7 @@ export default function SiteHeader() {
         >
           {t("nav.home")}
         </Link>
-        {LINKS.map(([href, key]) => {
+        {LINKS_PRE.map(([href, key]) => {
           const active = pathname === href;
           return (
             <Link
@@ -231,6 +241,24 @@ export default function SiteHeader() {
                 font: '500 15px/1 var(--font-inter-tight), sans-serif',
                 color: active ? "#C98A00" : "rgba(var(--tx),0.85)",
                 padding: "12px 16px 12px 28px",
+                borderRadius: 12,
+                background: active ? "rgba(201,138,0,0.12)" : "transparent",
+              }}
+            >
+              {t(key)}
+            </Link>
+          );
+        })}
+        {LINKS_POST.map(([href, key]) => {
+          const active = pathname === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              style={{
+                font: '600 16px/1 var(--font-inter-tight), sans-serif',
+                color: active ? "#C98A00" : "#fff",
+                padding: "14px 16px",
                 borderRadius: 12,
                 background: active ? "rgba(201,138,0,0.12)" : "transparent",
               }}

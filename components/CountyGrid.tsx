@@ -1,6 +1,7 @@
 "use client";
 
 import { ALL_COUNTIES, LIVE_COUNTIES } from "@/lib/data";
+import KenyaMap from "@/components/KenyaMap";
 
 export default function CountyGrid() {
   return (
@@ -34,13 +35,19 @@ export default function CountyGrid() {
           </span>
         </div>
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(108px, 1fr))",
-          gap: 8,
-        }}
-      >
+      <div style={{ display: "flex", gap: "clamp(20px, 3vw, 36px)", flexWrap: "wrap", alignItems: "flex-start" }}>
+        <div style={{ flex: "1 1 260px", maxWidth: 380, minWidth: 240, margin: "0 auto" }}>
+          <KenyaMap />
+        </div>
+        <div
+          style={{
+            flex: "2 1 320px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(104px, 1fr))",
+            gap: 8,
+            alignContent: "flex-start",
+          }}
+        >
         {ALL_COUNTIES.map((c) => {
           const live = LIVE_COUNTIES.has(c);
           return (
@@ -64,6 +71,7 @@ export default function CountyGrid() {
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );

@@ -25,39 +25,35 @@ const BONUSES: [string, string][] = [
 
 type Pick = "1" | "X" | "2";
 
+const ODDS: [number, number, number][] = [
+  [2.1, 3.25, 2.8],
+  [1.95, 3.4, 3.1],
+  [2.45, 3.1, 2.3],
+];
+const SENT: [number, number, number][] = [
+  [52, 23, 25],
+  [44, 28, 28],
+  [38, 30, 32],
+];
+const BOOST_IX = 1;
+
 export default function FanZonePage() {
   const [voted, setVoted] = useState<string | null>(null);
   const [picks, setPicks] = useState<Record<number, Pick>>({});
+  const [locked, setLocked] = useState(false);
   const [refs, setRefs] = useState(100);
   const earnings = refs * 250;
-  const pickCount = Object.keys(picks).length;
+  const chosen = Object.entries(picks).filter(([, v]) => v);
+  const pickCount = chosen.length;
+  const combined = chosen.reduce((acc, [i, p]) => {
+    const j = p === "1" ? 0 : p === "X" ? 1 : 2;
+    const mult = ODDS[Number(i)][j] * (Number(i) === BOOST_IX ? 2 : 1);
+    return acc * mult;
+  }, 1);
+  const potential = pickCount === 0 ? 0 : Math.round(100 * combined);
 
   const setPick = (i: number, p: Pick) =>
     setPicks((prev) => ({ ...prev, [i]: prev[i] === p ? undefined : p } as Record<number, Pick>));
-
-  const pickBtn = (i: number, p: Pick, label: string) => {
-    const active = picks[i] === p;
-    return (
-      <button
-        key={p}
-        type="button"
-        onClick={() => setPick(i, p)}
-        style={{
-          flex: 1,
-          cursor: "pointer",
-          borderRadius: 10,
-          padding: "10px 0",
-          border: active ? "1.5px solid #C98A00" : "1px solid rgba(var(--tx),0.15)",
-          background: active ? "rgba(201,138,0,0.15)" : "transparent",
-          color: active ? "#C98A00" : "rgba(var(--tx),0.8)",
-          font: '600 13px/1 var(--font-inter-tight), sans-serif',
-          transition: "all .2s",
-        }}
-      >
-        {label}
-      </button>
-    );
-  };
 
   return (
     <>
@@ -87,56 +83,159 @@ export default function FanZonePage() {
           Follow your club. Get real match updates, stories and
           behind-the-scenes access, and earn when you bring friends along.
         </p>
-        {/* Matchday predictions */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
-          <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)", gridColumn: "1 / -1" }}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                flexWrap: "wrap",
-                gap: 12,
-                marginBottom: 20,
-              }}
-            >
-              <div>
-                <h2 className="display" style={{ margin: 0 }}>Matchday predictions</h2>
-                <p style={{ margin: "6px 0 0", font: '400 14px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
-                  Call every result this weekend. 10 fan points per correct pick.
-                </p>
-              </div>
-              <span className="tag-pill gold-pill">{pickCount}/{FIXTURES.length} picks made</span>
+        {/* Predictions market */}
+        <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 12,
+              marginBottom: 20,
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span className="live-dot"></span>
+              <h2 className="display" style={{ margin: 0 }}>Predictions</h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
-              {FIXTURES.map(([when, home, away, venue], i) => (
+            <span className="mono-label">Fan points only · Settles Sun 18:00</span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
+            {FIXTURES.map(([when, home, away, venue], i) => {
+              const odds = ODDS[i];
+              const sent = SENT[i];
+              return (
                 <div
                   key={home}
                   style={{
-                    border: "1px solid rgba(var(--tx),0.12)",
+                    border: picks[i] ? "1px solid rgba(46,155,99,0.55)" : "1px solid rgba(var(--tx),0.12)",
                     borderRadius: 16,
                     padding: 18,
                     display: "flex",
                     flexDirection: "column",
                     gap: 12,
+                    transition: "border-color .2s",
                   }}
                 >
-                  <div className="mono-label">{when} · {venue}</div>
-                  <div style={{ font: '600 16px/1.35 var(--font-inter-tight), sans-serif' }}>
-                    {home} <span style={{ color: "rgba(var(--tx),0.4)" }}>vs</span> {away}
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+                    <span className="mono-label">{when}</span>
+                    {i === BOOST_IX && (
+                      <span style={{ font: '700 11px/1 var(--font-inter-tight), sans-serif', color: "#141310", background: "#C98A00", borderRadius: 999, padding: "5px 10px" }}>
+                        2x BOOST
+                      </span>
+                    )}
                   </div>
+                  <div style={{ font: '700 16.5px/1.35 var(--font-inter-tight), sans-serif' }}>
+                    {home} <span style={{ color: "rgba(var(--tx),0.4)", fontWeight: 500 }}>v</span> {away}
+                  </div>
+                  <div className="mono-label" style={{ marginTop: -6 }}>{venue}</div>
                   <div style={{ display: "flex", gap: 8 }}>
-                    {pickBtn(i, "1", home.split(" ")[0])}
-                    {pickBtn(i, "X", "Draw")}
-                    {pickBtn(i, "2", away.split(" ")[0])}
+                    {(["1", "X", "2"] as Pick[]).map((p, j) => {
+                      const active = picks[i] === p;
+                      return (
+                        <button
+                          key={p}
+                          type="button"
+                          onClick={() => setPick(i, p)}
+                          disabled={locked}
+                          style={{
+                            flex: 1,
+                            cursor: locked ? "default" : "pointer",
+                            borderRadius: 12,
+                            padding: "10px 0 8px",
+                            border: active ? "1.5px solid #1B5E3C" : "1px solid rgba(var(--tx),0.16)",
+                            background: active ? "#1B5E3C" : "transparent",
+                            color: active ? "#fff" : "var(--fg)",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            gap: 3,
+                            transition: "all .18s",
+                            opacity: locked && !active ? 0.45 : 1,
+                          }}
+                        >
+                          <span style={{ font: '500 10.5px/1 var(--font-inter-tight), sans-serif', letterSpacing: "0.04em", color: active ? "rgba(255,255,255,0.75)" : "rgba(var(--tx),0.5)" }}>
+                            {j === 0 ? home.split(" ")[0] : j === 1 ? "Draw" : away.split(" ")[0]}
+                          </span>
+                          <span style={{ font: '800 17px/1 var(--font-inter-tight), sans-serif' }}>
+                            {odds[j].toFixed(2)}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <div>
+                    <div style={{ display: "flex", height: 4, borderRadius: 2, overflow: "hidden", gap: 2 }}>
+                      <span style={{ width: `${sent[0]}%`, background: "#2E9B63" }}></span>
+                      <span style={{ width: `${sent[1]}%`, background: "rgba(var(--tx),0.2)" }}></span>
+                      <span style={{ width: `${sent[2]}%`, background: "#C98A00" }}></span>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginTop: 5 }}>
+                      <span style={{ font: '500 10.5px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.45)" }}>{sent[0]}%</span>
+                      <span style={{ font: '500 10.5px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.45)" }}>{sent[1]}%</span>
+                      <span style={{ font: '500 10.5px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.45)" }}>{sent[2]}%</span>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-            {pickCount === FIXTURES.length && (
-              <div className="mono-label gold" style={{ color: "#C98A00", marginTop: 16 }}>
-                All picks in. Good luck this weekend, results settle Sunday 18:00.
-              </div>
+              );
+            })}
+          </div>
+
+          {/* pick slip */}
+          <div
+            style={{
+              marginTop: 16,
+              borderRadius: 14,
+              border: pickCount > 0 ? "1px solid rgba(46,155,99,0.5)" : "1px dashed rgba(var(--tx),0.2)",
+              background: pickCount > 0 ? "rgba(46,155,99,0.08)" : "transparent",
+              padding: "14px 18px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: 12,
+            }}
+          >
+            {locked ? (
+              <>
+                <span style={{ font: '700 15px/1.3 var(--font-inter-tight), sans-serif', color: "#2E9B63" }}>
+                  Picks locked. Good luck!
+                </span>
+                <span className="mono-label">Settles Sun 18:00 · potential +{potential.toLocaleString()} pts</span>
+              </>
+            ) : (
+              <>
+                <div style={{ display: "flex", gap: 18, alignItems: "baseline", flexWrap: "wrap" }}>
+                  <span style={{ font: '700 15px/1 var(--font-inter-tight), sans-serif' }}>
+                    Slip · {pickCount}/{FIXTURES.length}
+                  </span>
+                  {pickCount > 0 && (
+                    <>
+                      <span className="mono-label">Combined {combined.toFixed(2)}x</span>
+                      <span style={{ font: '800 16px/1 var(--font-inter-tight), sans-serif' }} className="gold">
+                        +{potential.toLocaleString()} pts
+                      </span>
+                    </>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  disabled={pickCount === 0}
+                  onClick={() => setLocked(true)}
+                  style={{
+                    background: pickCount > 0 ? "#1B5E3C" : "rgba(var(--tx),0.08)",
+                    color: pickCount > 0 ? "#fff" : "rgba(var(--tx),0.4)",
+                    border: "none",
+                    borderRadius: 999,
+                    padding: "12px 26px",
+                    font: '700 14px/1 var(--font-inter-tight), sans-serif',
+                    cursor: pickCount > 0 ? "pointer" : "default",
+                  }}
+                >
+                  Confirm picks
+                </button>
+              </>
             )}
           </div>
         </div>
