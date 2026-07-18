@@ -30,7 +30,11 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "fixtures.title": { en: "This weekend", sw: "Wikendi hii" },
   "fixtures.cta": { en: "Play predictions", sw: "Cheza ubashiri" },
   // impact
-  "impact.lead": { en: "Kenya's grassroots game, by the numbers.", sw: "Soka ya mashinani ya Kenya, kwa takwimu." },
+  "impact.live": { en: "clubs live and growing", sw: "klabu ziko hewani na zinakua" },
+  "impact.detail": {
+    en: "On the map in 10 counties, headed for all 47. The 500-club target is the destination, not the starting line.",
+    sw: "Tuko kwenye ramani katika kaunti 10, tukielekea zote 47. Lengo la klabu 500 ni safari, sio mwanzo.",
+  },
   "impact.clubs": { en: "Community clubs", sw: "Klabu za jamii" },
   "impact.counties": { en: "Counties", sw: "Kaunti" },
   "impact.regions": { en: "Regions", sw: "Mikoa" },
@@ -111,6 +115,12 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "cookie.decline": { en: "Decline", sw: "Kataa" },
   // mobile CTA
   "cta.join": { en: "Join your club", sw: "Jiunge na klabu yako" },
+  // my club
+  "myclub.q": { en: "Which club do you support?", sw: "Unashabikia klabu gani?" },
+  "myclub.hint": { en: "Pick your club and we'll keep it front and centre.", sw: "Chagua klabu yako, tutaiweka mbele kila wakati." },
+  "myclub.yours": { en: "Your club", sw: "Klabu yako" },
+  "myclub.change": { en: "Change", sw: "Badilisha" },
+  "myclub.visit": { en: "Visit club site", sw: "Tembelea tovuti ya klabu" },
 };
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (k: string) => string };

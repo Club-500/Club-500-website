@@ -69,8 +69,10 @@ export default function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    document.body.classList.toggle("nav-open", open);
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("nav-open");
     };
   }, [open]);
 
@@ -204,7 +206,7 @@ export default function SiteHeader() {
           href="/"
           style={{
             font: '600 16px/1 var(--font-inter-tight), sans-serif',
-            color: pathname === "/" ? "#C98A00" : "#fff",
+            color: pathname === "/" ? "#C98A00" : "var(--fg)",
             padding: "14px 16px",
             borderRadius: 12,
             background: pathname === "/" ? "rgba(201,138,0,0.12)" : "transparent",
@@ -220,7 +222,7 @@ export default function SiteHeader() {
               href={href}
               style={{
                 font: '600 16px/1 var(--font-inter-tight), sans-serif',
-                color: active ? "#C98A00" : "#fff",
+                color: active ? "#C98A00" : "var(--fg)",
                 padding: "14px 16px",
                 borderRadius: 12,
                 background: active ? "rgba(201,138,0,0.12)" : "transparent",
@@ -257,7 +259,7 @@ export default function SiteHeader() {
               href={href}
               style={{
                 font: '600 16px/1 var(--font-inter-tight), sans-serif',
-                color: active ? "#C98A00" : "#fff",
+                color: active ? "#C98A00" : "var(--fg)",
                 padding: "14px 16px",
                 borderRadius: 12,
                 background: active ? "rgba(201,138,0,0.12)" : "transparent",
@@ -267,16 +269,16 @@ export default function SiteHeader() {
             </Link>
           );
         })}
-        <div style={{ marginTop: 14 }}>
-          <ThemeToggle big />
+        <div style={{ display: "flex", gap: 10, marginTop: 14, alignItems: "stretch" }}>
+          <Link
+            href="/login"
+            className="pill-ghost"
+            style={{ justifyContent: "center", padding: "15px 0", flex: 1 }}
+          >
+            {t("nav.signin")}
+          </Link>
+          <ThemeToggle />
         </div>
-        <Link
-          href="/login"
-          className="pill-ghost"
-          style={{ justifyContent: "center", marginTop: 10, padding: "15px 0" }}
-        >
-          {t("nav.signin")}
-        </Link>
       </nav>
     </aside>
     </>

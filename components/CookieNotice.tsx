@@ -27,6 +27,7 @@ export default function CookieNotice() {
 
   return (
     <div
+      className="cookie-card"
       role="dialog"
       aria-label="Cookie notice"
       style={{

@@ -79,6 +79,28 @@ export default function NewsroomPage() {
           </div>
         )}
 
+        {list.length === 0 && (
+          <div className="glass rv in" style={{ padding: "clamp(28px, 5vw, 48px)", textAlign: "center" }}>
+            <div style={{ font: '700 20px/1.3 var(--font-inter-tight), sans-serif', marginBottom: 8 }}>
+              No stories here yet
+            </div>
+            <p style={{ margin: "0 auto 20px", maxWidth: 420, font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>
+              Nothing matches those filters right now. New reports land from
+              every region each week.
+            </p>
+            <button
+              className="pill-ghost"
+              type="button"
+              onClick={() => {
+                setFormat("All");
+                setRegion("All");
+              }}
+            >
+              Show all stories
+            </button>
+          </div>
+        )}
+
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
           {list.slice(1).map(([r, f, title, byline], i) => (
             <div key={title} className={"glass club-card rv rv-d" + (i % 3)} style={{ padding: 26, display: "flex", flexDirection: "column", gap: 18 }}>

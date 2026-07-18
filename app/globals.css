@@ -770,28 +770,6 @@ textarea {
   animation: shimmer 1.4s linear infinite;
 }
 
-/* ---- sticky mobile CTA (homepage) ---- */
-.mobile-cta {
-  display: none;
-  position: fixed;
-  left: 12px;
-  right: 12px;
-  bottom: max(12px, env(safe-area-inset-bottom));
-  z-index: 60;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: #1B5E3C;
-  color: #fff;
-  border-radius: 999px;
-  padding: 16px 0;
-  font: 700 15px/1 var(--font-inter-tight), sans-serif;
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.4);
-}
-.mobile-cta:hover { color: #fff; }
-@media (max-width: 767px) {
-  .mobile-cta { display: flex; }
-}
 
 
 /* ---- mobile experience pass ---- */
@@ -808,14 +786,6 @@ textarea {
   select,
   textarea {
     font-size: 16px !important;
-  }
-  /* clear the sticky Join CTA so footer content is never covered */
-  footer {
-    padding-bottom: 104px !important;
-  }
-  /* hero role buttons clear the sticky CTA at the top of the homepage */
-  .hero-content {
-    padding-bottom: 110px !important;
   }
   /* comfortable tap targets for pills on touch */
   .tag-pill {
@@ -834,4 +804,10 @@ textarea {
     width: 60px;
     height: 49px;
   }
+}
+
+
+/* while the mobile drawer is open, floating overlays get out of the way */
+body.nav-open .cookie-card {
+  display: none !important;
 }

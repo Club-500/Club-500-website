@@ -14,9 +14,32 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  title: "Club500 | An Ubuntu Initiative",
+  metadataBase: new URL("https://club-500.vercel.app"),
+  title: "Club500 | Grassroots to Greatness",
   description:
     "500 community football clubs across Kenya's 47 counties, organized into 8 regions. A sustainable, investment-ready grassroots football ecosystem.",
+  manifest: "/manifest.json",
+  openGraph: {
+    title: "Club500 | Grassroots to Greatness",
+    description:
+      "500 community football clubs. 47 counties. One national platform giving Kenyan football the structure it deserves.",
+    url: "https://club-500.vercel.app",
+    siteName: "Club500",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Club500. Grassroots to Greatness." }],
+    locale: "en_KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Club500 | Grassroots to Greatness",
+    description: "500 community football clubs. 47 counties. One national platform.",
+    images: ["/og.png"],
+  },
+  appleWebApp: { capable: true, title: "Club500", statusBarStyle: "black-translucent" },
+};
+
+export const viewport = {
+  themeColor: "#1B5E3C",
 };
 
 export default function RootLayout({

@@ -50,3 +50,17 @@ export const LIVE_COUNTIES = new Set([
   "Nakuru", "Bungoma", "Kajiado", "Kiambu", "Kericho", "Mombasa", "Kakamega",
   "Nairobi", "Bomet", "Kisumu",
 ]);
+
+export const RESULTS: [home: string, hs: number, away: string, as_: number][] = [
+  ["Kivumbini United", 2, "Matobo Central", 1],
+  ["Uhola FC", 0, "Shimanzi FC", 0],
+  ["Goodhope FC", 1, "Kamaliza FC", 3],
+];
+
+export const STANDINGS: [club: string, p: number, w: number, d: number, l: number, pts: number][] = [
+  ["Kapkatet Youth", 6, 5, 1, 0, 16],
+  ["Kivumbini United", 6, 4, 1, 1, 13],
+  ["Kamaliza FC", 6, 3, 2, 1, 11],
+  ["Shimanzi FC", 6, 2, 2, 2, 8],
+  ["Uhola FC", 6, 1, 2, 3, 5],
+];

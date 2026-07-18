@@ -4,7 +4,7 @@ import { useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import TopReferrers from "@/components/home/TopReferrers";
-import { FIXTURES } from "@/lib/data";
+import { FIXTURES, RESULTS, STANDINGS } from "@/lib/data";
 import ReferralShare from "@/components/ReferralShare";
 
 const MVPS = ["Kiprop Kirui (Kapkatet Youth)", "Salim Juma (Shimanzi FC)", "Mary Achieng (Uhola FC)"];
@@ -83,6 +83,36 @@ export default function FanZonePage() {
           Follow your club. Get real match updates, stories and
           behind-the-scenes access, and earn when you bring friends along.
         </p>
+        {/* Results + standings */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
+          <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 28px)" }}>
+            <div className="mono-label" style={{ marginBottom: 16 }}>Last weekend</div>
+            {RESULTS.map(([h, hs, a, as_], i) => (
+              <div key={h} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderBottom: i < RESULTS.length - 1 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
+                <span style={{ flex: 1, textAlign: "right", font: '600 14.5px/1.3 var(--font-inter-tight), sans-serif' }}>{h}</span>
+                <span style={{ flexShrink: 0, background: "rgba(var(--tx),0.08)", borderRadius: 8, padding: "7px 12px", font: '800 15px/1 var(--font-inter-tight), sans-serif' }}>
+                  {hs} - {as_}
+                </span>
+                <span style={{ flex: 1, font: '600 14.5px/1.3 var(--font-inter-tight), sans-serif' }}>{a}</span>
+              </div>
+            ))}
+          </div>
+          <div className="glass rv rv-d1" style={{ padding: "clamp(20px, 3vw, 28px)" }}>
+            <div className="mono-label" style={{ marginBottom: 14 }}>Standings · Pilot league</div>
+            <div style={{ display: "grid", gridTemplateColumns: "24px 1fr repeat(4, 30px) 40px", gap: 4, font: '600 11px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.45)", padding: "0 0 8px" }}>
+              <span>#</span><span>Club</span><span>P</span><span>W</span><span>D</span><span>L</span><span style={{ textAlign: "right" }}>Pts</span>
+            </div>
+            {STANDINGS.map(([club, p, w, dd, l, pts], i) => (
+              <div key={club} style={{ display: "grid", gridTemplateColumns: "24px 1fr repeat(4, 30px) 40px", gap: 4, alignItems: "center", padding: "9px 0", borderTop: "1px solid rgba(var(--tx),0.08)", font: '500 13.5px/1.2 var(--font-inter-tight), sans-serif' }}>
+                <span style={{ font: '700 12px/1 var(--font-inter-tight), sans-serif', color: i === 0 ? "#C98A00" : "rgba(var(--tx),0.45)" }}>{i + 1}</span>
+                <span style={{ fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{club}</span>
+                <span>{p}</span><span>{w}</span><span>{dd}</span><span>{l}</span>
+                <span style={{ textAlign: "right", font: '800 14px/1 var(--font-inter-tight), sans-serif' }}>{pts}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Predictions market */}
         <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)" }}>
           <div

@@ -5,51 +5,48 @@ import { useLang } from "@/lib/i18n";
 
 export default function ImpactStrip() {
   const { t } = useLang();
-  const STATS: [number, string, string][] = [
-    [500, "+", t("impact.clubs")],
-    [47, "", t("impact.counties")],
-    [8, "", t("impact.regions")],
-    [5000, "+", t("impact.jobs")],
-  ];
   return (
     <section style={{ padding: "56px clamp(20px, 4vw, 32px) 8px", maxWidth: 1280, margin: "0 auto" }}>
-      <div className="mono-label rv" style={{ marginBottom: 20 }}>
-        {t("impact.lead")}
-      </div>
       <div
-        className="rv rv-d1"
+        className="glass rv"
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(135px, 1fr))",
-          gap: 14,
+          borderLeft: "3px solid #1B5E3C",
+          padding: "clamp(22px, 3.5vw, 34px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "clamp(18px, 3vw, 40px)",
         }}
       >
-        {STATS.map(([v, suffix, l]) => (
+        <div style={{ flex: "1 1 320px" }}>
           <div
-            key={l}
-            className="glass"
-            style={{ padding: "24px 22px", borderRadius: 18, borderTop: "3px solid #1B5E3C" }}
+            style={{
+              font: '800 clamp(1.5rem, 3vw, 2.2rem)/1.2 var(--font-inter-tight), sans-serif',
+              letterSpacing: "-0.02em",
+            }}
           >
-            <div
-              className="gold"
-              style={{ font: '700 clamp(1.8rem, 3vw, 2.5rem)/1 var(--font-inter-tight), sans-serif', letterSpacing: "-0.02em" }}
-            >
-              <CountUp value={v} suffix={suffix} />
-            </div>
-            <div className="mono-label" style={{ marginTop: 10 }}>
-              {l}
-            </div>
+            <span className="gold">
+              <CountUp value={33} />
+            </span>{" "}
+            {t("impact.live")}
           </div>
-        ))}
-      </div>
-      <div
-        className="rv rv-d2"
-        style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 16 }}
-      >
-        <span className="live-dot" style={{ flexShrink: 0 }}></span>
-        <span style={{ font: '500 13.5px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>
-          {t("impact.latest")}
-        </span>
+          <div
+            style={{
+              marginTop: 8,
+              font: '500 15px/1.5 var(--font-inter-tight), sans-serif',
+              color: "rgba(var(--tx),0.6)",
+            }}
+          >
+            {t("impact.detail")}
+          </div>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span className="live-dot" style={{ flexShrink: 0 }}></span>
+          <span style={{ font: '500 13.5px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 340 }}>
+            {t("impact.latest")}
+          </span>
+        </div>
       </div>
     </section>
   );
