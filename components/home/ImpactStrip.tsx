@@ -20,7 +20,7 @@ export default function ImpactStrip() {
         className="rv rv-d1"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(135px, 1fr))",
           gap: 14,
         }}
       >

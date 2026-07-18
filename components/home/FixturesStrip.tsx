@@ -14,6 +14,7 @@ export default function FixturesStrip() {
       }}
     >
       <div
+        className="no-scrollbar"
         style={{
           maxWidth: 1280,
           margin: "0 auto",
@@ -21,7 +22,6 @@ export default function FixturesStrip() {
           alignItems: "center",
           gap: 18,
           overflowX: "auto",
-          scrollbarWidth: "none",
         }}
       >
         <span

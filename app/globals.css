@@ -792,3 +792,46 @@ textarea {
 @media (max-width: 767px) {
   .mobile-cta { display: flex; }
 }
+
+
+/* ---- mobile experience pass ---- */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 767px) {
+  /* iOS Safari zooms into inputs under 16px; keep forms zoom-free */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+  /* clear the sticky Join CTA so footer content is never covered */
+  footer {
+    padding-bottom: 104px !important;
+  }
+  /* hero role buttons clear the sticky CTA at the top of the homepage */
+  .hero-content {
+    padding-bottom: 110px !important;
+  }
+  /* comfortable tap targets for pills on touch */
+  .tag-pill {
+    padding: 10px 16px;
+  }
+  /* stories dropdown never renders on mobile, but keep drawer scroll smooth */
+  .site-nav-drawer {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+@media (max-width: 400px) {
+  .goal-strip {
+    height: 84px;
+  }
+  .gs-goal svg {
+    width: 60px;
+    height: 49px;
+  }
+}

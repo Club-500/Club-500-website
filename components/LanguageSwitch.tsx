@@ -17,7 +17,7 @@ export default function LanguageSwitch() {
   });
 
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
       <span style={{ display: "inline-flex", alignItems: "center", gap: 7, font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
           <circle cx="12" cy="12" r="10" />
