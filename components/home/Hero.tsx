@@ -128,7 +128,7 @@ export default function Hero() {
           giving Kenyan football the structure it deserves.
         </p>
         <div
-          className="hero-up hd-3"
+          className="hero-up hd-3 hero-roles"
           style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}
         >
           <Link href="/clubs/apply">

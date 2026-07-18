@@ -24,10 +24,10 @@ export default function StoriesTeaser() {
             key={title}
             href={href}
             className={"glass club-card rv rv-d" + i}
-            style={{ padding: 26, display: "flex", flexDirection: "column", gap: 12, color: "#fff" }}
+            style={{ padding: 26, display: "flex", flexDirection: "column", gap: 12, color: "var(--fg)" }}
           >
             <div style={{ font: '600 19px/1.2 var(--font-inter-tight), sans-serif' }}>{title}</div>
-            <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)", flex: 1 }}>
+            <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", flex: 1 }}>
               {desc}
             </p>
             <span className="gold" style={{ font: '600 14px/1 var(--font-inter-tight), sans-serif' }}>

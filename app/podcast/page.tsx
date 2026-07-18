@@ -56,7 +56,7 @@ export default function PodcastPage() {
           style={{
             borderRadius: 24,
             overflow: "hidden",
-            border: "1px solid rgba(255,255,255,0.1)",
+            border: "1px solid rgba(var(--tx),0.1)",
             aspectRatio: "16/9",
             maxWidth: 860,
           }}
@@ -83,7 +83,7 @@ export default function PodcastPage() {
               <span className="tag-pill gold-pill" style={{ alignSelf: "flex-start" }}>{num}</span>
               <div style={{ font: '600 17px/1.35 var(--font-inter-tight), sans-serif' }}>{title}</div>
               <div className="mono-label">Guest: {guest}</div>
-              <p style={{ margin: 0, font: '400 13.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)", flex: 1 }}>
+              <p style={{ margin: 0, font: '400 13.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", flex: 1 }}>
                 {summary}
               </p>
               <button className="pill-ghost" type="button" style={{ alignSelf: "flex-start", padding: "10px 20px" }}>

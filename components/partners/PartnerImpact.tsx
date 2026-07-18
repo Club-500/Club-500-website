@@ -17,8 +17,8 @@ export default function PartnerImpact() {
           <div key={title} className={"glass club-card rv rv-d" + i} style={{ padding: 30, display: "flex", flexDirection: "column", gap: 18 }}>
             <span className="tag-pill gold-pill" style={{ alignSelf: "flex-start" }}>{tier}</span>
             <div className="display" style={{ fontSize: "clamp(1.4rem, 2.4vw, 1.9rem)" }}>{title}</div>
-            <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)", flex: 1 }}>{desc}</p>
-            <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 16 }}>
+            <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", flex: 1 }}>{desc}</p>
+            <div style={{ borderTop: "1px solid rgba(var(--tx),0.1)", paddingTop: 16 }}>
               <div className="display gold" style={{ fontSize: "2.2rem" }}>{stat}</div>
               <div className="mono-label" style={{ marginTop: 4 }}>{statLabel}</div>
             </div>

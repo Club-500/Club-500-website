@@ -19,10 +19,10 @@ type Application = {
 };
 
 const inputStyle: React.CSSProperties = {
-  background: "rgba(255,255,255,0.05)",
-  border: "1px solid rgba(255,255,255,0.15)",
+  background: "rgba(var(--tx),0.05)",
+  border: "1px solid rgba(var(--tx),0.15)",
   borderRadius: 12,
-  color: "#fff",
+  color: "var(--fg)",
   font: '500 15px/1.4 var(--font-inter-tight), sans-serif',
   padding: "14px 16px",
   outline: "none",
@@ -37,7 +37,7 @@ const errStyle: React.CSSProperties = {
 function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
   return (
     <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <span style={{ font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.65)" }}>
+      <span style={{ font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)" }}>
         {label}
       </span>
       {children}
@@ -106,7 +106,7 @@ export default function ClubApplyPage() {
           {!loaded ? null : done ? (
             <div style={{ textAlign: "center", padding: "24px 0" }}>
               <h2 className="display gold" style={{ margin: "0 0 10px" }}>Application received</h2>
-              <p style={{ margin: "0 auto 24px", maxWidth: 480, font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.65)" }}>
+              <p style={{ margin: "0 auto 24px", maxWidth: 480, font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)" }}>
                 {done.club} is in the queue for {done.county} county. The
                 onboarding team reviews applications every week and will reach
                 out on {done.email}.
@@ -137,7 +137,7 @@ export default function ClubApplyPage() {
                   <select value={form.region} onChange={(e) => setForm({ ...form, region: e.target.value })} style={{ ...(errors.region ? errStyle : inputStyle), appearance: "none" }}>
                     <option value="">Select…</option>
                     {REGIONS.map((r) => (
-                      <option key={r} value={r} style={{ background: "#171a18" }}>{r}</option>
+                      <option key={r} value={r} style={{ background: "var(--panel)" }}>{r}</option>
                     ))}
                   </select>
                 </Field>
@@ -172,17 +172,17 @@ export default function ClubApplyPage() {
         <div className="glass rv rv-d1" style={{ padding: "clamp(22px, 3.5vw, 32px)" }}>
           <div className="mono-label" style={{ marginBottom: 16 }}>How joining works</div>
           {STEPS.map(([t, d], i) => (
-            <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+            <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
               <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#C98A00", width: 24, flexShrink: 0 }}>
                 {i + 1}
               </span>
               <div>
                 <div style={{ font: '600 15px/1.3 var(--font-inter-tight), sans-serif' }}>{t}</div>
-                <p style={{ margin: "4px 0 0", font: '400 13.5px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>{d}</p>
+                <p style={{ margin: "4px 0 0", font: '400 13.5px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>{d}</p>
               </div>
             </div>
           ))}
-          <p style={{ margin: "18px 0 0", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>
+          <p style={{ margin: "18px 0 0", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>
             New clubs join every month. 33 live today, 500 on the way.
           </p>
         </div>

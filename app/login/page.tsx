@@ -4,10 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 
 const inputStyle: React.CSSProperties = {
-  background: "rgba(255,255,255,0.05)",
-  border: "1px solid rgba(255,255,255,0.15)",
+  background: "rgba(var(--tx),0.05)",
+  border: "1px solid rgba(var(--tx),0.15)",
   borderRadius: 12,
-  color: "#fff",
+  color: "var(--fg)",
   font: '500 15px/1 var(--font-inter-tight), sans-serif',
   padding: "15px 18px",
   outline: "none",
@@ -22,9 +22,9 @@ const socialBtn: React.CSSProperties = {
   width: "100%",
   padding: "13px 0",
   borderRadius: 12,
-  border: "1px solid rgba(255,255,255,0.18)",
-  background: "rgba(255,255,255,0.04)",
-  color: "#fff",
+  border: "1px solid rgba(var(--tx),0.18)",
+  background: "rgba(var(--tx),0.04)",
+  color: "var(--fg)",
   font: '600 14px/1 var(--font-inter-tight), sans-serif',
   cursor: "pointer",
   transition: "background .2s, border-color .2s",
@@ -87,7 +87,7 @@ export default function LoginPage() {
           style={{
             margin: "0 0 26px",
             font: '400 14px/1.6 var(--font-inter-tight), sans-serif',
-            color: "rgba(255,255,255,0.55)",
+            color: "rgba(var(--tx),0.55)",
           }}
         >
           {isSignup
@@ -105,11 +105,11 @@ export default function LoginPage() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 14, margin: "0 0 20px" }}>
-          <span style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.12)" }} />
-          <span style={{ font: '500 12px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.45)" }}>
+          <span style={{ flex: 1, height: 1, background: "rgba(var(--tx),0.12)" }} />
+          <span style={{ font: '500 12px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.45)" }}>
             or with email
           </span>
-          <span style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.12)" }} />
+          <span style={{ flex: 1, height: 1, background: "rgba(var(--tx),0.12)" }} />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 12, textAlign: "left" }}>
@@ -130,7 +130,7 @@ export default function LoginPage() {
 
         {!isSignup && (
           <p style={{ margin: "16px 0 0", font: '400 13px/1.5 var(--font-inter-tight), sans-serif' }}>
-            <a href="#" style={{ color: "rgba(255,255,255,0.5)" }}>Forgot password?</a>
+            <a href="#" style={{ color: "rgba(var(--tx),0.5)" }}>Forgot password?</a>
           </p>
         )}
 
@@ -139,7 +139,7 @@ export default function LoginPage() {
             style={{
               margin: "22px 0 0",
               font: '400 14px/1.5 var(--font-inter-tight), sans-serif',
-              color: "rgba(255,255,255,0.55)",
+              color: "rgba(var(--tx),0.55)",
             }}
           >
             Already have an account?{" "}
@@ -163,13 +163,13 @@ export default function LoginPage() {
             style={{
               marginTop: 22,
               paddingTop: 18,
-              borderTop: "1px solid rgba(255,255,255,0.1)",
+              borderTop: "1px solid rgba(var(--tx),0.1)",
               display: "flex",
               flexDirection: "column",
               gap: 10,
             }}
           >
-            <span style={{ font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.5)" }}>
+            <span style={{ font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.5)" }}>
               New here?
             </span>
             <button

@@ -17,10 +17,10 @@ type Offer = {
 };
 
 const inputStyle: React.CSSProperties = {
-  background: "rgba(255,255,255,0.05)",
-  border: "1px solid rgba(255,255,255,0.15)",
+  background: "rgba(var(--tx),0.05)",
+  border: "1px solid rgba(var(--tx),0.15)",
   borderRadius: 12,
-  color: "#fff",
+  color: "var(--fg)",
   font: '500 15px/1.4 var(--font-inter-tight), sans-serif',
   padding: "14px 16px",
   outline: "none",
@@ -35,7 +35,7 @@ const errStyle: React.CSSProperties = {
 function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
   return (
     <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <span style={{ font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.65)" }}>
+      <span style={{ font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)" }}>
         {label}
       </span>
       {children}
@@ -93,7 +93,7 @@ export default function VolunteerPage() {
             margin: "0 0 32px",
             maxWidth: 680,
             font: '400 16px/1.65 var(--font-inter-tight), sans-serif',
-            color: "rgba(255,255,255,0.7)",
+            color: "rgba(var(--tx),0.7)",
           }}
         >
           Club500 runs on people who show up: coaches, designers, developers,
@@ -103,7 +103,7 @@ export default function VolunteerPage() {
         {!loaded ? null : offer ? (
           <div className="glass rv in" style={{ padding: "clamp(28px, 4vw, 44px)", textAlign: "center" }}>
             <h2 className="display gold" style={{ margin: "0 0 10px" }}>Asante, {offer.name.split(" ")[0]}!</h2>
-            <p style={{ margin: "0 auto 24px", maxWidth: 520, font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.65)" }}>
+            <p style={{ margin: "0 auto 24px", maxWidth: 520, font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)" }}>
               Your offer to help with {offer.area.toLowerCase()} is in. The team
               matches volunteers to clubs and projects every week; you&apos;ll
               hear from us on {offer.email}.
@@ -134,8 +134,8 @@ export default function VolunteerPage() {
                   style={{
                     cursor: "pointer",
                     background: area === a ? "#1B5E3C" : "transparent",
-                    color: area === a ? "#fff" : "rgba(255,255,255,0.75)",
-                    borderColor: area === a ? "#1B5E3C" : "rgba(255,255,255,0.18)",
+                    color: area === a ? "#fff" : "rgba(var(--tx),0.75)",
+                    borderColor: area === a ? "#1B5E3C" : "rgba(var(--tx),0.18)",
                     padding: "10px 18px",
                   }}
                 >

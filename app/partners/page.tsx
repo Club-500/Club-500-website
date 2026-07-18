@@ -17,7 +17,7 @@ export default function PartnersPage() {
         Back 500 clubs. Reach a <span className="gold">nation</span>.
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column", gap: 56 }}>
-        <p className="rv" style={{ margin: 0, maxWidth: 700, font: '400 clamp(1.2rem, 2vw, 1.6rem)/1.5 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.8)" }}>
+        <p className="rv" style={{ margin: 0, maxWidth: 700, font: '400 clamp(1.2rem, 2vw, 1.6rem)/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.8)" }}>
           Four tiers, one inheritance system: sponsor a county and your brand automatically appears on every club microsite inside it. No per-club negotiation, ever.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
@@ -25,13 +25,13 @@ export default function PartnersPage() {
             <div key={badge} className={"glass club-card rv rv-d" + i} style={{ padding: 30, display: "flex", flexDirection: "column", gap: 16, borderTop: `3px solid ${color}` }}>
               <span className="tag-pill" style={{ alignSelf: "flex-start", borderColor: color, color }}>{badge}</span>
               <div style={{ font: '700 22px/1.2 var(--font-inter-tight), sans-serif' }}>{reach}</div>
-              <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)", flex: 1 }}>{desc}</p>
+              <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", flex: 1 }}>{desc}</p>
             </div>
           ))}
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 14 }} className="rv">
           {["National sponsor", "Regional sponsor", "County sponsor", "Pillar sponsor", "Your brand here"].map((l) => (
-            <div key={l} style={{ border: "1.5px dashed rgba(255,255,255,0.25)", borderRadius: 16, height: 90, display: "flex", alignItems: "center", justifyContent: "center", padding: 12, textAlign: "center" }}>
+            <div key={l} style={{ border: "1.5px dashed rgba(var(--tx),0.25)", borderRadius: 16, height: 90, display: "flex", alignItems: "center", justifyContent: "center", padding: 12, textAlign: "center" }}>
               <span className="mono-label">{l}</span>
             </div>
           ))}

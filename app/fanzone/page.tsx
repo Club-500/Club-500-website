@@ -51,9 +51,9 @@ export default function FanZonePage() {
           cursor: "pointer",
           borderRadius: 10,
           padding: "10px 0",
-          border: active ? "1.5px solid #C98A00" : "1px solid rgba(255,255,255,0.15)",
+          border: active ? "1.5px solid #C98A00" : "1px solid rgba(var(--tx),0.15)",
           background: active ? "rgba(201,138,0,0.15)" : "transparent",
-          color: active ? "#C98A00" : "rgba(255,255,255,0.8)",
+          color: active ? "#C98A00" : "rgba(var(--tx),0.8)",
           font: '600 13px/1 var(--font-inter-tight), sans-serif',
           transition: "all .2s",
         }}
@@ -85,7 +85,7 @@ export default function FanZonePage() {
             margin: 0,
             maxWidth: 640,
             font: '400 16px/1.65 var(--font-inter-tight), sans-serif',
-            color: "rgba(255,255,255,0.72)",
+            color: "rgba(var(--tx),0.72)",
           }}
         >
           Follow your club. Get real match updates, stories and
@@ -106,7 +106,7 @@ export default function FanZonePage() {
             >
               <div>
                 <h2 className="display" style={{ margin: 0 }}>Matchday predictions</h2>
-                <p style={{ margin: "6px 0 0", font: '400 14px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)" }}>
+                <p style={{ margin: "6px 0 0", font: '400 14px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
                   Call every result this weekend. 10 fan points per correct pick.
                 </p>
               </div>
@@ -117,7 +117,7 @@ export default function FanZonePage() {
                 <div
                   key={home}
                   style={{
-                    border: "1px solid rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(var(--tx),0.12)",
                     borderRadius: 16,
                     padding: 18,
                     display: "flex",
@@ -127,7 +127,7 @@ export default function FanZonePage() {
                 >
                   <div className="mono-label">{when} · {venue}</div>
                   <div style={{ font: '600 16px/1.35 var(--font-inter-tight), sans-serif' }}>
-                    {home} <span style={{ color: "rgba(255,255,255,0.4)" }}>vs</span> {away}
+                    {home} <span style={{ color: "rgba(var(--tx),0.4)" }}>vs</span> {away}
                   </div>
                   <div style={{ display: "flex", gap: 8 }}>
                     {pickBtn(i, "1", home.split(" ")[0])}
@@ -150,7 +150,7 @@ export default function FanZonePage() {
           <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)", display: "flex", flexDirection: "column", gap: 12 }}>
             <span className="tag-pill gold-pill" style={{ alignSelf: "flex-start" }}>Season One</span>
             <h2 className="display" style={{ margin: 0 }}>Club500 Fantasy League</h2>
-            <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)", flex: 1 }}>
+            <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", flex: 1 }}>
               Build your XI from real players across all onboarded clubs. Weekly
               scores from real match data, county derbies, and a national
               table. Launching with the national season.
@@ -180,7 +180,7 @@ export default function FanZonePage() {
             <button
               className="pill-btn"
               type="button"
-              style={{ background: "#0a0a0a", color: "#fff", alignSelf: "flex-start" }}
+              style={{ background: "#0a0a0a", color: "var(--fg)", alignSelf: "flex-start" }}
             >
               <span className="txt">Upload your moment</span>
               <span className="circ" style={{ background: "#fff" }}>
@@ -207,9 +207,9 @@ export default function FanZonePage() {
                     cursor: "pointer",
                     borderRadius: 14,
                     padding: "16px 20px",
-                    border: voted === m ? "1.5px solid #C98A00" : "1px solid rgba(255,255,255,0.15)",
+                    border: voted === m ? "1.5px solid #C98A00" : "1px solid rgba(var(--tx),0.15)",
                     background: voted === m ? "rgba(201,138,0,0.12)" : "transparent",
-                    color: "#fff",
+                    color: "var(--fg)",
                     font: '500 15px/1.3 var(--font-inter-tight), sans-serif',
                     transition: "all .2s",
                   }}
@@ -234,13 +234,13 @@ export default function FanZonePage() {
                   alignItems: "baseline",
                   gap: 16,
                   padding: "14px 0",
-                  borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.1)" : "none",
+                  borderBottom: i < 3 ? "1px solid rgba(var(--tx),0.1)" : "none",
                 }}
               >
                 <span
                   style={{
                     font: '700 1rem/1 var(--font-inter-tight), sans-serif',
-                    color: i === 0 ? "#C98A00" : "rgba(255,255,255,0.3)",
+                    color: i === 0 ? "#C98A00" : "rgba(var(--tx),0.3)",
                     width: 30,
                   }}
                 >
@@ -263,12 +263,12 @@ export default function FanZonePage() {
           <h2 className="display" style={{ margin: "0 0 8px" }}>
             Earn with your <span className="gold">referral link</span>
           </h2>
-          <p style={{ margin: "0 0 24px", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)", maxWidth: 560 }}>
+          <p style={{ margin: "0 0 24px", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 560 }}>
             Every fan gets a personal referral link. Share it and you earn KES 250
             each time someone joins a club through it, paid straight to your
             phone. Withdraw anytime.
           </p>
-          <p style={{ margin: "-12px 0 24px", maxWidth: 560, font: '500 13.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.5)" }}>
+          <p style={{ margin: "-12px 0 24px", maxWidth: 560, font: '500 13.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.5)" }}>
             How payouts work: you earn a fixed amount each time someone joins
             your club through your link. No recruiting required beyond that,
             no tiers, no catch.

@@ -23,7 +23,7 @@ export default function EventsPage() {
           style={{
             borderRadius: 24,
             overflow: "hidden",
-            border: "1px solid rgba(255,255,255,0.1)",
+            border: "1px solid rgba(var(--tx),0.1)",
             position: "relative",
             aspectRatio: "21/7",
             minHeight: 200,
@@ -35,7 +35,7 @@ export default function EventsPage() {
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.85), transparent 60%)" }} />
           <div style={{ position: "absolute", left: "clamp(18px, 3vw, 28px)", bottom: "clamp(14px, 2.5vw, 22px)", right: "clamp(18px, 3vw, 28px)" }}>
             <span className="tag-pill gold-pill">Next up</span>
-            <div className="display" style={{ marginTop: 10 }}>National Launch Tour</div>
+            <div className="display" style={{ marginTop: 10, color: "#fff" }}>National Launch Tour</div>
           </div>
         </div>
 
@@ -54,7 +54,7 @@ export default function EventsPage() {
                 </div>
               </div>
               <div style={{ font: '600 18px/1.3 var(--font-inter-tight), sans-serif', flex: 1 }}>{title}</div>
-              <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>{desc}</p>
+              <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>{desc}</p>
               <button className="pill-ghost" type="button" style={{ alignSelf: "flex-start", padding: "10px 20px" }}>
                 RSVP
               </button>

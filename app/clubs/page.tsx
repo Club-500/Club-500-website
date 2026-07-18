@@ -62,7 +62,7 @@ export default function ClubsPage() {
             borderRadius: 16,
             padding: "16px 22px",
             marginBottom: 24,
-            color: "#fff",
+            color: "var(--fg)",
           }}
         >
           <span style={{ font: '600 15px/1.4 var(--font-inter-tight), sans-serif' }}>
@@ -82,8 +82,8 @@ export default function ClubsPage() {
               style={{
                 cursor: "pointer",
                 background: region === r ? "#C98A00" : "transparent",
-                color: region === r ? "#0a0a0a" : "rgba(255,255,255,0.75)",
-                borderColor: region === r ? "#C98A00" : "rgba(255,255,255,0.18)",
+                color: region === r ? "#0a0a0a" : "rgba(var(--tx),0.75)",
+                borderColor: region === r ? "#C98A00" : "rgba(var(--tx),0.18)",
               }}
             >
               {r} · {n}
@@ -105,10 +105,10 @@ export default function ClubsPage() {
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search club or county…"
             style={{
-              background: "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.15)",
+              background: "rgba(var(--tx),0.05)",
+              border: "1px solid rgba(var(--tx),0.15)",
               borderRadius: 999,
-              color: "#fff",
+              color: "var(--fg)",
               font: '500 14px/1 var(--font-inter-tight), sans-serif',
               padding: "14px 24px",
               outline: "none",
@@ -133,7 +133,7 @@ export default function ClubsPage() {
               target="_blank"
               rel="noopener noreferrer"
               className={"club-card glass rv rv-d" + (i % 4)}
-              style={{ padding: 20, borderRadius: 20, display: "block", color: "#fff" }}
+              style={{ padding: 20, borderRadius: 20, display: "block", color: "var(--fg)" }}
             >
               <div
                 className="img-wrap"
@@ -141,7 +141,7 @@ export default function ClubsPage() {
                   aspectRatio: "1/1",
                   borderRadius: 14,
                   overflow: "hidden",
-                  background: "#141414",
+                  background: "var(--imgbg)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -170,18 +170,18 @@ export default function ClubsPage() {
             <h2 className="display" style={{ margin: "0 0 6px" }}>
               How <span className="gold">clubs</span> join
             </h2>
-            <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)" }}>
+            <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
               Any community club in Kenya can apply. About 10 clubs are
               onboarded per county.
             </p>
             {CLUB_STEPS.map(([t, d], i) => (
-              <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+              <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
                 <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#C98A00", width: 24, flexShrink: 0 }}>
                   {i + 1}
                 </span>
                 <div>
                   <div style={{ font: '600 15px/1.3 var(--font-inter-tight), sans-serif' }}>{t}</div>
-                  <p style={{ margin: "4px 0 0", font: '400 13.5px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>{d}</p>
+                  <p style={{ margin: "4px 0 0", font: '400 13.5px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>{d}</p>
                 </div>
               </div>
             ))}
@@ -193,18 +193,18 @@ export default function ClubsPage() {
             <h2 className="display" style={{ margin: "0 0 6px" }}>
               How <span className="gold">fans</span> join
             </h2>
-            <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)" }}>
+            <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
               Free for every fan, and your referral link earns you money from
               day one.
             </p>
             {FAN_STEPS.map(([t, d], i) => (
-              <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+              <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
                 <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#C98A00", width: 24, flexShrink: 0 }}>
                   {i + 1}
                 </span>
                 <div>
                   <div style={{ font: '600 15px/1.3 var(--font-inter-tight), sans-serif' }}>{t}</div>
-                  <p style={{ margin: "4px 0 0", font: '400 13.5px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>{d}</p>
+                  <p style={{ margin: "4px 0 0", font: '400 13.5px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>{d}</p>
                 </div>
               </div>
             ))}

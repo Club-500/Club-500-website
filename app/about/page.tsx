@@ -91,11 +91,11 @@ export default function AboutPage() {
             <div
               key={p}
               style={{
-                border: "1px solid rgba(255,255,255,0.12)",
+                border: "1px solid rgba(var(--tx),0.12)",
                 borderRadius: 14,
                 padding: "16px 18px",
                 font: '500 14.5px/1.45 var(--font-inter-tight), sans-serif',
-                color: "rgba(255,255,255,0.75)",
+                color: "rgba(var(--tx),0.75)",
               }}
             >
               {p}
@@ -109,7 +109,7 @@ export default function AboutPage() {
         <h2 className="display rv" style={{ margin: "0 0 8px" }}>
           Instead of asking how clubs survive, we ask how they <span className="gold">thrive</span>
         </h2>
-        <p className="rv" style={{ margin: "8px 0 20px", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)", maxWidth: 620 }}>
+        <p className="rv" style={{ margin: "8px 0 20px", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 620 }}>
           Nine areas of support, one platform:
         </p>
         <div
@@ -121,7 +121,7 @@ export default function AboutPage() {
           }}
         >
           {SUPPORT_AREAS.map((a, i) => (
-            <div key={a} style={{ display: "flex", gap: 12, alignItems: "center", padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+            <div key={a} style={{ display: "flex", gap: 12, alignItems: "center", padding: "12px 0", borderBottom: "1px solid rgba(var(--tx),0.08)" }}>
               <span style={{ font: '700 13px/1 var(--font-inter-tight), sans-serif', color: "#1B5E3C", background: "rgba(46,155,99,0.18)", borderRadius: 8, padding: "6px 9px" }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
@@ -140,7 +140,7 @@ export default function AboutPage() {
           {AUDIENCES.map(([who, what], i) => (
             <div key={who} className={"glass rv rv-d" + (i % 3)} style={{ padding: 24 }}>
               <div style={{ font: '600 16px/1.3 var(--font-inter-tight), sans-serif', marginBottom: 6 }}>{who}</div>
-              <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>{what}</p>
+              <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>{what}</p>
             </div>
           ))}
         </div>

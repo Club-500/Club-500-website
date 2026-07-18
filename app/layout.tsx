@@ -4,6 +4,7 @@ import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AppSplash from "@/components/AppSplash";
+import CookieNotice from "@/components/CookieNotice";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -23,12 +24,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={interTight.variable}>
+    <html lang="en" className={interTight.variable} suppressHydrationWarning>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("c500-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}`,
+          }}
+        />
         <AppSplash />
         <SiteHeader />
         {children}
         <SiteFooter />
+        <CookieNotice />
       </body>
     </html>
   );

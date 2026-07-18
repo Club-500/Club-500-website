@@ -16,7 +16,7 @@ export default function TeaserRow() {
         >
           <span className="mono-label">Volunteer</span>
           <h2 className="display" style={{ margin: 0 }}>Bring your skills to the game</h2>
-          <p style={{ margin: 0, font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.65)", flex: 1 }}>
+          <p style={{ margin: 0, font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)", flex: 1 }}>
             Designers, coaches, developers, lawyers: bring your skills to the
             game.
           </p>
@@ -30,7 +30,7 @@ export default function TeaserRow() {
         >
           <span className="mono-label">Partner</span>
           <h2 className="display" style={{ margin: 0 }}>Back 500 clubs. Reach a nation.</h2>
-          <p style={{ margin: 0, font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.65)", flex: 1 }}>
+          <p style={{ margin: 0, font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)", flex: 1 }}>
             National, regional, county and pillar sponsorships with real,
             measurable community impact.
           </p>

@@ -43,9 +43,9 @@ export default function TopReferrers() {
               overflow: "hidden",
               background:
                 i === 0
-                  ? "radial-gradient(circle at 50% 0%, rgba(201,138,0,0.28) 0%, rgba(201,138,0,0.06) 45%, rgba(255,255,255,0.04) 75%)"
-                  : "rgba(255,255,255,0.04)",
-              border: i === 0 ? "1px solid rgba(201,138,0,0.4)" : "1px solid rgba(255,255,255,0.09)",
+                  ? "radial-gradient(circle at 50% 0%, rgba(201,138,0,0.28) 0%, rgba(201,138,0,0.06) 45%, rgba(var(--tx),0.04) 75%)"
+                  : "rgba(var(--tx),0.04)",
+              border: i === 0 ? "1px solid rgba(201,138,0,0.4)" : "1px solid rgba(var(--tx),0.09)",
             }}
           >
             <div
@@ -58,7 +58,7 @@ export default function TopReferrers() {
             >
               <span
                 className="display"
-                style={{ fontSize: "1.3rem", color: i === 0 ? "#C98A00" : "rgba(255,255,255,0.3)" }}
+                style={{ fontSize: "1.3rem", color: i === 0 ? "#C98A00" : "rgba(var(--tx),0.3)" }}
               >
                 0{i + 1}
               </span>
@@ -68,13 +68,13 @@ export default function TopReferrers() {
                   height: 44,
                   borderRadius: "50%",
                   flexShrink: 0,
-                  border: i === 0 ? "2px solid #C98A00" : "1px solid rgba(255,255,255,0.25)",
+                  border: i === 0 ? "2px solid #C98A00" : "1px solid rgba(var(--tx),0.25)",
                   background: "linear-gradient(135deg, #262626, #101010)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   font: '700 0.95rem/1 var(--font-inter-tight), sans-serif',
-                  color: i === 0 ? "#C98A00" : "rgba(255,255,255,0.85)",
+                  color: i === 0 ? "#C98A00" : "rgba(var(--tx),0.85)",
                 }}
               >
                 {name
@@ -92,7 +92,7 @@ export default function TopReferrers() {
               style={{
                 marginTop: 16,
                 paddingTop: 14,
-                borderTop: "1px solid rgba(255,255,255,0.1)",
+                borderTop: "1px solid rgba(var(--tx),0.1)",
                 display: "flex",
                 alignItems: "baseline",
                 justifyContent: "space-between",

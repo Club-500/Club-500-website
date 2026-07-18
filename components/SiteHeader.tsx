@@ -4,25 +4,26 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 const LINKS: [string, string][] = [
   ["/clubs", "Clubs"],
   ["/fanzone", "Fan Zone"],
   ["/volunteer", "Volunteer"],
   ["/partners", "Partners"],
+  ["/events", "Events"],
   ["/about", "About"],
 ];
 
 const STORIES: [string, string][] = [
   ["/newsroom", "Newsroom"],
-  ["/events", "Events"],
   ["/podcast", "Podcast"],
 ];
 
 const navLinkStyle = (active: boolean): React.CSSProperties => ({
   font: '500 12px/1 var(--font-inter-tight), sans-serif',
   letterSpacing: "0.02em",
-  color: active ? "#fff" : "rgba(255,255,255,0.85)",
+  color: active ? "#fff" : "rgba(var(--tx),0.85)",
   background: active ? "#1B5E3C" : "transparent",
   padding: "10px 14px",
   borderRadius: 999,
@@ -62,7 +63,7 @@ export default function SiteHeader() {
         background: "rgba(14,16,15,0.8)",
         backdropFilter: "blur(14px)",
         WebkitBackdropFilter: "blur(14px)",
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        borderBottom: "1px solid rgba(var(--tx),0.08)",
       }}
     >
       <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, zIndex: 60 }}>
@@ -71,7 +72,7 @@ export default function SiteHeader() {
           alt="Club 500"
           width={72}
           height={72}
-          style={{ height: 72, width: "auto" }}
+          style={{ height: "clamp(52px, 9vw, 72px)", width: "auto" }}
           priority
         />
       </Link>
@@ -112,7 +113,7 @@ export default function SiteHeader() {
                   display: "block",
                   padding: "11px 16px",
                   font: '500 13px/1 var(--font-inter-tight), sans-serif',
-                  color: pathname === href ? "#C98A00" : "rgba(255,255,255,0.85)",
+                  color: pathname === href ? "#C98A00" : "rgba(var(--tx),0.85)",
                   borderRadius: 10,
                 }}
               >
@@ -124,6 +125,7 @@ export default function SiteHeader() {
       </nav>
 
       <div style={{ display: "flex", gap: 10, alignItems: "center", zIndex: 60 }}>
+        <ThemeToggle />
         <Link
           href="/login"
           className="pill-ghost site-nav-desktop"
@@ -142,8 +144,8 @@ export default function SiteHeader() {
             width: 44,
             height: 44,
             borderRadius: "50%",
-            border: "1px solid rgba(255,255,255,0.25)",
-            background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(var(--tx),0.25)",
+            background: "rgba(var(--tx),0.06)",
             cursor: "pointer",
             alignItems: "center",
             justifyContent: "center",
@@ -203,7 +205,7 @@ export default function SiteHeader() {
               href={href}
               style={{
                 font: '500 15px/1 var(--font-inter-tight), sans-serif',
-                color: active ? "#C98A00" : "rgba(255,255,255,0.85)",
+                color: active ? "#C98A00" : "rgba(var(--tx),0.85)",
                 padding: "12px 16px 12px 28px",
                 borderRadius: 12,
                 background: active ? "rgba(201,138,0,0.12)" : "transparent",
@@ -213,10 +215,13 @@ export default function SiteHeader() {
             </Link>
           );
         })}
+        <div style={{ marginTop: 14 }}>
+          <ThemeToggle big />
+        </div>
         <Link
           href="/login"
           className="pill-ghost"
-          style={{ justifyContent: "center", marginTop: 14, padding: "15px 0" }}
+          style={{ justifyContent: "center", marginTop: 10, padding: "15px 0" }}
         >
           Sign in
         </Link>

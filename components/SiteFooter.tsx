@@ -8,7 +8,7 @@ const COLUMNS: [string, [string, string][]][] = [
     [
       ["Clubs", "/clubs"],
       ["Fan Zone", "/fanzone"],
-      ["Volunteer", "/volunteer"],
+      ["Events", "/events"],
       ["About", "/about"],
     ],
   ],
@@ -16,7 +16,6 @@ const COLUMNS: [string, [string, string][]][] = [
     "Stories",
     [
       ["Newsroom", "/newsroom"],
-      ["Events", "/events"],
       ["Podcast", "/podcast"],
       ["Journalists", "/journalist"],
     ],
@@ -25,6 +24,7 @@ const COLUMNS: [string, [string, string][]][] = [
     "Get involved",
     [
       ["Register your club", "/clubs/apply"],
+      ["Volunteer", "/volunteer"],
       ["Partners", "/partners"],
       ["Sign in", "/login"],
     ],
@@ -36,6 +36,8 @@ export default function SiteFooter() {
     <footer
       style={{
         position: "relative",
+        background: "#121413",
+        color: "#fff",
         borderTop: "1px solid rgba(255,255,255,0.1)",
         padding: "56px clamp(20px, 4vw, 32px) 36px",
         overflow: "hidden",

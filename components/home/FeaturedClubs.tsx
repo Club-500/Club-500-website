@@ -49,8 +49,8 @@ export default function FeaturedClubs() {
                 aspectRatio: "1/1",
                 borderRadius: 20,
                 overflow: "hidden",
-                background: "#161616",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "var(--imgbg)",
+                border: "1px solid rgba(var(--tx),0.08)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -64,7 +64,7 @@ export default function FeaturedClubs() {
               />
             </div>
             <div style={{ padding: "16px 6px 0" }}>
-              <div style={{ font: '600 16px/1.25 var(--font-inter-tight), sans-serif', color: "#fff" }}>
+              <div style={{ font: '600 16px/1.25 var(--font-inter-tight), sans-serif', color: "var(--fg)" }}>
                 {name}
               </div>
               <div className="mono-label" style={{ marginTop: 6 }}>

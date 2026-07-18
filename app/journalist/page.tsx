@@ -29,10 +29,10 @@ type Application = {
 };
 
 const inputStyle: React.CSSProperties = {
-  background: "rgba(255,255,255,0.05)",
-  border: "1px solid rgba(255,255,255,0.15)",
+  background: "rgba(var(--tx),0.05)",
+  border: "1px solid rgba(var(--tx),0.15)",
   borderRadius: 12,
-  color: "#fff",
+  color: "var(--fg)",
   font: '500 15px/1.4 var(--font-inter-tight), sans-serif',
   padding: "14px 16px",
   outline: "none",
@@ -55,7 +55,7 @@ function Field({
 }) {
   return (
     <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <span style={{ font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.65)" }}>
+      <span style={{ font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)" }}>
         {label}
       </span>
       {children}
@@ -150,7 +150,7 @@ export default function JournalistPage() {
           {!loaded ? null : !application ? (
             <>
               <h2 className="display" style={{ margin: "0 0 6px" }}>Apply for accreditation</h2>
-              <p style={{ margin: "0 0 24px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)" }}>
+              <p style={{ margin: "0 0 24px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
                 Club500 accredits community journalists in every county. Once
                 approved, you file reports straight to the national Newsroom.
               </p>
@@ -197,7 +197,7 @@ export default function JournalistPage() {
               </div>
 
               <h2 className="display" style={{ margin: "0 0 6px" }}>File a report</h2>
-              <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)" }}>
+              <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
                 Reports go to your regional editor. Approved stories publish to
                 the Newsroom, your region feed and the club&apos;s microsite.
               </p>
@@ -215,14 +215,14 @@ export default function JournalistPage() {
                     <select value={story.region} onChange={(e) => setStory({ ...story, region: e.target.value })} style={{ ...(storyErrors.region ? errStyle : inputStyle), appearance: "none" }}>
                       <option value="">Select…</option>
                       {REGIONS.map((r) => (
-                        <option key={r} value={r} style={{ background: "#141414" }}>{r}</option>
+                        <option key={r} value={r} style={{ background: "var(--imgbg)" }}>{r}</option>
                       ))}
                     </select>
                   </Field>
                   <Field label="Format">
                     <select value={story.format} onChange={(e) => setStory({ ...story, format: e.target.value })} style={{ ...inputStyle, appearance: "none" }}>
                       {FORMATS.map((f) => (
-                        <option key={f} value={f} style={{ background: "#141414" }}>{f}</option>
+                        <option key={f} value={f} style={{ background: "var(--imgbg)" }}>{f}</option>
                       ))}
                     </select>
                   </Field>
@@ -256,13 +256,13 @@ export default function JournalistPage() {
           <div className="glass rv rv-d1" style={{ padding: "clamp(20px, 3vw, 28px)" }}>
             <div className="mono-label" style={{ marginBottom: 16 }}>Your stories</div>
             {stories.length === 0 ? (
-              <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.5)" }}>
+              <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.5)" }}>
                 No stories filed yet. Your submitted reports and their review
                 status will appear here.
               </p>
             ) : (
               stories.map((s, i) => (
-                <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 0", borderBottom: i < stories.length - 1 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+                <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 0", borderBottom: i < stories.length - 1 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ font: '600 14.5px/1.35 var(--font-inter-tight), sans-serif' }}>{s.title}</div>
                     <div className="mono-label" style={{ marginTop: 4 }}>
@@ -282,11 +282,11 @@ export default function JournalistPage() {
               ["3", "Editor review", "Your regional editor fact-checks and signs off"],
               ["4", "Published", "Live on the Newsroom, region feed and club microsite. You're paid per published story"],
             ].map(([n, t, d], i) => (
-              <div key={n} style={{ display: "flex", gap: 16, padding: "12px 0", borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-                <span style={{ font: '700 14px/1.4 var(--font-inter-tight), sans-serif', color: i === 3 ? "#C98A00" : "rgba(255,255,255,0.35)", width: 20, flexShrink: 0 }}>{n}</span>
+              <div key={n} style={{ display: "flex", gap: 16, padding: "12px 0", borderBottom: i < 3 ? "1px solid rgba(var(--tx),0.08)" : "none" }}>
+                <span style={{ font: '700 14px/1.4 var(--font-inter-tight), sans-serif', color: i === 3 ? "#C98A00" : "rgba(var(--tx),0.35)", width: 20, flexShrink: 0 }}>{n}</span>
                 <div>
                   <div style={{ font: '600 14.5px/1.3 var(--font-inter-tight), sans-serif' }}>{t}</div>
-                  <div style={{ font: '400 13px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)", marginTop: 3 }}>{d}</div>
+                  <div style={{ font: '400 13px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)", marginTop: 3 }}>{d}</div>
                 </div>
               </div>
             ))}
