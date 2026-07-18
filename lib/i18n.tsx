@@ -30,10 +30,10 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "fixtures.title": { en: "This weekend", sw: "Wikendi hii" },
   "fixtures.cta": { en: "Play predictions", sw: "Cheza ubashiri" },
   // impact
-  "impact.live": { en: "clubs live and growing", sw: "klabu ziko hewani na zinakua" },
-  "impact.detail": {
-    en: "On the map in 10 counties, headed for all 47. The 500-club target is the destination, not the starting line.",
-    sw: "Tuko kwenye ramani katika kaunti 10, tukielekea zote 47. Lengo la klabu 500 ni safari, sio mwanzo.",
+  "impact.h": { en: "clubs across 10 counties", sw: "klabu katika kaunti 10" },
+  "impact.sub": {
+    en: "Growing every month, headed for 500 clubs in all 47 counties.",
+    sw: "Tunakua kila mwezi, tukielekea klabu 500 katika kaunti zote 47.",
   },
   "impact.clubs": { en: "Community clubs", sw: "Klabu za jamii" },
   "impact.counties": { en: "Counties", sw: "Kaunti" },
@@ -66,30 +66,6 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "fz.s2d": { en: "Match updates, stories, behind the scenes.", sw: "Habari za mechi, hadithi, nyuma ya pazia." },
   "fz.s3t": { en: "Share your link", sw: "Sambaza kiungo chako" },
   "fz.s3d": { en: "Earn when friends join too.", sw: "Pata pesa marafiki wakijiunga pia." },
-  // teasers
-  "teaser.vol.head": { en: "Volunteer", sw: "Kujitolea" },
-  "teaser.vol.title": { en: "Bring your skills to the game", sw: "Leta ujuzi wako kwenye mchezo" },
-  "teaser.vol.body": {
-    en: "Designers, coaches, developers, lawyers: bring your skills to the game.",
-    sw: "Wabunifu, makocha, wasanidi programu, mawakili: leteni ujuzi wenu kwenye mchezo.",
-  },
-  "teaser.vol.cta": { en: "Offer your skills →", sw: "Toa ujuzi wako →" },
-  "teaser.par.head": { en: "Partner", sw: "Ushirikiano" },
-  "teaser.par.title": { en: "Back 500 clubs. Reach a nation.", sw: "Unga mkono klabu 500. Fikia taifa." },
-  "teaser.par.body": {
-    en: "National, regional, county and pillar sponsorships with real, measurable community impact.",
-    sw: "Udhamini wa kitaifa, kimkoa, kikaunti na kinguzo wenye matokeo halisi kwa jamii.",
-  },
-  "teaser.par.cta": { en: "Explore partnership →", sw: "Chunguza ushirikiano →" },
-  // stories teaser
-  "st.title1": { en: "Stories from the", sw: "Hadithi kutoka" },
-  "st.title2": { en: "grassroots", sw: "mashinani" },
-  "st.news.desc": { en: "Club and movement news from every county.", sw: "Habari za klabu na harakati kutoka kila kaunti." },
-  "st.news.cta": { en: "Read the latest", sw: "Soma za hivi punde" },
-  "st.events.desc": { en: "The National Launch Tour and local club events.", sw: "Ziara ya Uzinduzi wa Kitaifa na matukio ya klabu." },
-  "st.events.cta": { en: "See what's on", sw: "Angalia yanayoendelea" },
-  "st.pod.desc": { en: "Stories, strategy and transformation.", sw: "Hadithi, mikakati na mabadiliko." },
-  "st.pod.cta": { en: "Listen in", sw: "Sikiliza" },
   // footer
   "footer.explore": { en: "Explore", sw: "Chunguza" },
   "footer.stories": { en: "Stories", sw: "Habari" },
@@ -115,12 +91,6 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "cookie.decline": { en: "Decline", sw: "Kataa" },
   // mobile CTA
   "cta.join": { en: "Join your club", sw: "Jiunge na klabu yako" },
-  // my club
-  "myclub.q": { en: "Which club do you support?", sw: "Unashabikia klabu gani?" },
-  "myclub.hint": { en: "Pick your club and we'll keep it front and centre.", sw: "Chagua klabu yako, tutaiweka mbele kila wakati." },
-  "myclub.yours": { en: "Your club", sw: "Klabu yako" },
-  "myclub.change": { en: "Change", sw: "Badilisha" },
-  "myclub.visit": { en: "Visit club site", sw: "Tembelea tovuti ya klabu" },
 };
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (k: string) => string };

@@ -29,7 +29,7 @@ export default function ImpactStrip() {
             <span className="gold">
               <CountUp value={33} />
             </span>{" "}
-            {t("impact.live")}
+            {t("impact.h")}
           </div>
           <div
             style={{
@@ -38,7 +38,7 @@ export default function ImpactStrip() {
               color: "rgba(var(--tx),0.6)",
             }}
           >
-            {t("impact.detail")}
+            {t("impact.sub")}
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
