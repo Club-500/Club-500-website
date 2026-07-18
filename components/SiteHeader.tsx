@@ -269,16 +269,13 @@ export default function SiteHeader() {
             </Link>
           );
         })}
-        <div style={{ display: "flex", gap: 10, marginTop: 14, alignItems: "stretch" }}>
-          <Link
-            href="/login"
-            className="pill-ghost"
-            style={{ justifyContent: "center", padding: "15px 0", flex: 1 }}
-          >
-            {t("nav.signin")}
-          </Link>
-          <ThemeToggle />
-        </div>
+        <Link
+          href="/login"
+          className="pill-ghost"
+          style={{ justifyContent: "center", marginTop: 14, padding: "15px 0" }}
+        >
+          {t("nav.signin")}
+        </Link>
       </nav>
     </aside>
     </>
