@@ -1,10 +1,10 @@
 import Hero from "@/components/home/Hero";
-import Ticker from "@/components/home/Ticker";
-import Mission from "@/components/home/Mission";
+import ImpactStrip from "@/components/home/ImpactStrip";
+import AboutSnapshot from "@/components/home/AboutSnapshot";
 import FeaturedClubs from "@/components/home/FeaturedClubs";
-import EarnBanner from "@/components/home/EarnBanner";
-import MediaStrip from "@/components/home/MediaStrip";
-import SponsorStrip from "@/components/home/SponsorStrip";
+import FanZoneSteps from "@/components/home/FanZoneSteps";
+import TeaserRow from "@/components/home/TeaserRow";
+import StoriesTeaser from "@/components/home/StoriesTeaser";
 import RevealInit from "@/components/RevealInit";
 
 export default function Home() {
@@ -12,12 +12,12 @@ export default function Home() {
     <>
       <RevealInit />
       <Hero />
-      <Ticker />
-      <Mission />
+      <ImpactStrip />
+      <AboutSnapshot />
       <FeaturedClubs />
-      <EarnBanner />
-      <MediaStrip />
-      <SponsorStrip />
+      <FanZoneSteps />
+      <TeaserRow />
+      <StoriesTeaser />
     </>
   );
 }

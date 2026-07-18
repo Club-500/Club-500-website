@@ -44,10 +44,34 @@ export default function ClubsPage() {
   return (
     <>
       <RevealInit />
-      <PageHead eyebrow="33 onboarded · 467 to go">
-        Our <span className="gold">clubs</span>
+      <PageHead eyebrow="New clubs join every month. 33 live today, 500 on the way.">
+        Find your <span className="gold">club</span>
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+        <a
+          href="/clubs/apply"
+          className="rv"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 16,
+            flexWrap: "wrap",
+            border: "1px solid rgba(201,138,0,0.45)",
+            background: "rgba(201,138,0,0.07)",
+            borderRadius: 16,
+            padding: "16px 22px",
+            marginBottom: 24,
+            color: "#fff",
+          }}
+        >
+          <span style={{ font: '600 15px/1.4 var(--font-inter-tight), sans-serif' }}>
+            Don&apos;t see your club? Apply to join Club500
+          </span>
+          <span className="gold" style={{ font: '700 15px/1 var(--font-inter-tight), sans-serif' }}>
+            Apply now →
+          </span>
+        </a>
         <div className="rv" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
           {RAIL.map(([r, n]) => (
             <button
@@ -57,9 +81,9 @@ export default function ClubsPage() {
               className="tag-pill"
               style={{
                 cursor: "pointer",
-                background: region === r ? "#f0b429" : "transparent",
+                background: region === r ? "#C98A00" : "transparent",
                 color: region === r ? "#0a0a0a" : "rgba(255,255,255,0.75)",
-                borderColor: region === r ? "#f0b429" : "rgba(255,255,255,0.18)",
+                borderColor: region === r ? "#C98A00" : "rgba(255,255,255,0.18)",
               }}
             >
               {r} · {n}
@@ -152,7 +176,7 @@ export default function ClubsPage() {
             </p>
             {CLUB_STEPS.map(([t, d], i) => (
               <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
-                <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#f0b429", width: 24, flexShrink: 0 }}>
+                <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#C98A00", width: 24, flexShrink: 0 }}>
                   {i + 1}
                 </span>
                 <div>
@@ -161,9 +185,9 @@ export default function ClubsPage() {
                 </div>
               </div>
             ))}
-            <button className="pill-ghost" type="button" style={{ marginTop: 20 }}>
-              Register your club
-            </button>
+            <a href="/clubs/apply" className="pill-ghost" style={{ marginTop: 20, display: "inline-flex" }}>
+              Apply to join Club500
+            </a>
           </div>
           <div className="glass rv rv-d1" style={{ padding: "clamp(22px, 3vw, 32px)" }}>
             <h2 className="display" style={{ margin: "0 0 6px" }}>
@@ -175,7 +199,7 @@ export default function ClubsPage() {
             </p>
             {FAN_STEPS.map(([t, d], i) => (
               <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
-                <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#f0b429", width: 24, flexShrink: 0 }}>
+                <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#C98A00", width: 24, flexShrink: 0 }}>
                   {i + 1}
                 </span>
                 <div>

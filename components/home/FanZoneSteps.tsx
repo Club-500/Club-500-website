@@ -1,18 +1,17 @@
 import Link from "next/link";
 
 const STEPS: [string, string, string][] = [
-  ["01", "Join a club", "Become a fan. It takes a minute."],
-  ["02", "Share your link", "Your referral link, generated instantly."],
-  ["03", "Get paid", "Earn every time someone joins through it."],
+  ["01", "Join your club", "It takes a minute."],
+  ["02", "Follow along", "Match updates, stories, behind the scenes."],
+  ["03", "Share your link", "Earn when friends join too."],
 ];
 
-export default function EarnBanner() {
+export default function FanZoneSteps() {
   return (
     <section
       style={{
         padding: "64px clamp(20px, 4vw, 32px)",
-        background: "#f0b429",
-        color: "#0a0a0a",
+        background: "#1B5E3C",
         borderRadius: "36px 36px 0 0",
         marginTop: 24,
       }}
@@ -23,7 +22,7 @@ export default function EarnBanner() {
           margin: "0 auto",
           display: "flex",
           flexDirection: "column",
-          gap: 32,
+          gap: 30,
         }}
       >
         <div
@@ -37,27 +36,28 @@ export default function EarnBanner() {
           }}
         >
           <div>
-            <span className="mono-label" style={{ color: "rgba(10,10,10,0.6)" }}>
-              How it works
+            <span className="mono-label" style={{ color: "rgba(255,255,255,0.65)" }}>
+              The Fan Zone
             </span>
-            <h2 className="mega" style={{ margin: "10px 0 0", fontSize: "clamp(2.4rem, 5.5vw, 4.6rem)" }}>
-              Join. Share your link.
-              <br />
-              Get paid.
+            <h2
+              className="mega"
+              style={{ margin: "10px 0 0", fontSize: "clamp(2rem, 4.6vw, 3.6rem)", color: "#fff" }}
+            >
+              Belong first. <span className="gold">Earn</span> along the way.
             </h2>
           </div>
           <Link href="/fanzone">
             <button
               className="pill-btn"
               type="button"
-              style={{ background: "#0a0a0a", color: "#fff" }}
+              style={{ background: "#C98A00", color: "#141310" }}
             >
               <span className="txt">Open the Fan Zone</span>
               <span className="circ" style={{ background: "#fff" }}>
                 <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
                   <path
                     d="M5 13L13 5M13 5H6M13 5V12"
-                    stroke="#0a0a0a"
+                    stroke="#141310"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -80,19 +80,19 @@ export default function EarnBanner() {
             <div
               key={num}
               style={{
-                border: "1.5px solid rgba(10,10,10,0.18)",
+                border: "1px solid rgba(255,255,255,0.25)",
                 borderRadius: 18,
                 padding: "20px 22px",
-                background: "rgba(10,10,10,0.05)",
+                background: "rgba(255,255,255,0.07)",
               }}
             >
-              <span style={{ font: '600 13px/1 var(--font-inter-tight), sans-serif', letterSpacing: "0.08em", color: "rgba(10,10,10,0.5)" }}>
+              <span style={{ font: '600 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>
                 {num}
               </span>
-              <div style={{ font: '600 17px/1.3 var(--font-inter-tight), sans-serif', margin: "8px 0 4px" }}>
+              <div style={{ font: '600 17px/1.3 var(--font-inter-tight), sans-serif', margin: "8px 0 4px", color: "#fff" }}>
                 {title}
               </div>
-              <p style={{ margin: 0, font: '400 13.5px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(10,10,10,0.65)" }}>
+              <p style={{ margin: 0, font: '400 13.5px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.75)" }}>
                 {desc}
               </p>
             </div>

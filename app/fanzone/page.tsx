@@ -51,9 +51,9 @@ export default function FanZonePage() {
           cursor: "pointer",
           borderRadius: 10,
           padding: "10px 0",
-          border: active ? "1.5px solid #f0b429" : "1px solid rgba(255,255,255,0.15)",
-          background: active ? "rgba(240,180,41,0.15)" : "transparent",
-          color: active ? "#f0b429" : "rgba(255,255,255,0.8)",
+          border: active ? "1.5px solid #C98A00" : "1px solid rgba(255,255,255,0.15)",
+          background: active ? "rgba(201,138,0,0.15)" : "transparent",
+          color: active ? "#C98A00" : "rgba(255,255,255,0.8)",
           font: '600 13px/1 var(--font-inter-tight), sans-serif',
           transition: "all .2s",
         }}
@@ -66,8 +66,8 @@ export default function FanZonePage() {
   return (
     <>
       <RevealInit />
-      <PageHead eyebrow="Predict · Vote · Earn · Belong">
-        The <span className="gold">Fan Zone</span>
+      <PageHead eyebrow="The Fan Zone">
+        Your club. Your voice. Your <span className="gold">reward</span>.
       </PageHead>
       <div
         style={{
@@ -79,6 +79,18 @@ export default function FanZonePage() {
           gap: 48,
         }}
       >
+        <p
+          className="rv"
+          style={{
+            margin: 0,
+            maxWidth: 640,
+            font: '400 16px/1.65 var(--font-inter-tight), sans-serif',
+            color: "rgba(255,255,255,0.72)",
+          }}
+        >
+          Follow your club. Get real match updates, stories and
+          behind-the-scenes access, and earn when you bring friends along.
+        </p>
         {/* Matchday predictions */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
           <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)", gridColumn: "1 / -1" }}>
@@ -126,7 +138,7 @@ export default function FanZonePage() {
               ))}
             </div>
             {pickCount === FIXTURES.length && (
-              <div className="mono-label gold" style={{ color: "#f0b429", marginTop: 16 }}>
+              <div className="mono-label gold" style={{ color: "#C98A00", marginTop: 16 }}>
                 All picks in. Good luck this weekend, results settle Sunday 18:00.
               </div>
             )}
@@ -150,7 +162,7 @@ export default function FanZonePage() {
           <div
             className="rv rv-d1"
             style={{
-              background: "#f0b429",
+              background: "#C98A00",
               color: "#0a0a0a",
               borderRadius: 20,
               padding: "clamp(20px, 3vw, 30px)",
@@ -195,8 +207,8 @@ export default function FanZonePage() {
                     cursor: "pointer",
                     borderRadius: 14,
                     padding: "16px 20px",
-                    border: voted === m ? "1.5px solid #f0b429" : "1px solid rgba(255,255,255,0.15)",
-                    background: voted === m ? "rgba(240,180,41,0.12)" : "transparent",
+                    border: voted === m ? "1.5px solid #C98A00" : "1px solid rgba(255,255,255,0.15)",
+                    background: voted === m ? "rgba(201,138,0,0.12)" : "transparent",
                     color: "#fff",
                     font: '500 15px/1.3 var(--font-inter-tight), sans-serif',
                     transition: "all .2s",
@@ -207,7 +219,7 @@ export default function FanZonePage() {
               ))}
             </div>
             {voted && (
-              <div className="mono-label gold" style={{ color: "#f0b429", marginTop: 16 }}>
+              <div className="mono-label gold" style={{ color: "#C98A00", marginTop: 16 }}>
                 +50 fan points earned
               </div>
             )}
@@ -228,7 +240,7 @@ export default function FanZonePage() {
                 <span
                   style={{
                     font: '700 1rem/1 var(--font-inter-tight), sans-serif',
-                    color: i === 0 ? "#f0b429" : "rgba(255,255,255,0.3)",
+                    color: i === 0 ? "#C98A00" : "rgba(255,255,255,0.3)",
                     width: 30,
                   }}
                 >
@@ -256,9 +268,14 @@ export default function FanZonePage() {
             each time someone joins a club through it, paid straight to your
             phone. Withdraw anytime.
           </p>
+          <p style={{ margin: "-12px 0 24px", maxWidth: 560, font: '500 13.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.5)" }}>
+            How payouts work: you earn a fixed amount each time someone joins
+            your club through your link. No recruiting required beyond that,
+            no tiers, no catch.
+          </p>
           <div
             style={{
-              background: "#f0b429",
+              background: "#C98A00",
               borderRadius: 24,
               padding: "clamp(24px, 4vw, 44px)",
               color: "#0a0a0a",

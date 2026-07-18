@@ -30,9 +30,9 @@ export default function NewsroomPage() {
       type="button"
       style={{
         cursor: "pointer",
-        background: cur === val ? "#f0b429" : "transparent",
+        background: cur === val ? "#C98A00" : "transparent",
         color: cur === val ? "#0a0a0a" : "rgba(255,255,255,0.75)",
-        borderColor: cur === val ? "#f0b429" : "rgba(255,255,255,0.18)",
+        borderColor: cur === val ? "#C98A00" : "rgba(255,255,255,0.18)",
       }}
     >
       {val}
@@ -90,8 +90,8 @@ export default function NewsroomPage() {
               <div className="mono-label">By {byline} · ✔</div>
             </div>
           ))}
-          <div className="rv" style={{ border: "1.5px dashed rgba(240,180,41,0.6)", borderRadius: 20, background: "rgba(240,180,41,0.05)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 180, padding: 26 }}>
-            <span className="mono-label gold" style={{ color: "#f0b429" }}>In-feed sponsor slot</span>
+          <div className="rv" style={{ border: "1.5px dashed rgba(201,138,0,0.6)", borderRadius: 20, background: "rgba(201,138,0,0.05)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 180, padding: 26 }}>
+            <span className="mono-label gold" style={{ color: "#C98A00" }}>In-feed sponsor slot</span>
           </div>
         </div>
 

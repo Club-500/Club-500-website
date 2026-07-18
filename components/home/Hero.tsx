@@ -112,45 +112,36 @@ export default function Hero() {
           gap: 28,
         }}
       >
-        <h1 className="mega hero-up hd-1" style={{ margin: 0, maxWidth: 760 }}>
-          The home of community football in Kenya
+        <h1 className="mega hero-up hd-1" style={{ margin: 0, maxWidth: 820 }}>
+          Grassroots to <span className="gold">Greatness</span>
         </h1>
         <p
           className="hero-up hd-2"
           style={{
             margin: 0,
-            maxWidth: 520,
+            maxWidth: 560,
             font: '400 17px/1.6 var(--font-inter-tight), sans-serif',
-            color: "rgba(255,255,255,0.75)",
+            color: "rgba(255,255,255,0.78)",
           }}
         >
-          500 community clubs across 47 counties, organized into 8 regions.
-          One national platform for fans, players and partners.
+          500 community football clubs. 47 counties. One national platform
+          giving Kenyan football the structure it deserves.
         </p>
         <div
           className="hero-up hd-3"
-          style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}
+          style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}
         >
-          <Link href="/clubs">
-            <button className="pill-btn" type="button">
-              <span className="txt">Find your club</span>
-              <span className="circ">
-                <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
-                  <path
-                    d="M5 13L13 5M13 5H6M13 5V12"
-                    stroke="#0a0a0a"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
+          <Link href="/clubs/apply">
+            <button className="hero-role" type="button">I run a club</button>
           </Link>
           <Link href="/fanzone">
-            <button className="pill-ghost" type="button">
-              Join the Fan Zone
-            </button>
+            <button className="hero-role" type="button">I&apos;m a fan</button>
+          </Link>
+          <Link href="/partners">
+            <button className="hero-role" type="button">I want to partner</button>
+          </Link>
+          <Link href="/volunteer">
+            <button className="hero-role" type="button">I want to volunteer</button>
           </Link>
         </div>
       </div>

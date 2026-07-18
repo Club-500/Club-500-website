@@ -134,29 +134,63 @@ export default function LoginPage() {
           </p>
         )}
 
-        <p
-          style={{
-            margin: "22px 0 0",
-            font: '400 14px/1.5 var(--font-inter-tight), sans-serif',
-            color: "rgba(255,255,255,0.55)",
-          }}
-        >
-          {isSignup ? "Already have an account? " : "New here? "}
-          <button
-            type="button"
-            onClick={() => setMode(isSignup ? "signin" : "signup")}
+        {isSignup ? (
+          <p
             style={{
-              background: "none",
-              border: "none",
-              padding: 0,
-              cursor: "pointer",
-              color: "#f0b429",
-              font: '600 14px/1.5 var(--font-inter-tight), sans-serif',
+              margin: "22px 0 0",
+              font: '400 14px/1.5 var(--font-inter-tight), sans-serif',
+              color: "rgba(255,255,255,0.55)",
             }}
           >
-            {isSignup ? "Sign in" : "Create an account"}
-          </button>
-        </p>
+            Already have an account?{" "}
+            <button
+              type="button"
+              onClick={() => setMode("signin")}
+              style={{
+                background: "none",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+                color: "#C98A00",
+                font: '600 14px/1.5 var(--font-inter-tight), sans-serif',
+              }}
+            >
+              Sign in
+            </button>
+          </p>
+        ) : (
+          <div
+            style={{
+              marginTop: 22,
+              paddingTop: 18,
+              borderTop: "1px solid rgba(255,255,255,0.1)",
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+            }}
+          >
+            <span style={{ font: '500 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.5)" }}>
+              New here?
+            </span>
+            <button
+              type="button"
+              onClick={() => setMode("signup")}
+              style={{
+                background: "none",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+                color: "#C98A00",
+                font: '600 14.5px/1.4 var(--font-inter-tight), sans-serif',
+              }}
+            >
+              Join as a fan →
+            </button>
+            <a href="/clubs/apply" style={{ font: '600 14.5px/1.4 var(--font-inter-tight), sans-serif' }}>
+              Registering a club? Apply here →
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

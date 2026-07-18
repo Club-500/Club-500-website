@@ -9,7 +9,7 @@ body {
 }
 
 body {
-  background: #0a0a0a;
+  background: #121413;
   color: #fff;
   font-family: var(--font-inter-tight), sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,17 +17,17 @@ body {
 }
 
 ::selection {
-  background: #f0b429;
+  background: #C98A00;
   color: #0a0a0a;
 }
 
 a {
-  color: #f0b429;
+  color: #C98A00;
   text-decoration: none;
 }
 
 a:hover {
-  color: #ffcc4d;
+  color: #E0A21A;
 }
 
 button {
@@ -66,7 +66,11 @@ button {
 }
 
 .gold {
-  color: #f0b429;
+  color: #C98A00;
+}
+
+.green {
+  color: #2E9B63;
 }
 
 /* ---- pills & buttons ---- */
@@ -78,8 +82,8 @@ button {
   padding: 6px;
   border: none;
   cursor: pointer;
-  background: #fff;
-  color: #0a0a0a;
+  background: #1B5E3C;
+  color: #fff;
   font: 600 14px/1 var(--font-inter-tight), sans-serif;
   letter-spacing: 0.02em;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -97,7 +101,7 @@ button {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #f0b429;
+  background: #C98A00;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,8 +146,8 @@ button {
   border-color: #fff;
 }
 .tag-pill.gold-pill {
-  border-color: rgba(240, 180, 41, 0.5);
-  color: #f0b429;
+  border-color: rgba(201, 138, 0, 0.5);
+  color: #C98A00;
 }
 
 /* ---- glass ---- */
@@ -233,7 +237,7 @@ button {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #f0b429;
+  background: #2E9B63;
   animation: pulse 1.6s ease-in-out infinite;
   display: inline-block;
 }
@@ -265,7 +269,7 @@ button {
 }
 
 input[type="range"] {
-  accent-color: #f0b429;
+  accent-color: #C98A00;
 }
 
 input,
@@ -304,7 +308,7 @@ textarea {
   top: -22px;
   right: 8px;
   font: 800 15px/1 var(--font-inter-tight), sans-serif;
-  color: #f0b429;
+  color: #C98A00;
   opacity: 0;
   animation: gsGoalText 10s ease-out infinite;
 }
@@ -416,9 +420,15 @@ textarea {
   inset: 0;
   opacity: 0;
 }
-/* two-frame sprint cycle while running */
-.pose-run-a { animation: poseWinRun 10s steps(1) infinite, runFlickA 0.32s steps(1) infinite; }
-.pose-run-b { animation: poseWinRun 10s steps(1) infinite, runFlickB 0.32s steps(1) infinite; }
+/* four-phase sprint cycle (A - contact - B - contact) while running */
+.pose-run-a { animation: poseWinRun 10s steps(1) infinite, runFlickA 0.56s steps(1) infinite; }
+.pose-run-b { animation: poseWinRun 10s steps(1) infinite, runFlickB 0.56s steps(1) infinite; }
+.pose-run-c { animation: poseWinRun 10s steps(1) infinite, runFlickC 0.56s steps(1) infinite; }
+.gs-player-bob {
+  position: absolute;
+  inset: 0;
+  animation: gsRunBob 0.28s ease-in-out infinite alternate;
+}
 .pose-kick { animation: poseWinKick 10s steps(1) infinite; }
 .pose-cele { animation: poseWinCele 10s steps(1) infinite; }
 /* visibility windows over the 10s move (multiplied with flicker via nested vars is overkill;
@@ -429,12 +439,23 @@ textarea {
   84%, 100% { visibility: visible; }
 }
 @keyframes runFlickA {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+  0%, 24% { opacity: 1; }
+  25%, 100% { opacity: 0; }
 }
 @keyframes runFlickB {
   0%, 49% { opacity: 0; }
-  50%, 100% { opacity: 1; }
+  50%, 74% { opacity: 1; }
+  75%, 100% { opacity: 0; }
+}
+@keyframes runFlickC {
+  0%, 24% { opacity: 0; }
+  25%, 49% { opacity: 1; }
+  50%, 74% { opacity: 0; }
+  75%, 100% { opacity: 1; }
+}
+@keyframes gsRunBob {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2.5px); }
 }
 @keyframes poseWinKick {
   0%, 52.99% { opacity: 0; }
@@ -553,7 +574,7 @@ textarea {
 @media (prefers-reduced-motion: reduce) {
   .gs-ball-x, .gs-ball-hop, .gs-ball-y, .gs-ball-y svg,
   .gs-net, .gs-goal-text, .gs-player, .gs-player-inner,
-  .pose-run-a, .pose-run-b, .pose-kick, .pose-cele,
+  .pose-run-a, .pose-run-b, .pose-run-c, .pose-kick, .pose-cele, .gs-player-bob,
   .pose-d1-sa, .pose-d1-sb, .pose-d1-lg, .pose-d1-bt,
   .pose-d2-sa, .pose-d2-sb, .pose-d2-lg, .pose-d2-bt,
   .pose-gk-ra, .pose-gk-rb, .pose-gk-dv, .pose-gk-dn,
@@ -565,6 +586,51 @@ textarea {
   .gs-ball-x { left: calc(100% - 130px); opacity: 1; }
   .gs-player { left: calc(100% - 170px); opacity: 1; }
   .gs-goal-text { opacity: 0; }
+}
+
+/* ---- hero role buttons ---- */
+.hero-role {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 14px 22px;
+  cursor: pointer;
+  background: rgba(14, 16, 15, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font: 600 14px/1 var(--font-inter-tight), sans-serif;
+  transition: background 0.2s, border-color 0.2s;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hero-role:hover {
+  background: #1B5E3C;
+  border-color: #1B5E3C;
+}
+
+/* ---- stories dropdown ---- */
+.stories-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 160px;
+  background: #171a18;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 6px;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.stories-wrap:hover .stories-menu,
+.stories-wrap:focus-within .stories-menu {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.stories-menu a:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 /* ---- responsive nav ---- */
@@ -630,8 +696,8 @@ textarea {
   }
   .site-nav-toggle {
     display: flex !important;
-    border-color: rgba(240, 180, 41, 0.6) !important;
-    background: rgba(240, 180, 41, 0.1) !important;
+    border-color: rgba(201, 138, 0, 0.6) !important;
+    background: rgba(201, 138, 0, 0.1) !important;
   }
   .site-nav-backdrop,
   .site-nav-drawer {

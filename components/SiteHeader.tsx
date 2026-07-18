@@ -8,16 +8,32 @@ import { usePathname } from "next/navigation";
 const LINKS: [string, string][] = [
   ["/clubs", "Clubs"],
   ["/fanzone", "Fan Zone"],
-  ["/newsroom", "Newsroom"],
-  ["/events", "Events"],
-  ["/podcast", "Podcast"],
+  ["/volunteer", "Volunteer"],
   ["/partners", "Partners"],
   ["/about", "About"],
 ];
 
+const STORIES: [string, string][] = [
+  ["/newsroom", "Newsroom"],
+  ["/events", "Events"],
+  ["/podcast", "Podcast"],
+];
+
+const navLinkStyle = (active: boolean): React.CSSProperties => ({
+  font: '500 12px/1 var(--font-inter-tight), sans-serif',
+  letterSpacing: "0.02em",
+  color: active ? "#fff" : "rgba(255,255,255,0.85)",
+  background: active ? "#1B5E3C" : "transparent",
+  padding: "10px 14px",
+  borderRadius: 999,
+  transition: "all .2s",
+  whiteSpace: "nowrap",
+});
+
 export default function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const storiesActive = STORIES.some(([href]) => pathname === href);
 
   useEffect(() => {
     setOpen(false);
@@ -43,7 +59,7 @@ export default function SiteHeader() {
         alignItems: "center",
         justifyContent: "space-between",
         padding: "10px clamp(16px, 4vw, 32px)",
-        background: "rgba(10,10,10,0.72)",
+        background: "rgba(14,16,15,0.8)",
         backdropFilter: "blur(14px)",
         WebkitBackdropFilter: "blur(14px)",
         borderBottom: "1px solid rgba(255,255,255,0.08)",
@@ -62,30 +78,49 @@ export default function SiteHeader() {
 
       <nav
         className="glass site-nav-desktop"
-        style={{ display: "flex", gap: 2, padding: "6px 8px", borderRadius: 999 }}
+        style={{ display: "flex", gap: 2, padding: "6px 8px", borderRadius: 999, alignItems: "center" }}
       >
-        {LINKS.map(([href, label]) => {
-          const active = pathname === href;
-          return (
-            <Link
-              key={href}
-              href={href}
-              style={{
-                font: '500 11.5px/1 var(--font-inter-tight), sans-serif',
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: active ? "#0a0a0a" : "rgba(255,255,255,0.85)",
-                background: active ? "#f0b429" : "transparent",
-                padding: "10px 13px",
-                borderRadius: 999,
-                transition: "all .2s",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {label}
-            </Link>
-          );
-        })}
+        {LINKS.map(([href, label]) => (
+          <Link key={href} href={href} style={navLinkStyle(pathname === href)}>
+            {label}
+          </Link>
+        ))}
+        <div className="stories-wrap" style={{ position: "relative" }}>
+          <button
+            type="button"
+            className="stories-btn"
+            style={{
+              ...navLinkStyle(storiesActive),
+              border: "none",
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            Stories
+            <svg width="9" height="6" viewBox="0 0 10 6" fill="none">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <div className="stories-menu">
+            {STORIES.map(([href, label]) => (
+              <Link
+                key={href}
+                href={href}
+                style={{
+                  display: "block",
+                  padding: "11px 16px",
+                  font: '500 13px/1 var(--font-inter-tight), sans-serif',
+                  color: pathname === href ? "#C98A00" : "rgba(255,255,255,0.85)",
+                  borderRadius: 10,
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
       </nav>
 
       <div style={{ display: "flex", gap: 10, alignItems: "center", zIndex: 60 }}>
@@ -121,7 +156,6 @@ export default function SiteHeader() {
           </span>
         </button>
       </div>
-
     </header>
 
     <div
@@ -134,10 +168,10 @@ export default function SiteHeader() {
           href="/"
           style={{
             font: '600 16px/1 var(--font-inter-tight), sans-serif',
-            color: pathname === "/" ? "#f0b429" : "#fff",
+            color: pathname === "/" ? "#C98A00" : "#fff",
             padding: "14px 16px",
             borderRadius: 12,
-            background: pathname === "/" ? "rgba(240,180,41,0.12)" : "transparent",
+            background: pathname === "/" ? "rgba(201,138,0,0.12)" : "transparent",
           }}
         >
           Home
@@ -150,10 +184,29 @@ export default function SiteHeader() {
               href={href}
               style={{
                 font: '600 16px/1 var(--font-inter-tight), sans-serif',
-                color: active ? "#f0b429" : "#fff",
+                color: active ? "#C98A00" : "#fff",
                 padding: "14px 16px",
                 borderRadius: 12,
-                background: active ? "rgba(240,180,41,0.12)" : "transparent",
+                background: active ? "rgba(201,138,0,0.12)" : "transparent",
+              }}
+            >
+              {label}
+            </Link>
+          );
+        })}
+        <div className="mono-label" style={{ padding: "14px 16px 4px" }}>Stories</div>
+        {STORIES.map(([href, label]) => {
+          const active = pathname === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              style={{
+                font: '500 15px/1 var(--font-inter-tight), sans-serif',
+                color: active ? "#C98A00" : "rgba(255,255,255,0.85)",
+                padding: "12px 16px 12px 28px",
+                borderRadius: 12,
+                background: active ? "rgba(201,138,0,0.12)" : "transparent",
               }}
             >
               {label}

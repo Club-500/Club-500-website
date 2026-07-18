@@ -22,7 +22,7 @@ export default function NewsletterForm() {
 
   if (state === "done") {
     return (
-      <p style={{ margin: 0, font: '500 14px/1.5 var(--font-inter-tight), sans-serif', color: "#f0b429" }}>
+      <p style={{ margin: 0, font: '500 14px/1.5 var(--font-inter-tight), sans-serif', color: "#C98A00" }}>
         You&apos;re subscribed. Karibu to the movement!
       </p>
     );
@@ -55,7 +55,7 @@ export default function NewsletterForm() {
           type="button"
           onClick={submit}
           style={{
-            background: "#f0b429",
+            background: "#C98A00",
             color: "#0a0a0a",
             border: "none",
             borderRadius: 999,

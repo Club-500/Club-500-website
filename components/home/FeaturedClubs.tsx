@@ -15,11 +15,16 @@ export default function FeaturedClubs() {
           gap: 16,
         }}
       >
-        <h2 className="display" style={{ margin: 0 }}>
-          Featured <span className="gold">clubs</span>
-        </h2>
+        <div>
+          <div className="mono-label" style={{ marginBottom: 8 }}>
+            Meet the clubs already building the movement.
+          </div>
+          <h2 className="display" style={{ margin: 0 }}>
+            Featured <span className="gold">clubs</span>
+          </h2>
+        </div>
         <Link href="/clubs" className="tag-pill">
-          All 33 clubs →
+          All clubs →
         </Link>
       </div>
       <div

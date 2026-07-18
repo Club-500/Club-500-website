@@ -185,7 +185,7 @@ export default function JournalistPage() {
           ) : (
             <>
               <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
-                <div style={{ width: 52, height: 52, borderRadius: "50%", border: "2px solid #f0b429", display: "flex", alignItems: "center", justifyContent: "center", font: '700 1rem/1 var(--font-inter-tight), sans-serif', color: "#f0b429", flexShrink: 0 }}>
+                <div style={{ width: 52, height: 52, borderRadius: "50%", border: "2px solid #C98A00", display: "flex", alignItems: "center", justifyContent: "center", font: '700 1rem/1 var(--font-inter-tight), sans-serif', color: "#C98A00", flexShrink: 0 }}>
                   {application.name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()}
                 </div>
                 <div>
@@ -202,7 +202,7 @@ export default function JournalistPage() {
                 the Newsroom, your region feed and the club&apos;s microsite.
               </p>
               {justSubmitted && (
-                <div style={{ border: "1px solid rgba(240,180,41,0.5)", background: "rgba(240,180,41,0.08)", borderRadius: 12, padding: "14px 16px", marginBottom: 16, font: '500 14px/1.4 var(--font-inter-tight), sans-serif', color: "#f0b429" }}>
+                <div style={{ border: "1px solid rgba(201,138,0,0.5)", background: "rgba(201,138,0,0.08)", borderRadius: 12, padding: "14px 16px", marginBottom: 16, font: '500 14px/1.4 var(--font-inter-tight), sans-serif', color: "#C98A00" }}>
                   Report submitted. It is now in editor review.
                 </div>
               )}
@@ -283,7 +283,7 @@ export default function JournalistPage() {
               ["4", "Published", "Live on the Newsroom, region feed and club microsite. You're paid per published story"],
             ].map(([n, t, d], i) => (
               <div key={n} style={{ display: "flex", gap: 16, padding: "12px 0", borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-                <span style={{ font: '700 14px/1.4 var(--font-inter-tight), sans-serif', color: i === 3 ? "#f0b429" : "rgba(255,255,255,0.35)", width: 20, flexShrink: 0 }}>{n}</span>
+                <span style={{ font: '700 14px/1.4 var(--font-inter-tight), sans-serif', color: i === 3 ? "#C98A00" : "rgba(255,255,255,0.35)", width: 20, flexShrink: 0 }}>{n}</span>
                 <div>
                   <div style={{ font: '600 14.5px/1.3 var(--font-inter-tight), sans-serif' }}>{t}</div>
                   <div style={{ font: '400 13px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.55)", marginTop: 3 }}>{d}</div>
