@@ -122,7 +122,7 @@ export default function AboutPage() {
         >
           {SUPPORT_AREAS.map((a, i) => (
             <div key={a} style={{ display: "flex", gap: 12, alignItems: "center", padding: "12px 0", borderBottom: "1px solid rgba(var(--tx),0.08)" }}>
-              <span style={{ font: '700 13px/1 var(--font-inter-tight), sans-serif', color: "#1B5E3C", background: "rgba(46,155,99,0.18)", borderRadius: 8, padding: "6px 9px" }}>
+              <span style={{ font: '700 13px/1 var(--font-inter-tight), sans-serif', color: "#2E9B63", background: "rgba(46,155,99,0.16)", borderRadius: 8, padding: "6px 9px" }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span style={{ font: '500 15px/1.3 var(--font-inter-tight), sans-serif' }}>{a}</span>

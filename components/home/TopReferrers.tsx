@@ -74,7 +74,7 @@ export default function TopReferrers() {
                   alignItems: "center",
                   justifyContent: "center",
                   font: '700 0.95rem/1 var(--font-inter-tight), sans-serif',
-                  color: i === 0 ? "#C98A00" : "rgba(var(--tx),0.85)",
+                  color: i === 0 ? "#C98A00" : "#e9e9e4",
                 }}
               >
                 {name
