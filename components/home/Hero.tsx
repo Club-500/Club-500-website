@@ -115,7 +115,7 @@ export default function Hero() {
           gap: 28,
         }}
       >
-        <h1 className="mega hero-up hd-1" style={{ margin: 0, maxWidth: 820 }}>
+        <h1 className="mega hero-up hd-1" style={{ margin: 0, maxWidth: 820, color: "#fff" }}>
           Grassroots to <span className="gold">Greatness</span>
         </h1>
         <p
