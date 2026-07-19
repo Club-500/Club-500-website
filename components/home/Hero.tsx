@@ -4,25 +4,32 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 
+type Slide =
+  | { kind: "img"; src: string }
+  | { kind: "vid"; src: string; poster: string };
+
+const SLIDES: Slide[] = [
+  { kind: "img", src: "/assets/hero-acac.webp" },
+  { kind: "vid", src: "/assets/hero-female.mp4", poster: "/assets/hero-female-poster.jpg" },
+  { kind: "img", src: "/assets/hero-acac2.webp" },
+  { kind: "vid", src: "/assets/hero-kick.mp4", poster: "/assets/hero-kick-poster.jpg" },
+  { kind: "vid", src: "/assets/hero-play.mp4", poster: "/assets/hero-play-poster.jpg" },
+];
+
 export default function Hero() {
   const { t } = useLang();
-  const refs = [
-    useRef<HTMLVideoElement>(null),
-    useRef<HTMLVideoElement>(null),
-    useRef<HTMLVideoElement>(null),
-  ];
+  const vidRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [active, setActive] = useState(0);
-  const [restReady, setRestReady] = useState(false);
+  const [vidsReady, setVidsReady] = useState(false);
 
   useEffect(() => {
-    const vids = () => refs.map((r) => r.current).filter(Boolean) as HTMLVideoElement[];
+    const vids = () => vidRefs.current.filter(Boolean) as HTMLVideoElement[];
     const tryPlay = () => vids().forEach((v) => v.play().catch(() => {}));
-    tryPlay();
-    // Only the first video loads up front; fetch the other two once the page is idle
+    // The opening slide is an image, so videos can load quietly in the background
     const idle = setTimeout(() => {
-      setRestReady(true);
-      setTimeout(tryPlay, 100);
-    }, 2500);
+      setVidsReady(true);
+      setTimeout(tryPlay, 150);
+    }, 2000);
     const onInteract = () => {
       tryPlay();
       document.removeEventListener("pointerdown", onInteract);
@@ -32,7 +39,7 @@ export default function Hero() {
       if (!document.hidden) tryPlay();
     };
     document.addEventListener("visibilitychange", onVis);
-    const iv = setInterval(() => setActive((p) => (p + 1) % 3), 9000);
+    const iv = setInterval(() => setActive((p) => (p + 1) % SLIDES.length), 8000);
     return () => {
       clearInterval(iv);
       clearTimeout(idle);
@@ -42,7 +49,7 @@ export default function Hero() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const vidStyle = (on: boolean): React.CSSProperties => ({
+  const layerStyle = (on: boolean): React.CSSProperties => ({
     position: "absolute",
     inset: 0,
     width: "100%",
@@ -64,39 +71,37 @@ export default function Hero() {
       }}
     >
       <div style={{ position: "absolute", inset: 0 }}>
-        <video
-          ref={refs[0]}
-          src="/assets/hero-female.mp4"
-          poster="/assets/hero-female-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          style={vidStyle(active === 0)}
-        />
-        <video
-          ref={refs[1]}
-          src={restReady ? "/assets/hero-kick.mp4" : undefined}
-          poster="/assets/hero-kick-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          style={vidStyle(active === 1)}
-        />
-        <video
-          ref={refs[2]}
-          src={restReady ? "/assets/hero-play.mp4" : undefined}
-          poster="/assets/hero-play-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          style={vidStyle(active === 2)}
-        />
+        {SLIDES.map((s, i) =>
+          s.kind === "img" ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={s.src}
+              src={s.src}
+              alt=""
+              fetchPriority={i === 0 ? "high" : "auto"}
+              style={{
+                ...layerStyle(active === i),
+                transform: active === i ? "scale(1.05)" : "scale(1)",
+                transition: "opacity 1.4s ease, transform 9s linear",
+              }}
+            />
+          ) : (
+            <video
+              key={s.src}
+              ref={(el) => {
+                vidRefs.current[i] = el;
+              }}
+              src={vidsReady ? s.src : undefined}
+              poster={s.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+              style={layerStyle(active === i)}
+            />
+          )
+        )}
         <div
           style={{
             position: "absolute",
@@ -115,7 +120,7 @@ export default function Hero() {
           padding: "0 clamp(20px, 4vw, 32px) clamp(40px, 6vw, 64px)",
           display: "flex",
           flexDirection: "column",
-          gap: 28,
+          gap: "clamp(18px, 3vw, 28px)",
         }}
       >
         <h1 className="mega hero-up hd-1" style={{ margin: 0, maxWidth: 820, color: "#fff" }}>
@@ -130,7 +135,7 @@ export default function Hero() {
             color: "rgba(255,255,255,0.78)",
           }}
         >
-{t("hero.sub")}
+          {t("hero.sub")}
         </p>
         <div
           className="hero-up hd-3 hero-roles"

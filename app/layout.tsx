@@ -53,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={interTight.variable} suppressHydrationWarning>
       <head>
+        <link rel="preload" as="image" href="/assets/hero-acac.webp" fetchPriority="high" />
         {CLUBS.slice(0, 5).map(([name]) => (
           <link
             key={name}
