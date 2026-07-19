@@ -76,7 +76,7 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "footer.journalists": { en: "Journalists", sw: "Wanahabari" },
   "footer.blurb": { en: "Building the future of community football in Kenya.", sw: "Tunajenga mustakabali wa soka ya jamii nchini Kenya." },
   "footer.subscribe": { en: "Subscribe for updates", sw: "Jisajili upate habari" },
-  "footer.rights": { en: "Grassroots to Greatness · All rights Reserved CLUB500 2026", sw: "Grassroots to Greatness · Haki zote zimehifadhiwa CLUB500 2026" },
+  "footer.rights": { en: "All rights Reserved CLUB500 2026", sw: "Haki zote zimehifadhiwa CLUB500 2026" },
   "footer.language": { en: "Language", sw: "Lugha" },
   // newsletter
   "nl.placeholder": { en: "Your email address", sw: "Barua pepe yako" },
