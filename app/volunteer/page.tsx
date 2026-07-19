@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
+import { useLang } from "@/lib/i18n";
 
 const AREAS = ["Coaching", "Design", "Media", "Legal", "Finance", "Technology", "Events"];
 
@@ -49,6 +50,7 @@ function Field({ label, error, children }: { label: string; error?: string; chil
 }
 
 export default function VolunteerPage() {
+  const { t } = useLang();
   const [area, setArea] = useState("");
   const [form, setForm] = useState({ name: "", email: "", phone: "", county: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -88,8 +90,8 @@ export default function VolunteerPage() {
   return (
     <>
       <RevealInit />
-      <PageHead eyebrow="Volunteer with Club500">
-        Bring your <span className="gold">skills</span> to the game
+      <PageHead eyebrow={t("vp.eyebrow")}>
+        {t("vp.h1a")} <span className="gold">{t("vp.h1b")}</span> {t("vp.h1c")}
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 980, margin: "0 auto" }}>
         <p

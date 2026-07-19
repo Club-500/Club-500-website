@@ -1,6 +1,9 @@
+"use client";
+
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import PartnerImpact from "@/components/partners/PartnerImpact";
+import { useLang } from "@/lib/i18n";
 
 const TIERS: [string, string, string, string][] = [
   ["National Sponsor", "All 500 clubs", "Brand visibility across all 500 clubs: national campaigns, the Launch Tour, national media.", "#cfd8e3"],
@@ -10,11 +13,12 @@ const TIERS: [string, string, string, string][] = [
 ];
 
 export default function PartnersPage() {
+  const { t } = useLang();
   return (
     <>
       <RevealInit />
       <PageHead eyebrow="National · Regional · County · Pillar">
-        Back 500 clubs. Reach a <span className="gold">nation</span>.
+        {t("pp.h1a")} <span className="gold">{t("pp.h1b")}</span>.
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column", gap: 56 }}>
         <p className="rv" style={{ margin: 0, maxWidth: 700, font: '400 clamp(1.2rem, 2vw, 1.6rem)/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.8)" }}>

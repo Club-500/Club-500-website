@@ -811,3 +811,55 @@ textarea {
 body.nav-open .cookie-card {
   display: none !important;
 }
+
+
+/* ---- accessibility ---- */
+html {
+  scroll-behavior: smooth;
+}
+:focus-visible {
+  outline: 2px solid #C98A00;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.skip-link {
+  position: fixed;
+  top: -60px;
+  left: 16px;
+  z-index: 100;
+  background: #1B5E3C;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 0 0 12px 12px;
+  font: 600 14px/1 var(--font-inter-tight), sans-serif;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  color: #fff;
+}
+
+/* ---- confetti on confirmed picks ---- */
+.confetti-stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.confetti-bit {
+  position: absolute;
+  top: 40%;
+  width: 7px;
+  height: 11px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confettiPop 1.2s cubic-bezier(0.2, 0.6, 0.4, 1) forwards;
+}
+@keyframes confettiPop {
+  0% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+  100% { opacity: 0; transform: translateY(-90px) rotate(320deg) scale(0.7); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .confetti-bit { animation: none; opacity: 0; }
+  html { scroll-behavior: auto; }
+}

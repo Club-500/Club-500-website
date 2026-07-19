@@ -6,6 +6,7 @@ import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import { EVENT_IMG } from "@/lib/data";
 import { NEWS } from "@/lib/content";
+import ShareButton from "@/components/ShareButton";
 
 const FORMATS = ["All", "Articles", "Photo", "Video", "Podcast"];
 const REGIONS = ["All", "Nairobi", "Central", "Rift Valley", "Eastern", "Coast", "Western", "Nyanza", "N. Eastern"];
@@ -102,7 +103,10 @@ export default function NewsroomPage() {
                 <span className="tag-pill">{f}</span>
               </div>
               <div className="display" style={{ fontSize: "clamp(1.3rem, 2.2vw, 1.8rem)", flex: 1 }}>{title}</div>
-              <div className="mono-label">By {byline} · ✔</div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+                <div className="mono-label">By {byline} · ✔</div>
+                <ShareButton title={title} text={`${title} — Club500 Newsroom`} />
+              </div>
             </div>
           ))}
           <div className="rv" style={{ border: "1.5px dashed rgba(201,138,0,0.6)", borderRadius: 20, background: "rgba(201,138,0,0.05)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 180, padding: 26 }}>

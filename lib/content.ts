@@ -17,6 +17,12 @@
    After editing, redeploy the site and the new content is live.
    ========================================================================== */
 
+// Countdown target for the next flagship event (ISO date with EAT offset)
+export const LAUNCH = {
+  date: "2026-09-12T15:00:00+03:00",
+  label: "National Launch Tour · Nairobi",
+};
+
 export const FIXTURES: [when: string, home: string, away: string, venue: string][] = [
   ["Sat 25 Jul · 15:00", "Kivumbini United", "Kapkatet Youth", "Nakuru ASK Grounds"],
   ["Sat 25 Jul · 15:00", "Shimanzi FC", "Goodhope FC", "Tononoka Grounds, Mombasa"],

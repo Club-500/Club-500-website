@@ -2,18 +2,23 @@
 
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
+import ShareButton from "@/components/ShareButton";
 import { EVENT_IMG } from "@/lib/data";
 import { EVENTS } from "@/lib/content";
+import Countdown from "@/components/Countdown";
+import { useLang } from "@/lib/i18n";
 
 
 export default function EventsPage() {
+  const { t } = useLang();
   return (
     <>
       <RevealInit />
       <PageHead eyebrow="Workshops · Festivals · Trials">
-        Club500 <span className="gold">events</span>
+        {t("ev.h1a")} <span className="gold">{t("ev.h1b")}</span>
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+        <Countdown />
         <div
           className="rv"
           style={{
@@ -51,9 +56,12 @@ export default function EventsPage() {
               </div>
               <div style={{ font: '600 18px/1.3 var(--font-inter-tight), sans-serif', flex: 1 }}>{title}</div>
               <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>{desc}</p>
-              <button className="pill-ghost" type="button" style={{ alignSelf: "flex-start", padding: "10px 20px" }}>
-                RSVP
-              </button>
+              <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+                <button className="pill-ghost" type="button" style={{ padding: "10px 20px" }}>
+                  RSVP
+                </button>
+                <ShareButton title={title} text={`${title} · ${date}, ${city}. Club500.`} />
+              </div>
             </div>
           ))}
         </div>

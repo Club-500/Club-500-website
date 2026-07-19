@@ -6,6 +6,7 @@ import RevealInit from "@/components/RevealInit";
 import TopReferrers from "@/components/home/TopReferrers";
 import { FIXTURES, RESULTS, STANDINGS, ODDS, SENTIMENT, BOOST_INDEX } from "@/lib/content";
 import ReferralShare from "@/components/ReferralShare";
+import { useLang } from "@/lib/i18n";
 import UploadMoment from "@/components/UploadMoment";
 
 const MVPS = ["Kiprop Kirui (Kapkatet Youth)", "Salim Juma (Shimanzi FC)", "Mary Achieng (Uhola FC)"];
@@ -28,9 +29,11 @@ type Pick = "1" | "X" | "2";
 
 
 export default function FanZonePage() {
+  const { t } = useLang();
   const [voted, setVoted] = useState<string | null>(null);
   const [picks, setPicks] = useState<Record<number, Pick>>({});
   const [locked, setLocked] = useState(false);
+  const [burst, setBurst] = useState(false);
   const [refs, setRefs] = useState(100);
   const earnings = refs * 250;
   const chosen = Object.entries(picks).filter(([, v]) => v);
@@ -48,8 +51,8 @@ export default function FanZonePage() {
   return (
     <>
       <RevealInit />
-      <PageHead eyebrow="The Fan Zone">
-        Your club. Your voice. Your <span className="gold">reward</span>.
+      <PageHead eyebrow={t("fzp.eyebrow")}>
+        {t("fzp.h1a")} <span className="gold">{t("fzp.h1b")}</span>.
       </PageHead>
       <div
         style={{
@@ -70,13 +73,39 @@ export default function FanZonePage() {
             color: "rgba(var(--tx),0.72)",
           }}
         >
-          Follow your club. Get real match updates, stories and
-          behind-the-scenes access, and earn when you bring friends along.
+          {t("fzp.intro")}
         </p>
+
+        <nav
+          aria-label="Fan Zone sections"
+          className="no-scrollbar fz-chipnav"
+          style={{
+            position: "sticky",
+            top: 96,
+            zIndex: 12,
+            display: "flex",
+            gap: 8,
+            overflowX: "auto",
+            padding: "8px 4px",
+            margin: "-16px -4px 0",
+            background: "var(--bg)",
+          }}
+        >
+          {[["#results", t("fzp.results")], ["#predict", t("fzp.predict")], ["#vote", t("fzp.vote")], ["#earn", t("fzp.earn")]].map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              className="tag-pill"
+              style={{ flexShrink: 0, background: "var(--glass-bg)" }}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
         {/* Results + standings */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
+        <div id="results" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14, scrollMarginTop: 120 }}>
           <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 28px)" }}>
-            <div className="mono-label" style={{ marginBottom: 16 }}>Last weekend</div>
+            <div className="mono-label" style={{ marginBottom: 16 }}>{t("fzp.lastweekend")}</div>
             {RESULTS.map(([h, hs, a, as_], i) => (
               <div key={h} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderBottom: i < RESULTS.length - 1 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
                 <span style={{ flex: 1, textAlign: "right", font: '600 14.5px/1.3 var(--font-inter-tight), sans-serif' }}>{h}</span>
@@ -88,7 +117,7 @@ export default function FanZonePage() {
             ))}
           </div>
           <div className="glass rv rv-d1" style={{ padding: "clamp(20px, 3vw, 28px)" }}>
-            <div className="mono-label" style={{ marginBottom: 14 }}>Standings · Pilot league</div>
+            <div className="mono-label" style={{ marginBottom: 14 }}>{t("fzp.standings")}</div>
             <div style={{ display: "grid", gridTemplateColumns: "24px 1fr repeat(4, 30px) 40px", gap: 4, font: '600 11px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.45)", padding: "0 0 8px" }}>
               <span>#</span><span>Club</span><span>P</span><span>W</span><span>D</span><span>L</span><span style={{ textAlign: "right" }}>Pts</span>
             </div>
@@ -104,7 +133,7 @@ export default function FanZonePage() {
         </div>
 
         {/* Predictions market */}
-        <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)" }}>
+        <div id="predict" className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)", scrollMarginTop: 120 }}>
           <div
             style={{
               display: "flex",
@@ -117,9 +146,9 @@ export default function FanZonePage() {
           >
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <span className="live-dot"></span>
-              <h2 className="display" style={{ margin: 0 }}>Predictions</h2>
+              <h2 className="display" style={{ margin: 0 }}>{t("fzp.predictions")}</h2>
             </div>
-            <span className="mono-label">Fan points only · Settles Sun 18:00</span>
+            <span className="mono-label">{t("fzp.settles")}</span>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
             {FIXTURES.map(([when, home, away, venue], i) => {
@@ -150,13 +179,14 @@ export default function FanZonePage() {
                     {home} <span style={{ color: "rgba(var(--tx),0.4)", fontWeight: 500 }}>v</span> {away}
                   </div>
                   <div className="mono-label" style={{ marginTop: -6 }}>{venue}</div>
-                  <div style={{ display: "flex", gap: 8 }}>
+                  <div style={{ display: "flex", gap: 8 }} role="group" aria-label={`Prediction: ${home} v ${away}`}>
                     {(["1", "X", "2"] as Pick[]).map((p, j) => {
                       const active = picks[i] === p;
                       return (
                         <button
                           key={p}
                           type="button"
+                          aria-pressed={active}
                           onClick={() => setPick(i, p)}
                           disabled={locked}
                           style={{
@@ -215,12 +245,21 @@ export default function FanZonePage() {
               justifyContent: "space-between",
               flexWrap: "wrap",
               gap: 12,
+              position: "relative",
+              overflow: "visible",
             }}
           >
+            {burst && (
+              <span aria-hidden="true" className="confetti-stage">
+                {Array.from({ length: 18 }).map((_, k) => (
+                  <i key={k} className="confetti-bit" style={{ left: `${(k * 137) % 100}%`, animationDelay: `${(k % 6) * 60}ms`, background: k % 3 === 0 ? "#C98A00" : k % 3 === 1 ? "#2E9B63" : "#e9e9e4" }} />
+                ))}
+              </span>
+            )}
             {locked ? (
               <>
                 <span style={{ font: '700 15px/1.3 var(--font-inter-tight), sans-serif', color: "#2E9B63" }}>
-                  Picks locked. Good luck!
+                  {t("fzp.locked")}
                 </span>
                 <span className="mono-label">Settles Sun 18:00 · potential +{potential.toLocaleString()} pts</span>
               </>
@@ -242,7 +281,11 @@ export default function FanZonePage() {
                 <button
                   type="button"
                   disabled={pickCount === 0}
-                  onClick={() => setLocked(true)}
+                  onClick={() => {
+                    setLocked(true);
+                    setBurst(true);
+                    setTimeout(() => setBurst(false), 1600);
+                  }}
                   style={{
                     background: pickCount > 0 ? "#1B5E3C" : "rgba(var(--tx),0.08)",
                     color: pickCount > 0 ? "#fff" : "rgba(var(--tx),0.4)",
@@ -253,7 +296,7 @@ export default function FanZonePage() {
                     cursor: pickCount > 0 ? "pointer" : "default",
                   }}
                 >
-                  Confirm picks
+                  {t("fzp.confirm")}
                 </button>
               </>
             )}
@@ -308,9 +351,9 @@ export default function FanZonePage() {
         </div>
 
         {/* MVP vote + leaderboard */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
+        <div id="vote" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14, scrollMarginTop: 120 }}>
           <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)" }}>
-            <div className="mono-label" style={{ marginBottom: 18 }}>Matchday · Vote MVP</div>
+            <div className="mono-label" style={{ marginBottom: 18 }}>{t("fzp.mvp")}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {MVPS.map((m) => (
                 <button
@@ -340,7 +383,7 @@ export default function FanZonePage() {
             )}
           </div>
           <div className="glass rv rv-d1" style={{ padding: "clamp(20px, 3vw, 30px)" }}>
-            <div className="mono-label" style={{ marginBottom: 18 }}>National fan leaderboard</div>
+            <div className="mono-label" style={{ marginBottom: 18 }}>{t("fzp.leaderboard")}</div>
             {LEADERS.map(([name, town, pts], i) => (
               <div
                 key={name}
@@ -374,7 +417,7 @@ export default function FanZonePage() {
         </div>
 
         {/* Earn — merged from the old Earn page */}
-        <div className="rv">
+        <div id="earn" className="rv" style={{ scrollMarginTop: 120 }}>
           <h2 className="display" style={{ margin: "0 0 8px" }}>
             Earn with your <span className="gold">referral link</span>
           </h2>

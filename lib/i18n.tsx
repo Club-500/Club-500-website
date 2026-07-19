@@ -93,6 +93,46 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "cookie.decline": { en: "Decline", sw: "Kataa" },
   // mobile CTA
   "cta.join": { en: "Join your club", sw: "Jiunge na klabu yako" },
+  // fan zone page
+  "fzp.eyebrow": { en: "The Fan Zone", sw: "Kona ya Mashabiki" },
+  "fzp.h1a": { en: "Your club. Your voice. Your", sw: "Klabu yako. Sauti yako. Zawadi" },
+  "fzp.h1b": { en: "reward", sw: "yako" },
+  "fzp.intro": {
+    en: "Follow your club. Get real match updates, stories and behind-the-scenes access, and earn when you bring friends along.",
+    sw: "Fuatilia klabu yako. Pata habari halisi za mechi, hadithi na mambo ya nyuma ya pazia, na upate pesa unapowaleta marafiki.",
+  },
+  "fzp.results": { en: "Results", sw: "Matokeo" },
+  "fzp.predict": { en: "Predict", sw: "Bashiri" },
+  "fzp.vote": { en: "Vote", sw: "Piga kura" },
+  "fzp.earn": { en: "Earn", sw: "Pata" },
+  "fzp.lastweekend": { en: "Last weekend", sw: "Wikendi iliyopita" },
+  "fzp.standings": { en: "Standings · Pilot league", sw: "Msimamo · Ligi ya majaribio" },
+  "fzp.predictions": { en: "Predictions", sw: "Ubashiri" },
+  "fzp.settles": { en: "Fan points only · Settles Sun 18:00", sw: "Pointi za mashabiki tu · Hufungwa Jumapili 18:00" },
+  "fzp.confirm": { en: "Confirm picks", sw: "Thibitisha chaguo" },
+  "fzp.locked": { en: "Picks locked. Good luck!", sw: "Chaguo zimefungwa. Kila la heri!" },
+  "fzp.mvp": { en: "Matchday · Vote MVP", sw: "Siku ya mechi · Chagua MVP" },
+  "fzp.leaderboard": { en: "National fan leaderboard", sw: "Orodha ya mashabiki kitaifa" },
+  // clubs page
+  "cl.eyebrow": { en: "New clubs join every month. 33 live today, 500 on the way.", sw: "Klabu mpya hujiunga kila mwezi. 33 ziko hewani, 500 zinakuja." },
+  "cl.h1a": { en: "Find your", sw: "Tafuta" },
+  "cl.h1b": { en: "club", sw: "klabu yako" },
+  "cl.search": { en: "Search club or county…", sw: "Tafuta klabu au kaunti…" },
+  "cl.apply": { en: "Don't see your club? Apply to join Club500", sw: "Huoni klabu yako? Omba kujiunga na Club500" },
+  "cl.applynow": { en: "Apply now →", sw: "Omba sasa →" },
+  "cl.clubsjoin": { en: "How clubs join", sw: "Jinsi klabu zinavyojiunga" },
+  "cl.fansjoin": { en: "How fans join", sw: "Jinsi mashabiki wanavyojiunga" },
+  // page heads
+  "vp.eyebrow": { en: "Volunteer with Club500", sw: "Jitolee na Club500" },
+  "vp.h1a": { en: "Bring your", sw: "Leta" },
+  "vp.h1b": { en: "skills", sw: "ujuzi wako" },
+  "vp.h1c": { en: "to the game", sw: "kwenye mchezo" },
+  "pp.h1a": { en: "Back 500 clubs. Reach a", sw: "Unga mkono klabu 500. Fikia" },
+  "pp.h1b": { en: "nation", sw: "taifa" },
+  "ab.h1a": { en: "Why Club500", sw: "Kwa nini Club500" },
+  "ab.h1b": { en: "exists", sw: "ipo" },
+  "ev.h1a": { en: "Club500", sw: "Matukio ya" },
+  "ev.h1b": { en: "events", sw: "Club500" },
 };
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (k: string) => string };

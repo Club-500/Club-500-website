@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CLUBS } from "@/lib/data";
+import { CLUBS, clubSlug } from "@/lib/data";
 import { useLang } from "@/lib/i18n";
 import ClubCrest from "@/components/ClubCrest";
 
@@ -39,11 +39,9 @@ export default function FeaturedClubs() {
           gap: 14,
         }}
       >
-        {CLUBS.slice(0, 5).map(([name, county, img, site], i) => (
+        {CLUBS.slice(0, 5).map(([name, county, img], i) => (
           <a
-            href={site}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/clubs/${clubSlug(name)}`}
             key={name}
             className={"club-card glass rv rv-d" + Math.min(i, 4)}
             style={{ display: "block", padding: 20, color: "var(--fg)" }}

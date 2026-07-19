@@ -47,3 +47,15 @@ export const LIVE_COUNTIES = new Set([
 ]);
 
 
+
+export function clubSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+/** Short name as used in fixtures/results/standings (no FC/SC suffix). */
+export function clubShort(name: string): string {
+  return name.replace(/\s+(FC|SC)$/i, "").trim();
+}

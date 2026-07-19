@@ -2,6 +2,7 @@
 
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
+import { useLang } from "@/lib/i18n";
 
 const PROBLEMS = [
   "Inconsistent funding",
@@ -33,11 +34,12 @@ const AUDIENCES: [string, string][] = [
 ];
 
 export default function AboutPage() {
+  const { t } = useLang();
   return (
     <>
       <RevealInit />
       <PageHead eyebrow="About Club500">
-        Why Club500 <span className="gold">exists</span>
+        {t("ab.h1a")} <span className="gold">{t("ab.h1b")}</span>
       </PageHead>
 
       {/* Vision + Mission as pull quotes */}

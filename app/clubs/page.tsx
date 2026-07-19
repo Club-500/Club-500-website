@@ -3,9 +3,10 @@
 import { useMemo, useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
-import { CLUBS, REGION_OF_COUNTY } from "@/lib/data";
+import { CLUBS, REGION_OF_COUNTY, clubSlug } from "@/lib/data";
 import ClubCrest from "@/components/ClubCrest";
 import CountyGrid from "@/components/CountyGrid";
+import { useLang } from "@/lib/i18n";
 
 const RAIL: [string, number][] = [
   ["All", 33],
@@ -32,6 +33,7 @@ const FAN_STEPS: [string, string][] = [
 ];
 
 export default function ClubsPage() {
+  const { t } = useLang();
   const [q, setQ] = useState("");
   const [region, setRegion] = useState("All");
   const list = useMemo(
@@ -46,8 +48,8 @@ export default function ClubsPage() {
   return (
     <>
       <RevealInit />
-      <PageHead eyebrow="New clubs join every month. 33 live today, 500 on the way.">
-        Find your <span className="gold">club</span>
+      <PageHead eyebrow={t("cl.eyebrow")}>
+        {t("cl.h1a")} <span className="gold">{t("cl.h1b")}</span>
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
         <a
@@ -68,10 +70,10 @@ export default function ClubsPage() {
           }}
         >
           <span style={{ font: '600 15px/1.4 var(--font-inter-tight), sans-serif' }}>
-            Don&apos;t see your club? Apply to join Club500
+            {t("cl.apply")}
           </span>
           <span className="gold" style={{ font: '700 15px/1 var(--font-inter-tight), sans-serif' }}>
-            Apply now →
+            {t("cl.applynow")}
           </span>
         </a>
         <div className="rv" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
@@ -105,7 +107,7 @@ export default function ClubsPage() {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Search club or county…"
+            placeholder={t("cl.search")}
             style={{
               background: "rgba(var(--tx),0.05)",
               border: "1px solid rgba(var(--tx),0.15)",
@@ -128,12 +130,10 @@ export default function ClubsPage() {
             marginBottom: 56,
           }}
         >
-          {list.map(([name, county, img, site], i) => (
+          {list.map(([name, county, img], i) => (
             <a
               key={name}
-              href={site}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/clubs/${clubSlug(name)}`}
               className={"club-card glass rv rv-d" + (i % 4)}
               style={{ padding: 20, borderRadius: 20, display: "block", color: "var(--fg)" }}
             >
@@ -144,7 +144,7 @@ export default function ClubsPage() {
               <div className="mono-label" style={{ margin: "6px 0 12px" }}>
                 {county} county
               </div>
-              <span className="tag-pill gold-pill">Visit club site →</span>
+              <span className="tag-pill gold-pill">View club →</span>
             </a>
           ))}
         </div>
@@ -155,7 +155,7 @@ export default function ClubsPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
           <div className="glass rv" style={{ padding: "clamp(22px, 3vw, 32px)" }}>
             <h2 className="display" style={{ margin: "0 0 6px" }}>
-              How <span className="gold">clubs</span> join
+              {t("cl.clubsjoin")}
             </h2>
             <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
               Any community club in Kenya can apply. About 10 clubs are
@@ -178,7 +178,7 @@ export default function ClubsPage() {
           </div>
           <div className="glass rv rv-d1" style={{ padding: "clamp(22px, 3vw, 32px)" }}>
             <h2 className="display" style={{ margin: "0 0 6px" }}>
-              How <span className="gold">fans</span> join
+              {t("cl.fansjoin")}
             </h2>
             <p style={{ margin: "0 0 20px", font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
               Free for every fan, and your referral link earns you money from

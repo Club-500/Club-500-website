@@ -67,6 +67,7 @@ export default function Hero() {
         <video
           ref={refs[0]}
           src="/assets/hero-female.mp4"
+          poster="/assets/hero-female-poster.jpg"
           autoPlay
           muted
           loop
@@ -77,6 +78,7 @@ export default function Hero() {
         <video
           ref={refs[1]}
           src={restReady ? "/assets/hero-kick.mp4" : undefined}
+          poster="/assets/hero-kick-poster.jpg"
           autoPlay
           muted
           loop
@@ -87,6 +89,7 @@ export default function Hero() {
         <video
           ref={refs[2]}
           src={restReady ? "/assets/hero-play.mp4" : undefined}
+          poster="/assets/hero-play-poster.jpg"
           autoPlay
           muted
           loop

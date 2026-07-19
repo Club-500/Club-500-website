@@ -5,6 +5,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AppSplash from "@/components/AppSplash";
 import CookieNotice from "@/components/CookieNotice";
+import InstallPrompt from "@/components/InstallPrompt";
 import { LanguageProvider } from "@/lib/i18n";
 
 const interTight = Inter_Tight({
@@ -57,11 +58,13 @@ if("serviceWorker" in navigator){window.addEventListener("load",function(){navig
           }}
         />
         <LanguageProvider>
+          <a href="#main" className="skip-link">Skip to content</a>
           <AppSplash />
           <SiteHeader />
-          {children}
+          <main id="main">{children}</main>
           <SiteFooter />
           <CookieNotice />
+          <InstallPrompt />
         </LanguageProvider>
       </body>
     </html>
