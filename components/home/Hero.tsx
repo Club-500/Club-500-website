@@ -8,12 +8,15 @@ type Slide =
   | { kind: "img"; src: string }
   | { kind: "vid"; src: string; poster: string };
 
+/* The rotation tells the slogan: grassroots dust, the players,
+   and finally the stadium. Greatness, then back to the roots. */
 const SLIDES: Slide[] = [
   { kind: "img", src: "/assets/hero-acac.webp" },
-  { kind: "vid", src: "/assets/hero-female.mp4", poster: "/assets/hero-female-poster.jpg" },
+  { kind: "vid", src: "/assets/hero-kenyan1.mp4", poster: "/assets/hero-kenyan1-poster.jpg" },
   { kind: "img", src: "/assets/hero-acac2.webp" },
-  { kind: "vid", src: "/assets/hero-kick.mp4", poster: "/assets/hero-kick-poster.jpg" },
-  { kind: "vid", src: "/assets/hero-play.mp4", poster: "/assets/hero-play-poster.jpg" },
+  { kind: "vid", src: "/assets/hero-lightskin.mp4", poster: "/assets/hero-lightskin-poster.jpg" },
+  { kind: "vid", src: "/assets/hero-female.mp4", poster: "/assets/hero-female-poster.jpg" },
+  { kind: "vid", src: "/assets/hero-stadium.mp4", poster: "/assets/hero-stadium-poster.jpg" },
 ];
 
 export default function Hero() {
