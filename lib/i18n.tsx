@@ -30,11 +30,13 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "fixtures.title": { en: "This weekend", sw: "Wikendi hii" },
   "fixtures.cta": { en: "Play predictions", sw: "Cheza ubashiri" },
   // impact
-  "impact.h": { en: "clubs across 10 counties", sw: "klabu katika kaunti 10" },
-  "impact.sub": {
-    en: "Growing every month, headed for 500 clubs in all 47 counties.",
-    sw: "Tunakua kila mwezi, tukielekea klabu 500 katika kaunti zote 47.",
+  "pulse.h": { en: "Already on the ground in 10 counties", sw: "Tayari tuko mashinani katika kaunti 10" },
+  "pulse.sub": {
+    en: "33 community clubs and counting. Yours could be next.",
+    sw: "Klabu 33 za jamii na zinaongezeka. Yako inaweza kuwa ifuatayo.",
   },
+  "pulse.latest": { en: "Latest to join: Kajiado Youth FC, Kajiado", sw: "Mpya zaidi kujiunga: Kajiado Youth FC, Kajiado" },
+  "pulse.cta": { en: "See the full map →", sw: "Tazama ramani kamili →" },
   "impact.clubs": { en: "Community clubs", sw: "Klabu za jamii" },
   "impact.counties": { en: "Counties", sw: "Kaunti" },
   "impact.regions": { en: "Regions", sw: "Mikoa" },

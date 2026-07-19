@@ -1,6 +1,7 @@
 "use client";
 
-import CountUp from "@/components/CountUp";
+import Link from "next/link";
+import KenyaMap from "@/components/KenyaMap";
 import { useLang } from "@/lib/i18n";
 
 export default function ImpactStrip() {
@@ -10,42 +11,45 @@ export default function ImpactStrip() {
       <div
         className="glass rv"
         style={{
-          borderLeft: "3px solid #1B5E3C",
           padding: "clamp(22px, 3.5vw, 34px)",
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          gap: "clamp(24px, 4vw, 48px)",
           flexWrap: "wrap",
-          gap: "clamp(18px, 3vw, 40px)",
         }}
       >
+        <div style={{ flex: "0 1 220px", minWidth: 170, margin: "0 auto" }}>
+          <KenyaMap />
+        </div>
         <div style={{ flex: "1 1 320px" }}>
-          <div
+          <h2
             style={{
+              margin: 0,
               font: '800 clamp(1.5rem, 3vw, 2.2rem)/1.2 var(--font-inter-tight), sans-serif',
               letterSpacing: "-0.02em",
             }}
           >
-            <span className="gold">
-              <CountUp value={33} />
-            </span>{" "}
-            {t("impact.h")}
-          </div>
-          <div
+            {t("pulse.h")}
+          </h2>
+          <p
             style={{
-              marginTop: 8,
-              font: '500 15px/1.5 var(--font-inter-tight), sans-serif',
-              color: "rgba(var(--tx),0.6)",
+              margin: "10px 0 14px",
+              font: '400 16px/1.6 var(--font-inter-tight), sans-serif',
+              color: "rgba(var(--tx),0.65)",
+              maxWidth: 480,
             }}
           >
-            {t("impact.sub")}
+            {t("pulse.sub")}
+          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+            <span className="live-dot" style={{ flexShrink: 0 }}></span>
+            <span style={{ font: '500 13.5px/1.4 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
+              {t("pulse.latest")}
+            </span>
           </div>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span className="live-dot" style={{ flexShrink: 0 }}></span>
-          <span style={{ font: '500 13.5px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 340 }}>
-            {t("impact.latest")}
-          </span>
+          <Link href="/clubs" className="gold" style={{ font: '600 14.5px/1 var(--font-inter-tight), sans-serif' }}>
+            {t("pulse.cta")}
+          </Link>
         </div>
       </div>
     </section>

@@ -6,6 +6,7 @@ import RevealInit from "@/components/RevealInit";
 import TopReferrers from "@/components/home/TopReferrers";
 import { FIXTURES, RESULTS, STANDINGS, ODDS, SENTIMENT, BOOST_INDEX } from "@/lib/content";
 import ReferralShare from "@/components/ReferralShare";
+import UploadMoment from "@/components/UploadMoment";
 
 const MVPS = ["Kiprop Kirui (Kapkatet Youth)", "Salim Juma (Shimanzi FC)", "Mary Achieng (Uhola FC)"];
 
