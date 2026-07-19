@@ -7,7 +7,7 @@ import { useLang } from "@/lib/i18n";
 export default function ImpactStrip() {
   const { t } = useLang();
   return (
-    <section style={{ padding: "56px clamp(20px, 4vw, 32px) 8px", maxWidth: 1280, margin: "0 auto" }}>
+    <section style={{ padding: "clamp(36px, 7vw, 56px) clamp(20px, 4vw, 32px) 8px", maxWidth: 1280, margin: "0 auto" }}>
       <div
         className="glass rv"
         style={{

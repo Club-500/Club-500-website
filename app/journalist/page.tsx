@@ -146,7 +146,7 @@ export default function JournalistPage() {
       </PageHead>
       <div
         style={{
-          padding: "0 clamp(20px, 4vw, 32px) 72px",
+          padding: "0 clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)",
           maxWidth: 1280,
           margin: "0 auto",
           display: "grid",

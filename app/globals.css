@@ -508,15 +508,12 @@ textarea {
 
 /* run in from the left, strike at ~53%, ball beats the keeper by 64% */
 @keyframes gsPlayerX {
-  0% { left: -70px; opacity: 1; }
-  53% { left: calc(100% - 216px); opacity: 1; }
+  0% { left: -70px; }
+  53% { left: calc(100% - 216px); }
   57% { left: calc(100% - 206px); }
-  84% { left: calc(100% - 206px); opacity: 1; }
-  93% { left: calc(100% + 56px); opacity: 1; }
-  93.2% { left: calc(100% + 56px); opacity: 0; }
-  93.4% { left: -70px; opacity: 0; }
-  99% { left: -70px; opacity: 0; }
-  100% { left: -70px; opacity: 1; }
+  84% { left: calc(100% - 206px); }
+  96% { left: -70px; }
+  100% { left: -70px; }
 }
 /* skill moves past each defender, strike lean, then celebration hops */
 @keyframes gsPlayerMoves {
@@ -536,7 +533,10 @@ textarea {
   75% { transform: translateY(-9px); }
   78% { transform: none; }
   81% { transform: translateY(-6px); }
-  84%, 100% { transform: none; }
+  83.9% { transform: none; }
+  84% { transform: scaleX(-1); }
+  95.9% { transform: scaleX(-1); }
+  96%, 100% { transform: none; }
 }
 @keyframes gsFlightX {
   0% { left: -48px; opacity: 1; animation-timing-function: linear; }
@@ -862,4 +862,22 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .confetti-bit { animation: none; opacity: 0; }
   html { scroll-behavior: auto; }
+}
+
+
+/* ---- hero height: small-viewport-aware ---- */
+.hero-sec {
+  min-height: 100vh;
+}
+@supports (min-height: 100svh) {
+  .hero-sec {
+    min-height: 100svh;
+  }
+}
+@media (max-width: 640px) {
+  @supports (min-height: 100svh) {
+    .hero-sec {
+      min-height: 93svh;
+    }
+  }
 }

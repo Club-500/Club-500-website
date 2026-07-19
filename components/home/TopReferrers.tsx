@@ -8,7 +8,7 @@ const REFS: [string, string, number][] = [
 
 export default function TopReferrers() {
   return (
-    <section style={{ padding: "64px clamp(20px, 4vw, 32px)", maxWidth: 1280, margin: "0 auto" }}>
+    <section style={{ padding: "clamp(40px, 7vw, 64px) clamp(20px, 4vw, 32px)", maxWidth: 1280, margin: "0 auto" }}>
       <div
         className="rv"
         style={{

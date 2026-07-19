@@ -43,7 +43,7 @@ export default function NewsroomPage() {
       <PageHead eyebrow="A national wire service. 8 regions, 500 clubs">
         The <span className="gold">newsroom</span>
       </PageHead>
-      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1280, margin: "0 auto" }}>
         <div className="rv" style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20, padding: "12px 18px", border: "1px solid rgba(var(--tx),0.12)", borderRadius: 999, overflow: "hidden" }}>
           <span className="live-dot" style={{ flexShrink: 0 }}></span>
           <span className="mono-label" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>

@@ -21,7 +21,7 @@ export default function PrivacyPage() {
       <PageHead eyebrow="Last updated: July 2026">
         Privacy <span className="gold">Policy</span>
       </PageHead>
-      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1280, margin: "0 auto" }}>
         <h2 style={S}>Who we are</h2>
         <p style={P}>
           Club500 (&ldquo;we&rdquo;, &ldquo;us&rdquo;) operates the Club500 platform for community

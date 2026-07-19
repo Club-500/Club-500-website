@@ -76,7 +76,7 @@ export default function AboutPage() {
       </div>
 
       {/* The problem */}
-      <div style={{ padding: "48px clamp(20px, 4vw, 32px) 24px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "clamp(32px, 6vw, 48px) clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
         <h2 className="display rv" style={{ margin: "0 0 8px" }}>
           Most clubs don&apos;t lack talent. <span className="gold">They lack systems.</span>
         </h2>
@@ -107,7 +107,7 @@ export default function AboutPage() {
       </div>
 
       {/* The solution */}
-      <div style={{ padding: "40px clamp(20px, 4vw, 32px) 24px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "clamp(28px, 5vw, 40px) clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
         <h2 className="display rv" style={{ margin: "0 0 8px" }}>
           Instead of asking how clubs survive, we ask how they <span className="gold">thrive</span>
         </h2>
@@ -149,7 +149,7 @@ export default function AboutPage() {
       </div>
 
       {/* CTA */}
-      <div style={{ padding: "24px clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "20px clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1280, margin: "0 auto" }}>
         <div
           className="rv"
           style={{

@@ -8,7 +8,7 @@ import ClubCrest from "@/components/ClubCrest";
 export default function FeaturedClubs() {
   const { t } = useLang();
   return (
-    <section style={{ padding: "24px clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+    <section style={{ padding: "20px clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1280, margin: "0 auto" }}>
       <div
         className="rv"
         style={{

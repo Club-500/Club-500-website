@@ -6,7 +6,7 @@ import { useLang } from "@/lib/i18n";
 export default function AboutSnapshot() {
   const { t } = useLang();
   return (
-    <section style={{ padding: "24px clamp(20px, 4vw, 32px) 56px", maxWidth: 1280, margin: "0 auto" }}>
+    <section style={{ padding: "20px clamp(20px, 4vw, 32px) clamp(36px, 7vw, 56px)", maxWidth: 1280, margin: "0 auto" }}>
       <div
         className="glass rv"
         style={{ padding: "clamp(24px, 4vw, 40px)", borderLeft: "3px solid #1B5E3C" }}

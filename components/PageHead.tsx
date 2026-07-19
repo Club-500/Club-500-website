@@ -8,7 +8,7 @@ export default function PageHead({
   children: ReactNode;
 }) {
   return (
-    <div style={{ padding: "clamp(110px, 18vw, 150px) clamp(20px, 4vw, 32px) 40px", maxWidth: 1280, margin: "0 auto" }}>
+    <div style={{ padding: "clamp(104px, 17vw, 150px) clamp(20px, 4vw, 32px) clamp(22px, 4vw, 40px)", maxWidth: 1280, margin: "0 auto" }}>
       <div className="mono-label rv" style={{ marginBottom: 18 }}>
         {eyebrow}
       </div>

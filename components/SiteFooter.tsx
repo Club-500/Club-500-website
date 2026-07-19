@@ -44,7 +44,7 @@ export default function SiteFooter() {
         background: "#121413",
         color: "#fff",
         borderTop: "1px solid rgba(255,255,255,0.1)",
-        padding: "56px clamp(20px, 4vw, 32px) 36px",
+        padding: "clamp(36px, 7vw, 56px) clamp(20px, 4vw, 32px) 30px",
         overflow: "hidden",
       }}
     >

@@ -54,9 +54,9 @@ export default function Hero() {
 
   return (
     <section
+      className="hero-sec"
       style={{
         position: "relative",
-        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",

@@ -18,7 +18,7 @@ export default function EventsPage() {
       <PageHead eyebrow="Workshops · Festivals · Trials">
         {t("ev.h1a")} <span className="gold">{t("ev.h1b")}</span>
       </PageHead>
-      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1280, margin: "0 auto" }}>
         <Countdown />
         <div
           className="rv"

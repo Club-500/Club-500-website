@@ -57,12 +57,12 @@ export default function FanZonePage() {
       </PageHead>
       <div
         style={{
-          padding: "0 clamp(20px, 4vw, 32px) 72px",
+          padding: "0 clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)",
           maxWidth: 1280,
           margin: "0 auto",
           display: "flex",
           flexDirection: "column",
-          gap: 48,
+          gap: "clamp(30px, 5vw, 48px)",
         }}
       >
         <p

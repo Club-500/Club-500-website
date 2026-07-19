@@ -13,7 +13,7 @@ export default function FanZoneSteps() {
   return (
     <section
       style={{
-        padding: "64px clamp(20px, 4vw, 32px)",
+        padding: "clamp(40px, 7vw, 64px) clamp(20px, 4vw, 32px)",
         background: "#1B5E3C",
         borderRadius: "36px 36px 0 0",
         marginTop: 24,

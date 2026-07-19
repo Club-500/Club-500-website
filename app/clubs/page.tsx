@@ -51,7 +51,7 @@ export default function ClubsPage() {
       <PageHead eyebrow={t("cl.eyebrow")}>
         {t("cl.h1a")} <span className="gold">{t("cl.h1b")}</span>
       </PageHead>
-      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1280, margin: "0 auto" }}>
         <a
           href="/clubs/apply"
           className="rv"

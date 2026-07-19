@@ -20,7 +20,7 @@ export default function PodcastPage() {
         Stories, Strategy & Transformation from Kenya&apos;s{" "}
         <span className="gold">Football Future</span>
       </PageHead>
-      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 40px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) clamp(28px, 5vw, 40px)", maxWidth: 1280, margin: "0 auto" }}>
         <div className="rv" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
           {CATEGORIES.map((c) => (
             <span key={c} className="tag-pill">{c}</span>
@@ -47,7 +47,7 @@ export default function PodcastPage() {
           />
         </div>
       </div>
-      <div style={{ padding: "16px clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "14px clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
           {PODCAST.map(([num, title, guest, summary], i) => (
             <div
