@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function ClubCrest({ name, img, size = "100%" }: { name: string; img: string; size?: string }) {
+export default function ClubCrest({ name, img, size = "100%", eager = false }: { name: string; img: string; size?: string; eager?: boolean }) {
   const [err, setErr] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const initials = name
@@ -51,7 +51,7 @@ export default function ClubCrest({ name, img, size = "100%" }: { name: string; 
         <img
           src={img}
           alt={name}
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
           decoding="async"
           onError={() => setErr(true)}
           onLoad={() => setLoaded(true)}

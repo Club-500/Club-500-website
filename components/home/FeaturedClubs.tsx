@@ -46,7 +46,7 @@ export default function FeaturedClubs() {
             className={"club-card glass rv rv-d" + Math.min(i, 4)}
             style={{ display: "block", padding: 20, color: "var(--fg)" }}
           >
-            <ClubCrest name={name} img={img} />
+            <ClubCrest name={name} img={img} eager />
             <div style={{ padding: "14px 2px 0" }}>
               <div style={{ font: '600 15.5px/1.25 var(--font-inter-tight), sans-serif' }}>
                 {name}

@@ -35,7 +35,7 @@ export default async function ClubPage({ params }: { params: Promise<{ slug: str
         {/* header */}
         <div className="rv" style={{ display: "flex", alignItems: "center", gap: "clamp(16px, 3vw, 28px)", flexWrap: "wrap", marginBottom: 28 }}>
           <div style={{ width: "clamp(88px, 14vw, 128px)" }}>
-            <ClubCrest name={name} img={img} />
+            <ClubCrest name={name} img={img} eager />
           </div>
           <div style={{ flex: "1 1 240px" }}>
             <h1 className="mega" style={{ margin: 0, fontSize: "clamp(2rem, 5vw, 3.6rem)" }}>{name}</h1>
