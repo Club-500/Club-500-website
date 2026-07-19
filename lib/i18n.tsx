@@ -29,6 +29,9 @@ const DICT: Record<string, { en: string; sw: string }> = {
   // fixtures strip
   "fixtures.title": { en: "This weekend", sw: "Wikendi hii" },
   "fixtures.cta": { en: "Play predictions", sw: "Cheza ubashiri" },
+  "pred.market": { en: "Matchday predictions", sw: "Ubashiri wa mechi" },
+  "pred.slip": { en: "Your slip", sw: "Slipu yako" },
+  "pred.locked": { en: "Slip locked · settles Sunday", sw: "Slipu imefungwa · Jumapili" },
   // impact
   "pulse.h": { en: "Already on the ground in 10 counties", sw: "Tayari tuko mashinani katika kaunti 10" },
   "pulse.sub": {

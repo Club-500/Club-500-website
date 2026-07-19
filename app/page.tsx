@@ -1,5 +1,5 @@
 import Hero from "@/components/home/Hero";
-import FixturesStrip from "@/components/home/FixturesStrip";
+import PredictionsStrip from "@/components/home/PredictionsStrip";
 import ImpactStrip from "@/components/home/ImpactStrip";
 import AboutSnapshot from "@/components/home/AboutSnapshot";
 import FeaturedClubs from "@/components/home/FeaturedClubs";
@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <RevealInit />
       <Hero />
-      <FixturesStrip />
+      <PredictionsStrip />
       <ImpactStrip />
       <AboutSnapshot />
       <FeaturedClubs />

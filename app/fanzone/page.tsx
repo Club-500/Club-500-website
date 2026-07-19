@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import TopReferrers from "@/components/home/TopReferrers";
 import { FIXTURES, RESULTS, STANDINGS, ODDS, SENTIMENT, BOOST_INDEX } from "@/lib/content";
+import { useLiveOdds, loadPicks, savePicks, loadLocked, saveLocked } from "@/lib/market";
 import ReferralShare from "@/components/ReferralShare";
 import { useLang } from "@/lib/i18n";
 import UploadMoment from "@/components/UploadMoment";
@@ -35,6 +36,12 @@ export default function FanZonePage() {
   const [picks, setPicks] = useState<Record<number, Pick>>({});
   const [locked, setLocked] = useState(false);
   const [burst, setBurst] = useState(false);
+  const { odds: liveOdds, flash } = useLiveOdds();
+
+  useEffect(() => {
+    setPicks(loadPicks() as Record<number, Pick>);
+    setLocked(loadLocked());
+  }, []);
   const [refs, setRefs] = useState(100);
   const earnings = refs * 250;
   const chosen = Object.entries(picks).filter(([, v]) => v);
@@ -47,7 +54,11 @@ export default function FanZonePage() {
   const potential = pickCount === 0 ? 0 : Math.round(100 * combined);
 
   const setPick = (i: number, p: Pick) =>
-    setPicks((prev) => ({ ...prev, [i]: prev[i] === p ? undefined : p } as Record<number, Pick>));
+    setPicks((prev) => {
+      const next = { ...prev, [i]: prev[i] === p ? undefined : p } as Record<number, Pick>;
+      savePicks(next);
+      return next;
+    });
 
   return (
     <>
@@ -153,7 +164,7 @@ export default function FanZonePage() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
             {FIXTURES.map(([when, home, away, venue], i) => {
-              const odds = ODDS[i];
+              const odds = liveOdds[i];
               const sent = SENTIMENT[i];
               return (
                 <div
@@ -188,6 +199,7 @@ export default function FanZonePage() {
                           key={p}
                           type="button"
                           aria-pressed={active}
+                          className={flash && flash.i === i && flash.j === j ? (flash.up ? "odds-up" : "odds-down") : ""}
                           onClick={() => setPick(i, p)}
                           disabled={locked}
                           style={{
@@ -209,7 +221,7 @@ export default function FanZonePage() {
                           <span style={{ font: '500 10.5px/1 var(--font-inter-tight), sans-serif', letterSpacing: "0.04em", color: active ? "rgba(255,255,255,0.75)" : "rgba(var(--tx),0.5)" }}>
                             {j === 0 ? home.split(" ")[0] : j === 1 ? "Draw" : away.split(" ")[0]}
                           </span>
-                          <span style={{ font: '800 17px/1 var(--font-inter-tight), sans-serif' }}>
+                          <span style={{ font: '800 17px/1 var(--font-inter-tight), sans-serif', fontVariantNumeric: "tabular-nums" }}>
                             {odds[j].toFixed(2)}
                           </span>
                         </button>
@@ -284,6 +296,7 @@ export default function FanZonePage() {
                   disabled={pickCount === 0}
                   onClick={() => {
                     setLocked(true);
+                    saveLocked(true);
                     setBurst(true);
                     setTimeout(() => setBurst(false), 1600);
                   }}

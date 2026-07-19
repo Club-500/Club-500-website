@@ -884,3 +884,16 @@ html {
     }
   }
 }
+
+
+/* ---- live odds flashes ---- */
+@keyframes oddsUpFlash {
+  0% { background: rgba(201, 138, 0, 0.35); }
+  100% { background: transparent; }
+}
+@keyframes oddsDownFlash {
+  0% { background: rgba(46, 155, 99, 0.35); }
+  100% { background: transparent; }
+}
+.odds-up { animation: oddsUpFlash 0.85s ease-out; }
+.odds-down { animation: oddsDownFlash 0.85s ease-out; }
