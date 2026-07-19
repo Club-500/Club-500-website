@@ -8,6 +8,7 @@ import { FIXTURES, RESULTS, STANDINGS, ODDS, SENTIMENT, BOOST_INDEX } from "@/li
 import ReferralShare from "@/components/ReferralShare";
 import { useLang } from "@/lib/i18n";
 import UploadMoment from "@/components/UploadMoment";
+import CapturePill from "@/components/CapturePill";
 
 const MVPS = ["Kiprop Kirui (Kapkatet Youth)", "Salim Juma (Shimanzi FC)", "Mary Achieng (Uhola FC)"];
 
@@ -313,9 +314,13 @@ export default function FanZonePage() {
               scores from real match data, county derbies, and a national
               table. Launching with the national season.
             </p>
-            <button className="pill-ghost" type="button" style={{ alignSelf: "flex-start" }}>
-              Join the waitlist
-            </button>
+            <div style={{ alignSelf: "flex-start" }}>
+              <CapturePill
+                label="Join the waitlist"
+                doneText="You're on the waitlist"
+                storageKey="c500-fantasy-waitlist"
+              />
+            </div>
           </div>
           <div
             className="rv rv-d1"

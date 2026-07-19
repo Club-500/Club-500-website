@@ -61,15 +61,15 @@ export default function PartnersPage() {
         <div className="rv" style={{ background: "#C98A00", color: "#0a0a0a", borderRadius: 28, padding: "clamp(28px, 4vw, 48px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24 }}>
           <div className="display" style={{ fontSize: "clamp(1.8rem, 4vw, 3.2rem)" }}>Back 500 clubs. Reach a nation.</div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <button className="pill-btn" type="button" style={{ background: "#0a0a0a", color: "#fff" }}>
+            <a href="mailto:partnerships@club500.africa?subject=Partner%20deck%20request" className="pill-btn" style={{ background: "#0a0a0a", color: "#fff", textDecoration: "none" }}>
               <span className="txt">Request the partner deck</span>
               <span className="circ" style={{ background: "#fff" }}>
                 <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M5 13L13 5M13 5H6M13 5V12" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </span>
-            </button>
-            <button className="pill-ghost" type="button" style={{ borderColor: "rgba(10,10,10,0.5)", color: "#0a0a0a" }}>
+            </a>
+            <a href="mailto:partnerships@club500.africa?subject=Partnership%20enquiry" className="pill-ghost" style={{ borderColor: "rgba(10,10,10,0.5)", color: "#0a0a0a" }}>
               Talk to our partnerships team
-            </button>
+            </a>
           </div>
         </div>
       </div>

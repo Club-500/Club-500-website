@@ -130,7 +130,7 @@ export default function LoginPage() {
 
         {!isSignup && (
           <p style={{ margin: "16px 0 0", font: '400 13px/1.5 var(--font-inter-tight), sans-serif' }}>
-            <a href="#" style={{ color: "rgba(var(--tx),0.5)" }}>Forgot password?</a>
+            <a href="mailto:hello@club500.africa?subject=Password%20help" style={{ color: "rgba(var(--tx),0.5)" }}>Forgot password?</a>
           </p>
         )}
 

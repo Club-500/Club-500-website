@@ -7,6 +7,7 @@ import AppSplash from "@/components/AppSplash";
 import CookieNotice from "@/components/CookieNotice";
 import InstallPrompt from "@/components/InstallPrompt";
 import { LanguageProvider } from "@/lib/i18n";
+import { Analytics } from "@vercel/analytics/next";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -53,7 +54,7 @@ export default function RootLayout({
       <body>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("c500-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}
+            __html: `try{var t=localStorage.getItem("c500-theme");if(t==="light"||(!t&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches))document.documentElement.setAttribute("data-theme","light");}catch(e){}
 if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}`,
           }}
         />
@@ -65,6 +66,7 @@ if("serviceWorker" in navigator){window.addEventListener("load",function(){navig
           <SiteFooter />
           <CookieNotice />
           <InstallPrompt />
+          <Analytics />
         </LanguageProvider>
       </body>
     </html>

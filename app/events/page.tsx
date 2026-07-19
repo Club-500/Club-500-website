@@ -3,6 +3,7 @@
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import ShareButton from "@/components/ShareButton";
+import CapturePill from "@/components/CapturePill";
 import { EVENT_IMG } from "@/lib/data";
 import { EVENTS } from "@/lib/content";
 import Countdown from "@/components/Countdown";
@@ -56,10 +57,13 @@ export default function EventsPage() {
               </div>
               <div style={{ font: '600 18px/1.3 var(--font-inter-tight), sans-serif', flex: 1 }}>{title}</div>
               <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>{desc}</p>
-              <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                <button className="pill-ghost" type="button" style={{ padding: "10px 20px" }}>
-                  RSVP
-                </button>
+              <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+                <CapturePill
+                  label="RSVP"
+                  doneText="You're on the list"
+                  storageKey={`c500-rsvp-${title}`}
+                  placeholder="Email or phone"
+                />
                 <ShareButton title={title} text={`${title} · ${date}, ${city}. Club500.`} />
               </div>
             </div>

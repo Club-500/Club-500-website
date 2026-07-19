@@ -61,9 +61,15 @@ export default function PodcastPage() {
               <p style={{ margin: 0, font: '400 13.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", flex: 1 }}>
                 {summary}
               </p>
-              <button className="pill-ghost" type="button" style={{ alignSelf: "flex-start", padding: "10px 20px" }}>
-                Listen
-              </button>
+              <a
+                href="https://www.youtube.com/embed/ejMjl-svEUE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pill-ghost"
+                style={{ alignSelf: "flex-start", padding: "10px 20px" }}
+              >
+                Listen ↗
+              </a>
             </div>
           ))}
         </div>
