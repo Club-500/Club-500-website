@@ -61,6 +61,7 @@ export default function ClubApplyPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [done, setDone] = useState<Application | null>(null);
   const [loaded, setLoaded] = useState(false);
+  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     try {
@@ -80,9 +81,13 @@ export default function ClubApplyPage() {
     if (!/^(\+?254|0)?[17]\d{8}$/.test(form.phone.replace(/\s/g, ""))) e.phone = "Enter a valid Kenyan phone number";
     setErrors(e);
     if (Object.keys(e).length) return;
-    const rec: Application = { ...form, date: new Date().toISOString().slice(0, 10) };
-    localStorage.setItem("c500-club-application", JSON.stringify(rec));
-    setDone(rec);
+    setBusy(true);
+    setTimeout(() => {
+      const rec: Application = { ...form, date: new Date().toISOString().slice(0, 10) };
+      localStorage.setItem("c500-club-application", JSON.stringify(rec));
+      setBusy(false);
+      setDone(rec);
+    }, 650);
   };
 
   return (
@@ -162,8 +167,8 @@ export default function ClubApplyPage() {
                   <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="07XX XXX XXX" style={errors.phone ? errStyle : inputStyle} />
                 </Field>
               </div>
-              <button className="pill-btn" type="button" onClick={submit} style={{ justifyContent: "center", padding: "15px 0", borderRadius: 12 }}>
-                <span style={{ font: '600 15px/1 var(--font-inter-tight), sans-serif' }}>Submit application</span>
+              <button className="pill-btn" type="button" onClick={submit} disabled={busy} style={{ justifyContent: "center", padding: "15px 0", borderRadius: 12, opacity: busy ? 0.7 : 1 }}>
+                <span style={{ font: '600 15px/1 var(--font-inter-tight), sans-serif' }}>{busy ? "Submitting…" : "Submit application"}</span>
               </button>
             </div>
           )}

@@ -6,20 +6,23 @@ import { useLang } from "@/lib/i18n";
 export default function NewsletterForm() {
   const { t } = useLang();
   const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "error" | "done">("idle");
+  const [state, setState] = useState<"idle" | "error" | "busy" | "done">("idle");
 
   const submit = () => {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       setState("error");
       return;
     }
-    try {
-      const list = JSON.parse(localStorage.getItem("c500-newsletter") || "[]");
-      list.push({ email, date: new Date().toISOString() });
-      localStorage.setItem("c500-newsletter", JSON.stringify(list));
-    } catch {}
-    setState("done");
-    setEmail("");
+    setState("busy");
+    setTimeout(() => {
+      try {
+        const list = JSON.parse(localStorage.getItem("c500-newsletter") || "[]");
+        list.push({ email, date: new Date().toISOString() });
+        localStorage.setItem("c500-newsletter", JSON.stringify(list));
+      } catch {}
+      setState("done");
+      setEmail("");
+    }, 600);
   };
 
   if (state === "done") {
@@ -56,6 +59,7 @@ export default function NewsletterForm() {
         <button
           type="button"
           onClick={submit}
+          disabled={state === "busy"}
           style={{
             background: "#C98A00",
             color: "#0a0a0a",
@@ -66,7 +70,7 @@ export default function NewsletterForm() {
             cursor: "pointer",
           }}
         >
-          {t("nl.button")}
+          {state === "busy" ? "…" : t("nl.button")}
         </button>
       </div>
       {state === "error" && (

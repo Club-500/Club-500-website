@@ -4,7 +4,7 @@ import { useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import TopReferrers from "@/components/home/TopReferrers";
-import { FIXTURES, RESULTS, STANDINGS } from "@/lib/data";
+import { FIXTURES, RESULTS, STANDINGS, ODDS, SENTIMENT, BOOST_INDEX } from "@/lib/content";
 import ReferralShare from "@/components/ReferralShare";
 
 const MVPS = ["Kiprop Kirui (Kapkatet Youth)", "Salim Juma (Shimanzi FC)", "Mary Achieng (Uhola FC)"];
@@ -25,17 +25,6 @@ const BONUSES: [string, string][] = [
 
 type Pick = "1" | "X" | "2";
 
-const ODDS: [number, number, number][] = [
-  [2.1, 3.25, 2.8],
-  [1.95, 3.4, 3.1],
-  [2.45, 3.1, 2.3],
-];
-const SENT: [number, number, number][] = [
-  [52, 23, 25],
-  [44, 28, 28],
-  [38, 30, 32],
-];
-const BOOST_IX = 1;
 
 export default function FanZonePage() {
   const [voted, setVoted] = useState<string | null>(null);
@@ -47,7 +36,7 @@ export default function FanZonePage() {
   const pickCount = chosen.length;
   const combined = chosen.reduce((acc, [i, p]) => {
     const j = p === "1" ? 0 : p === "X" ? 1 : 2;
-    const mult = ODDS[Number(i)][j] * (Number(i) === BOOST_IX ? 2 : 1);
+    const mult = ODDS[Number(i)][j] * (Number(i) === BOOST_INDEX ? 2 : 1);
     return acc * mult;
   }, 1);
   const potential = pickCount === 0 ? 0 : Math.round(100 * combined);
@@ -134,7 +123,7 @@ export default function FanZonePage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
             {FIXTURES.map(([when, home, away, venue], i) => {
               const odds = ODDS[i];
-              const sent = SENT[i];
+              const sent = SENTIMENT[i];
               return (
                 <div
                   key={home}
@@ -150,7 +139,7 @@ export default function FanZonePage() {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
                     <span className="mono-label">{when}</span>
-                    {i === BOOST_IX && (
+                    {i === BOOST_INDEX && (
                       <span style={{ font: '700 11px/1 var(--font-inter-tight), sans-serif', color: "#141310", background: "#C98A00", borderRadius: 999, padding: "5px 10px" }}>
                         2x BOOST
                       </span>

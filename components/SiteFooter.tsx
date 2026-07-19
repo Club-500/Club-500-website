@@ -12,13 +12,13 @@ const COLUMNS: [string, [string, string][]][] = [
     [
       ["nav.clubs", "/clubs"],
       ["nav.fanzone", "/fanzone"],
-      ["nav.events", "/events"],
       ["nav.about", "/about"],
     ],
   ],
   [
     "footer.stories",
     [
+      ["nav.events", "/events"],
       ["nav.newsroom", "/newsroom"],
       ["nav.podcast", "/podcast"],
       ["footer.journalists", "/journalist"],
@@ -473,7 +473,11 @@ export default function SiteFooter() {
             ))}
           </div>
           <LanguageSwitch />
-          <span className="mono-label" style={{ color: "rgba(255,255,255,0.55)", textAlign: "center" }}>{t("footer.rights")}</span>
+          <span className="mono-label" style={{ color: "rgba(255,255,255,0.55)", textAlign: "center" }}>
+            {t("footer.rights")} ·{" "}
+            <Link href="/privacy" style={{ color: "rgba(255,255,255,0.55)" }}>Privacy</Link> ·{" "}
+            <Link href="/terms" style={{ color: "rgba(255,255,255,0.55)" }}>Terms</Link>
+          </span>
         </div>
       </div>
     </footer>

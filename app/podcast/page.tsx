@@ -2,33 +2,8 @@
 
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
+import { PODCAST } from "@/lib/content";
 
-const EPS: [string, string, string, string][] = [
-  [
-    "Episode 01",
-    "Why Community-Owned Clubs Are the Future",
-    "CEO, Ubuntu Impact Labs",
-    "How the Club500 model will structure 500 clubs and create more than 5,000 jobs.",
-  ],
-  [
-    "Episode 02",
-    "Inside the Commercial Engine of Modern Football Clubs",
-    "Commercial Director, Club500",
-    "Sponsoring, merchandising, ticketing, academies: how clubs will generate sustainable revenue.",
-  ],
-  [
-    "Episode 03",
-    "Youth Development: Building the Next Generation of Talent",
-    "Head of Academies",
-    "New academies, scouting innovations and opportunities for young players.",
-  ],
-  [
-    "Episode 04",
-    "Sports Science & Athlete Wellness in Grassroots Football",
-    "Head of Health & Performance",
-    "Nutrition, physiotherapy, injury prevention and mental wellness.",
-  ],
-];
 
 const CATEGORIES = [
   "Governance & Ownership",
@@ -74,7 +49,7 @@ export default function PodcastPage() {
       </div>
       <div style={{ padding: "16px clamp(20px, 4vw, 32px) 72px", maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
-          {EPS.map(([num, title, guest, summary], i) => (
+          {PODCAST.map(([num, title, guest, summary], i) => (
             <div
               key={num}
               className={"glass club-card rv rv-d" + (i % 4)}

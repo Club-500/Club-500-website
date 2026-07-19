@@ -5,18 +5,11 @@ import Link from "next/link";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import { EVENT_IMG } from "@/lib/data";
+import { NEWS } from "@/lib/content";
 
 const FORMATS = ["All", "Articles", "Photo", "Video", "Podcast"];
 const REGIONS = ["All", "Nairobi", "Central", "Rift Valley", "Eastern", "Coast", "Western", "Nyanza", "N. Eastern"];
 
-const STORIES: [string, string, string, string][] = [
-  ["Coast", "Video", "Mombasa derby ends in stoppage-time drama", "Jane Wanjiku · Mombasa Bureau"],
-  ["Nyanza", "Articles", "Kisumu county launches its first two Club500 academies", "Otieno Ouma · Kisumu Bureau"],
-  ["Rift Valley", "Photo", "Matchday in Kericho: gallery from Kapkatet Youth FC", "Dennis Koech · Kericho"],
-  ["Western", "Articles", "Webuye Sportiff onboard 400 new fans in one weekend", "Faith Naliaka · Bungoma"],
-  ["National", "Podcast", "EP 05: What community ownership really means", "Club500 Podcast"],
-  ["Nairobi", "Video", "Goodhope FC training day: inside the setup", "Peter Mwangi · Nairobi Bureau"],
-];
 
 export default function NewsroomPage() {
   const [format, setFormat] = useState("All");
@@ -39,7 +32,7 @@ export default function NewsroomPage() {
     </button>
   );
 
-  const list = STORIES.filter(
+  const list = NEWS.filter(
     ([r, f]) => (region === "All" || r === region) && (format === "All" || f === format)
   );
 

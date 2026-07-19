@@ -11,7 +11,6 @@ const LINKS_PRE: [string, string][] = [
   ["/clubs", "nav.clubs"],
   ["/fanzone", "nav.fanzone"],
   ["/volunteer", "nav.volunteer"],
-  ["/events", "nav.events"],
 ];
 
 const LINKS_POST: [string, string][] = [
@@ -22,6 +21,7 @@ const LINKS_POST: [string, string][] = [
 const LINKS = [...LINKS_PRE, ...LINKS_POST];
 
 const STORIES: [string, string][] = [
+  ["/events", "nav.events"],
   ["/newsroom", "nav.newsroom"],
   ["/podcast", "nav.podcast"],
 ];

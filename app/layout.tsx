@@ -52,7 +52,8 @@ export default function RootLayout({
       <body>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("c500-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}`,
+            __html: `try{var t=localStorage.getItem("c500-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}
+if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})}`,
           }}
         />
         <LanguageProvider>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FIXTURES } from "@/lib/data";
+import { FIXTURES } from "@/lib/content";
 import { useLang } from "@/lib/i18n";
 
 export default function FixturesStrip() {

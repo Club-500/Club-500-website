@@ -79,6 +79,7 @@ export default function JournalistPage() {
   const [story, setStory] = useState({ title: "", region: "", county: "", club: "", format: "Article", body: "" });
   const [storyErrors, setStoryErrors] = useState<Record<string, string>>({});
   const [justSubmitted, setJustSubmitted] = useState(false);
+  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     try {
@@ -98,9 +99,13 @@ export default function JournalistPage() {
     if (!app.county.trim()) e.county = "County is required";
     setAppErrors(e);
     if (Object.keys(e).length) return;
-    const record: Application = { ...app, date: new Date().toISOString().slice(0, 10) };
-    localStorage.setItem("c500-journalist-application", JSON.stringify(record));
-    setApplication(record);
+    setBusy(true);
+    setTimeout(() => {
+      const record: Application = { ...app, date: new Date().toISOString().slice(0, 10) };
+      localStorage.setItem("c500-journalist-application", JSON.stringify(record));
+      setBusy(false);
+      setApplication(record);
+    }, 650);
   };
 
   const submitStory = () => {
@@ -121,12 +126,16 @@ export default function JournalistPage() {
       status: "In review",
       date: new Date().toISOString().slice(0, 10),
     };
-    const next = [rec, ...stories];
-    setStories(next);
-    localStorage.setItem("c500-journalist-stories", JSON.stringify(next));
-    setStory({ title: "", region: "", county: "", club: "", format: "Article", body: "" });
-    setJustSubmitted(true);
-    setTimeout(() => setJustSubmitted(false), 5000);
+    setBusy(true);
+    setTimeout(() => {
+      const next = [rec, ...stories];
+      setStories(next);
+      localStorage.setItem("c500-journalist-stories", JSON.stringify(next));
+      setStory({ title: "", region: "", county: "", club: "", format: "Article", body: "" });
+      setBusy(false);
+      setJustSubmitted(true);
+      setTimeout(() => setJustSubmitted(false), 5000);
+    }, 650);
   };
 
   return (
@@ -177,8 +186,8 @@ export default function JournalistPage() {
                 <Field label="Link to sample work (optional)">
                   <input value={app.sample} onChange={(e) => setApp({ ...app, sample: e.target.value })} placeholder="https://…" style={inputStyle} />
                 </Field>
-                <button className="pill-btn" type="button" onClick={submitApplication} style={{ justifyContent: "center", padding: "15px 0", borderRadius: 12 }}>
-                  <span style={{ font: '600 15px/1 var(--font-inter-tight), sans-serif' }}>Submit application</span>
+                <button className="pill-btn" type="button" onClick={submitApplication} disabled={busy} style={{ justifyContent: "center", padding: "15px 0", borderRadius: 12, opacity: busy ? 0.7 : 1 }}>
+                  <span style={{ font: '600 15px/1 var(--font-inter-tight), sans-serif' }}>{busy ? "Submitting…" : "Submit application"}</span>
                 </button>
               </div>
             </>
@@ -244,8 +253,8 @@ export default function JournalistPage() {
                     style={{ ...(storyErrors.body ? errStyle : inputStyle), resize: "vertical" }}
                   />
                 </Field>
-                <button className="pill-btn" type="button" onClick={submitStory} style={{ justifyContent: "center", padding: "15px 0", borderRadius: 12 }}>
-                  <span style={{ font: '600 15px/1 var(--font-inter-tight), sans-serif' }}>Submit for review</span>
+                <button className="pill-btn" type="button" onClick={submitStory} disabled={busy} style={{ justifyContent: "center", padding: "15px 0", borderRadius: 12, opacity: busy ? 0.7 : 1 }}>
+                  <span style={{ font: '600 15px/1 var(--font-inter-tight), sans-serif' }}>{busy ? "Submitting…" : "Submit for review"}</span>
                 </button>
               </div>
             </>

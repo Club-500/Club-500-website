@@ -30,11 +30,6 @@ export const REGION_OF_COUNTY: Record<string, string> = {
   Kisumu: "Nyanza",
 };
 
-export const FIXTURES: [when: string, home: string, away: string, venue: string][] = [
-  ["Sat 25 Jul · 15:00", "Kivumbini United", "Kapkatet Youth", "Nakuru ASK Grounds"],
-  ["Sat 25 Jul · 15:00", "Shimanzi FC", "Goodhope FC", "Tononoka Grounds, Mombasa"],
-  ["Sun 26 Jul · 14:00", "Webuye Sportiff", "Uhola FC", "Webuye Stadium"],
-];
 
 export const ALL_COUNTIES = [
   "Baringo", "Bomet", "Bungoma", "Busia", "Elgeyo-Marakwet", "Embu", "Garissa",
@@ -51,16 +46,4 @@ export const LIVE_COUNTIES = new Set([
   "Nairobi", "Bomet", "Kisumu",
 ]);
 
-export const RESULTS: [home: string, hs: number, away: string, as_: number][] = [
-  ["Kivumbini United", 2, "Matobo Central", 1],
-  ["Uhola FC", 0, "Shimanzi FC", 0],
-  ["Goodhope FC", 1, "Kamaliza FC", 3],
-];
 
-export const STANDINGS: [club: string, p: number, w: number, d: number, l: number, pts: number][] = [
-  ["Kapkatet Youth", 6, 5, 1, 0, 16],
-  ["Kivumbini United", 6, 4, 1, 1, 13],
-  ["Kamaliza FC", 6, 3, 2, 1, 11],
-  ["Shimanzi FC", 6, 2, 2, 2, 8],
-  ["Uhola FC", 6, 1, 2, 3, 5],
-];

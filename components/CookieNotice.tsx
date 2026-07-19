@@ -54,7 +54,10 @@ export default function CookieNotice() {
           color: "rgba(var(--tx),0.65)",
         }}
       >
-        {t("cookie.body")}
+        {t("cookie.body")}{" "}
+        <a href="/privacy" style={{ color: "#C98A00", fontWeight: 600 }}>
+          Privacy policy
+        </a>
       </p>
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
         <button

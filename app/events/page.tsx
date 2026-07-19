@@ -3,12 +3,8 @@
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import { EVENT_IMG } from "@/lib/data";
+import { EVENTS } from "@/lib/content";
 
-const EVENTS: [string, string, string, string, string][] = [
-  ["12 Jan", "Nairobi", "Club500 National Launch Tour: Nairobi Edition", "Official programme launch for clubs, communities, sponsors and media.", "Launch"],
-  ["02 Feb", "Mombasa", "Coaching & Performance Workshop", "Coach training on new performance methodologies and sports science.", "Workshop"],
-  ["15 Feb", "Kisumu", "Community Ownership Forum", "Governance, the community share ownership model and investment opportunities.", "Forum"],
-];
 
 export default function EventsPage() {
   return (
