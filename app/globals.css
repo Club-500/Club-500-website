@@ -508,12 +508,15 @@ textarea {
 
 /* run in from the left, strike at ~53%, ball beats the keeper by 64% */
 @keyframes gsPlayerX {
-  0% { left: -70px; }
-  53% { left: calc(100% - 216px); }
+  0% { left: -70px; opacity: 1; }
+  53% { left: calc(100% - 216px); opacity: 1; }
   57% { left: calc(100% - 206px); }
-  84% { left: calc(100% - 206px); }
-  96% { left: -70px; }
-  100% { left: -70px; }
+  84% { left: calc(100% - 206px); opacity: 1; }
+  91% { left: 58%; opacity: 1; }
+  95% { left: 48%; opacity: 0; }
+  95.5% { left: -70px; opacity: 0; }
+  99% { left: -70px; opacity: 0; }
+  100% { left: -70px; opacity: 1; }
 }
 /* skill moves past each defender, strike lean, then celebration hops */
 @keyframes gsPlayerMoves {
@@ -535,8 +538,8 @@ textarea {
   81% { transform: translateY(-6px); }
   83.9% { transform: none; }
   84% { transform: scaleX(-1); }
-  95.9% { transform: scaleX(-1); }
-  96%, 100% { transform: none; }
+  95.4% { transform: scaleX(-1); }
+  95.5%, 100% { transform: none; }
 }
 @keyframes gsFlightX {
   0% { left: -48px; opacity: 1; animation-timing-function: linear; }
