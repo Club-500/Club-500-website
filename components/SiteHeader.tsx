@@ -10,6 +10,7 @@ import { useLang } from "@/lib/i18n";
 const LINKS_PRE: [string, string][] = [
   ["/clubs", "nav.clubs"],
   ["/fanzone", "nav.fanzone"],
+  ["/events", "nav.events"],
   ["/volunteer", "nav.volunteer"],
 ];
 
@@ -21,7 +22,6 @@ const LINKS_POST: [string, string][] = [
 const LINKS = [...LINKS_PRE, ...LINKS_POST];
 
 const STORIES: [string, string][] = [
-  ["/events", "nav.events"],
   ["/newsroom", "nav.newsroom"],
   ["/podcast", "nav.podcast"],
 ];
