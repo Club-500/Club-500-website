@@ -12,13 +12,13 @@ const COLUMNS: [string, [string, string][]][] = [
     [
       ["nav.clubs", "/clubs"],
       ["nav.fanzone", "/fanzone"],
+      ["nav.events", "/events"],
       ["nav.about", "/about"],
     ],
   ],
   [
     "footer.stories",
     [
-      ["nav.events", "/events"],
       ["nav.newsroom", "/newsroom"],
       ["nav.podcast", "/podcast"],
       ["footer.journalists", "/journalist"],
