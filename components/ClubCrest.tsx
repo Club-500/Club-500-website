@@ -20,13 +20,14 @@ export default function ClubCrest({ name, img, size = "100%" }: { name: string; 
         width: size,
         aspectRatio: "1/1",
         borderRadius: "50%",
-        background: "var(--imgbg)",
-        border: "1px solid rgba(var(--tx),0.1)",
+        background: loaded && !err ? "#ffffff" : "var(--imgbg)",
+        border: "1px solid rgba(var(--tx),0.12)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
         flexShrink: 0,
+        transition: "background .3s",
       }}
     >
       {err ? (
@@ -54,7 +55,7 @@ export default function ClubCrest({ name, img, size = "100%" }: { name: string; 
           decoding="async"
           onError={() => setErr(true)}
           onLoad={() => setLoaded(true)}
-          style={{ width: "76%", height: "76%", objectFit: "contain", opacity: loaded ? 1 : 0, transition: "opacity .3s" }}
+          style={{ width: "78%", height: "78%", objectFit: "contain", opacity: loaded ? 1 : 0, transition: "opacity .3s" }}
         />
       )}
     </div>
