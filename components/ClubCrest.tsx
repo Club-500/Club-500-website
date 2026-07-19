@@ -1,10 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ClubCrest({ name, img, size = "100%", eager = false }: { name: string; img: string; size?: string; eager?: boolean }) {
   const [err, setErr] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const ref = useRef<HTMLImageElement>(null);
+
+  // If the image was cached, it may complete before React attaches onLoad.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (el.complete) {
+      if (el.naturalWidth > 0) setLoaded(true);
+      else setErr(true);
+    }
+  }, []);
+
   const initials = name
     .split(" ")
     .filter((w) => !["FC", "F.C", "SC", "Club"].includes(w))
@@ -49,9 +61,11 @@ export default function ClubCrest({ name, img, size = "100%", eager = false }: {
       ) : (
         // eslint-disable-next-line @next/next/no-img-element
         <img
+          ref={ref}
           src={img}
           alt={name}
           loading={eager ? "eager" : "lazy"}
+          fetchPriority={eager ? "high" : "auto"}
           decoding="async"
           onError={() => setErr(true)}
           onLoad={() => setLoaded(true)}

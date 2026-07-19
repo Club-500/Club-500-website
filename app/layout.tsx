@@ -8,6 +8,7 @@ import CookieNotice from "@/components/CookieNotice";
 import InstallPrompt from "@/components/InstallPrompt";
 import { LanguageProvider } from "@/lib/i18n";
 import { Analytics } from "@vercel/analytics/next";
+import { CLUBS, clubSlug } from "@/lib/data";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -51,6 +52,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={interTight.variable} suppressHydrationWarning>
+      <head>
+        {CLUBS.slice(0, 5).map(([name]) => (
+          <link
+            key={name}
+            rel="preload"
+            as="image"
+            href={`/crests/${clubSlug(name)}.webp`}
+            fetchPriority="high"
+          />
+        ))}
+      </head>
       <body>
         <script
           dangerouslySetInnerHTML={{
