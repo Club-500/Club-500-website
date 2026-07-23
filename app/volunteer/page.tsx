@@ -6,8 +6,8 @@ import RevealInit from "@/components/RevealInit";
 import FormModal from "@/components/FormModal";
 import { useLang } from "@/lib/i18n";
 
-/* Swap in the real volunteer Google Form link when it's ready. */
-const VOLUNTEER_FORM_URL = "";
+const VOLUNTEER_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdp3h4Au-2AwaRvaQad-AjJiMLEgp9HuvyhKcT7oW3AzTisVQ/viewform?embedded=true";
 
 const AREAS: [string, string][] = [
   ["Coaching", "Train and mentor players at grassroots level"],
