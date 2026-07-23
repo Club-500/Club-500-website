@@ -106,24 +106,34 @@ export default function AboutPage() {
   return (
     <>
       <RevealInit />
-      <div style={{ position: "relative" }}>
+      <div
+        style={{
+          maxWidth: 1280,
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+        }}
+      >
         <PageHead eyebrow="About Club500">
           {t("ab.h1a")} <span className="gold">{t("ab.h1b")}</span>
         </PageHead>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/assets/club500-logo.jpg"
-          alt="Club500 official logo"
-          className="about-logo rv"
+        <div
+          className="about-logo"
           style={{
-            position: "absolute",
-            right: "clamp(20px, 4vw, 32px)",
-            top: "clamp(104px, 17vw, 150px)",
-            width: "min(260px, 22vw)",
-            height: "auto",
-            display: "block",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "0 clamp(20px, 4vw, 32px)",
           }}
-        />
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/club500-logo.jpg"
+            alt="Club500 official logo"
+            className="rv"
+            style={{ width: "min(260px, 22vw)", height: "auto", display: "block" }}
+          />
+        </div>
       </div>
 
       {/* Our story */}
