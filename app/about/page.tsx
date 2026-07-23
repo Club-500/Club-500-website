@@ -57,78 +57,46 @@ const TEAM: [string, string, string | null][] = [
 ];
 
 function PillarAccordion() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [active, setActive] = useState(0);
+  const [name, body, focus] = PILLARS[active];
   return (
-    <div className="rv rv-d1" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-      {PILLARS.map(([name, body, focus], i) => {
-        const isOpen = open === i;
-        return (
-          <div
-            key={name}
+    <div className="rv rv-d1">
+      <div className="no-scrollbar" style={{ display: "flex", gap: 8, overflowX: "auto", paddingBottom: 4, marginBottom: 16 }}>
+        {PILLARS.map(([n], i) => (
+          <button
+            key={n}
+            type="button"
+            onClick={() => setActive(i)}
+            aria-pressed={active === i}
+            className="tag-pill"
             style={{
-              border: "1px solid rgba(var(--tx),0.12)",
-              borderRadius: 16,
-              overflow: "hidden",
-              background: isOpen ? "rgba(var(--tx),0.03)" : "transparent",
+              flexShrink: 0,
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+              background: active === i ? "var(--gold)" : "transparent",
+              color: active === i ? "#0a0a0a" : "rgba(var(--tx),0.75)",
+              borderColor: active === i ? "var(--gold)" : "rgba(var(--tx),0.18)",
+              padding: "9px 16px",
             }}
           >
-            <button
-              type="button"
-              onClick={() => setOpen(isOpen ? null : i)}
-              aria-expanded={isOpen}
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 12,
-                padding: "18px 20px",
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                textAlign: "left",
-                color: "var(--fg)",
-              }}
-            >
-              <span style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                <span style={{ font: '700 13px/1 var(--font-inter-tight), sans-serif', color: "var(--gold)", background: "rgba(245,179,1,0.14)", borderRadius: 8, padding: "7px 10px" }}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span style={{ font: '600 17px/1.3 var(--font-inter-tight), sans-serif' }}>{name}</span>
-              </span>
-              <span
-                style={{
-                  flexShrink: 0,
-                  width: 26,
-                  height: 26,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(var(--tx),0.25)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transform: isOpen ? "rotate(45deg)" : "none",
-                  transition: "transform .25s",
-                  font: '600 16px/1 var(--font-inter-tight), sans-serif',
-                }}
-              >
-                +
-              </span>
-            </button>
-            {isOpen && (
-              <div style={{ padding: "0 20px 22px" }}>
-                <p style={{ margin: "0 0 12px", font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
-                  {body}
-                </p>
-                <div className="mono-label" style={{ marginBottom: 6 }}>Current focus</div>
-                <p style={{ margin: "0 0 12px", font: '500 13px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
-                  {focus}
-                </p>
-                <div className="mono-label">Partners: to be announced</div>
-              </div>
-            )}
-          </div>
-        );
-      })}
+            {String(i + 1).padStart(2, "0")} · {n}
+          </button>
+        ))}
+      </div>
+      <div
+        key={name}
+        className="glass"
+        style={{ padding: "clamp(20px, 3.5vw, 30px)" }}
+      >
+        <h3 className="h3" style={{ margin: "0 0 12px" }}>{name}</h3>
+        <p style={{ margin: "0 0 14px", font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
+          {body}
+        </p>
+        <div className="mono-label" style={{ marginBottom: 6 }}>Current focus</div>
+        <p style={{ margin: 0, font: '500 13px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
+          {focus}
+        </p>
+      </div>
     </div>
   );
 }
@@ -142,20 +110,8 @@ export default function AboutPage() {
         {t("ab.h1a")} <span className="gold">{t("ab.h1b")}</span>
       </PageHead>
 
-      {/* Direct intro */}
-      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
-        <h2 className="display rv" style={{ margin: "0 0 14px", maxWidth: 760 }}>
-          Building stronger football clubs. <span className="gold">Growing stronger communities.</span>
-        </h2>
-        <p className="rv rv-d1" style={{ margin: 0, maxWidth: 680, font: '400 16px/1.65 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
-          Club500 Africa is a community football platform dedicated to helping grassroots football clubs
-          become sustainable, professionally run institutions. We connect clubs with the people, resources,
-          technology and opportunities they need to grow on and off the pitch.
-        </p>
-      </div>
-
       {/* Our story */}
-      <div style={{ padding: "clamp(28px, 5vw, 44px) clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
         <h2 className="display rv" style={{ margin: "0 0 16px" }}>
           Our <span className="gold">story</span>
         </h2>
