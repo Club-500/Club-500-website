@@ -48,13 +48,12 @@ const PILLARS: [string, string, string][] = [
   ],
 ];
 
-const AUDIENCES: [string, string][] = [
-  ["Clubs", "Tools, governance and long-term support"],
-  ["Players", "Opportunities on and off the pitch"],
-  ["Fans", "A way to belong, engage and be rewarded"],
-  ["Corporate partners", "Measurable impact and a national audience"],
-  ["Volunteers & professionals", "A place to put real skills to use"],
-  ["Government & development organisations", "A credible partner in youth and community development"],
+/* Placeholder roster — swap in real names, roles and headshots when available. */
+const TEAM: [string, string, string | null][] = [
+  ["Founder", "Founder & CEO", null],
+  ["Ops Lead", "Head of Operations", null],
+  ["Partnerships Lead", "Head of Partnerships", null],
+  ["Community Lead", "Community & Fan Engagement", null],
 ];
 
 function PillarAccordion() {
@@ -223,16 +222,42 @@ export default function AboutPage() {
         <PillarAccordion />
       </div>
 
-      {/* Who it's for */}
-      <div style={{ padding: "48px clamp(20px, 4vw, 32px) 32px", maxWidth: 1280, margin: "0 auto" }}>
-        <h2 className="display rv" style={{ margin: "0 0 24px" }}>
-          Who Club500 is <span className="gold">built for</span>
+      {/* Meet the team */}
+      <div style={{ padding: "clamp(28px, 5vw, 44px) clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
+        <h2 className="display rv" style={{ margin: "0 0 8px" }}>
+          Meet the <span className="gold">team</span>
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
-          {AUDIENCES.map(([who, what], i) => (
-            <div key={who} className={"glass rv rv-d" + (i % 3)} style={{ padding: 24 }}>
-              <div style={{ font: '600 16px/1.3 var(--font-inter-tight), sans-serif', marginBottom: 6 }}>{who}</div>
-              <p style={{ margin: 0, font: '400 14px/1.55 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>{what}</p>
+        <p className="rv" style={{ margin: "8px 0 24px", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 620 }}>
+          The people building Club500 day to day.
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 16 }}>
+          {TEAM.map(([name, role, photo], i) => (
+            <div key={name} className={"rv rv-d" + Math.min(i, 3)} style={{ textAlign: "center" }}>
+              <div
+                style={{
+                  width: "100%",
+                  aspectRatio: "1/1",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  border: "1px solid rgba(var(--tx),0.14)",
+                  background: "linear-gradient(135deg, #262626, #101010)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: 12,
+                }}
+              >
+                {photo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={photo} alt={name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : (
+                  <span style={{ font: '700 1.4rem/1 var(--font-inter-tight), sans-serif', color: "var(--gold)" }}>
+                    {name.split(" ").map((w) => w[0]).join("")}
+                  </span>
+                )}
+              </div>
+              <div style={{ font: '600 14.5px/1.3 var(--font-inter-tight), sans-serif' }}>{name}</div>
+              <div className="mono-label" style={{ marginTop: 4 }}>{role}</div>
             </div>
           ))}
         </div>
