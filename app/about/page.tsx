@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import { useLang } from "@/lib/i18n";
 
@@ -107,29 +108,23 @@ export default function AboutPage() {
       <RevealInit />
       <div
         style={{
-          padding: "clamp(104px, 17vw, 150px) clamp(20px, 4vw, 32px) clamp(22px, 4vw, 40px)",
           maxWidth: 1280,
           margin: "0 auto",
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "clamp(24px, 5vw, 56px)",
+          gap: "clamp(16px, 4vw, 40px)",
           alignItems: "center",
         }}
       >
-        <div>
-          <div className="mono-label rv" style={{ marginBottom: 18 }}>
-            About Club500
-          </div>
-          <h1 className="mega rv rv-d1" style={{ margin: 0 }}>
-            {t("ab.h1a")} <span className="gold">{t("ab.h1b")}</span>
-          </h1>
-        </div>
-        <div className="rv rv-d1" style={{ display: "flex", justifyContent: "center" }}>
+        <PageHead eyebrow="About Club500">
+          {t("ab.h1a")} <span className="gold">{t("ab.h1b")}</span>
+        </PageHead>
+        <div className="rv rv-d1" style={{ display: "flex", justifyContent: "center", padding: "0 clamp(20px, 4vw, 32px)" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/club500-logo-lg.webp"
+            src="/assets/club500-logo.jpg"
             alt="Club500 official logo"
-            style={{ width: "100%", maxWidth: 340, height: "auto", display: "block" }}
+            style={{ width: "100%", maxWidth: 300, height: "auto", display: "block" }}
           />
         </div>
       </div>
