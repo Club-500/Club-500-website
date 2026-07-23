@@ -118,9 +118,8 @@ export default function AboutPage() {
           style={{
             position: "absolute",
             right: "clamp(20px, 4vw, 32px)",
-            top: "50%",
-            transform: "translateY(-50%)",
-            width: "min(300px, 24vw)",
+            top: "clamp(104px, 17vw, 150px)",
+            width: "min(260px, 22vw)",
             height: "auto",
             display: "block",
           }}
