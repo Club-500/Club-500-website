@@ -864,6 +864,12 @@ textarea {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+@media (max-width: 900px) {
+  /* no room beside the About heading once it wraps to 2-3 lines on narrower screens */
+  .about-logo {
+    display: none;
+  }
+}
 @media (max-width: 767px) {
   /* iOS Safari zooms into inputs under 16px; keep forms zoom-free */
   input,
