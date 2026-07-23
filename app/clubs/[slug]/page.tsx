@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CLUBS, REGION_OF_COUNTY, clubSlug, clubShort } from "@/lib/data";
+import { CLUBS, CLUB_DETAILS, REGION_OF_COUNTY, clubSlug, clubShort } from "@/lib/data";
 import { FIXTURES, RESULTS, STANDINGS } from "@/lib/content";
 import ClubCrest from "@/components/ClubCrest";
 import RevealInit from "@/components/RevealInit";
@@ -41,9 +41,10 @@ export default async function ClubPage({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const club = CLUBS.find(([name]) => clubSlug(name) === slug);
   if (!club) notFound();
-  const [name, county, img, site] = club;
+  const [name, county, img] = club;
   const short = clubShort(name);
   const region = REGION_OF_COUNTY[county] ?? "";
+  const detail = CLUB_DETAILS[name];
 
   const fixtures = FIXTURES.filter(([, h, a]) => h === short || a === short);
   const results = RESULTS.filter(([h, , a]) => h === short || a === short);
@@ -75,11 +76,19 @@ export default async function ClubPage({ params }: { params: Promise<{ slug: str
                 Become an Official Fan
               </button>
             </Link>
-            <a href={site} target="_blank" rel="noopener noreferrer" className="pill-ghost">
-              Visit Club Website ↗
-            </a>
+            {detail?.facebook && (
+              <a href={detail.facebook} target="_blank" rel="noopener noreferrer" className="pill-ghost">
+                Follow on Facebook ↗
+              </a>
+            )}
           </div>
         </div>
+        {detail?.banner && (
+          <div className="rv" style={{ marginTop: "clamp(20px, 3vw, 32px)", borderRadius: 20, overflow: "hidden" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={detail.banner} alt={`${name} team photo`} style={{ width: "100%", height: "auto", maxHeight: 420, objectFit: "cover", display: "block" }} loading="eager" />
+          </div>
+        )}
       </div>
 
       <div style={{ padding: "0 clamp(20px, 4vw, 32px)", maxWidth: 1280, margin: "0 auto" }}>
@@ -87,15 +96,14 @@ export default async function ClubPage({ params }: { params: Promise<{ slug: str
         <Section id="overview">
           <h2 className="display" style={{ margin: "0 0 14px" }}>About the club</h2>
           <p style={{ margin: 0, maxWidth: 700, font: '400 15.5px/1.7 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.7)" }}>
-            {name} is a community football club based in {county}
-            {region ? `, part of Club500's ${region} region` : ""}. Like every club on Club500, {short}
-            {" "}is building toward stronger governance, a professional brand, and a fan base that
-            grows with it — on and off the pitch. Full club history, colours and story from {short}&apos;s
-            own officials are coming soon.
+            {detail?.about ??
+              `${name} is a community football club based in ${county}${region ? `, part of Club500's ${region} region` : ""}.`}
           </p>
-          <a href={site} target="_blank" rel="noopener noreferrer" className="gold" style={{ display: "inline-block", marginTop: 16, font: '600 14px/1 var(--font-inter-tight), sans-serif' }}>
-            Learn more on {short}&apos;s club website →
-          </a>
+          {detail?.facebook && (
+            <a href={detail.facebook} target="_blank" rel="noopener noreferrer" className="gold" style={{ display: "inline-block", marginTop: 16, font: '600 14px/1 var(--font-inter-tight), sans-serif' }}>
+              Follow {short} on Facebook →
+            </a>
+          )}
         </Section>
 
         {/* 3. Club snapshot */}
@@ -103,12 +111,12 @@ export default async function ClubPage({ params }: { params: Promise<{ slug: str
           <h2 className="display" style={{ margin: "0 0 16px" }}>Club snapshot</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12 }}>
             {[
-              ["League", standing ? "Pilot League" : "Joining next season"],
+              ["League", detail?.league ?? "FKF League"],
+              ["Home ground", detail?.ground ?? "—"],
               ["Home county", county],
               ["Region", region || "—"],
-              ["Registered fans", "Growing"],
+              ["Founded", detail?.founded ?? "—"],
               ["Verified", "Yes · Club500"],
-              ["Official website", "Live"],
             ].map(([label, value]) => (
               <div key={label} className="glass" style={{ padding: "16px 18px" }}>
                 <div className="mono-label" style={{ marginBottom: 6 }}>{label}</div>
@@ -116,6 +124,11 @@ export default async function ClubPage({ params }: { params: Promise<{ slug: str
               </div>
             ))}
           </div>
+          {detail?.motto && (
+            <p style={{ margin: "14px 0 0", font: '500 13.5px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
+              Motto: <span className="gold">&ldquo;{detail.motto}&rdquo;</span>
+            </p>
+          )}
         </Section>
 
         {/* 4. Growth journey */}
@@ -283,9 +296,11 @@ export default async function ClubPage({ params }: { params: Promise<{ slug: str
               <Link href="/partners" className="pill-ghost" style={{ borderColor: "rgba(255,255,255,0.3)", color: "#fff" }}>
                 Partner with {short}
               </Link>
-              <a href={site} target="_blank" rel="noopener noreferrer" className="pill-ghost" style={{ borderColor: "rgba(255,255,255,0.3)", color: "#fff" }}>
-                Visit Official Club Website ↗
-              </a>
+              {detail?.facebook && (
+                <a href={detail.facebook} target="_blank" rel="noopener noreferrer" className="pill-ghost" style={{ borderColor: "rgba(255,255,255,0.3)", color: "#fff" }}>
+                  Follow on Facebook ↗
+                </a>
+              )}
             </div>
           </div>
         </Section>
@@ -295,11 +310,8 @@ export default async function ClubPage({ params }: { params: Promise<{ slug: str
           <h2 className="display" style={{ margin: "0 0 16px" }}>Gallery</h2>
           <div className="glass" style={{ padding: "clamp(24px, 4vw, 36px)", textAlign: "center" }}>
             <p style={{ margin: 0, font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
-              Matchday and community photos from {short} are on the way.
+              More matchday and community photos from {short} are on the way.
             </p>
-            <a href={site} target="_blank" rel="noopener noreferrer" className="gold" style={{ display: "inline-block", marginTop: 14, font: '600 14px/1 var(--font-inter-tight), sans-serif' }}>
-              Visit official website for more →
-            </a>
           </div>
         </Section>
 
