@@ -35,8 +35,8 @@ export default function FeaturedClubs() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
-          gap: 14,
+          gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+          gap: 12,
         }}
       >
         {CLUBS.slice(0, 5).map(([name, county, img], i) => (
@@ -44,10 +44,10 @@ export default function FeaturedClubs() {
             href={`/clubs/${clubSlug(name)}`}
             key={name}
             className={"club-card glass rv rv-d" + Math.min(i, 4)}
-            style={{ display: "block", padding: 20, color: "var(--fg)" }}
+            style={{ display: "block", padding: 16, color: "var(--fg)" }}
           >
-            <ClubCrest name={name} img={img} eager />
-            <div style={{ padding: "14px 2px 0" }}>
+            <ClubCrest name={name} img={img} size="56px" eager />
+            <div style={{ padding: "12px 2px 0" }}>
               <div style={{ font: '600 15.5px/1.25 var(--font-inter-tight), sans-serif' }}>
                 {name}
               </div>

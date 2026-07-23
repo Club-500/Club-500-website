@@ -24,9 +24,9 @@ export default function NewsroomPage() {
       type="button"
       style={{
         cursor: "pointer",
-        background: cur === val ? "#C98A00" : "transparent",
+        background: cur === val ? "var(--gold)" : "transparent",
         color: cur === val ? "#0a0a0a" : "rgba(var(--tx),0.75)",
-        borderColor: cur === val ? "#C98A00" : "rgba(var(--tx),0.18)",
+        borderColor: cur === val ? "var(--gold)" : "rgba(var(--tx),0.18)",
       }}
     >
       {val}
@@ -109,12 +109,12 @@ export default function NewsroomPage() {
               </div>
             </div>
           ))}
-          <div className="rv" style={{ border: "1.5px dashed rgba(201,138,0,0.6)", borderRadius: 20, background: "rgba(201,138,0,0.05)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 180, padding: 26 }}>
-            <span className="mono-label gold" style={{ color: "#C98A00" }}>In-feed sponsor slot</span>
+          <div className="rv" style={{ border: "1.5px dashed rgba(245, 179, 1,0.6)", borderRadius: 20, background: "rgba(245, 179, 1,0.05)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 180, padding: 26 }}>
+            <span className="mono-label gold" style={{ color: "var(--gold)" }}>In-feed sponsor slot</span>
           </div>
         </div>
 
-        <div className="glass rv" style={{ marginTop: 56, padding: "clamp(24px, 4vw, 40px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24, borderLeft: "3px solid #C98A00" }}>
+        <div className="glass rv" style={{ marginTop: 56, padding: "clamp(24px, 4vw, 40px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24, borderLeft: "3px solid var(--gold)" }}>
           <div>
             <div className="display" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>Report from your county</div>
             <p style={{ margin: "10px 0 0", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 480 }}>

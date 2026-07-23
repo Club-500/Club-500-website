@@ -11,7 +11,7 @@ export default function LanguageSwitch() {
     border: "none",
     cursor: "pointer",
     font: '600 13px/1 var(--font-inter-tight), sans-serif',
-    background: active ? "#1B5E3C" : "transparent",
+    background: active ? "var(--blue)" : "transparent",
     color: active ? "#fff" : "rgba(255,255,255,0.7)",
     transition: "all .2s",
   });

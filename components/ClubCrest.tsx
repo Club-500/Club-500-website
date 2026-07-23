@@ -50,7 +50,7 @@ export default function ClubCrest({ name, img, size = "100%", eager = false }: {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "#1B5E3C",
+            background: "var(--blue)",
             color: "#fff",
             font: '700 clamp(1rem, 4vw, 1.6rem)/1 var(--font-inter-tight), sans-serif',
             letterSpacing: "0.02em",

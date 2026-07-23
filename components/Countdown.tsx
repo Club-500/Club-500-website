@@ -51,7 +51,7 @@ export default function Countdown() {
     <div
       className="rv"
       style={{
-        background: "#1B5E3C",
+        background: "var(--blue)",
         borderRadius: 20,
         padding: "clamp(20px, 3vw, 28px)",
         display: "flex",

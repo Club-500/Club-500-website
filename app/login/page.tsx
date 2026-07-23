@@ -151,7 +151,7 @@ export default function LoginPage() {
                 border: "none",
                 padding: 0,
                 cursor: "pointer",
-                color: "#C98A00",
+                color: "var(--gold)",
                 font: '600 14px/1.5 var(--font-inter-tight), sans-serif',
               }}
             >
@@ -180,7 +180,7 @@ export default function LoginPage() {
                 border: "none",
                 padding: 0,
                 cursor: "pointer",
-                color: "#C98A00",
+                color: "var(--gold)",
                 font: '600 14.5px/1.4 var(--font-inter-tight), sans-serif',
               }}
             >

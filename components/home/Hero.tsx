@@ -1,8 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { useLang } from "@/lib/i18n";
+import AudienceIntroModal from "./AudienceIntroModal";
+
+type Audience = "fan" | "club" | "partner" | "volunteer";
+
+const AUDIENCE_LINKS: Record<Audience, string> = {
+  fan: "/fanzone",
+  club: "/clubs/apply",
+  partner: "/partners",
+  volunteer: "/volunteer",
+};
 
 type Slide =
   | { kind: "img"; src: string }
@@ -24,6 +33,7 @@ export default function Hero() {
   const vidRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [active, setActive] = useState(0);
   const [vidsReady, setVidsReady] = useState(false);
+  const [audience, setAudience] = useState<Audience | null>(null);
 
   useEffect(() => {
     const vids = () => vidRefs.current.filter(Boolean) as HTMLVideoElement[];
@@ -144,20 +154,22 @@ export default function Hero() {
           className="hero-up hd-3 hero-roles"
           style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}
         >
-          <Link href="/clubs/apply">
-            <button className="hero-role" type="button">{t("hero.runclub")}</button>
-          </Link>
-          <Link href="/fanzone">
-            <button className="hero-role" type="button">{t("hero.fan")}</button>
-          </Link>
-          <Link href="/partners">
-            <button className="hero-role" type="button">{t("hero.partner")}</button>
-          </Link>
-          <Link href="/volunteer">
-            <button className="hero-role" type="button">{t("hero.volunteer")}</button>
-          </Link>
+          <button className="hero-role ball-pop" type="button" onClick={() => setAudience("club")}>{t("hero.runclub")}</button>
+          <button className="hero-role ball-pop" type="button" onClick={() => setAudience("fan")}>{t("hero.fan")}</button>
+          <button className="hero-role ball-pop" type="button" onClick={() => setAudience("partner")}>{t("hero.partner")}</button>
+          <button className="hero-role ball-pop" type="button" onClick={() => setAudience("volunteer")}>{t("hero.volunteer")}</button>
         </div>
       </div>
+
+      {audience && (
+        <AudienceIntroModal
+          headline={t(`aud.${audience}.h`)}
+          body={t(`aud.${audience}.b`)}
+          ctaLabel={t(`aud.${audience}.cta`)}
+          ctaHref={AUDIENCE_LINKS[audience]}
+          onClose={() => setAudience(null)}
+        />
+      )}
     </section>
   );
 }

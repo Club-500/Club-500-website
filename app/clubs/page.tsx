@@ -52,6 +52,18 @@ export default function ClubsPage() {
         {t("cl.h1a")} <span className="gold">{t("cl.h1b")}</span>
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1280, margin: "0 auto" }}>
+        <img
+          src="/assets/clubs-banner.webp"
+          alt="500 Clubs. 47 Counties, 1 Vision. Building the future of community football."
+          className="rv"
+          style={{
+            width: "100%",
+            height: "auto",
+            borderRadius: 20,
+            marginBottom: 28,
+            display: "block",
+          }}
+        />
         <a
           href="/clubs/apply"
           className="rv"
@@ -61,8 +73,8 @@ export default function ClubsPage() {
             alignItems: "center",
             gap: 16,
             flexWrap: "wrap",
-            border: "1px solid rgba(201,138,0,0.45)",
-            background: "rgba(201,138,0,0.07)",
+            border: "1px solid rgba(245, 179, 1,0.45)",
+            background: "rgba(245, 179, 1,0.07)",
             borderRadius: 16,
             padding: "16px 22px",
             marginBottom: 24,
@@ -85,9 +97,9 @@ export default function ClubsPage() {
               className="tag-pill"
               style={{
                 cursor: "pointer",
-                background: region === r ? "#C98A00" : "transparent",
+                background: region === r ? "var(--gold)" : "transparent",
                 color: region === r ? "#0a0a0a" : "rgba(var(--tx),0.75)",
-                borderColor: region === r ? "#C98A00" : "rgba(var(--tx),0.18)",
+                borderColor: region === r ? "var(--gold)" : "rgba(var(--tx),0.18)",
               }}
             >
               {r} · {n}
@@ -125,8 +137,8 @@ export default function ClubsPage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-            gap: 14,
+            gridTemplateColumns: "repeat(auto-fill, minmax(clamp(130px, 32vw, 220px), 1fr))",
+            gap: "clamp(8px, 2vw, 14px)",
             marginBottom: 56,
           }}
         >
@@ -135,16 +147,16 @@ export default function ClubsPage() {
               key={name}
               href={`/clubs/${clubSlug(name)}`}
               className={"club-card glass rv rv-d" + (i % 4)}
-              style={{ padding: 20, borderRadius: 20, display: "block", color: "var(--fg)" }}
+              style={{ padding: "clamp(12px, 2.5vw, 20px)", borderRadius: 18, display: "block", color: "var(--fg)" }}
             >
-              <div style={{ marginBottom: 14 }}>
-                <ClubCrest name={name} img={img} />
+              <div style={{ marginBottom: 10 }}>
+                <ClubCrest name={name} img={img} size="clamp(40px, 12vw, 64px)" />
               </div>
-              <div style={{ font: '600 16px/1.25 var(--font-inter-tight), sans-serif' }}>{name}</div>
-              <div className="mono-label" style={{ margin: "6px 0 12px" }}>
+              <div style={{ font: '600 clamp(13px, 3vw, 16px)/1.25 var(--font-inter-tight), sans-serif' }}>{name}</div>
+              <div className="mono-label" style={{ margin: "6px 0 12px", fontSize: "clamp(10.5px, 2.4vw, 12px)" }}>
                 {county} county
               </div>
-              <span className="tag-pill gold-pill">View club →</span>
+              <span className="tag-pill gold-pill" style={{ fontSize: "clamp(10.5px, 2.4vw, 12px)", padding: "6px 12px" }}>View club →</span>
             </a>
           ))}
         </div>
@@ -163,7 +175,7 @@ export default function ClubsPage() {
             </p>
             {CLUB_STEPS.map(([t, d], i) => (
               <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
-                <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#C98A00", width: 24, flexShrink: 0 }}>
+                <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "var(--gold)", width: 24, flexShrink: 0 }}>
                   {i + 1}
                 </span>
                 <div>
@@ -186,7 +198,7 @@ export default function ClubsPage() {
             </p>
             {FAN_STEPS.map(([t, d], i) => (
               <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
-                <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#C98A00", width: 24, flexShrink: 0 }}>
+                <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "var(--gold)", width: 24, flexShrink: 0 }}>
                   {i + 1}
                 </span>
                 <div>

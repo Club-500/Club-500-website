@@ -5,16 +5,11 @@ import { useLang } from "@/lib/i18n";
 
 export default function FanZoneSteps() {
   const { t } = useLang();
-  const STEPS: [string, string, string][] = [
-    ["01", t("fz.s1t"), t("fz.s1d")],
-    ["02", t("fz.s2t"), t("fz.s2d")],
-    ["03", t("fz.s3t"), t("fz.s3d")],
-  ];
   return (
     <section
       style={{
         padding: "clamp(40px, 7vw, 64px) clamp(20px, 4vw, 32px)",
-        background: "#1B5E3C",
+        background: "var(--blue)",
         borderRadius: "36px 36px 0 0",
         marginTop: 24,
       }}
@@ -53,7 +48,7 @@ export default function FanZoneSteps() {
             <button
               className="pill-btn"
               type="button"
-              style={{ background: "#C98A00", color: "#141310" }}
+              style={{ background: "var(--gold)", color: "#141310" }}
             >
               <span className="txt">{t("fz.open")}</span>
               <span className="circ" style={{ background: "#fff" }}>
@@ -71,36 +66,17 @@ export default function FanZoneSteps() {
           </Link>
         </div>
 
-        <div
+        <p
           className="rv rv-d1"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: 14,
+            margin: 0,
+            maxWidth: 640,
+            font: '400 16px/1.65 var(--font-inter-tight), sans-serif',
+            color: "rgba(255,255,255,0.85)",
           }}
         >
-          {STEPS.map(([num, title, desc]) => (
-            <div
-              key={num}
-              style={{
-                border: "1px solid rgba(255,255,255,0.25)",
-                borderRadius: 18,
-                padding: "20px 22px",
-                background: "rgba(255,255,255,0.07)",
-              }}
-            >
-              <span style={{ font: '600 13px/1 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.6)" }}>
-                {num}
-              </span>
-              <div style={{ font: '600 17px/1.3 var(--font-inter-tight), sans-serif', margin: "8px 0 4px", color: "#fff" }}>
-                {title}
-              </div>
-              <p style={{ margin: 0, font: '400 13.5px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(255,255,255,0.75)" }}>
-                {desc}
-              </p>
-            </div>
-          ))}
-        </div>
+          {t("fz.body")}
+        </p>
       </div>
     </section>
   );

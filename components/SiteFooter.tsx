@@ -259,11 +259,11 @@ export default function SiteFooter() {
                 <path d="M26 17 L19 22 L14.5 17.5" stroke="#b9b9b2" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="14.5" cy="17.5" r="2.2" fill="#b9b9b2" />
                 <path d="M25 36 L17 44 L11.5 52" stroke="#b9b9b2" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M11.5 52 L7 52.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
-                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="#1B5E3C" />
+                <path d="M11.5 52 L7 52.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
+                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="var(--blue)" />
                 <path d="M20.8 31 L33 31 L33.5 38 L20.3 38 Z" fill="#e9e9e4" />
                 <path d="M28 36 L37 42 L34.5 53" stroke="#e9e9e4" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M34.5 53 L39.5 53.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
+                <path d="M34.5 53 L39.5 53.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
                 <path d="M29 17 L35 22 L40 17" stroke="#e9e9e4" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="40" cy="17" r="2.2" fill="#e9e9e4" />
                 <circle cx="28" cy="8" r="6" fill="#e9e9e4" />
@@ -273,11 +273,11 @@ export default function SiteFooter() {
                 <path d="M26 17 L23 23 L18 26" stroke="#b9b9b2" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="18" cy="26" r="2.2" fill="#b9b9b2" />
                 <path d="M25 36 L21 44 L15 50" stroke="#b9b9b2" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M15 50 L10.5 50.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
-                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="#1B5E3C" />
+                <path d="M15 50 L10.5 50.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
+                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="var(--blue)" />
                 <path d="M20.8 31 L33 31 L33.5 38 L20.3 38 Z" fill="#e9e9e4" />
                 <path d="M28 36 L33 43 L30 53" stroke="#e9e9e4" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M30 53 L35 53.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
+                <path d="M30 53 L35 53.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
                 <path d="M29 17 L33 23 L38 26" stroke="#e9e9e4" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="38" cy="26" r="2.2" fill="#e9e9e4" />
                 <circle cx="28" cy="8" r="6" fill="#e9e9e4" />
@@ -287,11 +287,11 @@ export default function SiteFooter() {
                 <path d="M26 17 L21.5 23 L21 28" stroke="#b9b9b2" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="21" cy="28" r="2.2" fill="#b9b9b2" />
                 <path d="M25.5 36 L24 45 L21.5 52" stroke="#b9b9b2" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M21.5 52 L17 52.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
-                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="#1B5E3C" />
+                <path d="M21.5 52 L17 52.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
+                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="var(--blue)" />
                 <path d="M20.8 31 L33 31 L33.5 38 L20.3 38 Z" fill="#e9e9e4" />
                 <path d="M28 36 L30.5 45 L33 52" stroke="#e9e9e4" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M33 52 L37.5 52.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
+                <path d="M33 52 L37.5 52.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
                 <path d="M29 17 L33.5 23 L34 28" stroke="#e9e9e4" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="34" cy="28" r="2.2" fill="#e9e9e4" />
                 <circle cx="28" cy="8" r="6" fill="#e9e9e4" />
@@ -300,12 +300,12 @@ export default function SiteFooter() {
               <svg className="pose pose-kick" width="38" height="58" viewBox="0 0 52 64" fill="none">
                 <path d="M26 17 L18 20 L12 15" stroke="#b9b9b2" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="12" cy="15" r="2.2" fill="#b9b9b2" />
-                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="#1B5E3C" />
+                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="var(--blue)" />
                 <path d="M20.8 31 L33 31 L33.5 38 L20.3 38 Z" fill="#e9e9e4" />
                 <path d="M26 36 L24.5 45 L24 54" stroke="#e9e9e4" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M24 54 L28.6 54.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
+                <path d="M24 54 L28.6 54.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
                 <path d="M28 36 L38 38 L47 31" stroke="#e9e9e4" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M47 31 L51 28.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
+                <path d="M47 31 L51 28.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
                 <path d="M29 17 L36 20 L42 24" stroke="#e9e9e4" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="42" cy="24" r="2.2" fill="#e9e9e4" />
                 <circle cx="28" cy="8" r="6" fill="#e9e9e4" />
@@ -314,12 +314,12 @@ export default function SiteFooter() {
               <svg className="pose pose-cele" width="38" height="58" viewBox="0 0 52 64" fill="none">
                 <path d="M26 16 L20 8 L15.5 2" stroke="#b9b9b2" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="15.5" cy="2.5" r="2.2" fill="#b9b9b2" />
-                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="#1B5E3C" />
+                <path d="M28 14 C22.5 15 20 21 20.8 31 L33 31 C34 21 31.5 15 28 14 Z" fill="var(--blue)" />
                 <path d="M20.8 31 L33 31 L33.5 38 L20.3 38 Z" fill="#e9e9e4" />
                 <path d="M25.5 36 L24.5 45 L24 54" stroke="#e9e9e4" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M24 54 L28.6 54.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
+                <path d="M24 54 L28.6 54.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
                 <path d="M28.5 36 L29.5 45 L30 54" stroke="#e9e9e4" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M30 54 L34.6 54.6" stroke="#C98A00" strokeWidth="4" strokeLinecap="round" />
+                <path d="M30 54 L34.6 54.6" stroke="var(--gold)" strokeWidth="4" strokeLinecap="round" />
                 <path d="M30 16 L36 8 L40.5 2" stroke="#e9e9e4" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="40.5" cy="2.5" r="2.2" fill="#e9e9e4" />
                 <circle cx="28" cy="8" r="6" fill="#e9e9e4" />

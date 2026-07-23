@@ -49,7 +49,7 @@ export default function CapturePill({
           alignItems: "center",
           gap: 7,
           font: '600 13px/1.3 var(--font-inter-tight), sans-serif',
-          color: "#2E9B63",
+          color: "var(--blue-hover)",
         }}
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
@@ -95,7 +95,7 @@ export default function CapturePill({
         onClick={submit}
         disabled={phase === "busy"}
         style={{
-          background: "#1B5E3C",
+          background: "var(--blue)",
           color: "#fff",
           border: "none",
           borderRadius: 999,

@@ -9,7 +9,7 @@ export default function AboutSnapshot() {
     <section style={{ padding: "20px clamp(20px, 4vw, 32px) clamp(36px, 7vw, 56px)", maxWidth: 1280, margin: "0 auto" }}>
       <div
         className="glass rv"
-        style={{ padding: "clamp(24px, 4vw, 40px)", borderLeft: "3px solid #1B5E3C" }}
+        style={{ padding: "clamp(24px, 4vw, 40px)", borderLeft: "3px solid var(--blue)" }}
       >
         <p
           style={{

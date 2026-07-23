@@ -21,12 +21,12 @@ export default function CountyGrid() {
             Where we are, county by <span className="gold">county</span>
           </h2>
           <p style={{ margin: "6px 0 0", font: '400 14px/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
-            Green counties have live clubs. The rest are on the way.
+            Blue counties have live clubs. The rest are on the way.
           </p>
         </div>
         <div style={{ display: "flex", gap: 16 }}>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 7, font: '500 12.5px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)" }}>
-            <span style={{ width: 11, height: 11, borderRadius: 3, background: "#1B5E3C", display: "inline-block" }}></span>
+            <span style={{ width: 11, height: 11, borderRadius: 3, background: "var(--blue)", display: "inline-block" }}></span>
             Live · {LIVE_COUNTIES.size}
           </span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 7, font: '500 12.5px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)" }}>
@@ -59,9 +59,9 @@ export default function CountyGrid() {
                 borderRadius: 10,
                 textAlign: "center",
                 font: '600 12px/1.2 var(--font-inter-tight), sans-serif',
-                background: live ? "#1B5E3C" : "transparent",
+                background: live ? "var(--blue)" : "transparent",
                 color: live ? "#fff" : "rgba(var(--tx),0.55)",
-                border: live ? "1px solid #1B5E3C" : "1px solid rgba(var(--tx),0.14)",
+                border: live ? "1px solid var(--blue)" : "1px solid rgba(var(--tx),0.14)",
                 overflow: "hidden",
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",

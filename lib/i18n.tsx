@@ -26,6 +26,31 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "hero.fan": { en: "I'm a fan", sw: "Mimi ni shabiki" },
   "hero.partner": { en: "I want to partner", sw: "Nataka ushirikiano" },
   "hero.volunteer": { en: "I want to volunteer", sw: "Nataka kujitolea" },
+  // audience intros
+  "aud.fan.h": { en: "Football needs more than players. It needs people like you.", sw: "Soka inahitaji zaidi ya wachezaji. Inahitaji watu kama wewe." },
+  "aud.fan.b": {
+    en: "Every great football club starts with a community that believes in it. Club500 gives you a simple way to support your local club, follow its journey, celebrate its progress, and become part of something bigger than match day. Your support helps clubs grow stronger, create more opportunities for young players, and build a lasting impact in their communities.",
+    sw: "Kila klabu bora ya soka huanza na jamii inayoiamini. Club500 inakupa njia rahisi ya kuunga mkono klabu yako ya karibu, kufuatilia safari yake, kusherehekea maendeleo yake, na kuwa sehemu ya kitu kikubwa zaidi ya siku ya mechi. Msaada wako husaidia klabu kukua, kuunda fursa zaidi kwa wachezaji vijana, na kujenga matokeo ya kudumu katika jamii zao.",
+  },
+  "aud.fan.cta": { en: "Join as a Fan", sw: "Jiunge kama Shabiki" },
+  "aud.club.h": { en: "Your club deserves more than just surviving.", sw: "Klabu yako inastahili zaidi ya kuishi tu." },
+  "aud.club.b": {
+    en: "Running a community football club takes passion, but passion alone isn't enough. Club500 helps clubs become stronger, more sustainable institutions through better governance, increased visibility, fan support, funding opportunities, technology, and access to a growing network of professionals and partners. We help you spend less time struggling and more time building a club your community can be proud of.",
+    sw: "Kuendesha klabu ya soka ya jamii kunahitaji shauku, lakini shauku pekee haitoshi. Club500 husaidia klabu kuwa taasisi imara na endelevu zaidi kupitia utawala bora, mwonekano ulioongezeka, uungwaji mkono wa mashabiki, fursa za ufadhili, teknolojia, na upatikanaji wa mtandao unaokua wa wataalamu na washirika.",
+  },
+  "aud.club.cta": { en: "Register Your Club", sw: "Sajili Klabu Yako" },
+  "aud.partner.h": { en: "Invest in the future of community football.", sw: "Wekeza katika mustakabali wa soka ya jamii." },
+  "aud.partner.b": {
+    en: "Club500 connects partners with a growing network of ambitious community football clubs across Kenya. Whether you're looking to create social impact, support youth development, strengthen your brand, or reach passionate local communities, we make meaningful partnerships possible. Together, we can build stronger clubs and stronger communities.",
+    sw: "Club500 huunganisha washirika na mtandao unaokua wa klabu za soka za jamii zenye malengo makubwa kote Kenya. Iwe unatafuta kuunda matokeo ya kijamii, kusaidia maendeleo ya vijana, kuimarisha chapa yako, au kufikia jamii za karibu zenye shauku, tunafanya ushirikiano wenye maana kuwezekana.",
+  },
+  "aud.partner.cta": { en: "Become a Partner", sw: "Kuwa Mshirika" },
+  "aud.volunteer.h": { en: "Your skills can change the game.", sw: "Ujuzi wako unaweza kubadilisha mchezo." },
+  "aud.volunteer.b": {
+    en: "Behind every successful football club are people contributing far beyond the pitch. Whether you're a designer, marketer, developer, accountant, lawyer, coach, photographer, or simply passionate about community football, Club500 gives you an opportunity to use your expertise where it creates real impact while growing your own experience and network.",
+    sw: "Nyuma ya kila klabu ya soka yenye mafanikio kuna watu wanaochangia zaidi ya uwanjani. Iwe wewe ni mbunifu, mtaalamu wa masoko, msanidi programu, mhasibu, wakili, kocha, mpiga picha, au ni mpenzi tu wa soka ya jamii, Club500 inakupa fursa ya kutumia utaalamu wako mahali panapoleta matokeo halisi.",
+  },
+  "aud.volunteer.cta": { en: "Offer Your Skills", sw: "Toa Ujuzi Wako" },
   // fixtures strip
   "fixtures.title": { en: "This weekend", sw: "Wikendi hii" },
   "fixtures.cta": { en: "Play predictions", sw: "Cheza ubashiri" },
@@ -40,10 +65,6 @@ const DICT: Record<string, { en: string; sw: string }> = {
   },
   "pulse.latest": { en: "Latest to join: Kajiado Youth FC, Kajiado", sw: "Mpya zaidi kujiunga: Kajiado Youth FC, Kajiado" },
   "pulse.cta": { en: "See the full map →", sw: "Tazama ramani kamili →" },
-  "impact.clubs": { en: "Community clubs", sw: "Klabu za jamii" },
-  "impact.counties": { en: "Counties", sw: "Kaunti" },
-  "impact.regions": { en: "Regions", sw: "Mikoa" },
-  "impact.jobs": { en: "Jobs targeted", sw: "Ajira zinazolengwa" },
   "impact.latest": {
     en: "Latest club to join: Kajiado Youth FC, Kajiado. New clubs join every month.",
     sw: "Klabu mpya zaidi kujiunga: Kajiado Youth FC, Kajiado. Klabu mpya hujiunga kila mwezi.",
@@ -61,16 +82,14 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "featured.all": { en: "All clubs →", sw: "Klabu zote →" },
   // fan zone steps
   "fz.eyebrow": { en: "The Fan Zone · Karibu", sw: "Kona ya Mashabiki · Karibu" },
-  "fz.title1": { en: "Belong first.", sw: "Kuwa sehemu kwanza." },
-  "fz.title2": { en: "Earn", sw: "Pata" },
-  "fz.title3": { en: "along the way.", sw: "ukiendelea." },
+  "fz.title1": { en: "Fans are the", sw: "Mashabiki ndio" },
+  "fz.title2": { en: "heartbeat", sw: "moyo" },
+  "fz.title3": { en: "of every club.", sw: "wa kila klabu." },
+  "fz.body": {
+    en: "A football club doesn't belong to eleven players — it belongs to the entire community. By becoming an official fan, you're helping your club grow, create opportunities for players, and build a stronger future for local football. Small acts of support today can shape the next generation of talent tomorrow.",
+    sw: "Klabu ya soka haimilikiwi na wachezaji kumi na mmoja tu — inamilikiwa na jamii nzima. Kwa kuwa shabiki rasmi, unasaidia klabu yako kukua, kuunda fursa kwa wachezaji, na kujenga mustakabali imara wa soka ya mtaa. Msaada mdogo leo unaweza kuunda kizazi kijacho cha vipaji kesho.",
+  },
   "fz.open": { en: "Open the Fan Zone", sw: "Fungua Kona ya Mashabiki" },
-  "fz.s1t": { en: "Join your club", sw: "Jiunge na klabu yako" },
-  "fz.s1d": { en: "It takes a minute.", sw: "Inachukua dakika moja tu." },
-  "fz.s2t": { en: "Follow along", sw: "Fuatilia" },
-  "fz.s2d": { en: "Match updates, stories, behind the scenes.", sw: "Habari za mechi, hadithi, nyuma ya pazia." },
-  "fz.s3t": { en: "Share your link", sw: "Sambaza kiungo chako" },
-  "fz.s3d": { en: "Earn when friends join too.", sw: "Pata pesa marafiki wakijiunga pia." },
   // footer
   "footer.explore": { en: "Explore", sw: "Chunguza" },
   "footer.stories": { en: "Stories", sw: "Habari" },
@@ -101,8 +120,8 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "fzp.h1a": { en: "Your club. Your voice. Your", sw: "Klabu yako. Sauti yako. Zawadi" },
   "fzp.h1b": { en: "reward", sw: "yako" },
   "fzp.intro": {
-    en: "Follow your club. Get real match updates, stories and behind-the-scenes access, and earn when you bring friends along.",
-    sw: "Fuatilia klabu yako. Pata habari halisi za mechi, hadithi na mambo ya nyuma ya pazia, na upate pesa unapowaleta marafiki.",
+    en: "Being a Club500 fan means more than following scores. It means showing up for your club, celebrating its wins, and helping it grow — match updates, stories and behind-the-scenes access, all in one place.",
+    sw: "Kuwa shabiki wa Club500 ni zaidi ya kufuatilia matokeo. Ni kujitokeza kwa klabu yako, kusherehekea ushindi wake, na kusaidia ikue — habari za mechi, hadithi na mambo ya nyuma ya pazia, yote mahali pamoja.",
   },
   "fzp.results": { en: "Results", sw: "Matokeo" },
   "fzp.predict": { en: "Predict", sw: "Bashiri" },

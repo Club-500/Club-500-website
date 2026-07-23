@@ -1,5 +1,4 @@
 import Hero from "@/components/home/Hero";
-import PredictionsStrip from "@/components/home/PredictionsStrip";
 import ImpactStrip from "@/components/home/ImpactStrip";
 import AboutSnapshot from "@/components/home/AboutSnapshot";
 import FeaturedClubs from "@/components/home/FeaturedClubs";
@@ -11,9 +10,8 @@ export default function Home() {
     <>
       <RevealInit />
       <Hero />
-      <PredictionsStrip />
-      <ImpactStrip />
       <AboutSnapshot />
+      <ImpactStrip />
       <FeaturedClubs />
       <FanZoneSteps />
     </>

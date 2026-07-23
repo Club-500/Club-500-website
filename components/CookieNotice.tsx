@@ -55,7 +55,7 @@ export default function CookieNotice() {
         }}
       >
         {t("cookie.body")}{" "}
-        <a href="/privacy" style={{ color: "#C98A00", fontWeight: 600 }}>
+        <a href="/privacy" style={{ color: "var(--gold)", fontWeight: 600 }}>
           Privacy policy
         </a>
       </p>
@@ -64,7 +64,7 @@ export default function CookieNotice() {
           type="button"
           onClick={() => choose("accepted")}
           style={{
-            background: "#1B5E3C",
+            background: "var(--blue)",
             color: "#fff",
             border: "none",
             borderRadius: 999,

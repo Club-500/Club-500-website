@@ -58,7 +58,7 @@ export default function InstallPrompt() {
           dismiss();
         }}
         style={{
-          background: "#1B5E3C",
+          background: "var(--blue)",
           color: "#fff",
           border: "none",
           borderRadius: 999,

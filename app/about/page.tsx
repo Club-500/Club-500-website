@@ -1,27 +1,51 @@
 "use client";
 
+import { useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import { useLang } from "@/lib/i18n";
 
-const PROBLEMS = [
-  "Inconsistent funding",
-  "Weak governance",
-  "Low visibility, no digital presence",
-  "Few sponsors",
-  "Everything resting on one or two volunteers",
-];
-
-const SUPPORT_AREAS = [
-  "Governance",
-  "Branding",
-  "Media & storytelling",
-  "Financial sustainability",
-  "Technology",
-  "Fan engagement",
-  "Partnerships",
-  "Capacity building",
-  "Infrastructure development",
+const PILLARS: [string, string, string][] = [
+  [
+    "Governance",
+    "Strong clubs are built on strong leadership. We help clubs establish effective governance structures, define clear roles and responsibilities, strengthen accountability, and build systems that support long-term growth. From legal registration to club management practices, we help clubs operate with confidence and credibility.",
+    "Club governance structures · Leadership development · Legal compliance · Policies and documentation",
+  ],
+  [
+    "Branding",
+    "A strong identity builds trust. We help clubs develop professional brands that reflect who they are and what they stand for. From logos and visual identity to communication and digital presence, we ensure clubs are seen, recognised and remembered.",
+    "Club identity · Brand development · Graphic design · Digital presence",
+  ],
+  [
+    "Media & Storytelling",
+    "Every club has a story worth telling. We help clubs showcase their journey through photography, video, social media and content creation, increasing visibility for players, attracting supporters and creating new opportunities.",
+    "Photography · Video production · Social media · Content creation · Club storytelling",
+  ],
+  [
+    "Financial Sustainability",
+    "Football should create value that lasts. We help clubs move beyond relying on personal contributions by introducing sustainable ways to generate income through memberships, fan subscriptions, partnerships, fundraising and commercial opportunities.",
+    "Fan subscriptions · Revenue generation · Fundraising · Sponsorship readiness",
+  ],
+  [
+    "Technology",
+    "Technology should make running a club easier. Club500 provides digital tools that help clubs manage information, engage supporters, increase visibility and access opportunities through one connected platform.",
+    "Club management tools · Digital club profiles · Fan platform · Data and insights",
+  ],
+  [
+    "Fan Engagement",
+    "Football belongs to its fans. We help clubs build stronger relationships with their communities by making it easier for supporters to connect, contribute and take part in the club's journey through memberships, events and shared experiences.",
+    "Fan memberships · Community engagement · Matchday experiences · Club communities",
+  ],
+  [
+    "Partnerships",
+    "Growth happens through collaboration. We connect clubs with businesses, organisations, professionals and development partners who share a common goal of strengthening community football and creating opportunities for young people.",
+    "Corporate partnerships · Sponsorships · Professional networks · Community collaborations",
+  ],
+  [
+    "Capacity Building",
+    "Knowledge creates stronger clubs. We equip club leaders with practical skills through workshops, webinars, mentorship and learning resources that help them make better decisions and build sustainable organisations.",
+    "Webinars · Training programmes · Mentorship · Learning resources",
+  ],
 ];
 
 const AUDIENCES: [string, string][] = [
@@ -33,6 +57,83 @@ const AUDIENCES: [string, string][] = [
   ["Government & development organisations", "A credible partner in youth and community development"],
 ];
 
+function PillarAccordion() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <div className="rv rv-d1" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      {PILLARS.map(([name, body, focus], i) => {
+        const isOpen = open === i;
+        return (
+          <div
+            key={name}
+            style={{
+              border: "1px solid rgba(var(--tx),0.12)",
+              borderRadius: 16,
+              overflow: "hidden",
+              background: isOpen ? "rgba(var(--tx),0.03)" : "transparent",
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(isOpen ? null : i)}
+              aria-expanded={isOpen}
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 12,
+                padding: "18px 20px",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                textAlign: "left",
+                color: "var(--fg)",
+              }}
+            >
+              <span style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                <span style={{ font: '700 13px/1 var(--font-inter-tight), sans-serif', color: "var(--gold)", background: "rgba(245,179,1,0.14)", borderRadius: 8, padding: "7px 10px" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span style={{ font: '600 17px/1.3 var(--font-inter-tight), sans-serif' }}>{name}</span>
+              </span>
+              <span
+                style={{
+                  flexShrink: 0,
+                  width: 26,
+                  height: 26,
+                  borderRadius: "50%",
+                  border: "1px solid rgba(var(--tx),0.25)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transform: isOpen ? "rotate(45deg)" : "none",
+                  transition: "transform .25s",
+                  font: '600 16px/1 var(--font-inter-tight), sans-serif',
+                }}
+              >
+                +
+              </span>
+            </button>
+            {isOpen && (
+              <div style={{ padding: "0 20px 22px" }}>
+                <p style={{ margin: "0 0 12px", font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
+                  {body}
+                </p>
+                <div className="mono-label" style={{ marginBottom: 6 }}>Current focus</div>
+                <p style={{ margin: "0 0 12px", font: '500 13px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
+                  {focus}
+                </p>
+                <div className="mono-label">Partners: to be announced</div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function AboutPage() {
   const { t } = useLang();
   return (
@@ -42,23 +143,60 @@ export default function AboutPage() {
         {t("ab.h1a")} <span className="gold">{t("ab.h1b")}</span>
       </PageHead>
 
+      {/* Direct intro */}
+      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
+        <h2 className="display rv" style={{ margin: "0 0 14px", maxWidth: 760 }}>
+          Building stronger football clubs. <span className="gold">Growing stronger communities.</span>
+        </h2>
+        <p className="rv rv-d1" style={{ margin: 0, maxWidth: 680, font: '400 16px/1.65 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
+          Club500 Africa is a community football platform dedicated to helping grassroots football clubs
+          become sustainable, professionally run institutions. We connect clubs with the people, resources,
+          technology and opportunities they need to grow on and off the pitch.
+        </p>
+      </div>
+
+      {/* Our story */}
+      <div style={{ padding: "clamp(28px, 5vw, 44px) clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
+        <h2 className="display rv" style={{ margin: "0 0 16px" }}>
+          Our <span className="gold">story</span>
+        </h2>
+        <div className="rv rv-d1" style={{ maxWidth: 700, display: "flex", flexDirection: "column", gap: 14 }}>
+          <p style={{ margin: 0, font: '400 15.5px/1.7 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
+            Community football has always been the heartbeat of the game. Across Kenya, thousands of clubs
+            nurture talented players, unite communities, and inspire young people every day. Yet behind the
+            passion lies a familiar struggle. Many clubs operate with limited resources, rely on a handful of
+            committed individuals, and lack access to the systems, visibility and support needed to grow
+            sustainably.
+          </p>
+          <p style={{ margin: 0, font: '400 15.5px/1.7 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
+            Club500 was created to change that. Rather than focusing on short-term solutions, we are building
+            a long-term ecosystem where clubs can access the right support, strengthen their operations,
+            engage their communities, attract partners, and create opportunities for everyone connected to
+            the game.
+          </p>
+          <p style={{ margin: 0, font: '600 15.5px/1.7 var(--font-inter-tight), sans-serif' }}>
+            Because when community football thrives, communities thrive too.
+          </p>
+        </div>
+      </div>
+
       {/* Vision + Mission as pull quotes */}
-      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 24px", maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
-        <div className="glass rv" style={{ padding: "clamp(24px, 4vw, 40px)", borderLeft: "3px solid #1B5E3C" }}>
+      <div style={{ padding: "clamp(20px, 4vw, 32px) clamp(20px, 4vw, 32px) 24px", maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
+        <div className="glass rv" style={{ padding: "clamp(24px, 4vw, 40px)", borderLeft: "3px solid var(--blue)" }}>
           <div className="mono-label" style={{ marginBottom: 12 }}>Our vision</div>
           <p
             style={{
               margin: 0,
-              font: '600 clamp(1.15rem, 2vw, 1.5rem)/1.5 var(--font-inter-tight), sans-serif',
+              font: '600 clamp(1.05rem, 1.8vw, 1.3rem)/1.55 var(--font-inter-tight), sans-serif',
               letterSpacing: "-0.01em",
             }}
           >
-            A Kenya where every community football club is a thriving
-            institution: creating jobs, developing talent, and strengthening
-            the community around it.
+            To build Africa&apos;s largest and most connected community football ecosystem, where every
+            grassroots club has the opportunity to grow, thrive and transform the lives of the communities
+            it serves.
           </p>
         </div>
-        <div className="glass rv rv-d1" style={{ padding: "clamp(24px, 4vw, 40px)", borderLeft: "3px solid #C98A00" }}>
+        <div className="glass rv rv-d1" style={{ padding: "clamp(24px, 4vw, 40px)", borderLeft: "3px solid var(--gold)" }}>
           <div className="mono-label" style={{ marginBottom: 12 }}>Our mission</div>
           <p
             style={{
@@ -67,70 +205,22 @@ export default function AboutPage() {
               letterSpacing: "-0.01em",
             }}
           >
-            Club500 connects grassroots football clubs across Kenya&apos;s 47
-            counties with the governance, funding, media and fan support they
-            need to grow, turning local passion into lasting community impact.{" "}
+            To empower community football clubs with the tools, support, partnerships and opportunities
+            they need to become sustainable institutions that create lasting impact on and beyond the pitch.{" "}
             <span className="gold">Grassroots to Greatness.</span>
           </p>
         </div>
       </div>
 
-      {/* The problem */}
-      <div style={{ padding: "clamp(32px, 6vw, 48px) clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
+      {/* 8 Pillars of Impact */}
+      <div style={{ padding: "clamp(28px, 5vw, 44px) clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
         <h2 className="display rv" style={{ margin: "0 0 8px" }}>
-          Most clubs don&apos;t lack talent. <span className="gold">They lack systems.</span>
+          8 pillars of <span className="gold">impact</span>
         </h2>
-        <div
-          className="rv rv-d1"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: 10,
-            marginTop: 20,
-          }}
-        >
-          {PROBLEMS.map((p) => (
-            <div
-              key={p}
-              style={{
-                border: "1px solid rgba(var(--tx),0.12)",
-                borderRadius: 14,
-                padding: "16px 18px",
-                font: '500 14.5px/1.45 var(--font-inter-tight), sans-serif',
-                color: "rgba(var(--tx),0.75)",
-              }}
-            >
-              {p}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* The solution */}
-      <div style={{ padding: "clamp(28px, 5vw, 40px) clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
-        <h2 className="display rv" style={{ margin: "0 0 8px" }}>
-          Instead of asking how clubs survive, we ask how they <span className="gold">thrive</span>
-        </h2>
-        <p className="rv" style={{ margin: "8px 0 20px", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 620 }}>
-          Nine areas of support, one platform:
+        <p className="rv" style={{ margin: "8px 0 24px", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 620 }}>
+          Tap a pillar to see what it covers and how it helps clubs grow.
         </p>
-        <div
-          className="rv rv-d1"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 10,
-          }}
-        >
-          {SUPPORT_AREAS.map((a, i) => (
-            <div key={a} style={{ display: "flex", gap: 12, alignItems: "center", padding: "12px 0", borderBottom: "1px solid rgba(var(--tx),0.08)" }}>
-              <span style={{ font: '700 13px/1 var(--font-inter-tight), sans-serif', color: "#2E9B63", background: "rgba(46,155,99,0.16)", borderRadius: 8, padding: "6px 9px" }}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span style={{ font: '500 15px/1.3 var(--font-inter-tight), sans-serif' }}>{a}</span>
-            </div>
-          ))}
-        </div>
+        <PillarAccordion />
       </div>
 
       {/* Who it's for */}
@@ -153,7 +243,7 @@ export default function AboutPage() {
         <div
           className="rv"
           style={{
-            background: "#1B5E3C",
+            background: "var(--blue)",
             color: "#fff",
             borderRadius: 24,
             padding: "clamp(24px, 4vw, 44px)",
@@ -174,7 +264,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <a href="/clubs/apply" className="pill-btn" style={{ background: "#C98A00", color: "#141310", padding: "14px 24px", borderRadius: 999 }}>
+            <a href="/clubs/apply" className="pill-btn" style={{ background: "var(--gold)", color: "#141310", padding: "14px 24px", borderRadius: 999 }}>
               Register your club
             </a>
             <a href="/fanzone" className="pill-ghost">

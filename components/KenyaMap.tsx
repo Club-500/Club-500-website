@@ -70,8 +70,8 @@ export default function KenyaMap() {
             key={n}
             d={d}
             style={{
-              fill: live ? "#1B5E3C" : "rgba(var(--tx), 0.08)",
-              stroke: live ? "#2E9B63" : "rgba(var(--tx), 0.22)",
+              fill: live ? "var(--blue)" : "rgba(var(--tx), 0.08)",
+              stroke: live ? "var(--blue-hover)" : "rgba(var(--tx), 0.22)",
               strokeWidth: 1.4,
               strokeLinejoin: "round",
               transition: "fill .2s",

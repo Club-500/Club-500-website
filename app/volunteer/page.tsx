@@ -140,9 +140,9 @@ export default function VolunteerPage() {
                   className="tag-pill"
                   style={{
                     cursor: "pointer",
-                    background: area === a ? "#1B5E3C" : "transparent",
+                    background: area === a ? "var(--blue)" : "transparent",
                     color: area === a ? "#fff" : "rgba(var(--tx),0.75)",
-                    borderColor: area === a ? "#1B5E3C" : "rgba(var(--tx),0.18)",
+                    borderColor: area === a ? "var(--blue)" : "rgba(var(--tx),0.18)",
                     padding: "10px 18px",
                   }}
                 >

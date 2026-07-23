@@ -8,6 +8,7 @@ import ThemeToggle from "./ThemeToggle";
 import { useLang } from "@/lib/i18n";
 
 const LINKS_PRE: [string, string][] = [
+  ["/about", "nav.about"],
   ["/clubs", "nav.clubs"],
   ["/fanzone", "nav.fanzone"],
   ["/events", "nav.events"],
@@ -16,7 +17,6 @@ const LINKS_PRE: [string, string][] = [
 
 const LINKS_POST: [string, string][] = [
   ["/partners", "nav.partners"],
-  ["/about", "nav.about"],
 ];
 
 const LINKS = [...LINKS_PRE, ...LINKS_POST];
@@ -30,7 +30,7 @@ const navLinkStyle = (active: boolean): React.CSSProperties => ({
   font: '500 12px/1 var(--font-inter-tight), sans-serif',
   letterSpacing: "0.02em",
   color: active ? "#fff" : "rgba(var(--tx),0.85)",
-  background: active ? "#1B5E3C" : "transparent",
+  background: active ? "var(--blue)" : "transparent",
   padding: "10px 14px",
   borderRadius: 999,
   transition: "all .2s",
@@ -144,7 +144,7 @@ export default function SiteHeader() {
                   display: "block",
                   padding: "11px 16px",
                   font: '500 13px/1 var(--font-inter-tight), sans-serif',
-                  color: pathname === href ? "#C98A00" : "rgba(var(--tx),0.85)",
+                  color: pathname === href ? "var(--gold)" : "rgba(var(--tx),0.85)",
                   borderRadius: 10,
                 }}
               >
@@ -206,10 +206,10 @@ export default function SiteHeader() {
           href="/"
           style={{
             font: '600 16px/1 var(--font-inter-tight), sans-serif',
-            color: pathname === "/" ? "#C98A00" : "var(--fg)",
+            color: pathname === "/" ? "var(--gold)" : "var(--fg)",
             padding: "14px 16px",
             borderRadius: 12,
-            background: pathname === "/" ? "rgba(201,138,0,0.12)" : "transparent",
+            background: pathname === "/" ? "rgba(245, 179, 1,0.12)" : "transparent",
           }}
         >
           {t("nav.home")}
@@ -222,10 +222,10 @@ export default function SiteHeader() {
               href={href}
               style={{
                 font: '600 16px/1 var(--font-inter-tight), sans-serif',
-                color: active ? "#C98A00" : "var(--fg)",
+                color: active ? "var(--gold)" : "var(--fg)",
                 padding: "14px 16px",
                 borderRadius: 12,
-                background: active ? "rgba(201,138,0,0.12)" : "transparent",
+                background: active ? "rgba(245, 179, 1,0.12)" : "transparent",
               }}
             >
               {t(key)}
@@ -241,10 +241,10 @@ export default function SiteHeader() {
               href={href}
               style={{
                 font: '500 15px/1 var(--font-inter-tight), sans-serif',
-                color: active ? "#C98A00" : "rgba(var(--tx),0.85)",
+                color: active ? "var(--gold)" : "rgba(var(--tx),0.85)",
                 padding: "12px 16px 12px 28px",
                 borderRadius: 12,
-                background: active ? "rgba(201,138,0,0.12)" : "transparent",
+                background: active ? "rgba(245, 179, 1,0.12)" : "transparent",
               }}
             >
               {t(key)}
@@ -259,10 +259,10 @@ export default function SiteHeader() {
               href={href}
               style={{
                 font: '600 16px/1 var(--font-inter-tight), sans-serif',
-                color: active ? "#C98A00" : "var(--fg)",
+                color: active ? "var(--gold)" : "var(--fg)",
                 padding: "14px 16px",
                 borderRadius: 12,
-                background: active ? "rgba(201,138,0,0.12)" : "transparent",
+                background: active ? "rgba(245, 179, 1,0.12)" : "transparent",
               }}
             >
               {t(key)}

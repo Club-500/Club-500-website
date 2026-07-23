@@ -27,7 +27,7 @@ export default function NewsletterForm() {
 
   if (state === "done") {
     return (
-      <p style={{ margin: 0, font: '500 14px/1.5 var(--font-inter-tight), sans-serif', color: "#C98A00" }}>
+      <p style={{ margin: 0, font: '500 14px/1.5 var(--font-inter-tight), sans-serif', color: "var(--gold)" }}>
         {t("nl.done")}
       </p>
     );
@@ -61,7 +61,7 @@ export default function NewsletterForm() {
           onClick={submit}
           disabled={state === "busy"}
           style={{
-            background: "#C98A00",
+            background: "var(--gold)",
             color: "#0a0a0a",
             border: "none",
             borderRadius: 999,

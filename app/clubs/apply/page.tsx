@@ -178,7 +178,7 @@ export default function ClubApplyPage() {
           <div className="mono-label" style={{ marginBottom: 16 }}>How joining works</div>
           {STEPS.map(([t, d], i) => (
             <div key={t} style={{ display: "flex", gap: 16, padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
-              <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "#C98A00", width: 24, flexShrink: 0 }}>
+              <span style={{ font: '700 15px/1.4 var(--font-inter-tight), sans-serif', color: "var(--gold)", width: 24, flexShrink: 0 }}>
                 {i + 1}
               </span>
               <div>

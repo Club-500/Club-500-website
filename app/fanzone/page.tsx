@@ -6,7 +6,6 @@ import RevealInit from "@/components/RevealInit";
 import TopReferrers from "@/components/home/TopReferrers";
 import { FIXTURES, RESULTS, STANDINGS, ODDS, SENTIMENT, BOOST_INDEX } from "@/lib/content";
 import { useLiveOdds, loadPicks, savePicks, loadLocked, saveLocked } from "@/lib/market";
-import ReferralShare from "@/components/ReferralShare";
 import { useLang } from "@/lib/i18n";
 import UploadMoment from "@/components/UploadMoment";
 import CapturePill from "@/components/CapturePill";
@@ -18,13 +17,6 @@ const LEADERS: [string, string, number][] = [
   ["Coast Ultras", "Mombasa", 3980],
   ["Green Army 254", "Kericho", 3644],
   ["City Faithful", "Nairobi", 3320],
-];
-
-const BONUSES: [string, string][] = [
-  ["Weekly top referrer", "KES 5,000"],
-  ["20 referrals", "+KES 1,000"],
-  ["50 referrals", "+KES 3,000"],
-  ["100 referrals", "+KES 10,000"],
 ];
 
 type Pick = "1" | "X" | "2";
@@ -42,8 +34,6 @@ export default function FanZonePage() {
     setPicks(loadPicks() as Record<number, Pick>);
     setLocked(loadLocked());
   }, []);
-  const [refs, setRefs] = useState(100);
-  const earnings = refs * 250;
   const chosen = Object.entries(picks).filter(([, v]) => v);
   const pickCount = chosen.length;
   const combined = chosen.reduce((acc, [i, p]) => {
@@ -135,7 +125,7 @@ export default function FanZonePage() {
             </div>
             {STANDINGS.map(([club, p, w, dd, l, pts], i) => (
               <div key={club} style={{ display: "grid", gridTemplateColumns: "24px 1fr repeat(4, 30px) 40px", gap: 4, alignItems: "center", padding: "9px 0", borderTop: "1px solid rgba(var(--tx),0.08)", font: '500 13.5px/1.2 var(--font-inter-tight), sans-serif' }}>
-                <span style={{ font: '700 12px/1 var(--font-inter-tight), sans-serif', color: i === 0 ? "#C98A00" : "rgba(var(--tx),0.45)" }}>{i + 1}</span>
+                <span style={{ font: '700 12px/1 var(--font-inter-tight), sans-serif', color: i === 0 ? "var(--gold)" : "rgba(var(--tx),0.45)" }}>{i + 1}</span>
                 <span style={{ fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{club}</span>
                 <span>{p}</span><span>{w}</span><span>{dd}</span><span>{l}</span>
                 <span style={{ textAlign: "right", font: '800 14px/1 var(--font-inter-tight), sans-serif' }}>{pts}</span>
@@ -170,7 +160,7 @@ export default function FanZonePage() {
                 <div
                   key={home}
                   style={{
-                    border: picks[i] ? "1px solid rgba(46,155,99,0.55)" : "1px solid rgba(var(--tx),0.12)",
+                    border: picks[i] ? "1px solid rgba(58, 95, 217,0.55)" : "1px solid rgba(var(--tx),0.12)",
                     borderRadius: 16,
                     padding: 18,
                     display: "flex",
@@ -182,7 +172,7 @@ export default function FanZonePage() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
                     <span className="mono-label">{when}</span>
                     {i === BOOST_INDEX && (
-                      <span style={{ font: '700 11px/1 var(--font-inter-tight), sans-serif', color: "#141310", background: "#C98A00", borderRadius: 999, padding: "5px 10px" }}>
+                      <span style={{ font: '700 11px/1 var(--font-inter-tight), sans-serif', color: "#141310", background: "var(--gold)", borderRadius: 999, padding: "5px 10px" }}>
                         2x BOOST
                       </span>
                     )}
@@ -207,8 +197,8 @@ export default function FanZonePage() {
                             cursor: locked ? "default" : "pointer",
                             borderRadius: 12,
                             padding: "10px 0 8px",
-                            border: active ? "1.5px solid #1B5E3C" : "1px solid rgba(var(--tx),0.16)",
-                            background: active ? "#1B5E3C" : "transparent",
+                            border: active ? "1.5px solid var(--blue)" : "1px solid rgba(var(--tx),0.16)",
+                            background: active ? "var(--blue)" : "transparent",
                             color: active ? "#fff" : "var(--fg)",
                             display: "flex",
                             flexDirection: "column",
@@ -230,9 +220,9 @@ export default function FanZonePage() {
                   </div>
                   <div>
                     <div style={{ display: "flex", height: 4, borderRadius: 2, overflow: "hidden", gap: 2 }}>
-                      <span style={{ width: `${sent[0]}%`, background: "#2E9B63" }}></span>
+                      <span style={{ width: `${sent[0]}%`, background: "var(--blue-hover)" }}></span>
                       <span style={{ width: `${sent[1]}%`, background: "rgba(var(--tx),0.2)" }}></span>
-                      <span style={{ width: `${sent[2]}%`, background: "#C98A00" }}></span>
+                      <span style={{ width: `${sent[2]}%`, background: "var(--gold)" }}></span>
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between", marginTop: 5 }}>
                       <span style={{ font: '500 10.5px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.45)" }}>{sent[0]}%</span>
@@ -250,8 +240,8 @@ export default function FanZonePage() {
             style={{
               marginTop: 16,
               borderRadius: 14,
-              border: pickCount > 0 ? "1px solid rgba(46,155,99,0.5)" : "1px dashed rgba(var(--tx),0.2)",
-              background: pickCount > 0 ? "rgba(46,155,99,0.08)" : "transparent",
+              border: pickCount > 0 ? "1px solid rgba(58, 95, 217,0.5)" : "1px dashed rgba(var(--tx),0.2)",
+              background: pickCount > 0 ? "rgba(58, 95, 217,0.08)" : "transparent",
               padding: "14px 18px",
               display: "flex",
               alignItems: "center",
@@ -265,13 +255,13 @@ export default function FanZonePage() {
             {burst && (
               <span aria-hidden="true" className="confetti-stage">
                 {Array.from({ length: 18 }).map((_, k) => (
-                  <i key={k} className="confetti-bit" style={{ left: `${(k * 137) % 100}%`, animationDelay: `${(k % 6) * 60}ms`, background: k % 3 === 0 ? "#C98A00" : k % 3 === 1 ? "#2E9B63" : "#e9e9e4" }} />
+                  <i key={k} className="confetti-bit" style={{ left: `${(k * 137) % 100}%`, animationDelay: `${(k % 6) * 60}ms`, background: k % 3 === 0 ? "var(--gold)" : k % 3 === 1 ? "var(--blue-hover)" : "#e9e9e4" }} />
                 ))}
               </span>
             )}
             {locked ? (
               <>
-                <span style={{ font: '700 15px/1.3 var(--font-inter-tight), sans-serif', color: "#2E9B63" }}>
+                <span style={{ font: '700 15px/1.3 var(--font-inter-tight), sans-serif', color: "var(--blue-hover)" }}>
                   {t("fzp.locked")}
                 </span>
                 <span className="mono-label">Settles Sun 18:00 · potential +{potential.toLocaleString()} pts</span>
@@ -301,7 +291,7 @@ export default function FanZonePage() {
                     setTimeout(() => setBurst(false), 1600);
                   }}
                   style={{
-                    background: pickCount > 0 ? "#1B5E3C" : "rgba(var(--tx),0.08)",
+                    background: pickCount > 0 ? "var(--blue)" : "rgba(var(--tx),0.08)",
                     color: pickCount > 0 ? "#fff" : "rgba(var(--tx),0.4)",
                     border: "none",
                     borderRadius: 999,
@@ -338,7 +328,7 @@ export default function FanZonePage() {
           <div
             className="rv rv-d1"
             style={{
-              background: "#C98A00",
+              background: "var(--gold)",
               color: "#0a0a0a",
               borderRadius: 20,
               padding: "clamp(20px, 3vw, 30px)",
@@ -383,8 +373,8 @@ export default function FanZonePage() {
                     cursor: "pointer",
                     borderRadius: 14,
                     padding: "16px 20px",
-                    border: voted === m ? "1.5px solid #C98A00" : "1px solid rgba(var(--tx),0.15)",
-                    background: voted === m ? "rgba(201,138,0,0.12)" : "transparent",
+                    border: voted === m ? "1.5px solid var(--gold)" : "1px solid rgba(var(--tx),0.15)",
+                    background: voted === m ? "rgba(245, 179, 1,0.12)" : "transparent",
                     color: "var(--fg)",
                     font: '500 15px/1.3 var(--font-inter-tight), sans-serif',
                     transition: "all .2s",
@@ -395,7 +385,7 @@ export default function FanZonePage() {
               ))}
             </div>
             {voted && (
-              <div className="mono-label gold" style={{ color: "#C98A00", marginTop: 16 }}>
+              <div className="mono-label gold" style={{ color: "var(--gold)", marginTop: 16 }}>
                 +50 fan points earned
               </div>
             )}
@@ -416,7 +406,7 @@ export default function FanZonePage() {
                 <span
                   style={{
                     font: '700 1rem/1 var(--font-inter-tight), sans-serif',
-                    color: i === 0 ? "#C98A00" : "rgba(var(--tx),0.3)",
+                    color: i === 0 ? "var(--gold)" : "rgba(var(--tx),0.3)",
                     width: 30,
                   }}
                 >
@@ -434,74 +424,9 @@ export default function FanZonePage() {
           </div>
         </div>
 
-        {/* Earn — merged from the old Earn page */}
-        <div id="earn" className="rv" style={{ scrollMarginTop: 120 }}>
-          <h2 className="display" style={{ margin: "0 0 8px" }}>
-            Earn with your <span className="gold">referral link</span>
-          </h2>
-          <p style={{ margin: "0 0 24px", font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)", maxWidth: 560 }}>
-            Every fan gets a personal referral link. Share it and you earn KES 250
-            each time someone joins a club through it, paid straight to your
-            phone. Withdraw anytime.
-          </p>
-          <p style={{ margin: "-12px 0 24px", maxWidth: 560, font: '500 13.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.5)" }}>
-            How payouts work: you earn a fixed amount each time someone joins
-            your club through your link. No recruiting required beyond that,
-            no tiers, no catch.
-          </p>
-          <ReferralShare />
-          <div
-            style={{
-              background: "#C98A00",
-              borderRadius: 24,
-              padding: "clamp(24px, 4vw, 44px)",
-              color: "#0a0a0a",
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 32,
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: 14,
-            }}
-          >
-            <div style={{ flex: "1 1 300px", minWidth: 260 }}>
-              <div className="mono-label" style={{ color: "rgba(10,10,10,0.55)", marginBottom: 10 }}>
-                Earnings calculator
-              </div>
-              <h3 className="display" style={{ margin: "0 0 22px" }}>How much can you earn?</h3>
-              <input
-                type="range"
-                min="0"
-                max="500"
-                value={refs}
-                onChange={(e) => setRefs(Number(e.target.value))}
-                style={{ width: "100%", maxWidth: 420 }}
-              />
-              <div style={{ marginTop: 12, font: '600 16px/1 var(--font-inter-tight), sans-serif' }}>
-                {refs} people referred
-              </div>
-            </div>
-            <div style={{ textAlign: "right" }}>
-              <div className="mono-label" style={{ color: "rgba(10,10,10,0.55)", marginBottom: 8 }}>You earn</div>
-              <div style={{ font: '800 clamp(2.4rem, 5vw, 4rem)/1 var(--font-inter-tight), sans-serif', letterSpacing: "-0.03em" }}>
-                KES {earnings.toLocaleString()}
-              </div>
-            </div>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14 }}>
-            {BONUSES.map(([label, amount]) => (
-              <div key={label} className="glass" style={{ padding: 22 }}>
-                <div className="mono-label" style={{ marginBottom: 10 }}>{label}</div>
-                <div className="gold" style={{ font: '700 24px/1 var(--font-inter-tight), sans-serif', letterSpacing: "-0.01em" }}>
-                  {amount}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
-      {/* Weekly top referrers */}
+      {/* Weekly top fan moments */}
       <TopReferrers />
     </>
   );

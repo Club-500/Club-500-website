@@ -7,9 +7,9 @@ import { useLang } from "@/lib/i18n";
 
 const TIERS: [string, string, string, string][] = [
   ["National Sponsor", "All 500 clubs", "Brand visibility across all 500 clubs: national campaigns, the Launch Tour, national media.", "#cfd8e3"],
-  ["Regional Sponsor", "1 of 8 regions", "Presence and activation across one of Kenya's 8 regions.", "#C98A00"],
+  ["Regional Sponsor", "1 of 8 regions", "Presence and activation across one of Kenya's 8 regions.", "var(--gold)"],
   ["County Sponsor", "1 of 47 counties", "Local activation and visibility within a specific county.", "#a7a7a7"],
-  ["Pillar Sponsor", "One focus area", "Funding tied to one focus area: girls' football, coaching education, or infrastructure.", "#2E9B63"],
+  ["Pillar Sponsor", "One focus area", "Funding tied to one focus area: girls' football, coaching education, or infrastructure.", "var(--blue-hover)"],
 ];
 
 export default function PartnersPage() {
@@ -48,7 +48,7 @@ export default function PartnersPage() {
             ["Since joining Club500, we opened the club's first bank account and paid our players on time for a full season.", "Chairman, Kivumbini United FC", "Nakuru"],
             ["Sponsors used to be a dream for a club like ours. Now our county sponsor's banner hangs at every home game.", "Secretary, Kapkatet Youth FC", "Kericho"],
           ].map(([quote, who, where], i) => (
-            <figure key={who} className={"glass rv rv-d" + i} style={{ margin: 0, padding: "clamp(22px, 3vw, 30px)", borderLeft: "3px solid #1B5E3C" }}>
+            <figure key={who} className={"glass rv rv-d" + i} style={{ margin: 0, padding: "clamp(22px, 3vw, 30px)", borderLeft: "3px solid var(--blue)" }}>
               <blockquote style={{ margin: 0, font: '600 clamp(1.05rem, 1.8vw, 1.25rem)/1.55 var(--font-inter-tight), sans-serif', letterSpacing: "-0.01em" }}>
                 &ldquo;{quote}&rdquo;
               </blockquote>
@@ -58,7 +58,7 @@ export default function PartnersPage() {
             </figure>
           ))}
         </div>
-        <div className="rv" style={{ background: "#C98A00", color: "#0a0a0a", borderRadius: 28, padding: "clamp(28px, 4vw, 48px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24 }}>
+        <div className="rv" style={{ background: "var(--gold)", color: "#0a0a0a", borderRadius: 28, padding: "clamp(28px, 4vw, 48px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24 }}>
           <div className="display" style={{ fontSize: "clamp(1.8rem, 4vw, 3.2rem)" }}>Back 500 clubs. Reach a nation.</div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a href="mailto:partnerships@club500.africa?subject=Partner%20deck%20request" className="pill-btn" style={{ background: "#0a0a0a", color: "#fff", textDecoration: "none" }}>

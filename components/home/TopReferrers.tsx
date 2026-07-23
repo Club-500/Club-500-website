@@ -1,9 +1,9 @@
-const REFS: [string, string, number][] = [
-  ["Brian Otieno", "Kisumu", 214],
-  ["Amina Hassan", "Mombasa", 187],
-  ["Kevin Kiprop", "Eldoret", 163],
-  ["Grace Wanjiru", "Nairobi", 151],
-  ["Dennis Koech", "Kericho", 139],
+const MOMENTS: [string, string, string][] = [
+  ["Brian Otieno", "Kisumu", "Matchday face paint before kickoff"],
+  ["Amina Hassan", "Mombasa", "First stadium visit with the family"],
+  ["Kevin Kiprop", "Eldoret", "Home win celebration with the ultras"],
+  ["Grace Wanjiru", "Nairobi", "Handmade banner for the derby"],
+  ["Dennis Koech", "Kericho", "Youth clinic with the club's academy"],
 ];
 
 export default function TopReferrers() {
@@ -21,9 +21,8 @@ export default function TopReferrers() {
         }}
       >
         <h2 className="display" style={{ margin: 0, fontSize: "clamp(2rem, 4vw, 3.2rem)" }}>
-          Top referrers <span className="gold">this week</span>
+          Top fan moments <span className="gold">this week</span>
         </h2>
-        <span className="mono-label">Weekly bonus · KES 5,000</span>
       </div>
       <div
         style={{
@@ -32,7 +31,7 @@ export default function TopReferrers() {
           gap: 14,
         }}
       >
-        {REFS.map(([name, town, count], i) => (
+        {MOMENTS.map(([name, town, moment], i) => (
           <div
             key={name}
             className={"club-card rv rv-d" + Math.min(i, 3)}
@@ -43,9 +42,9 @@ export default function TopReferrers() {
               overflow: "hidden",
               background:
                 i === 0
-                  ? "radial-gradient(circle at 50% 0%, rgba(201,138,0,0.28) 0%, rgba(201,138,0,0.06) 45%, rgba(var(--tx),0.04) 75%)"
+                  ? "radial-gradient(circle at 50% 0%, rgba(245, 179, 1,0.28) 0%, rgba(245, 179, 1,0.06) 45%, rgba(var(--tx),0.04) 75%)"
                   : "rgba(var(--tx),0.04)",
-              border: i === 0 ? "1px solid rgba(201,138,0,0.4)" : "1px solid rgba(var(--tx),0.09)",
+              border: i === 0 ? "1px solid rgba(245, 179, 1,0.4)" : "1px solid rgba(var(--tx),0.09)",
             }}
           >
             <div
@@ -58,7 +57,7 @@ export default function TopReferrers() {
             >
               <span
                 className="display"
-                style={{ fontSize: "1.3rem", color: i === 0 ? "#C98A00" : "rgba(var(--tx),0.3)" }}
+                style={{ fontSize: "1.3rem", color: i === 0 ? "var(--gold)" : "rgba(var(--tx),0.3)" }}
               >
                 0{i + 1}
               </span>
@@ -68,13 +67,13 @@ export default function TopReferrers() {
                   height: 44,
                   borderRadius: "50%",
                   flexShrink: 0,
-                  border: i === 0 ? "2px solid #C98A00" : "1px solid rgba(var(--tx),0.25)",
+                  border: i === 0 ? "2px solid var(--gold)" : "1px solid rgba(var(--tx),0.25)",
                   background: "linear-gradient(135deg, #262626, #101010)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   font: '700 0.95rem/1 var(--font-inter-tight), sans-serif',
-                  color: i === 0 ? "#C98A00" : "#e9e9e4",
+                  color: i === 0 ? "var(--gold)" : "#e9e9e4",
                 }}
               >
                 {name
@@ -86,22 +85,17 @@ export default function TopReferrers() {
             <div style={{ font: '600 16px/1.25 var(--font-inter-tight), sans-serif' }}>{name}</div>
             <div className="mono-label" style={{ marginTop: 6 }}>
               {town}
-              {i === 0 ? " · Bonus winner" : ""}
             </div>
             <div
               style={{
                 marginTop: 16,
                 paddingTop: 14,
                 borderTop: "1px solid rgba(var(--tx),0.1)",
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
+                font: '500 14px/1.4 var(--font-inter-tight), sans-serif',
+                color: "rgba(var(--tx),0.7)",
               }}
             >
-              <span className="display" style={{ fontSize: "1.9rem" }}>
-                <span className={i === 0 ? "gold" : ""}>{count}</span>
-              </span>
-              <span className="mono-label">Referrals</span>
+              {moment}
             </div>
           </div>
         ))}
