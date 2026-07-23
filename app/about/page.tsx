@@ -113,13 +113,20 @@ export default function AboutPage() {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "clamp(16px, 4vw, 40px)",
-          alignItems: "center",
+          alignItems: "start",
         }}
       >
         <PageHead eyebrow="About Club500">
           {t("ab.h1a")} <span className="gold">{t("ab.h1b")}</span>
         </PageHead>
-        <div className="rv rv-d1" style={{ display: "flex", justifyContent: "center", padding: "0 clamp(20px, 4vw, 32px)" }}>
+        <div
+          className="rv rv-d1"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "clamp(104px, 17vw, 150px) clamp(20px, 4vw, 32px) clamp(22px, 4vw, 40px)",
+          }}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/club500-logo.jpg"
