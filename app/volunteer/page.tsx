@@ -17,55 +17,8 @@ const AREAS: [string, string][] = [
   ["Finance", "Bookkeeping and financial planning"],
   ["Technology", "Digital tools and club platforms"],
   ["Events", "Matchday and community event support"],
+  ["Other", "Got a different skill? Tell us in the form — we'll find a fit"],
 ];
-
-const SIZE = 280;
-const HUDDLE_DOTS = [
-  { x: 8, y: 20, d: "0s" },
-  { x: 88, y: 12, d: "0.3s" },
-  { x: 92, y: 70, d: "0.6s" },
-  { x: 12, y: 78, d: "0.9s" },
-  { x: 50, y: 4, d: "1.2s" },
-  { x: 50, y: 92, d: "1.5s" },
-];
-
-function VolunteerHuddle() {
-  return (
-    <div style={{ position: "relative", width: "100%", maxWidth: SIZE, aspectRatio: "1/1", margin: "0 auto" }}>
-      <div
-        style={{
-          position: "absolute",
-          inset: "38%",
-          borderRadius: "50%",
-          background: "var(--gold)",
-          boxShadow: "0 0 40px rgba(245,179,1,0.35)",
-        }}
-      />
-      {HUDDLE_DOTS.map((p, i) => (
-        <span
-          key={i}
-          className="volunteer-dot"
-          style={
-            {
-              position: "absolute",
-              left: `${p.x}%`,
-              top: `${p.y}%`,
-              width: 22,
-              height: 22,
-              marginLeft: -11,
-              marginTop: -11,
-              borderRadius: "50%",
-              background: "var(--blue-hover)",
-              animationDelay: p.d,
-              "--dx": `${((p.x - 50) / 100) * SIZE}px`,
-              "--dy": `${((p.y - 50) / 100) * SIZE}px`,
-            } as React.CSSProperties
-          }
-        />
-      ))}
-    </div>
-  );
-}
 
 export default function VolunteerPage() {
   const { t } = useLang();
@@ -78,33 +31,39 @@ export default function VolunteerPage() {
         {t("vp.h1a")} <span className="gold">{t("vp.h1b")}</span> {t("vp.h1c")}
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1100, margin: "0 auto" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/volunteer-banner.webp"
+          alt="Your skills have a position — Volunteer with Club500."
+          className="rv"
+          style={{ width: "100%", maxWidth: 900, height: "auto", borderRadius: 20, marginBottom: 24, display: "block", marginLeft: "auto", marginRight: "auto" }}
+        />
+
         <div
           className="glass rv"
           style={{
-            padding: "clamp(28px, 5vw, 48px)",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: "clamp(24px, 4vw, 44px)",
+            padding: "clamp(24px, 4vw, 36px)",
+            display: "flex",
+            justifyContent: "space-between",
             alignItems: "center",
+            flexWrap: "wrap",
+            gap: 20,
             marginBottom: 32,
           }}
         >
-          <VolunteerHuddle />
-          <div>
-            <p style={{ margin: "0 0 24px", font: '400 16px/1.65 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.7)" }}>
-              Club500 runs on people who show up: coaches, designers, developers,
-              accountants, photographers, lawyers. Offer what you&apos;re good at
-              — the team matches volunteers to clubs and projects every week.
-            </p>
-            <button className="pill-btn ball-pop" type="button" onClick={() => setOpen(true)} style={{ padding: "15px 26px", borderRadius: 999 }}>
-              <span className="txt">Offer Your Skills</span>
-              <span className="circ">
-                <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
-                  <path d="M5 13L13 5M13 5H6M13 5V12" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-            </button>
-          </div>
+          <p style={{ margin: 0, maxWidth: 560, font: '400 16px/1.65 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.7)" }}>
+            Club500 runs on people who show up: coaches, designers, developers,
+            accountants, photographers, lawyers. Offer what you&apos;re good at
+            — the team matches volunteers to clubs and projects every week.
+          </p>
+          <button className="pill-btn ball-pop" type="button" onClick={() => setOpen(true)} style={{ padding: "15px 26px", borderRadius: 999, flexShrink: 0 }}>
+            <span className="txt">Offer Your Skills</span>
+            <span className="circ">
+              <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+                <path d="M5 13L13 5M13 5H6M13 5V12" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </button>
         </div>
 
         <div className="mono-label rv" style={{ marginBottom: 14 }}>Ways to help</div>

@@ -25,6 +25,13 @@ export default function AboutSnapshot() {
           {t("snapshot.read")}
         </Link>
       </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/assets/homepage-500clubs-banner.webp"
+        alt="500 Clubs. 47 Counties, 1 Vision. Building the future of community football."
+        className="rv"
+        style={{ width: "100%", height: "auto", borderRadius: 20, marginTop: 14, display: "block" }}
+      />
     </section>
   );
 }

@@ -136,7 +136,7 @@ const DICT: Record<string, { en: string; sw: string }> = {
   "fzp.mvp": { en: "Matchday · Vote MVP", sw: "Siku ya mechi · Chagua MVP" },
   "fzp.leaderboard": { en: "National fan leaderboard", sw: "Orodha ya mashabiki kitaifa" },
   // clubs page
-  "cl.eyebrow": { en: "New clubs join every month. 33 live today, 500 on the way.", sw: "Klabu mpya hujiunga kila mwezi. 33 ziko hewani, 500 zinakuja." },
+  "cl.eyebrow": { en: "New clubs join every month, on the way to 500.", sw: "Klabu mpya hujiunga kila mwezi, tukielekea 500." },
   "cl.h1a": { en: "Find your", sw: "Tafuta" },
   "cl.h1b": { en: "club", sw: "klabu yako" },
   "cl.search": { en: "Search club or county…", sw: "Tafuta klabu au kaunti…" },

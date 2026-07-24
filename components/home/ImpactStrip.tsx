@@ -1,61 +1,23 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import KenyaMap from "@/components/KenyaMap";
+import ClubCrest from "@/components/ClubCrest";
+import { CLUBS, REGION_OF_COUNTY } from "@/lib/data";
 import { useLang } from "@/lib/i18n";
-
-/* Clubs onboarded, month over month, since launch. */
-const GROWTH: [string, number][] = [
-  ["Feb", 6],
-  ["Mar", 11],
-  ["Apr", 16],
-  ["May", 21],
-  ["Jun", 27],
-  ["Jul", 33],
-];
-
-function GrowthChart() {
-  const w = 320;
-  const h = 120;
-  const padX = 8;
-  const padY = 14;
-  const max = Math.max(...GROWTH.map(([, v]) => v));
-  const step = (w - padX * 2) / (GROWTH.length - 1);
-  const pts = GROWTH.map(([, v], i) => {
-    const x = padX + i * step;
-    const y = padY + (1 - v / max) * (h - padY * 2);
-    return [x, y] as const;
-  });
-  const line = pts.map(([x, y], i) => (i === 0 ? `M${x},${y}` : `L${x},${y}`)).join(" ");
-  const area = `${line} L${pts[pts.length - 1][0]},${h} L${pts[0][0]},${h} Z`;
-
-  return (
-    <svg viewBox={`0 0 ${w} ${h}`} style={{ width: "100%", height: "auto", display: "block", overflow: "visible" }}>
-      <defs>
-        <linearGradient id="growthFill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="var(--blue)" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="var(--blue)" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <path d={area} fill="url(#growthFill)" />
-      <path d={line} fill="none" stroke="var(--blue-hover)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-      {pts.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={i === pts.length - 1 ? 4.5 : 2.6} fill={i === pts.length - 1 ? "var(--gold)" : "var(--blue-hover)"} />
-      ))}
-      {GROWTH.map(([label], i) => (
-        <text key={label} x={pts[i][0]} y={h - 1} textAnchor="middle" fontSize="9" fontWeight="600" fill="rgba(var(--tx),0.45)">
-          {label}
-        </text>
-      ))}
-      <text x={pts[pts.length - 1][0]} y={pts[pts.length - 1][1] - 12} textAnchor="end" fontSize="15" fontWeight="800" fill="var(--gold)">
-        {GROWTH[GROWTH.length - 1][1]}
-      </text>
-    </svg>
-  );
-}
 
 export default function ImpactStrip() {
   const { t } = useLang();
+  const [i, setI] = useState(0);
+
+  useEffect(() => {
+    const iv = setInterval(() => setI((p) => (p + 1) % CLUBS.length), 3200);
+    return () => clearInterval(iv);
+  }, []);
+
+  const [name, county, img] = CLUBS[i];
+  const region = REGION_OF_COUNTY[county] ?? "";
 
   return (
     <section style={{ padding: "clamp(36px, 7vw, 56px) clamp(20px, 4vw, 32px) 8px", maxWidth: 1280, margin: "0 auto" }}>
@@ -70,7 +32,10 @@ export default function ImpactStrip() {
         }}
       >
         <div style={{ maxWidth: 360, margin: "0 auto", width: "100%" }}>
-          <KenyaMap />
+          <KenyaMap highlight={county} />
+          <div className="mono-label" style={{ textAlign: "center", marginTop: 12 }}>
+            <span className="gold">◆</span> {county} — home of {name} · hover any county to explore
+          </div>
         </div>
 
         <div>
@@ -94,16 +59,50 @@ export default function ImpactStrip() {
             {t("pulse.sub")}
           </p>
 
-          <div style={{ marginBottom: 20 }}>
-            <div className="mono-label" style={{ marginBottom: 8 }}>Clubs onboarded this season</div>
-            <GrowthChart />
+          <div className="mono-label" style={{ marginBottom: 10 }}>
+            <span className="live-dot" style={{ marginRight: 8, display: "inline-block", verticalAlign: "middle" }}></span>
+            Live on the platform
+          </div>
+          <div
+            key={name}
+            className="spotlight-in"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+              border: "1px solid rgba(58,95,217,0.35)",
+              background: "rgba(58,95,217,0.07)",
+              borderRadius: 16,
+              padding: "14px 18px",
+              marginBottom: 14,
+              maxWidth: 480,
+            }}
+          >
+            <ClubCrest name={name} img={img} size="56px" />
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ font: '700 16px/1.25 var(--font-inter-tight), sans-serif' }}>{name}</div>
+              <div className="mono-label" style={{ marginTop: 4 }}>
+                {county} county{region ? ` · ${region}` : ""}
+              </div>
+            </div>
+            <span className="mono-label" style={{ flexShrink: 0 }}>
+              {i + 1}/{CLUBS.length}
+            </span>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
-            <span className="live-dot" style={{ flexShrink: 0 }}></span>
-            <span style={{ font: '500 13.5px/1.4 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.55)" }}>
-              {t("pulse.latest")}
-            </span>
+          <div style={{ display: "flex", gap: 5, marginBottom: 20, maxWidth: 480 }}>
+            {CLUBS.map(([n], k) => (
+              <span
+                key={n}
+                style={{
+                  flex: 1,
+                  height: 3,
+                  borderRadius: 2,
+                  background: k === i ? "var(--gold)" : "rgba(var(--tx),0.15)",
+                  transition: "background .3s",
+                }}
+              />
+            ))}
           </div>
 
           <Link href="/clubs" className="gold" style={{ font: '600 14.5px/1 var(--font-inter-tight), sans-serif' }}>

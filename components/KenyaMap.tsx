@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { LIVE_COUNTIES } from "@/lib/data";
 
 /* Accurate 47-county map of Kenya.
@@ -55,32 +56,75 @@ const COUNTIES: { n: string; d: string }[] = [
   { n: "Nakuru", d: "M296 539zh1v1l-1 1h3v1l1 1v1l1 1 1 1v1l1 1v1l-1 1v2l1 1 1-1h3v-1l1-2v-5h1v-1h1v1h1v1l1-1 1-1v-1h1v-1l1-1v-1l1-1v-1l1 1 1 1v-1l1 1v1l1 1h1v-1h1v-1h1v-2h1v-1l1-1v-3l-1-1-1-1-1-1v-1h-1v-1h1v-2l1 1h1v3h3l1 1v2h3v1h1v1h2v1h2l1-1h1l-1-1v-4h2v-5h1v-5l1-1v-1h3v-1h1v-2h-1v-1h2v1h1l1 1h1v1l1 1v1h1v1l1 1v1l1 1v3l-1 1-1 1v2h-1l1 1v1l1 1h-1v4h-1v9h-1l-1-1h-1v1h-1v1h-1l1 1v6h2v1l1 1v3h-3v1h1v6h1v1-1h3v2l1 1v1l2-1 1-1 1 2h2l2-1v2h1v1h1v1h-1 1-1 1v4h1v4h1-1v1h1v1h-1l1 1v3h2l1-1h1v4l1 1v1l2-1h2v-1 1h1v1l1 1v1h-1l1 2 1 1v1l-1 1h-1l1 1v2l1 1v3h1v4l1 1-1 1v4l-1 1 1 1 1 1h1-1v1h1l1 1v3h1v3l-1 1v2l1 1h-1v2h-1v1h-1v1l-1 1h-1v3h-1v-1h-1v-1h-1l-1-1h-1l-1-1h-1v-1h-3v-1l-2-1h-2v-1h-1l-2-1-1-1h-1v-1l-1-1v-1h-1v-2h-1v-2h-1v-2h-1v-2h-1v-1 1h-3l-1 1h-1l-1-1v-1h-1v-2h-1v-2h-1v-3l1-1 1-1 1-2h-1v-2h1-1v-1h-2v-1 1-2h-1v-2h-2v-1h-1v-1h-1v-1h-1v-3h-1v1h-2l-1 1-1 1h-2v-1h-1l-1 1-1 1h-1v1h-1v1h-1v1l-2-1v-2h-1v-1h-1v-1l-1-1h-2v-1h5v1h1l1 1h1v-1l1-1 1-1-1-1v-2h-1v-2h-1v-2h-4v-1h-1v-1l-1-1h-1l-1-1h-1v-1h-2v-1h1v-2h-1v1h-1v-2h-2v3h-1v2l-1 1v2h-1l-1-1h-2v2h-2v1l1 1h-1v2h-1v1h-1v4h-1v1h-1v2h-1v1l-1 1v-1h-1v-1h-1v-1h-1l-1-2v-4h-1v-3l-1-1-1-1v-1l-1-1v-1h-1v-1l-1-2h-1v-1l-1-1v-1l-1-1-1-2v-1h-1v-1l-1-1v-1h-1v-1l-1-1v-1l-1-1v-1h-1v-2h2v-1h2v-1h3l1-1v1h1l1-1h2v1h1l1 1v1l-1 1h2v-2h1v-1 1h1v1-1h1v1l1-1v-1h1l1-1v-5h1v-1l1-1h-1v-1l1-1h-2v-1h-4l-1-1v-2h1v-1h1v-3h1z" },
 ];
 
-export default function KenyaMap() {
+type Props = {
+  /** County to spotlight in gold (e.g. synced to the rotating club spotlight) */
+  highlight?: string | null;
+  /** County the user has selected by clicking */
+  selected?: string | null;
+  onSelect?: (county: string) => void;
+};
+
+export default function KenyaMap({ highlight, selected, onSelect }: Props) {
+  const [hover, setHover] = useState<{ name: string; live: boolean; x: number; y: number } | null>(null);
+  const boxRef = useRef<HTMLDivElement>(null);
+
+  // One delegated handler on the svg: reads the county straight off the
+  // hovered path, so the tooltip can never show a stale county name.
+  const onPointerMove = (e: React.PointerEvent) => {
+    const name = (e.target as SVGElement).getAttribute?.("data-name");
+    const box = boxRef.current?.getBoundingClientRect();
+    if (!name || !box) {
+      setHover(null);
+      return;
+    }
+    setHover({ name, live: LIVE_COUNTIES.has(name), x: e.clientX - box.left, y: e.clientY - box.top });
+  };
+
+  const onClick = (e: React.MouseEvent) => {
+    const name = (e.target as SVGElement).getAttribute?.("data-name");
+    if (name && onSelect) onSelect(name);
+  };
+
   return (
-    <svg
-      viewBox="0 0 1000 1000"
-      role="img"
-      aria-label="Map of Kenya showing counties with live Club500 clubs"
-      style={{ width: "100%", height: "auto", display: "block" }}
-    >
-      {COUNTIES.map(({ n, d }) => {
-        const live = LIVE_COUNTIES.has(n);
-        return (
-          <path
-            key={n}
-            d={d}
-            style={{
-              fill: live ? "var(--blue)" : "rgba(var(--tx), 0.08)",
-              stroke: live ? "var(--blue-hover)" : "rgba(var(--tx), 0.22)",
-              strokeWidth: 1.4,
-              strokeLinejoin: "round",
-              transition: "fill .2s",
-            }}
-          >
-            <title>{live ? `${n}: clubs live` : `${n}: coming soon`}</title>
-          </path>
-        );
-      })}
-    </svg>
+    <div ref={boxRef} style={{ position: "relative" }}>
+      <svg
+        viewBox="0 0 1000 1000"
+        role="img"
+        aria-label="Map of Kenya showing counties with live Club500 clubs"
+        style={{ width: "100%", height: "auto", display: "block" }}
+        onPointerMove={onPointerMove}
+        onPointerLeave={() => setHover(null)}
+        onClick={onClick}
+      >
+        {COUNTIES.map(({ n, d }) => {
+          const live = LIVE_COUNTIES.has(n);
+          const hot = highlight === n || selected === n;
+          return (
+            <path
+              key={n}
+              d={d}
+              data-name={n}
+              className={"kmap-path" + (hot ? " kmap-hot" : "")}
+              style={{
+                fill: hot ? "var(--gold)" : live ? "var(--blue)" : "rgba(var(--tx), 0.08)",
+                stroke: hot ? "#FFCB2E" : live ? "var(--blue-hover)" : "rgba(var(--tx), 0.22)",
+                strokeWidth: hot ? 2.2 : 1.4,
+                strokeLinejoin: "round",
+                transition: "fill .25s, stroke .25s",
+                cursor: onSelect ? "pointer" : undefined,
+              }}
+            />
+          );
+        })}
+      </svg>
+      {hover && (
+        <div className="kmap-tip" style={{ left: hover.x, top: hover.y }}>
+          {hover.name}{" "}
+          <span className={hover.live ? "gold" : ""} style={{ color: hover.live ? undefined : "rgba(var(--tx),0.5)" }}>
+            {hover.live ? "· clubs live" : "· coming soon"}
+          </span>
+        </div>
+      )}
+    </div>
   );
 }

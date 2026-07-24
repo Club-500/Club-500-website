@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
-import PartnerImpact from "@/components/partners/PartnerImpact";
+import FormModal from "@/components/FormModal";
 import { useLang } from "@/lib/i18n";
 
 const TIERS: [string, string, string, string][] = [
@@ -12,8 +13,12 @@ const TIERS: [string, string, string, string][] = [
   ["Pillar Sponsor", "One focus area", "Funding tied to one focus area: girls' football, coaching education, or infrastructure.", "var(--blue-hover)"],
 ];
 
+const PARTNER_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdRG4hVqA1Tldxaa-psZIyZ-a6xTk7-8KbCI-W5fnHPoLVPKg/viewform?embedded=true";
+
 export default function PartnersPage() {
   const { t } = useLang();
+  const [open, setOpen] = useState(false);
   return (
     <>
       <RevealInit />
@@ -21,6 +26,13 @@ export default function PartnersPage() {
         {t("pp.h1a")} <span className="gold">{t("pp.h1b")}</span>.
       </PageHead>
       <div style={{ padding: "0 clamp(20px, 4vw, 32px) clamp(44px, 9vw, 72px)", maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column", gap: 56 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/partners-banner.webp"
+          alt="Back 500 Clubs. Reach a Nation."
+          className="rv"
+          style={{ width: "100%", maxWidth: 900, height: "auto", borderRadius: 20, display: "block", margin: "0 auto" }}
+        />
         <p className="rv" style={{ margin: 0, maxWidth: 700, font: '400 clamp(1.2rem, 2vw, 1.6rem)/1.5 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.8)" }}>
           Four tiers, one inheritance system: sponsor a county and your brand automatically appears on every club microsite inside it. No per-club negotiation, ever.
         </p>
@@ -33,46 +45,52 @@ export default function PartnersPage() {
             </div>
           ))}
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 14 }} className="rv">
-          {["National sponsor", "Regional sponsor", "County sponsor", "Pillar sponsor", "Your brand here"].map((l) => (
-            <div key={l} style={{ border: "1.5px dashed rgba(var(--tx),0.25)", borderRadius: 16, height: 90, display: "flex", alignItems: "center", justifyContent: "center", padding: 12, textAlign: "center" }}>
-              <span className="mono-label">{l}</span>
-            </div>
-          ))}
-        </div>
-        <PartnerImpact />
 
-        {/* what club leaders say */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
-          {[
-            ["Since joining Club500, we opened the club's first bank account and paid our players on time for a full season.", "Chairman, Kivumbini United FC", "Nakuru"],
-            ["Sponsors used to be a dream for a club like ours. Now our county sponsor's banner hangs at every home game.", "Secretary, Kapkatet Youth FC", "Kericho"],
-          ].map(([quote, who, where], i) => (
-            <figure key={who} className={"glass rv rv-d" + i} style={{ margin: 0, padding: "clamp(22px, 3vw, 30px)", borderLeft: "3px solid var(--blue)" }}>
-              <blockquote style={{ margin: 0, font: '600 clamp(1.05rem, 1.8vw, 1.25rem)/1.55 var(--font-inter-tight), sans-serif', letterSpacing: "-0.01em" }}>
-                &ldquo;{quote}&rdquo;
-              </blockquote>
-              <figcaption className="mono-label" style={{ marginTop: 14 }}>
-                {who} · {where}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-        <div className="rv" style={{ background: "var(--gold)", color: "#0a0a0a", borderRadius: 28, padding: "clamp(28px, 4vw, 48px)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24 }}>
-          <div className="display" style={{ fontSize: "clamp(1.8rem, 4vw, 3.2rem)" }}>Back 500 clubs. Reach a nation.</div>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="mailto:partnerships@club500.africa?subject=Partner%20deck%20request" className="pill-btn" style={{ background: "#0a0a0a", color: "#fff", textDecoration: "none" }}>
-              <span className="txt">Request the partner deck</span>
-              <span className="circ" style={{ background: "#fff" }}>
-                <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M5 13L13 5M13 5H6M13 5V12" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </span>
-            </a>
-            <a href="mailto:partnerships@club500.africa?subject=Partnership%20enquiry" className="pill-ghost" style={{ borderColor: "rgba(10,10,10,0.5)", color: "#0a0a0a" }}>
-              Talk to our partnerships team
-            </a>
+        <div>
+          <div className="mono-label rv" style={{ marginBottom: 14 }}>Partner logos</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 14 }} className="rv">
+            {["National sponsor", "Regional sponsor", "County sponsor", "Pillar sponsor"].map((l) => (
+              <div key={l} style={{ border: "1.5px dashed rgba(var(--tx),0.25)", borderRadius: 16, height: 90, display: "flex", alignItems: "center", justifyContent: "center", padding: 12, textAlign: "center" }}>
+                <span className="mono-label">{l}</span>
+              </div>
+            ))}
           </div>
         </div>
+
+        <div
+          className="glass rv"
+          style={{
+            padding: "clamp(28px, 5vw, 44px)",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 20,
+          }}
+        >
+          <div style={{ maxWidth: 640 }}>
+            <h2 className="display" style={{ margin: "0 0 8px" }}>Apply to <span className="gold">partner</span></h2>
+            <p style={{ margin: 0, font: '400 15px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.65)" }}>
+              Club500 connects brands with football clubs, players, fans, families
+              and communities across eight regions of Kenya. Partners get access to
+              match day activations, product sampling, club canteen partnerships,
+              e-commerce sales and community engagement programs.
+            </p>
+          </div>
+          <button className="pill-btn ball-pop" type="button" onClick={() => setOpen(true)} style={{ padding: "15px 26px", borderRadius: 999, flexShrink: 0 }}>
+            <span className="txt">Apply to Partner</span>
+            <span className="circ">
+              <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+                <path d="M5 13L13 5M13 5H6M13 5V12" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </button>
+        </div>
       </div>
+
+      {open && (
+        <FormModal title="Apply to Partner" formUrl={PARTNER_FORM_URL} onClose={() => setOpen(false)} />
+      )}
     </>
   );
 }

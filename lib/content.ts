@@ -20,7 +20,7 @@
 // Countdown target for the next flagship event (ISO date with EAT offset)
 export const LAUNCH = {
   date: "2026-09-12T15:00:00+03:00",
-  label: "National Launch Tour · Nairobi",
+  label: "FKF Division One League begins",
 };
 
 export const FIXTURES: [when: string, home: string, away: string, venue: string][] = [
@@ -57,24 +57,5 @@ export const SENTIMENT: [number, number, number][] = [
 
 export const BOOST_INDEX = 1;
 
-export const NEWS: [region: string, format: string, headline: string, byline: string][] = [
-  ["Coast", "Video", "Mombasa derby ends in stoppage-time drama", "Jane Wanjiku · Mombasa Bureau"],
-  ["Nyanza", "Articles", "Kisumu county launches its first two Club500 academies", "Otieno Ouma · Kisumu Bureau"],
-  ["Rift Valley", "Photo", "Matchday in Kericho: gallery from Kapkatet Youth FC", "Dennis Koech · Kericho"],
-  ["Western", "Articles", "Webuye Sportiff onboard 400 new fans in one weekend", "Faith Naliaka · Bungoma"],
-  ["National", "Podcast", "EP 05: What community ownership really means", "Club500 Podcast"],
-  ["Nairobi", "Video", "Goodhope FC training day: inside the setup", "Peter Mwangi · Nairobi Bureau"],
-];
 
-export const EVENTS: [date: string, city: string, title: string, description: string, tag: string][] = [
-  ["12 Jan", "Nairobi", "Club500 National Launch Tour: Nairobi Edition", "Official programme launch for clubs, communities, sponsors and media.", "Launch"],
-  ["02 Feb", "Mombasa", "Coaching & Performance Workshop", "Coach training on new performance methodologies and sports science.", "Workshop"],
-  ["15 Feb", "Kisumu", "Community Ownership Forum", "Governance, the community share ownership model and investment opportunities.", "Forum"],
-];
 
-export const PODCAST: [num: string, title: string, guest: string, summary: string][] = [
-  ["Episode 01", "Why Community-Owned Clubs Are the Future", "CEO, Ubuntu Impact Labs", "How the Club500 model will structure 500 clubs and create more than 5,000 jobs."],
-  ["Episode 02", "Inside the Commercial Engine of Modern Football Clubs", "Commercial Director, Club500", "Sponsoring, merchandising, ticketing, academies: how clubs will generate sustainable revenue."],
-  ["Episode 03", "Youth Development: Building the Next Generation of Talent", "Head of Academies", "New academies, scouting innovations and opportunities for young players."],
-  ["Episode 04", "Sports Science & Athlete Wellness in Grassroots Football", "Head of Health & Performance", "Nutrition, physiotherapy, injury prevention and mental wellness."],
-];

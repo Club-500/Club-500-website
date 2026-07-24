@@ -43,16 +43,23 @@ export default function FeaturedClubs() {
           <a
             href={`/clubs/${clubSlug(name)}`}
             key={name}
-            className={"club-card glass rv rv-d" + Math.min(i, 4)}
-            style={{ display: "block", padding: 16, color: "var(--fg)" }}
+            className={"club-card elite-card rv rv-d" + Math.min(i, 4)}
+            style={{ display: "block", padding: 18, color: "var(--fg)" }}
           >
-            <ClubCrest name={name} img={img} size="56px" eager />
-            <div style={{ padding: "12px 2px 0" }}>
-              <div style={{ font: '600 15.5px/1.25 var(--font-inter-tight), sans-serif' }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+              <span className="crest-ring">
+                <ClubCrest name={name} img={img} size="56px" eager />
+              </span>
+              <span style={{ font: '800 11px/1 var(--font-inter-tight), sans-serif', letterSpacing: "0.1em", color: "var(--gold)" }}>
+                ★ FEATURED
+              </span>
+            </div>
+            <div style={{ padding: "0 2px" }}>
+              <div style={{ font: '700 15.5px/1.25 var(--font-inter-tight), sans-serif' }}>
                 {name}
               </div>
               <div className="mono-label" style={{ marginTop: 6 }}>
-                {county}
+                {county} county
               </div>
             </div>
           </a>

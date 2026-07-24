@@ -38,6 +38,8 @@ html,
 body {
   margin: 0;
   padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -46,7 +48,7 @@ body {
   transition: background 0.25s ease, color 0.25s ease;
   font-family: var(--font-inter-tight), sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip;
+  position: relative;
 }
 
 ::selection {
@@ -132,20 +134,163 @@ button {
   color: var(--blue);
 }
 
-/* ---- ball pop: kicked-ball feedback on primary buttons ---- */
-/* ---- volunteer huddle: people converging toward the center, on loop ---- */
-@keyframes volunteerConverge {
-  0%, 100% { transform: translate(var(--dx), var(--dy)) scale(1); opacity: 0.85; }
-  50% { transform: translate(0, 0) scale(1.3); opacity: 1; }
+/* ---- football cursor, everywhere (fine pointers only; touch unaffected) ---- */
+@media (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: url("/cursor-ball.png") 14 14, auto !important;
+  }
+  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+  textarea {
+    cursor: url("/cursor-ball.png") 14 14, text !important;
+  }
 }
-.volunteer-dot {
-  animation: volunteerConverge 4.5s ease-in-out infinite;
+
+/* ---- Kenya map: interactive county hover ---- */
+.kmap-path {
+  transition: filter 0.15s, stroke-width 0.15s;
+}
+.kmap-path:hover {
+  filter: brightness(1.45) drop-shadow(0 0 6px rgba(58, 95, 217, 0.9));
+  stroke-width: 2.6;
+}
+.kmap-hot {
+  filter: drop-shadow(0 0 9px rgba(245, 179, 1, 0.85));
+}
+.kmap-tip {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+  background: var(--panel);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font: 600 12.5px/1.3 var(--font-inter-tight), sans-serif;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -130%);
+}
+
+/* ---- landing club spotlight rotation ---- */
+@keyframes spotlightIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.spotlight-in {
+  animation: spotlightIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---- elite featured-club cards ---- */
+.elite-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(245, 179, 1, 0.1), rgba(var(--tx), 0.03) 45%);
+  border: 1px solid rgba(245, 179, 1, 0.35);
+  border-radius: 20px;
+}
+.elite-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.65s ease;
+  pointer-events: none;
+}
+.elite-card:hover::after {
+  left: 130%;
+}
+.crest-ring {
+  padding: 4px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, var(--gold), #fff2c2, var(--gold) 60%, #b8860b, var(--gold));
+  display: inline-block;
+  line-height: 0;
+}
+
+/* ---- predictions market cards ---- */
+.pred-card {
+  border: 1px solid rgba(var(--tx), 0.12);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(180deg, rgba(var(--tx), 0.035), transparent 65%);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.pred-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(58, 95, 217, 0.45);
+  box-shadow: 0 14px 34px -20px rgba(29, 63, 161, 0.7);
+}
+.pred-card.picked {
+  border-color: rgba(58, 95, 217, 0.55);
+}
+.odds-btn {
+  flex: 1;
+  border-radius: 12px;
+  padding: 10px 0 8px;
+  border: 1px solid rgba(var(--tx), 0.16);
+  background: transparent;
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.18s;
+}
+.odds-btn:hover:not(:disabled):not(.active) {
+  border-color: var(--blue-hover);
+  background: rgba(58, 95, 217, 0.1);
+  transform: translateY(-1px);
+}
+.odds-btn.active {
+  border: 1.5px solid var(--blue);
+  background: var(--blue);
+  color: #fff;
+}
+
+/* ---- heartbeat pulse on the word itself: lub-dub, then rest, on loop ---- */
+@keyframes heartbeatPulse {
+  0%, 100% { transform: scale(1); text-shadow: 0 0 0 rgba(245,179,1,0); }
+  8% { transform: scale(1.14); text-shadow: 0 0 18px rgba(245,179,1,0.85); }
+  16% { transform: scale(1); text-shadow: 0 0 0 rgba(245,179,1,0); }
+  24% { transform: scale(1.1); text-shadow: 0 0 14px rgba(245,179,1,0.7); }
+  32% { transform: scale(1); text-shadow: 0 0 0 rgba(245,179,1,0); }
+}
+.heartbeat-pulse {
+  display: inline-block;
+  transform-origin: center;
+  animation: heartbeatPulse 2.2s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .volunteer-dot {
+  .heartbeat-pulse {
     animation: none;
   }
 }
+
+/* ---- small EKG squiggle beside the word: dash+gap sums to pathLength for a seamless loop ---- */
+@keyframes heartbeatSignalSweep {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -1000; }
+}
+.heartbeat-signal-trace {
+  stroke-dasharray: 150 850;
+  animation: heartbeatSignalSweep 1.8s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .heartbeat-signal-trace {
+    animation: none;
+    stroke-dasharray: none;
+  }
+}
+
+/* ---- ball pop: kicked-ball feedback on primary buttons ---- */
 
 @keyframes ballPop {
   0% { transform: scale(1); }
@@ -863,12 +1008,6 @@ textarea {
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
-}
-@media (max-width: 900px) {
-  /* no room beside the About heading once it wraps to 2-3 lines on narrower screens */
-  .about-logo {
-    display: none;
-  }
 }
 @media (max-width: 767px) {
   /* iOS Safari zooms into inputs under 16px; keep forms zoom-free */

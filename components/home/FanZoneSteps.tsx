@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
+import HeartbeatSignal from "./HeartbeatSignal";
 
 export default function FanZoneSteps() {
   const { t } = useLang();
@@ -41,7 +42,8 @@ export default function FanZoneSteps() {
               className="mega"
               style={{ margin: "10px 0 0", fontSize: "clamp(2rem, 4.6vw, 3.6rem)", color: "#fff" }}
             >
-              {t("fz.title1")} <span className="gold">{t("fz.title2")}</span> {t("fz.title3")}
+              {t("fz.title1")} <span className="gold heartbeat-pulse">{t("fz.title2")}</span>
+              <HeartbeatSignal /> {t("fz.title3")}
             </h2>
           </div>
           <Link href="/fanzone">

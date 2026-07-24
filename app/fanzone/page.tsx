@@ -3,28 +3,23 @@
 import { useEffect, useState } from "react";
 import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
-import TopReferrers from "@/components/home/TopReferrers";
-import { FIXTURES, RESULTS, STANDINGS, ODDS, SENTIMENT, BOOST_INDEX } from "@/lib/content";
+import ClubCrest from "@/components/ClubCrest";
+import { FIXTURES, ODDS, SENTIMENT, BOOST_INDEX } from "@/lib/content";
+import { CLUBS, clubShort } from "@/lib/data";
 import { useLiveOdds, loadPicks, savePicks, loadLocked, saveLocked } from "@/lib/market";
 import { useLang } from "@/lib/i18n";
-import UploadMoment from "@/components/UploadMoment";
 import CapturePill from "@/components/CapturePill";
+import StrikerStreak from "@/components/fanzone/StrikerStreak";
 
-const MVPS = ["Kiprop Kirui (Kapkatet Youth)", "Salim Juma (Shimanzi FC)", "Mary Achieng (Uhola FC)"];
-
-const LEADERS: [string, string, number][] = [
-  ["Nakuru Massive", "Nakuru", 4210],
-  ["Coast Ultras", "Mombasa", 3980],
-  ["Green Army 254", "Kericho", 3644],
-  ["City Faithful", "Nairobi", 3320],
-];
+const CREST_BY_SHORT: Record<string, string> = Object.fromEntries(
+  CLUBS.map(([name, , img]) => [clubShort(name), img])
+);
 
 type Pick = "1" | "X" | "2";
 
 
 export default function FanZonePage() {
   const { t } = useLang();
-  const [voted, setVoted] = useState<string | null>(null);
   const [picks, setPicks] = useState<Record<number, Pick>>({});
   const [locked, setLocked] = useState(false);
   const [burst, setBurst] = useState(false);
@@ -66,6 +61,14 @@ export default function FanZonePage() {
           gap: "clamp(30px, 5vw, 48px)",
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/fanzone-banner.webp"
+          alt="Fan Zone — Every Fan. Every Club. One Movement."
+          className="rv"
+          style={{ width: "100%", maxWidth: 900, height: "auto", borderRadius: 20, display: "block", margin: "0 auto" }}
+        />
+
         <p
           className="rv"
           style={{
@@ -93,7 +96,7 @@ export default function FanZonePage() {
             background: "var(--bg)",
           }}
         >
-          {[["#results", t("fzp.results")], ["#predict", t("fzp.predict")], ["#vote", t("fzp.vote")], ["#earn", t("fzp.earn")]].map(([href, label]) => (
+          {[["#game", "Play"], ["#predict", t("fzp.predict")], ["#fantasy", "Fantasy"]].map(([href, label]) => (
             <a
               key={href}
               href={href}
@@ -104,34 +107,17 @@ export default function FanZonePage() {
             </a>
           ))}
         </nav>
-        {/* Results + standings */}
-        <div id="results" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14, scrollMarginTop: 120 }}>
-          <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 28px)" }}>
-            <div className="mono-label" style={{ marginBottom: 16 }}>{t("fzp.lastweekend")}</div>
-            {RESULTS.map(([h, hs, a, as_], i) => (
-              <div key={h} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderBottom: i < RESULTS.length - 1 ? "1px solid rgba(var(--tx),0.1)" : "none" }}>
-                <span style={{ flex: 1, textAlign: "right", font: '600 14.5px/1.3 var(--font-inter-tight), sans-serif' }}>{h}</span>
-                <span style={{ flexShrink: 0, background: "rgba(var(--tx),0.08)", borderRadius: 8, padding: "7px 12px", font: '800 15px/1 var(--font-inter-tight), sans-serif' }}>
-                  {hs} - {as_}
-                </span>
-                <span style={{ flex: 1, font: '600 14.5px/1.3 var(--font-inter-tight), sans-serif' }}>{a}</span>
-              </div>
-            ))}
-          </div>
-          <div className="glass rv rv-d1" style={{ padding: "clamp(20px, 3vw, 28px)" }}>
-            <div className="mono-label" style={{ marginBottom: 14 }}>{t("fzp.standings")}</div>
-            <div style={{ display: "grid", gridTemplateColumns: "24px 1fr repeat(4, 30px) 40px", gap: 4, font: '600 11px/1 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.45)", padding: "0 0 8px" }}>
-              <span>#</span><span>Club</span><span>P</span><span>W</span><span>D</span><span>L</span><span style={{ textAlign: "right" }}>Pts</span>
+
+        {/* Striker Streak mini game */}
+        <div id="game" className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)", scrollMarginTop: 120 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, marginBottom: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span className="tag-pill gold-pill">Half-time game</span>
+              <h2 className="display" style={{ margin: 0 }}>Striker Streak</h2>
             </div>
-            {STANDINGS.map(([club, p, w, dd, l, pts], i) => (
-              <div key={club} style={{ display: "grid", gridTemplateColumns: "24px 1fr repeat(4, 30px) 40px", gap: 4, alignItems: "center", padding: "9px 0", borderTop: "1px solid rgba(var(--tx),0.08)", font: '500 13.5px/1.2 var(--font-inter-tight), sans-serif' }}>
-                <span style={{ font: '700 12px/1 var(--font-inter-tight), sans-serif', color: i === 0 ? "var(--gold)" : "rgba(var(--tx),0.45)" }}>{i + 1}</span>
-                <span style={{ fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{club}</span>
-                <span>{p}</span><span>{w}</span><span>{dd}</span><span>{l}</span>
-                <span style={{ textAlign: "right", font: '800 14px/1 var(--font-inter-tight), sans-serif' }}>{pts}</span>
-              </div>
-            ))}
+            <span className="mono-label">Works offline · no sign-in needed</span>
           </div>
+          <StrikerStreak />
         </div>
 
         {/* Predictions market */}
@@ -157,18 +143,7 @@ export default function FanZonePage() {
               const odds = liveOdds[i];
               const sent = SENTIMENT[i];
               return (
-                <div
-                  key={home}
-                  style={{
-                    border: picks[i] ? "1px solid rgba(58, 95, 217,0.55)" : "1px solid rgba(var(--tx),0.12)",
-                    borderRadius: 16,
-                    padding: 18,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 12,
-                    transition: "border-color .2s",
-                  }}
-                >
+                <div key={home} className={"pred-card" + (picks[i] ? " picked" : "")}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
                     <span className="mono-label">{when}</span>
                     {i === BOOST_INDEX && (
@@ -177,8 +152,12 @@ export default function FanZonePage() {
                       </span>
                     )}
                   </div>
-                  <div style={{ font: '700 16.5px/1.35 var(--font-inter-tight), sans-serif' }}>
-                    {home} <span style={{ color: "rgba(var(--tx),0.4)", fontWeight: 500 }}>v</span> {away}
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    {CREST_BY_SHORT[home] && <ClubCrest name={home} img={CREST_BY_SHORT[home]} size="30px" />}
+                    <span style={{ font: '700 16.5px/1.35 var(--font-inter-tight), sans-serif', flex: 1 }}>
+                      {home} <span style={{ color: "rgba(var(--tx),0.4)", fontWeight: 500 }}>v</span> {away}
+                    </span>
+                    {CREST_BY_SHORT[away] && <ClubCrest name={away} img={CREST_BY_SHORT[away]} size="30px" />}
                   </div>
                   <div className="mono-label" style={{ marginTop: -6 }}>{venue}</div>
                   <div style={{ display: "flex", gap: 8 }} role="group" aria-label={`Prediction: ${home} v ${away}`}>
@@ -189,24 +168,14 @@ export default function FanZonePage() {
                           key={p}
                           type="button"
                           aria-pressed={active}
-                          className={flash && flash.i === i && flash.j === j ? (flash.up ? "odds-up" : "odds-down") : ""}
+                          className={
+                            "odds-btn" +
+                            (active ? " active" : "") +
+                            (flash && flash.i === i && flash.j === j ? (flash.up ? " odds-up" : " odds-down") : "")
+                          }
                           onClick={() => setPick(i, p)}
                           disabled={locked}
-                          style={{
-                            flex: 1,
-                            cursor: locked ? "default" : "pointer",
-                            borderRadius: 12,
-                            padding: "10px 0 8px",
-                            border: active ? "1.5px solid var(--blue)" : "1px solid rgba(var(--tx),0.16)",
-                            background: active ? "var(--blue)" : "transparent",
-                            color: active ? "#fff" : "var(--fg)",
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            gap: 3,
-                            transition: "all .18s",
-                            opacity: locked && !active ? 0.45 : 1,
-                          }}
+                          style={{ opacity: locked && !active ? 0.45 : 1 }}
                         >
                           <span style={{ font: '500 10.5px/1 var(--font-inter-tight), sans-serif', letterSpacing: "0.04em", color: active ? "rgba(255,255,255,0.75)" : "rgba(var(--tx),0.5)" }}>
                             {j === 0 ? home.split(" ")[0] : j === 1 ? "Draw" : away.split(" ")[0]}
@@ -308,7 +277,7 @@ export default function FanZonePage() {
         </div>
 
         {/* Fantasy league + fan of the week */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
+        <div id="fantasy" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14, scrollMarginTop: 120 }}>
           <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)", display: "flex", flexDirection: "column", gap: 12 }}>
             <span className="tag-pill gold-pill" style={{ alignSelf: "flex-start" }}>Season One</span>
             <h2 className="display" style={{ margin: 0 }}>Club500 Fantasy League</h2>
@@ -337,97 +306,52 @@ export default function FanZonePage() {
               gap: 12,
             }}
           >
-            <div className="mono-label" style={{ color: "rgba(10,10,10,0.55)" }}>Fan of the week</div>
-            <h2 className="display" style={{ margin: 0 }}>Your moment could be next</h2>
-            <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(10,10,10,0.7)", flex: 1 }}>
-              Upload your matchday photos and videos. The best fan moment every
-              week is featured across the platform and club microsites.
-            </p>
-            <button
-              className="pill-btn"
-              type="button"
-              style={{ background: "#0a0a0a", color: "var(--fg)", alignSelf: "flex-start" }}
-            >
-              <span className="txt">Upload your moment</span>
-              <span className="circ" style={{ background: "#fff" }}>
-                <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
-                  <path d="M5 13L13 5M13 5H6M13 5V12" stroke="#0a0a0a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* MVP vote + leaderboard */}
-        <div id="vote" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14, scrollMarginTop: 120 }}>
-          <div className="glass rv" style={{ padding: "clamp(20px, 3vw, 30px)" }}>
-            <div className="mono-label" style={{ marginBottom: 18 }}>{t("fzp.mvp")}</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {MVPS.map((m) => (
-                <button
-                  key={m}
-                  type="button"
-                  onClick={() => setVoted(m)}
-                  style={{
-                    textAlign: "left",
-                    cursor: "pointer",
-                    borderRadius: 14,
-                    padding: "16px 20px",
-                    border: voted === m ? "1.5px solid var(--gold)" : "1px solid rgba(var(--tx),0.15)",
-                    background: voted === m ? "rgba(245, 179, 1,0.12)" : "transparent",
-                    color: "var(--fg)",
-                    font: '500 15px/1.3 var(--font-inter-tight), sans-serif',
-                    transition: "all .2s",
-                  }}
-                >
-                  {m} {voted === m && <span className="gold">✓</span>}
-                </button>
-              ))}
-            </div>
-            {voted && (
-              <div className="mono-label gold" style={{ color: "var(--gold)", marginTop: 16 }}>
-                +50 fan points earned
-              </div>
-            )}
-          </div>
-          <div className="glass rv rv-d1" style={{ padding: "clamp(20px, 3vw, 30px)" }}>
-            <div className="mono-label" style={{ marginBottom: 18 }}>{t("fzp.leaderboard")}</div>
-            {LEADERS.map(([name, town, pts], i) => (
+            <div className="mono-label" style={{ color: "rgba(10,10,10,0.55)" }}>Top fan of the week</div>
+            <div style={{ display: "flex", gap: 22, alignItems: "center", flexWrap: "wrap", flex: 1 }}>
+              {/* polaroid-style frame */}
               <div
-                key={name}
                 style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  gap: 16,
-                  padding: "14px 0",
-                  borderBottom: i < 3 ? "1px solid rgba(var(--tx),0.1)" : "none",
+                  background: "#fdfcf7",
+                  padding: "9px 9px 30px",
+                  borderRadius: 5,
+                  transform: "rotate(-3deg)",
+                  boxShadow: "0 14px 32px -12px rgba(0,0,0,0.5)",
+                  width: 138,
+                  flexShrink: 0,
                 }}
               >
-                <span
+                <div
                   style={{
-                    font: '700 1rem/1 var(--font-inter-tight), sans-serif',
-                    color: i === 0 ? "var(--gold)" : "rgba(var(--tx),0.3)",
-                    width: 30,
+                    background: "linear-gradient(160deg, #101a3a, #1D3FA1)",
+                    aspectRatio: "1/1",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: 2,
                   }}
                 >
-                  {i + 1}
-                </span>
-                <div style={{ flex: 1 }}>
-                  <div style={{ font: '600 16px/1.2 var(--font-inter-tight), sans-serif' }}>{name}</div>
-                  <div className="mono-label" style={{ marginTop: 4 }}>{town}</div>
+                  <span style={{ font: '800 2.4rem/1 var(--font-inter-tight), sans-serif', color: "var(--gold)" }}>BO</span>
                 </div>
-                <span style={{ font: '700 1.1rem/1 var(--font-inter-tight), sans-serif' }}>
-                  {pts.toLocaleString()}
-                </span>
+                <div style={{ textAlign: "center", marginTop: 9, font: '600 12px/1.2 var(--font-inter-tight), sans-serif', color: "#2a2a2a" }}>
+                  Brian O. · Kisumu ⭐
+                </div>
               </div>
-            ))}
+              <div style={{ flex: "1 1 200px" }}>
+                <h2 className="display" style={{ margin: "0 0 4px", fontSize: "1.4rem" }}>Brian Otieno</h2>
+                <div style={{ font: '500 13px/1.3 var(--font-inter-tight), sans-serif', color: "rgba(10,10,10,0.6)", marginBottom: 10 }}>
+                  Kisumu · Uhola FC fan
+                </div>
+                <p style={{ margin: 0, font: '400 14px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(10,10,10,0.7)" }}>
+                  Recognised for showing up to every matchday this month and
+                  rallying the loudest section of the ground. Featured every week
+                  across the platform.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
-
-      {/* Weekly top fan moments */}
-      <TopReferrers />
     </>
   );
 }

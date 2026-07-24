@@ -106,58 +106,52 @@ export default function AboutPage() {
   return (
     <>
       <RevealInit />
+      <PageHead eyebrow="About Club500">
+        {t("ab.h1a")} <span className="gold">{t("ab.h1b")}</span>
+      </PageHead>
+
+      {/* Our story */}
       <div
         style={{
+          padding: "0 clamp(20px, 4vw, 32px) 20px",
           maxWidth: 1280,
           margin: "0 auto",
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "clamp(24px, 4vw, 48px)",
+          alignItems: "center",
         }}
       >
-        <PageHead eyebrow="About Club500">
-          {t("ab.h1a")} <span className="gold">{t("ab.h1b")}</span>
-        </PageHead>
-        <div
-          className="about-logo"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "0 clamp(20px, 4vw, 32px)",
-          }}
-        >
+        <div>
+          <h2 className="display rv" style={{ margin: "0 0 16px" }}>
+            Our <span className="gold">story</span>
+          </h2>
+          <div className="rv rv-d1" style={{ maxWidth: 700, display: "flex", flexDirection: "column", gap: 14 }}>
+            <p style={{ margin: 0, font: '400 15.5px/1.7 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
+              Community football has always been the heartbeat of the game. Across Kenya, thousands of clubs
+              nurture talented players, unite communities, and inspire young people every day. Yet behind the
+              passion lies a familiar struggle. Many clubs operate with limited resources, rely on a handful of
+              committed individuals, and lack access to the systems, visibility and support needed to grow
+              sustainably.
+            </p>
+            <p style={{ margin: 0, font: '400 15.5px/1.7 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
+              Club500 was created to change that. Rather than focusing on short-term solutions, we are building
+              a long-term ecosystem where clubs can access the right support, strengthen their operations,
+              engage their communities, attract partners, and create opportunities for everyone connected to
+              the game.
+            </p>
+            <p style={{ margin: 0, font: '600 15.5px/1.7 var(--font-inter-tight), sans-serif' }}>
+              Because when community football thrives, communities thrive too.
+            </p>
+          </div>
+        </div>
+        <div className="about-logo rv rv-d1" style={{ display: "flex", justifyContent: "center" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/club500-logo.jpg"
             alt="Club500 official logo"
-            className="rv"
-            style={{ width: "min(260px, 22vw)", height: "auto", display: "block" }}
+            style={{ width: "100%", maxWidth: 280, height: "auto", display: "block" }}
           />
-        </div>
-      </div>
-
-      {/* Our story */}
-      <div style={{ padding: "0 clamp(20px, 4vw, 32px) 20px", maxWidth: 1280, margin: "0 auto" }}>
-        <h2 className="display rv" style={{ margin: "0 0 16px" }}>
-          Our <span className="gold">story</span>
-        </h2>
-        <div className="rv rv-d1" style={{ maxWidth: 700, display: "flex", flexDirection: "column", gap: 14 }}>
-          <p style={{ margin: 0, font: '400 15.5px/1.7 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
-            Community football has always been the heartbeat of the game. Across Kenya, thousands of clubs
-            nurture talented players, unite communities, and inspire young people every day. Yet behind the
-            passion lies a familiar struggle. Many clubs operate with limited resources, rely on a handful of
-            committed individuals, and lack access to the systems, visibility and support needed to grow
-            sustainably.
-          </p>
-          <p style={{ margin: 0, font: '400 15.5px/1.7 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.68)" }}>
-            Club500 was created to change that. Rather than focusing on short-term solutions, we are building
-            a long-term ecosystem where clubs can access the right support, strengthen their operations,
-            engage their communities, attract partners, and create opportunities for everyone connected to
-            the game.
-          </p>
-          <p style={{ margin: 0, font: '600 15.5px/1.7 var(--font-inter-tight), sans-serif' }}>
-            Because when community football thrives, communities thrive too.
-          </p>
         </div>
       </div>
 

@@ -110,10 +110,6 @@ export const CLUB_DETAILS: Record<string, ClubDetail> = {
   },
 };
 
-export const EVENT_IMG =
-  "/crests/event-hero.webp";
-export const PODCAST_IMG =
-  "/crests/podcast-hero.webp";
 
 export const REGION_OF_COUNTY: Record<string, string> = {
   Nakuru: "Rift Valley",

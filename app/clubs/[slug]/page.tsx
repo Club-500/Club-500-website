@@ -99,11 +99,6 @@ export default async function ClubPage({ params }: { params: Promise<{ slug: str
             {detail?.about ??
               `${name} is a community football club based in ${county}${region ? `, part of Club500's ${region} region` : ""}.`}
           </p>
-          {detail?.facebook && (
-            <a href={detail.facebook} target="_blank" rel="noopener noreferrer" className="gold" style={{ display: "inline-block", marginTop: 16, font: '600 14px/1 var(--font-inter-tight), sans-serif' }}>
-              Follow {short} on Facebook →
-            </a>
-          )}
         </Section>
 
         {/* 3. Club snapshot */}

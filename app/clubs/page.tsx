@@ -5,7 +5,7 @@ import PageHead from "@/components/PageHead";
 import RevealInit from "@/components/RevealInit";
 import { CLUBS, REGION_OF_COUNTY, clubSlug } from "@/lib/data";
 import ClubCrest from "@/components/ClubCrest";
-import CountyGrid from "@/components/CountyGrid";
+import KenyaMap from "@/components/KenyaMap";
 import { useLang } from "@/lib/i18n";
 
 const RAIL: [string, number][] = [
@@ -36,6 +36,11 @@ export default function ClubsPage() {
   const { t } = useLang();
   const [q, setQ] = useState("");
   const [region, setRegion] = useState("All");
+  const [county, setCounty] = useState<string | null>(null);
+  const countyClubs = useMemo(
+    () => (county ? CLUBS.filter(([, c]) => c === county) : []),
+    [county]
+  );
   const list = useMemo(
     () =>
       CLUBS.filter(([n, c]) => {
@@ -58,10 +63,13 @@ export default function ClubsPage() {
           className="rv"
           style={{
             width: "100%",
+            maxWidth: 900,
             height: "auto",
             borderRadius: 20,
             marginBottom: 28,
             display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
           }}
         />
         <a
@@ -161,7 +169,76 @@ export default function ClubsPage() {
           ))}
         </div>
 
-        <CountyGrid />
+        {/* interactive county map */}
+        <div
+          className="glass rv"
+          style={{
+            padding: "clamp(22px, 3.5vw, 32px)",
+            marginBottom: 56,
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "clamp(24px, 4vw, 44px)",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ maxWidth: 380, margin: "0 auto", width: "100%" }}>
+            <KenyaMap selected={county} onSelect={(c) => setCounty(c)} />
+            <div className="mono-label" style={{ textAlign: "center", marginTop: 12 }}>
+              Tap or click any county
+            </div>
+          </div>
+          <div>
+            {!county ? (
+              <>
+                <h2 className="display" style={{ margin: "0 0 10px", fontSize: "clamp(1.4rem, 2.6vw, 1.9rem)" }}>
+                  Explore Kenya, <span className="gold">county by county</span>
+                </h2>
+                <p style={{ margin: 0, maxWidth: 440, font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>
+                  Select a county on the map to see which clubs are live there.
+                  Blue counties already have Club500 clubs — the rest are on the way.
+                </p>
+              </>
+            ) : (
+              <div key={county} className="spotlight-in">
+                <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 14 }}>
+                  <h2 className="display" style={{ margin: 0, fontSize: "clamp(1.4rem, 2.6vw, 1.9rem)" }}>{county}</h2>
+                  <span className="mono-label">
+                    {REGION_OF_COUNTY[county] ? `${REGION_OF_COUNTY[county]} region` : ""}
+                  </span>
+                </div>
+                {countyClubs.length > 0 ? (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {countyClubs.map(([name, , img]) => (
+                      <a
+                        key={name}
+                        href={`/clubs/${clubSlug(name)}`}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 12,
+                          border: "1px solid rgba(58,95,217,0.35)",
+                          background: "rgba(58,95,217,0.07)",
+                          borderRadius: 14,
+                          padding: "10px 14px",
+                          color: "var(--fg)",
+                        }}
+                      >
+                        <ClubCrest name={name} img={img} size="40px" />
+                        <span style={{ font: '600 14.5px/1.3 var(--font-inter-tight), sans-serif', flex: 1 }}>{name}</span>
+                        <span className="gold" style={{ font: '700 13px/1 var(--font-inter-tight), sans-serif' }}>View →</span>
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <p style={{ margin: 0, maxWidth: 420, font: '400 14.5px/1.6 var(--font-inter-tight), sans-serif', color: "rgba(var(--tx),0.6)" }}>
+                    No Club500 clubs in {county} yet — it&apos;s on the way. Run a club
+                    here? <a href="/clubs/apply" className="gold">Apply to join →</a>
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
 
         {/* How joining works */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 14 }}>
